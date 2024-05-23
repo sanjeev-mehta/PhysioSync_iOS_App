@@ -1,0 +1,654 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3C4A096E17D58210E8E70B30 /* Pods_PhysioSync.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C11C617AB09AD38A62E4D /* Pods_PhysioSync.framework */; };
+		678F33D82BFED67800824A23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F33D72BFED67800824A23 /* AppDelegate.swift */; };
+		678F33DA2BFED67800824A23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F33D92BFED67800824A23 /* SceneDelegate.swift */; };
+		678F33DF2BFED67800824A23 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 678F33DE2BFED67800824A23 /* Base */; };
+		678F33E12BFED67A00824A23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 678F33E02BFED67A00824A23 /* Assets.xcassets */; };
+		678F33E42BFED67A00824A23 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 678F33E32BFED67A00824A23 /* Base */; };
+		678F33FB2BFED93A00824A23 /* TherapistAuth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 678F33FA2BFED93A00824A23 /* TherapistAuth.storyboard */; };
+		678F33FD2BFED95000824A23 /* PatientAuth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 678F33FC2BFED95000824A23 /* PatientAuth.storyboard */; };
+		678F34002BFED96F00824A23 /* TherapistOnboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 678F33FF2BFED96F00824A23 /* TherapistOnboarding.storyboard */; };
+		678F34022BFED97C00824A23 /* PatientOnboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 678F34012BFED97C00824A23 /* PatientOnboarding.storyboard */; };
+		678F34042BFEDACC00824A23 /* PatientOnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F34032BFEDACC00824A23 /* PatientOnboardingVC.swift */; };
+		678F34092BFEDB1E00824A23 /* TherapistLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F34082BFEDB1E00824A23 /* TherapistLoginVC.swift */; };
+		678F340D2BFEDB4400824A23 /* TherapistLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F340C2BFEDB4400824A23 /* TherapistLoginViewModel.swift */; };
+		678F34102BFEDB7800824A23 /* TherapistLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F340F2BFEDB7800824A23 /* TherapistLoginModel.swift */; };
+		678F34122BFEDC0600824A23 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F34112BFEDC0600824A23 /* Constants.swift */; };
+		678F34142BFEDC1E00824A23 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F34132BFEDC1E00824A23 /* extensions.swift */; };
+		678F34162BFEDC2700824A23 /* IBDesignables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F34152BFEDC2700824A23 /* IBDesignables.swift */; };
+		678F34182BFEDC2E00824A23 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F34172BFEDC2E00824A23 /* Loader.swift */; };
+		678F341B2BFEDC3700824A23 /* NetworkingClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F34192BFEDC3700824A23 /* NetworkingClass.swift */; };
+		678F341C2BFEDC3700824A23 /* NetworkConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F341A2BFEDC3700824A23 /* NetworkConnectivity.swift */; };
+		678F341E2BFEDC4300824A23 /* SlideTranisitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F341D2BFEDC4300824A23 /* SlideTranisitionAnimator.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		505D71C97A5939DC41F99F48 /* Pods-PhysioSync.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhysioSync.debug.xcconfig"; path = "Target Support Files/Pods-PhysioSync/Pods-PhysioSync.debug.xcconfig"; sourceTree = "<group>"; };
+		644C11C617AB09AD38A62E4D /* Pods_PhysioSync.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhysioSync.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		678F33D42BFED67800824A23 /* PhysioSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhysioSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		678F33D72BFED67800824A23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		678F33D92BFED67800824A23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		678F33DE2BFED67800824A23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		678F33E02BFED67A00824A23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		678F33E32BFED67A00824A23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		678F33E52BFED67A00824A23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		678F33FA2BFED93A00824A23 /* TherapistAuth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TherapistAuth.storyboard; sourceTree = "<group>"; };
+		678F33FC2BFED95000824A23 /* PatientAuth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PatientAuth.storyboard; sourceTree = "<group>"; };
+		678F33FF2BFED96F00824A23 /* TherapistOnboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TherapistOnboarding.storyboard; sourceTree = "<group>"; };
+		678F34012BFED97C00824A23 /* PatientOnboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PatientOnboarding.storyboard; sourceTree = "<group>"; };
+		678F34032BFEDACC00824A23 /* PatientOnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientOnboardingVC.swift; sourceTree = "<group>"; };
+		678F34082BFEDB1E00824A23 /* TherapistLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistLoginVC.swift; sourceTree = "<group>"; };
+		678F340C2BFEDB4400824A23 /* TherapistLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistLoginViewModel.swift; sourceTree = "<group>"; };
+		678F340F2BFEDB7800824A23 /* TherapistLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistLoginModel.swift; sourceTree = "<group>"; };
+		678F34112BFEDC0600824A23 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		678F34132BFEDC1E00824A23 /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
+		678F34152BFEDC2700824A23 /* IBDesignables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBDesignables.swift; sourceTree = "<group>"; };
+		678F34172BFEDC2E00824A23 /* Loader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		678F34192BFEDC3700824A23 /* NetworkingClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingClass.swift; sourceTree = "<group>"; };
+		678F341A2BFEDC3700824A23 /* NetworkConnectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConnectivity.swift; sourceTree = "<group>"; };
+		678F341D2BFEDC4300824A23 /* SlideTranisitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTranisitionAnimator.swift; sourceTree = "<group>"; };
+		FC5D250C3D17413BF6991B2B /* Pods-PhysioSync.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhysioSync.release.xcconfig"; path = "Target Support Files/Pods-PhysioSync/Pods-PhysioSync.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		678F33D12BFED67800824A23 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C4A096E17D58210E8E70B30 /* Pods_PhysioSync.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		678F33CB2BFED67800824A23 = {
+			isa = PBXGroup;
+			children = (
+				678F33D62BFED67800824A23 /* PhysioSync */,
+				678F33D52BFED67800824A23 /* Products */,
+				78C8844A1FFAE5CA50F47C66 /* Pods */,
+				CF09D576FE54B3693FB61E79 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		678F33D52BFED67800824A23 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				678F33D42BFED67800824A23 /* PhysioSync.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		678F33D62BFED67800824A23 /* PhysioSync */ = {
+			isa = PBXGroup;
+			children = (
+				678F33EB2BFED68400824A23 /* AppDelegates */,
+				678F33F12BFED88D00824A23 /* HelperClasses */,
+				678F33F22BFED8A400824A23 /* Fonts */,
+				678F33EC2BFED6C900824A23 /* MVVM */,
+				678F33F02BFED87A00824A23 /* StoryBoards */,
+				678F33E02BFED67A00824A23 /* Assets.xcassets */,
+				678F33E52BFED67A00824A23 /* Info.plist */,
+			);
+			path = PhysioSync;
+			sourceTree = "<group>";
+		};
+		678F33EB2BFED68400824A23 /* AppDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				678F33D72BFED67800824A23 /* AppDelegate.swift */,
+				678F33D92BFED67800824A23 /* SceneDelegate.swift */,
+			);
+			path = AppDelegates;
+			sourceTree = "<group>";
+		};
+		678F33EC2BFED6C900824A23 /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+				678F33F62BFED8EE00824A23 /* Therapist */,
+				678F33F52BFED8E900824A23 /* Patient */,
+			);
+			path = MVVM;
+			sourceTree = "<group>";
+		};
+		678F33ED2BFED6D200824A23 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		678F33EE2BFED6DC00824A23 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		678F33EF2BFED6E300824A23 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				678F34052BFEDAD800824A23 /* PatientOnboarding */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		678F33F02BFED87A00824A23 /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				678F33F42BFED8E100824A23 /* Therapist */,
+				678F33F32BFED8D900824A23 /* Patient */,
+				678F33DD2BFED67800824A23 /* Main.storyboard */,
+				678F33E22BFED67A00824A23 /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		678F33F12BFED88D00824A23 /* HelperClasses */ = {
+			isa = PBXGroup;
+			children = (
+				678F34112BFEDC0600824A23 /* Constants.swift */,
+				678F34132BFEDC1E00824A23 /* extensions.swift */,
+				678F34152BFEDC2700824A23 /* IBDesignables.swift */,
+				678F34172BFEDC2E00824A23 /* Loader.swift */,
+				678F341A2BFEDC3700824A23 /* NetworkConnectivity.swift */,
+				678F34192BFEDC3700824A23 /* NetworkingClass.swift */,
+				678F341D2BFEDC4300824A23 /* SlideTranisitionAnimator.swift */,
+			);
+			path = HelperClasses;
+			sourceTree = "<group>";
+		};
+		678F33F22BFED8A400824A23 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		678F33F32BFED8D900824A23 /* Patient */ = {
+			isa = PBXGroup;
+			children = (
+				678F34012BFED97C00824A23 /* PatientOnboarding.storyboard */,
+				678F33FC2BFED95000824A23 /* PatientAuth.storyboard */,
+			);
+			path = Patient;
+			sourceTree = "<group>";
+		};
+		678F33F42BFED8E100824A23 /* Therapist */ = {
+			isa = PBXGroup;
+			children = (
+				678F33FF2BFED96F00824A23 /* TherapistOnboarding.storyboard */,
+				678F33FA2BFED93A00824A23 /* TherapistAuth.storyboard */,
+			);
+			path = Therapist;
+			sourceTree = "<group>";
+		};
+		678F33F52BFED8E900824A23 /* Patient */ = {
+			isa = PBXGroup;
+			children = (
+				678F33ED2BFED6D200824A23 /* Model */,
+				678F33EF2BFED6E300824A23 /* View */,
+				678F33EE2BFED6DC00824A23 /* ViewModel */,
+			);
+			path = Patient;
+			sourceTree = "<group>";
+		};
+		678F33F62BFED8EE00824A23 /* Therapist */ = {
+			isa = PBXGroup;
+			children = (
+				678F33F82BFED90600824A23 /* Model */,
+				678F33F92BFED90B00824A23 /* View */,
+				678F33F72BFED90000824A23 /* ViewModel */,
+			);
+			path = Therapist;
+			sourceTree = "<group>";
+		};
+		678F33F72BFED90000824A23 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				678F340A2BFEDB2400824A23 /* TherapistLogin */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		678F33F82BFED90600824A23 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				678F340E2BFEDB5F00824A23 /* TherapistLogin */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		678F33F92BFED90B00824A23 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				678F34062BFEDB0000824A23 /* TherapistAuth */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		678F34052BFEDAD800824A23 /* PatientOnboarding */ = {
+			isa = PBXGroup;
+			children = (
+				678F34032BFEDACC00824A23 /* PatientOnboardingVC.swift */,
+			);
+			path = PatientOnboarding;
+			sourceTree = "<group>";
+		};
+		678F34062BFEDB0000824A23 /* TherapistAuth */ = {
+			isa = PBXGroup;
+			children = (
+				678F34072BFEDB0A00824A23 /* TherapistLogin */,
+			);
+			path = TherapistAuth;
+			sourceTree = "<group>";
+		};
+		678F34072BFEDB0A00824A23 /* TherapistLogin */ = {
+			isa = PBXGroup;
+			children = (
+				678F34082BFEDB1E00824A23 /* TherapistLoginVC.swift */,
+			);
+			path = TherapistLogin;
+			sourceTree = "<group>";
+		};
+		678F340A2BFEDB2400824A23 /* TherapistLogin */ = {
+			isa = PBXGroup;
+			children = (
+				678F340C2BFEDB4400824A23 /* TherapistLoginViewModel.swift */,
+			);
+			path = TherapistLogin;
+			sourceTree = "<group>";
+		};
+		678F340E2BFEDB5F00824A23 /* TherapistLogin */ = {
+			isa = PBXGroup;
+			children = (
+				678F340F2BFEDB7800824A23 /* TherapistLoginModel.swift */,
+			);
+			path = TherapistLogin;
+			sourceTree = "<group>";
+		};
+		78C8844A1FFAE5CA50F47C66 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				505D71C97A5939DC41F99F48 /* Pods-PhysioSync.debug.xcconfig */,
+				FC5D250C3D17413BF6991B2B /* Pods-PhysioSync.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		CF09D576FE54B3693FB61E79 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				644C11C617AB09AD38A62E4D /* Pods_PhysioSync.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		678F33D32BFED67800824A23 /* PhysioSync */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 678F33E82BFED67A00824A23 /* Build configuration list for PBXNativeTarget "PhysioSync" */;
+			buildPhases = (
+				A1C992314EE1D67E5F7A9F94 /* [CP] Check Pods Manifest.lock */,
+				678F33D02BFED67800824A23 /* Sources */,
+				678F33D12BFED67800824A23 /* Frameworks */,
+				678F33D22BFED67800824A23 /* Resources */,
+				098BC84D839C805EF6139A78 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PhysioSync;
+			productName = PhysioSync;
+			productReference = 678F33D42BFED67800824A23 /* PhysioSync.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		678F33CC2BFED67800824A23 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					678F33D32BFED67800824A23 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+				};
+			};
+			buildConfigurationList = 678F33CF2BFED67800824A23 /* Build configuration list for PBXProject "PhysioSync" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 678F33CB2BFED67800824A23;
+			productRefGroup = 678F33D52BFED67800824A23 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				678F33D32BFED67800824A23 /* PhysioSync */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		678F33D22BFED67800824A23 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				678F33E12BFED67A00824A23 /* Assets.xcassets in Resources */,
+				678F33FB2BFED93A00824A23 /* TherapistAuth.storyboard in Resources */,
+				678F34002BFED96F00824A23 /* TherapistOnboarding.storyboard in Resources */,
+				678F34022BFED97C00824A23 /* PatientOnboarding.storyboard in Resources */,
+				678F33E42BFED67A00824A23 /* Base in Resources */,
+				678F33DF2BFED67800824A23 /* Base in Resources */,
+				678F33FD2BFED95000824A23 /* PatientAuth.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		098BC84D839C805EF6139A78 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PhysioSync/Pods-PhysioSync-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PhysioSync/Pods-PhysioSync-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PhysioSync/Pods-PhysioSync-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A1C992314EE1D67E5F7A9F94 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PhysioSync-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		678F33D02BFED67800824A23 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				678F34102BFEDB7800824A23 /* TherapistLoginModel.swift in Sources */,
+				678F341C2BFEDC3700824A23 /* NetworkConnectivity.swift in Sources */,
+				678F34042BFEDACC00824A23 /* PatientOnboardingVC.swift in Sources */,
+				678F33D82BFED67800824A23 /* AppDelegate.swift in Sources */,
+				678F34142BFEDC1E00824A23 /* extensions.swift in Sources */,
+				678F34182BFEDC2E00824A23 /* Loader.swift in Sources */,
+				678F34162BFEDC2700824A23 /* IBDesignables.swift in Sources */,
+				678F33DA2BFED67800824A23 /* SceneDelegate.swift in Sources */,
+				678F341B2BFEDC3700824A23 /* NetworkingClass.swift in Sources */,
+				678F34122BFEDC0600824A23 /* Constants.swift in Sources */,
+				678F34092BFEDB1E00824A23 /* TherapistLoginVC.swift in Sources */,
+				678F341E2BFEDC4300824A23 /* SlideTranisitionAnimator.swift in Sources */,
+				678F340D2BFEDB4400824A23 /* TherapistLoginViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		678F33DD2BFED67800824A23 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				678F33DE2BFED67800824A23 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		678F33E22BFED67A00824A23 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				678F33E32BFED67A00824A23 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		678F33E62BFED67A00824A23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		678F33E72BFED67A00824A23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		678F33E92BFED67A00824A23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 505D71C97A5939DC41F99F48 /* Pods-PhysioSync.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FG5ABUUD8H;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PhysioSync/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Physio Sync";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Sanjeev.PhysioSync;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		678F33EA2BFED67A00824A23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC5D250C3D17413BF6991B2B /* Pods-PhysioSync.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FG5ABUUD8H;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PhysioSync/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Physio Sync";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Sanjeev.PhysioSync;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		678F33CF2BFED67800824A23 /* Build configuration list for PBXProject "PhysioSync" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				678F33E62BFED67A00824A23 /* Debug */,
+				678F33E72BFED67A00824A23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		678F33E82BFED67A00824A23 /* Build configuration list for PBXNativeTarget "PhysioSync" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				678F33E92BFED67A00824A23 /* Debug */,
+				678F33EA2BFED67A00824A23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 678F33CC2BFED67800824A23 /* Project object */;
+}

@@ -1,0 +1,6 @@
+framework module Pods_PhysioSync {
+  umbrella header "Pods-PhysioSync-umbrella.h"
+
+  export *
+  module * { export * }
+}
