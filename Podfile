@@ -8,6 +8,7 @@ pod 'AlamofireSwiftyJSON'
 pod 'NVActivityIndicatorView'
 pod 'IQKeyboardManagerSwift'
 pod 'SDWebImage'
+pod 'CHIPageControl/Fresno'
   # Pods for PhysioSync
 
 end
