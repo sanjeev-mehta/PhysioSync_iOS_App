@@ -364,9 +364,9 @@ extension Optional where Wrapped == String {
 
 extension UIViewController {
     
-    func switchController(_ identifier: StoryBoardIDs, storyBoardId: Storyboard) -> UIViewController? {
-        let storyboard = UIStoryboard(name: storyBoardId.rawValue, bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: identifier.rawValue)
+    func switchController(_ storyBoardIdentifier: StoryBoardIDs, _ storyBoard: Storyboard) -> UIViewController? {
+        let storyboard = UIStoryboard(name: storyBoard.rawValue, bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: storyBoardIdentifier.rawValue)
         vc.modalPresentationStyle = .fullScreen
         return vc
     }

@@ -37,7 +37,7 @@ class PatientLoginVC: UIViewController {
                 self.passwordView.isHidden = false
             }
         } else {
-            if let vc = self.switchController(.setPassword, storyBoardId: .patientAuth) {
+            if let vc = self.switchController(.setPassword, .patientAuth) {
                 self.present(vc, animated: true)
             }
         }

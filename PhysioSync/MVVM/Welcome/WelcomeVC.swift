@@ -28,13 +28,13 @@ class WelcomeVC: UIViewController {
     // MARK: - Buttons Action
     
     @IBAction func physiotherapistBtnActn(_ sender: UIButton) {
-        if let vc = self.switchController(.therapistOnboardingID, storyBoardId: .therapistOnboarding) {
+        if let vc = self.switchController(.therapistOnboardingID, .therapistOnboarding) {
             self.present(vc, animated: true)
         }
     }
     
     @IBAction func patientBtnActn(_ sender: UIButton) {
-        if let vc = self.switchController(.patientLogin, storyBoardId: .patientAuth) {
+        if let vc = self.switchController(.patientLogin, .patientAuth) {
             self.present(vc, animated: true)
         }
     }

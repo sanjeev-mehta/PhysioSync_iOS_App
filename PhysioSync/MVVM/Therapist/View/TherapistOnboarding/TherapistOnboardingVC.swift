@@ -110,7 +110,7 @@ class TherapistOnboardingVC: UIViewController, CHIBasePageControlDelegate {
             if isFromPatient {
                  
             } else {
-                if let vc = self.switchController(.therapistWelcomeID, storyBoardId: .therapistOnboarding) {
+                if let vc = self.switchController(.therapistWelcomeID, .therapistOnboarding) {
                     self.present(vc, animated: true)
                 }
             }
