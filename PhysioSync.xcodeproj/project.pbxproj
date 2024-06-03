@@ -44,6 +44,10 @@
 		678F341B2BFEDC3700824A23 /* NetworkingClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F34192BFEDC3700824A23 /* NetworkingClass.swift */; };
 		678F341C2BFEDC3700824A23 /* NetworkConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F341A2BFEDC3700824A23 /* NetworkConnectivity.swift */; };
 		678F341E2BFEDC4300824A23 /* SlideTranisitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F341D2BFEDC4300824A23 /* SlideTranisitionAnimator.swift */; };
+		E8A79AD52C0D4C8C00A2EB92 /* Message.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8A79AD42C0D4C8C00A2EB92 /* Message.storyboard */; };
+		E8A79AD82C0D4D0800A2EB92 /* MessageTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A79AD72C0D4D0800A2EB92 /* MessageTabVC.swift */; };
+		E8C0FADD2C0D5A2E008E1CA7 /* MessageTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C0FADB2C0D5A2E008E1CA7 /* MessageTVC.swift */; };
+		E8C0FADE2C0D5A2E008E1CA7 /* MessageTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8C0FADC2C0D5A2E008E1CA7 /* MessageTVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +91,10 @@
 		678F34192BFEDC3700824A23 /* NetworkingClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingClass.swift; sourceTree = "<group>"; };
 		678F341A2BFEDC3700824A23 /* NetworkConnectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConnectivity.swift; sourceTree = "<group>"; };
 		678F341D2BFEDC4300824A23 /* SlideTranisitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTranisitionAnimator.swift; sourceTree = "<group>"; };
+		E8A79AD42C0D4C8C00A2EB92 /* Message.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Message.storyboard; sourceTree = "<group>"; };
+		E8A79AD72C0D4D0800A2EB92 /* MessageTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTabVC.swift; sourceTree = "<group>"; };
+		E8C0FADB2C0D5A2E008E1CA7 /* MessageTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTVC.swift; sourceTree = "<group>"; };
+		E8C0FADC2C0D5A2E008E1CA7 /* MessageTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageTVC.xib; sourceTree = "<group>"; };
 		FC5D250C3D17413BF6991B2B /* Pods-PhysioSync.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhysioSync.release.xcconfig"; path = "Target Support Files/Pods-PhysioSync/Pods-PhysioSync.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,6 +169,7 @@
 				678F33F12BFED88D00824A23 /* HelperClasses */,
 				678F33F22BFED8A400824A23 /* Fonts */,
 				678F33EC2BFED6C900824A23 /* MVVM */,
+				E8C0FADA2C0D5A09008E1CA7 /* Xibs */,
 				678F33F02BFED87A00824A23 /* StoryBoards */,
 				678F33E02BFED67A00824A23 /* Assets.xcassets */,
 				678F33E52BFED67A00824A23 /* Info.plist */,
@@ -180,6 +189,7 @@
 		678F33EC2BFED6C900824A23 /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				E8A79AD62C0D4CCF00A2EB92 /* MessageTab */,
 				674E53EB2C0940550033F260 /* Welcome */,
 				678F33F62BFED8EE00824A23 /* Therapist */,
 				678F33F52BFED8E900824A23 /* Patient */,
@@ -213,6 +223,7 @@
 		678F33F02BFED87A00824A23 /* StoryBoards */ = {
 			isa = PBXGroup;
 			children = (
+				E8A79AD32C0D4C5D00A2EB92 /* MessageTab */,
 				678F33F42BFED8E100824A23 /* Therapist */,
 				678F33F32BFED8D900824A23 /* Patient */,
 				678F33DD2BFED67800824A23 /* Main.storyboard */,
@@ -373,6 +384,39 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E8A79AD32C0D4C5D00A2EB92 /* MessageTab */ = {
+			isa = PBXGroup;
+			children = (
+				E8A79AD42C0D4C8C00A2EB92 /* Message.storyboard */,
+			);
+			path = MessageTab;
+			sourceTree = "<group>";
+		};
+		E8A79AD62C0D4CCF00A2EB92 /* MessageTab */ = {
+			isa = PBXGroup;
+			children = (
+				E8A79AD72C0D4D0800A2EB92 /* MessageTabVC.swift */,
+			);
+			path = MessageTab;
+			sourceTree = "<group>";
+		};
+		E8C0FADA2C0D5A09008E1CA7 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				E8C0FADF2C0D5A32008E1CA7 /* Message */,
+			);
+			path = Xibs;
+			sourceTree = "<group>";
+		};
+		E8C0FADF2C0D5A32008E1CA7 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				E8C0FADB2C0D5A2E008E1CA7 /* MessageTVC.swift */,
+				E8C0FADC2C0D5A2E008E1CA7 /* MessageTVC.xib */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -434,6 +478,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				676BEA632C0C404E00A193CF /* Outfit-Light.ttf in Resources */,
+				E8C0FADE2C0D5A2E008E1CA7 /* MessageTVC.xib in Resources */,
 				676BEA5E2C0C404E00A193CF /* Outfit-Bold.ttf in Resources */,
 				676BEA612C0C404E00A193CF /* Outfit-ExtraLight.ttf in Resources */,
 				678F33E12BFED67A00824A23 /* Assets.xcassets in Resources */,
@@ -447,6 +492,7 @@
 				678F33DF2BFED67800824A23 /* Base in Resources */,
 				676BEA5D2C0C404E00A193CF /* Outfit-Medium.ttf in Resources */,
 				678F33FD2BFED95000824A23 /* PatientAuth.storyboard in Resources */,
+				E8A79AD52C0D4C8C00A2EB92 /* Message.storyboard in Resources */,
 				676BEA602C0C404E00A193CF /* Outfit-SemiBold.ttf in Resources */,
 				676BEA5F2C0C404E00A193CF /* Outfit-Black.ttf in Resources */,
 			);
@@ -504,9 +550,11 @@
 				678F34102BFEDB7800824A23 /* TherapistLoginModel.swift in Sources */,
 				674E53FE2C0951ED0033F260 /* PatientLoginVC.swift in Sources */,
 				678F341C2BFEDC3700824A23 /* NetworkConnectivity.swift in Sources */,
+				E8A79AD82C0D4D0800A2EB92 /* MessageTabVC.swift in Sources */,
 				674E53F92C094EBA0033F260 /* TherapistWelcomeVC.swift in Sources */,
 				678F34042BFEDACC00824A23 /* PatientOnboardingVC.swift in Sources */,
 				674E53F72C0947F30033F260 /* TherapistOnboardingModel.swift in Sources */,
+				E8C0FADD2C0D5A2E008E1CA7 /* MessageTVC.swift in Sources */,
 				678F33D82BFED67800824A23 /* AppDelegate.swift in Sources */,
 				678F34142BFEDC1E00824A23 /* extensions.swift in Sources */,
 				674E53ED2C0940660033F260 /* WelcomeVC.swift in Sources */,
