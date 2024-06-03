@@ -323,6 +323,7 @@ extension UIViewController {
                 print("This view controller is not embedded in a navigation controller.")
                 return
             }
+            navigationController.setNavigationBarHidden(true, animated: true)
             navigationController.pushViewController(viewController, animated: true)
         } else {
             self.present(viewController, animated: true)
