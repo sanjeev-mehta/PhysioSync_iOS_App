@@ -28,7 +28,7 @@ class SetPasswordVC: UIViewController {
     @IBAction func nextBtnActn(_ sender: UIButton) {
         if let vc = self.switchController(.therapistOnboardingID, .therapistOnboarding) as? TherapistOnboardingVC {
             vc.isFromPatient = true
-            self.present(vc, animated: true)
+            self.pushOrPresentViewController(vc, true)
         }
     }
     
