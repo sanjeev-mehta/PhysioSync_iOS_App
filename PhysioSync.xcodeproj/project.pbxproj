@@ -15,6 +15,15 @@
 		674E53F92C094EBA0033F260 /* TherapistWelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674E53F82C094EBA0033F260 /* TherapistWelcomeVC.swift */; };
 		674E53FE2C0951ED0033F260 /* PatientLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674E53FD2C0951ED0033F260 /* PatientLoginVC.swift */; };
 		674E54002C09584F0033F260 /* SetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674E53FF2C09584F0033F260 /* SetPasswordVC.swift */; };
+		676BEA5D2C0C404E00A193CF /* Outfit-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 676BEA542C0C404E00A193CF /* Outfit-Medium.ttf */; };
+		676BEA5E2C0C404E00A193CF /* Outfit-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 676BEA552C0C404E00A193CF /* Outfit-Bold.ttf */; };
+		676BEA5F2C0C404E00A193CF /* Outfit-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 676BEA562C0C404E00A193CF /* Outfit-Black.ttf */; };
+		676BEA602C0C404E00A193CF /* Outfit-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 676BEA572C0C404E00A193CF /* Outfit-SemiBold.ttf */; };
+		676BEA612C0C404E00A193CF /* Outfit-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 676BEA582C0C404E00A193CF /* Outfit-ExtraLight.ttf */; };
+		676BEA622C0C404E00A193CF /* Outfit-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 676BEA592C0C404E00A193CF /* Outfit-ExtraBold.ttf */; };
+		676BEA632C0C404E00A193CF /* Outfit-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 676BEA5A2C0C404E00A193CF /* Outfit-Light.ttf */; };
+		676BEA642C0C404E00A193CF /* Outfit-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 676BEA5B2C0C404E00A193CF /* Outfit-Regular.ttf */; };
+		676BEA652C0C404E00A193CF /* Outfit-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 676BEA5C2C0C404E00A193CF /* Outfit-Thin.ttf */; };
 		678F33D82BFED67800824A23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F33D72BFED67800824A23 /* AppDelegate.swift */; };
 		678F33DA2BFED67800824A23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F33D92BFED67800824A23 /* SceneDelegate.swift */; };
 		678F33DF2BFED67800824A23 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 678F33DE2BFED67800824A23 /* Base */; };
@@ -47,6 +56,15 @@
 		674E53F82C094EBA0033F260 /* TherapistWelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistWelcomeVC.swift; sourceTree = "<group>"; };
 		674E53FD2C0951ED0033F260 /* PatientLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientLoginVC.swift; sourceTree = "<group>"; };
 		674E53FF2C09584F0033F260 /* SetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPasswordVC.swift; sourceTree = "<group>"; };
+		676BEA542C0C404E00A193CF /* Outfit-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Medium.ttf"; sourceTree = "<group>"; };
+		676BEA552C0C404E00A193CF /* Outfit-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Bold.ttf"; sourceTree = "<group>"; };
+		676BEA562C0C404E00A193CF /* Outfit-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Black.ttf"; sourceTree = "<group>"; };
+		676BEA572C0C404E00A193CF /* Outfit-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-SemiBold.ttf"; sourceTree = "<group>"; };
+		676BEA582C0C404E00A193CF /* Outfit-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-ExtraLight.ttf"; sourceTree = "<group>"; };
+		676BEA592C0C404E00A193CF /* Outfit-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-ExtraBold.ttf"; sourceTree = "<group>"; };
+		676BEA5A2C0C404E00A193CF /* Outfit-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Light.ttf"; sourceTree = "<group>"; };
+		676BEA5B2C0C404E00A193CF /* Outfit-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Regular.ttf"; sourceTree = "<group>"; };
+		676BEA5C2C0C404E00A193CF /* Outfit-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Thin.ttf"; sourceTree = "<group>"; };
 		678F33D42BFED67800824A23 /* PhysioSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhysioSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		678F33D72BFED67800824A23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		678F33D92BFED67800824A23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -221,6 +239,15 @@
 		678F33F22BFED8A400824A23 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				676BEA562C0C404E00A193CF /* Outfit-Black.ttf */,
+				676BEA552C0C404E00A193CF /* Outfit-Bold.ttf */,
+				676BEA592C0C404E00A193CF /* Outfit-ExtraBold.ttf */,
+				676BEA582C0C404E00A193CF /* Outfit-ExtraLight.ttf */,
+				676BEA5A2C0C404E00A193CF /* Outfit-Light.ttf */,
+				676BEA542C0C404E00A193CF /* Outfit-Medium.ttf */,
+				676BEA5B2C0C404E00A193CF /* Outfit-Regular.ttf */,
+				676BEA572C0C404E00A193CF /* Outfit-SemiBold.ttf */,
+				676BEA5C2C0C404E00A193CF /* Outfit-Thin.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -406,13 +433,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				676BEA632C0C404E00A193CF /* Outfit-Light.ttf in Resources */,
+				676BEA5E2C0C404E00A193CF /* Outfit-Bold.ttf in Resources */,
+				676BEA612C0C404E00A193CF /* Outfit-ExtraLight.ttf in Resources */,
 				678F33E12BFED67A00824A23 /* Assets.xcassets in Resources */,
 				678F33FB2BFED93A00824A23 /* TherapistAuth.storyboard in Resources */,
+				676BEA622C0C404E00A193CF /* Outfit-ExtraBold.ttf in Resources */,
+				676BEA652C0C404E00A193CF /* Outfit-Thin.ttf in Resources */,
 				678F34002BFED96F00824A23 /* TherapistOnboarding.storyboard in Resources */,
 				678F34022BFED97C00824A23 /* PatientOnboarding.storyboard in Resources */,
+				676BEA642C0C404E00A193CF /* Outfit-Regular.ttf in Resources */,
 				678F33E42BFED67A00824A23 /* Base in Resources */,
 				678F33DF2BFED67800824A23 /* Base in Resources */,
+				676BEA5D2C0C404E00A193CF /* Outfit-Medium.ttf in Resources */,
 				678F33FD2BFED95000824A23 /* PatientAuth.storyboard in Resources */,
+				676BEA602C0C404E00A193CF /* Outfit-SemiBold.ttf in Resources */,
+				676BEA5F2C0C404E00A193CF /* Outfit-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
