@@ -173,7 +173,7 @@ extension UIImage {
 }
 
 extension UIViewController {
-
+    
     func enableTabbarItems(_ items: [Int]) {
         disableAllTabbarItems()
         if let arrayOfTabBarItems = tabBarController?.tabBar.items as NSArray? {
@@ -186,7 +186,7 @@ extension UIViewController {
             }
         }
     }
-
+    
     private func disableAllTabbarItems() {
         if let arrayOfTabBarItems = tabBarController?.tabBar.items as NSArray? {
             for i in 0..<arrayOfTabBarItems.count {
@@ -219,7 +219,7 @@ extension UIViewController {
             // alertController.dismiss(animated: true, completion: nil)
         }
         alertController.addAction(OKAction)
-       // alertController.addAction(cancelAction)
+        // alertController.addAction(cancelAction)
         
         self.present(alertController, animated: true, completion: nil)
     }
@@ -241,7 +241,7 @@ extension UIViewController {
             // alertController.dismiss(animated: true, completion: nil)
         }
         alertController.addAction(OKAction)
-       
+        
         
         self.present(alertController, animated: true, completion: nil)
     }
@@ -265,23 +265,23 @@ extension UIViewController {
     
     func isValidEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-
+        
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }
     
     //MARK:- Set DropDown
-//    func setDropDown(dropDown:DropDown,arr:[String], arwClr: UIColor) {
-//        
-//        dropDown.rowHeight = 40
-//        dropDown.optionArray = arr
-//        dropDown.arrowColor = arwClr
-//        dropDown.isSearchEnable = false
-//        dropDown.selectedRowColor = .clear
-//        dropDown.textColor = .clear
-//        dropDown.checkMarkEnabled = false
-//        
-//    }
+    //    func setDropDown(dropDown:DropDown,arr:[String], arwClr: UIColor) {
+    //
+    //        dropDown.rowHeight = 40
+    //        dropDown.optionArray = arr
+    //        dropDown.arrowColor = arwClr
+    //        dropDown.isSearchEnable = false
+    //        dropDown.selectedRowColor = .clear
+    //        dropDown.textColor = .clear
+    //        dropDown.checkMarkEnabled = false
+    //
+    //    }
     
     func addCharactersToStringToLabels(string: String, lbls: [UILabel]) {
         let reversedString = String(string.reversed())
@@ -295,44 +295,80 @@ extension UIViewController {
             }
         }
     }
-
+    
 }
-
+extension UIViewController {
+    
+    func switchController(_ storyBoardIdentifier: StoryBoardIDs, _ storyBoard: Storyboard) -> UIViewController? {
+        let storyboard = UIStoryboard(name: storyBoard.rawValue, bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: storyBoardIdentifier.rawValue)
+        vc.modalPresentationStyle = .fullScreen
+        return vc
+    }
+    
+    func dismissOrPopViewController() {
+        // Check if the view controller is embedded in a navigation controller
+        if let navigationController = self.navigationController {
+            // If it is, pop the view controller
+            navigationController.popViewController(animated: true)
+        } else {
+            // If not, dismiss the view controller
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func pushOrPresentViewController(_ viewController: UIViewController, _ isPushed: Bool) {
+        if isPushed {
+            guard let navigationController = self.navigationController else {
+                print("This view controller is not embedded in a navigation controller.")
+                return
+            }
+            navigationController.pushViewController(viewController, animated: true)
+        } else {
+            self.present(viewController, animated: true)
+        }
+    }
+    
+    func debugPrint(_ message: String, function: String = #function, line: Int = #line) {
+        let controllerName = String(describing: type(of: self))
+        print("[\(controllerName)] \(function) [Line \(line)]: \(message)")
+    }
+}
 extension UIApplication {
     
     var keyWindow: UIWindow? {
         // Get connected scenes
         return self.connectedScenes
-            // Keep only active scenes, onscreen and visible to the user
+        // Keep only active scenes, onscreen and visible to the user
             .filter { $0.activationState == .foregroundActive }
-            // Keep only the first `UIWindowScene`
+        // Keep only the first `UIWindowScene`
             .first(where: { $0 is UIWindowScene })
-            // Get its associated windows
+        // Get its associated windows
             .flatMap({ $0 as? UIWindowScene })?.windows
-            // Finally, keep only the key window
+        // Finally, keep only the key window
             .first(where: \.isKeyWindow)
     }
     
 }
 
 extension UIImageView {
-
+    
     func loadGif(name: String) {
         guard let path = Bundle.main.path(forResource: name, ofType: "gif"),
               let data = try? Data(contentsOf: URL(fileURLWithPath: path)),
               let source = CGImageSourceCreateWithData(data as CFData, nil) else {
             return
         }
-
+        
         var images = [UIImage]()
         let count = CGImageSourceGetCount(source)
-
+        
         for i in 0..<count {
             if let image = CGImageSourceCreateImageAtIndex(source, i, nil) {
                 images.append(UIImage(cgImage: image))
             }
         }
-
+        
         self.animationImages = images
         self.animationDuration = Double(images.count) / 30.0
         self.startAnimating()
@@ -362,20 +398,6 @@ extension Optional where Wrapped == String {
     }
 }
 
-extension UIViewController {
-    
-    func switchController(_ storyBoardIdentifier: StoryBoardIDs, _ storyBoard: Storyboard) -> UIViewController? {
-        let storyboard = UIStoryboard(name: storyBoard.rawValue, bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: storyBoardIdentifier.rawValue)
-        vc.modalPresentationStyle = .fullScreen
-        return vc
-    }
-    
-    func dismissController() {
-        self.navigationController?.popViewController(animated: true)
-    }
-}
-
 extension UIColor {
     convenience init(hex: UInt32, alpha: CGFloat = 1.0) {
         self.init(
@@ -387,15 +409,4 @@ extension UIColor {
     }
 }
 
-extension UIViewController {
-    func dismissOrPopViewController() {
-        // Check if the view controller is embedded in a navigation controller
-        if let navigationController = self.navigationController {
-            // If it is, pop the view controller
-            navigationController.popViewController(animated: true)
-        } else {
-            // If not, dismiss the view controller
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
-}
+
