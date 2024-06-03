@@ -38,7 +38,7 @@ class PatientLoginVC: UIViewController {
             }
         } else {
             if let vc = self.switchController(.setPassword, .patientAuth) {
-                self.present(vc, animated: true)
+                self.pushOrPresentViewController(vc, true)
             }
         }
        

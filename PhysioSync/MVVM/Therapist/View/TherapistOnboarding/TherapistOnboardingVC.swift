@@ -111,7 +111,7 @@ class TherapistOnboardingVC: UIViewController, CHIBasePageControlDelegate {
                  
             } else {
                 if let vc = self.switchController(.therapistWelcomeID, .therapistOnboarding) {
-                    self.present(vc, animated: true)
+                    self.pushOrPresentViewController(vc, true)
                 }
             }
         }
