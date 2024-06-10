@@ -57,6 +57,10 @@
 		E8A79AD82C0D4D0800A2EB92 /* MessageTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A79AD72C0D4D0800A2EB92 /* MessageTabVC.swift */; };
 		E8C0FADD2C0D5A2E008E1CA7 /* MessageTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C0FADB2C0D5A2E008E1CA7 /* MessageTVC.swift */; };
 		E8C0FADE2C0D5A2E008E1CA7 /* MessageTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8C0FADC2C0D5A2E008E1CA7 /* MessageTVC.xib */; };
+		F91D75AB2C1276AA00EE71E0 /* ExerciseTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F91D75AA2C1276AA00EE71E0 /* ExerciseTab.storyboard */; };
+		F91D75AE2C1276F200EE71E0 /* ExerciseCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91D75AD2C1276F200EE71E0 /* ExerciseCategoryVC.swift */; };
+		F91D75B22C1277F900EE71E0 /* ExerciseGridCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F91D75B12C1277F900EE71E0 /* ExerciseGridCVC.xib */; };
+		F91D75B32C1277F900EE71E0 /* ExerciseGridCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91D75B02C1277F900EE71E0 /* ExerciseGridCVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +117,10 @@
 		E8A79AD72C0D4D0800A2EB92 /* MessageTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTabVC.swift; sourceTree = "<group>"; };
 		E8C0FADB2C0D5A2E008E1CA7 /* MessageTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTVC.swift; sourceTree = "<group>"; };
 		E8C0FADC2C0D5A2E008E1CA7 /* MessageTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageTVC.xib; sourceTree = "<group>"; };
+		F91D75AA2C1276AA00EE71E0 /* ExerciseTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExerciseTab.storyboard; sourceTree = "<group>"; };
+		F91D75AD2C1276F200EE71E0 /* ExerciseCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExerciseCategoryVC.swift; path = PhysioSync/StoryBoards/ExerciseTab/ExerciseCategoryVC.swift; sourceTree = SOURCE_ROOT; };
+		F91D75B02C1277F900EE71E0 /* ExerciseGridCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseGridCVC.swift; sourceTree = "<group>"; };
+		F91D75B12C1277F900EE71E0 /* ExerciseGridCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExerciseGridCVC.xib; sourceTree = "<group>"; };
 		FC5D250C3D17413BF6991B2B /* Pods-PhysioSync.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhysioSync.release.xcconfig"; path = "Target Support Files/Pods-PhysioSync/Pods-PhysioSync.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -251,6 +259,7 @@
 		678F33F02BFED87A00824A23 /* StoryBoards */ = {
 			isa = PBXGroup;
 			children = (
+				F91D75A92C12766700EE71E0 /* ExerciseTab */,
 				E8A79AD32C0D4C5D00A2EB92 /* MessageTab */,
 				678F33F42BFED8E100824A23 /* Therapist */,
 				678F33F32BFED8D900824A23 /* Patient */,
@@ -354,6 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				67320C8E2C168F61003188AA /* TherapistPatient */,
+				F91D75AC2C1276C000EE71E0 /* Exercise */,
 				674E53EE2C09440A0033F260 /* TherapistOnboarding */,
 				678F34062BFEDB0000824A23 /* TherapistAuth */,
 			);
@@ -454,6 +464,7 @@
 		E8C0FADA2C0D5A09008E1CA7 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				F91D75AF2C1277BD00EE71E0 /* ExerciseGrid */,
 				E8C0FADF2C0D5A32008E1CA7 /* Message */,
 			);
 			path = Xibs;
@@ -466,6 +477,31 @@
 				E8C0FADC2C0D5A2E008E1CA7 /* MessageTVC.xib */,
 			);
 			path = Message;
+			sourceTree = "<group>";
+		};
+		F91D75A92C12766700EE71E0 /* ExerciseTab */ = {
+			isa = PBXGroup;
+			children = (
+				F91D75AA2C1276AA00EE71E0 /* ExerciseTab.storyboard */,
+			);
+			path = ExerciseTab;
+			sourceTree = "<group>";
+		};
+		F91D75AC2C1276C000EE71E0 /* Exercise */ = {
+			isa = PBXGroup;
+			children = (
+				F91D75AD2C1276F200EE71E0 /* ExerciseCategoryVC.swift */,
+			);
+			path = Exercise;
+			sourceTree = "<group>";
+		};
+		F91D75AF2C1277BD00EE71E0 /* ExerciseGrid */ = {
+			isa = PBXGroup;
+			children = (
+				F91D75B02C1277F900EE71E0 /* ExerciseGridCVC.swift */,
+				F91D75B12C1277F900EE71E0 /* ExerciseGridCVC.xib */,
+			);
+			path = ExerciseGrid;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -535,6 +571,7 @@
 				67B161642C138E540028E3C3 /* PatientExerciseTab.storyboard in Resources */,
 				678F33E12BFED67A00824A23 /* Assets.xcassets in Resources */,
 				678F33FB2BFED93A00824A23 /* TherapistAuth.storyboard in Resources */,
+				F91D75B22C1277F900EE71E0 /* ExerciseGridCVC.xib in Resources */,
 				676BEA622C0C404E00A193CF /* Outfit-ExtraBold.ttf in Resources */,
 				676BEA652C0C404E00A193CF /* Outfit-Thin.ttf in Resources */,
 				678F34002BFED96F00824A23 /* TherapistOnboarding.storyboard in Resources */,
@@ -544,6 +581,7 @@
 				678F33E42BFED67A00824A23 /* Base in Resources */,
 				678F33DF2BFED67800824A23 /* Base in Resources */,
 				676BEA5D2C0C404E00A193CF /* Outfit-Medium.ttf in Resources */,
+				F91D75AB2C1276AA00EE71E0 /* ExerciseTab.storyboard in Resources */,
 				678F33FD2BFED95000824A23 /* PatientAuth.storyboard in Resources */,
 				67320C8D2C168C0B003188AA /* TherapistTab.storyboard in Resources */,
 				E8A79AD52C0D4C8C00A2EB92 /* Message.storyboard in Resources */,
@@ -603,6 +641,7 @@
 			files = (
 				678F34102BFEDB7800824A23 /* TherapistLoginModel.swift in Sources */,
 				674E53FE2C0951ED0033F260 /* PatientLoginVC.swift in Sources */,
+				F91D75B32C1277F900EE71E0 /* ExerciseGridCVC.swift in Sources */,
 				678F341C2BFEDC3700824A23 /* NetworkConnectivity.swift in Sources */,
 				E8A79AD82C0D4D0800A2EB92 /* MessageTabVC.swift in Sources */,
 				67320C902C168F79003188AA /* TherapistPatientVC.swift in Sources */,
@@ -629,6 +668,7 @@
 				674E54002C09584F0033F260 /* SetPasswordVC.swift in Sources */,
 				67B1616C2C14179B0028E3C3 /* PatientExerciseDetailVC.swift in Sources */,
 				678F340D2BFEDB4400824A23 /* TherapistLoginViewModel.swift in Sources */,
+				F91D75AE2C1276F200EE71E0 /* ExerciseCategoryVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
