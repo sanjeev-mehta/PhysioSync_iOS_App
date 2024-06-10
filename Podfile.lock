@@ -4,41 +4,53 @@ PODS:
     - Alamofire (~> 4.0)
     - SwiftyJSON (~> 4.0)
   - CHIPageControl/Fresno (0.2)
+  - Hero (1.6.3)
   - IQKeyboardManagerSwift (7.0.1)
   - NVActivityIndicatorView (5.1.1):
     - NVActivityIndicatorView/Base (= 5.1.1)
   - NVActivityIndicatorView/Base (5.1.1)
+  - RAMAnimatedTabBarController (5.2.0)
   - SDWebImage (5.18.10):
     - SDWebImage/Core (= 5.18.10)
   - SDWebImage/Core (5.18.10)
   - SwiftyJSON (4.3.0)
+  - UIView-Shimmer (1.0.4)
 
 DEPENDENCIES:
   - AlamofireSwiftyJSON
   - CHIPageControl/Fresno
+  - Hero
   - IQKeyboardManagerSwift
   - NVActivityIndicatorView
+  - RAMAnimatedTabBarController
   - SDWebImage
+  - UIView-Shimmer (~> 1.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireSwiftyJSON
     - CHIPageControl
+    - Hero
     - IQKeyboardManagerSwift
     - NVActivityIndicatorView
+    - RAMAnimatedTabBarController
     - SDWebImage
     - SwiftyJSON
+    - UIView-Shimmer
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AlamofireSwiftyJSON: 74ee3804bed06d07857daf1eeb1615c85dba3997
   CHIPageControl: a787bf7205c9b7e7fbfc412be36c5e8636b68f86
+  Hero: 419d43384355b3168512bd8ac6a33aadd3dc575b
   IQKeyboardManagerSwift: 7f6b1b1d1497855d2beea7f2f10ffcc6978525b1
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
+  RAMAnimatedTabBarController: 6863a386e7ae2ab227cd60aa73ab8ff56cdacfdd
   SDWebImage: fc8f2d48bbfd72ef39d70e981bd24a3f3be53fec
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  UIView-Shimmer: ff0a32c73d67c7dbdea3d9e530538b10d18aea56
 
-PODFILE CHECKSUM: 2760e4f947cbb996cb7a3e18c0774abeda058b2e
+PODFILE CHECKSUM: 5068202f19c9629e159631483e5fc3bda66ebb5b
 
 COCOAPODS: 1.14.2

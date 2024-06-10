@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3C4A096E17D58210E8E70B30 /* Pods_PhysioSync.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C11C617AB09AD38A62E4D /* Pods_PhysioSync.framework */; };
+		67320C8D2C168C0B003188AA /* TherapistTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67320C8C2C168C0B003188AA /* TherapistTab.storyboard */; };
+		67320C902C168F79003188AA /* TherapistPatientVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67320C8F2C168F79003188AA /* TherapistPatientVC.swift */; };
+		67320C922C168F8B003188AA /* TherapistPatientListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67320C912C168F8B003188AA /* TherapistPatientListTVC.swift */; };
 		674E53ED2C0940660033F260 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674E53EC2C0940660033F260 /* WelcomeVC.swift */; };
 		674E53F02C0944230033F260 /* TherapistOnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674E53EF2C0944230033F260 /* TherapistOnboardingVC.swift */; };
 		674E53F22C0946760033F260 /* StoryBoardIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674E53F12C0946760033F260 /* StoryBoardIDs.swift */; };
@@ -24,6 +27,7 @@
 		676BEA632C0C404E00A193CF /* Outfit-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 676BEA5A2C0C404E00A193CF /* Outfit-Light.ttf */; };
 		676BEA642C0C404E00A193CF /* Outfit-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 676BEA5B2C0C404E00A193CF /* Outfit-Regular.ttf */; };
 		676BEA652C0C404E00A193CF /* Outfit-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 676BEA5C2C0C404E00A193CF /* Outfit-Thin.ttf */; };
+		677F5F032C15025F006792F2 /* PatientTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 677F5F022C15025F006792F2 /* PatientTab.storyboard */; };
 		678F33D82BFED67800824A23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F33D72BFED67800824A23 /* AppDelegate.swift */; };
 		678F33DA2BFED67800824A23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F33D92BFED67800824A23 /* SceneDelegate.swift */; };
 		678F33DF2BFED67800824A23 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 678F33DE2BFED67800824A23 /* Base */; };
@@ -44,11 +48,27 @@
 		678F341B2BFEDC3700824A23 /* NetworkingClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F34192BFEDC3700824A23 /* NetworkingClass.swift */; };
 		678F341C2BFEDC3700824A23 /* NetworkConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F341A2BFEDC3700824A23 /* NetworkConnectivity.swift */; };
 		678F341E2BFEDC4300824A23 /* SlideTranisitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F341D2BFEDC4300824A23 /* SlideTranisitionAnimator.swift */; };
+		67B161642C138E540028E3C3 /* PatientExerciseTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67B161632C138E540028E3C3 /* PatientExerciseTab.storyboard */; };
+		67B161672C138E7A0028E3C3 /* PatientExerciseTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B161662C138E7A0028E3C3 /* PatientExerciseTabVC.swift */; };
+		67B161692C13F1490028E3C3 /* PatientExerciseTabTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B161682C13F1490028E3C3 /* PatientExerciseTabTVC.swift */; };
+		67B1616C2C14179B0028E3C3 /* PatientExerciseDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B1616B2C14179B0028E3C3 /* PatientExerciseDetailVC.swift */; };
+		67B1616E2C141A740028E3C3 /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B1616D2C141A740028E3C3 /* VideoPlayer.swift */; };
+		E8A79AD52C0D4C8C00A2EB92 /* Message.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8A79AD42C0D4C8C00A2EB92 /* Message.storyboard */; };
+		E8A79AD82C0D4D0800A2EB92 /* MessageTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A79AD72C0D4D0800A2EB92 /* MessageTabVC.swift */; };
+		E8C0FADD2C0D5A2E008E1CA7 /* MessageTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C0FADB2C0D5A2E008E1CA7 /* MessageTVC.swift */; };
+		E8C0FADE2C0D5A2E008E1CA7 /* MessageTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8C0FADC2C0D5A2E008E1CA7 /* MessageTVC.xib */; };
+		F91D75AB2C1276AA00EE71E0 /* ExerciseTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F91D75AA2C1276AA00EE71E0 /* ExerciseTab.storyboard */; };
+		F91D75AE2C1276F200EE71E0 /* ExerciseCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91D75AD2C1276F200EE71E0 /* ExerciseCategoryVC.swift */; };
+		F91D75B22C1277F900EE71E0 /* ExerciseGridCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F91D75B12C1277F900EE71E0 /* ExerciseGridCVC.xib */; };
+		F91D75B32C1277F900EE71E0 /* ExerciseGridCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91D75B02C1277F900EE71E0 /* ExerciseGridCVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		505D71C97A5939DC41F99F48 /* Pods-PhysioSync.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhysioSync.debug.xcconfig"; path = "Target Support Files/Pods-PhysioSync/Pods-PhysioSync.debug.xcconfig"; sourceTree = "<group>"; };
 		644C11C617AB09AD38A62E4D /* Pods_PhysioSync.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhysioSync.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		67320C8C2C168C0B003188AA /* TherapistTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TherapistTab.storyboard; sourceTree = "<group>"; };
+		67320C8F2C168F79003188AA /* TherapistPatientVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistPatientVC.swift; sourceTree = "<group>"; };
+		67320C912C168F8B003188AA /* TherapistPatientListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistPatientListTVC.swift; sourceTree = "<group>"; };
 		674E53EC2C0940660033F260 /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
 		674E53EF2C0944230033F260 /* TherapistOnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistOnboardingVC.swift; sourceTree = "<group>"; };
 		674E53F12C0946760033F260 /* StoryBoardIDs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoardIDs.swift; sourceTree = "<group>"; };
@@ -65,6 +85,7 @@
 		676BEA5A2C0C404E00A193CF /* Outfit-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Light.ttf"; sourceTree = "<group>"; };
 		676BEA5B2C0C404E00A193CF /* Outfit-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Regular.ttf"; sourceTree = "<group>"; };
 		676BEA5C2C0C404E00A193CF /* Outfit-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Thin.ttf"; sourceTree = "<group>"; };
+		677F5F022C15025F006792F2 /* PatientTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PatientTab.storyboard; sourceTree = "<group>"; };
 		678F33D42BFED67800824A23 /* PhysioSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhysioSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		678F33D72BFED67800824A23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		678F33D92BFED67800824A23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +108,19 @@
 		678F34192BFEDC3700824A23 /* NetworkingClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingClass.swift; sourceTree = "<group>"; };
 		678F341A2BFEDC3700824A23 /* NetworkConnectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConnectivity.swift; sourceTree = "<group>"; };
 		678F341D2BFEDC4300824A23 /* SlideTranisitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTranisitionAnimator.swift; sourceTree = "<group>"; };
+		67B161632C138E540028E3C3 /* PatientExerciseTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PatientExerciseTab.storyboard; sourceTree = "<group>"; };
+		67B161662C138E7A0028E3C3 /* PatientExerciseTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientExerciseTabVC.swift; sourceTree = "<group>"; };
+		67B161682C13F1490028E3C3 /* PatientExerciseTabTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientExerciseTabTVC.swift; sourceTree = "<group>"; };
+		67B1616B2C14179B0028E3C3 /* PatientExerciseDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientExerciseDetailVC.swift; sourceTree = "<group>"; };
+		67B1616D2C141A740028E3C3 /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
+		E8A79AD42C0D4C8C00A2EB92 /* Message.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Message.storyboard; sourceTree = "<group>"; };
+		E8A79AD72C0D4D0800A2EB92 /* MessageTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTabVC.swift; sourceTree = "<group>"; };
+		E8C0FADB2C0D5A2E008E1CA7 /* MessageTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTVC.swift; sourceTree = "<group>"; };
+		E8C0FADC2C0D5A2E008E1CA7 /* MessageTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageTVC.xib; sourceTree = "<group>"; };
+		F91D75AA2C1276AA00EE71E0 /* ExerciseTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExerciseTab.storyboard; sourceTree = "<group>"; };
+		F91D75AD2C1276F200EE71E0 /* ExerciseCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExerciseCategoryVC.swift; path = PhysioSync/StoryBoards/ExerciseTab/ExerciseCategoryVC.swift; sourceTree = SOURCE_ROOT; };
+		F91D75B02C1277F900EE71E0 /* ExerciseGridCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseGridCVC.swift; sourceTree = "<group>"; };
+		F91D75B12C1277F900EE71E0 /* ExerciseGridCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExerciseGridCVC.xib; sourceTree = "<group>"; };
 		FC5D250C3D17413BF6991B2B /* Pods-PhysioSync.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhysioSync.release.xcconfig"; path = "Target Support Files/Pods-PhysioSync/Pods-PhysioSync.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +136,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		67320C8E2C168F61003188AA /* TherapistPatient */ = {
+			isa = PBXGroup;
+			children = (
+				67320C8F2C168F79003188AA /* TherapistPatientVC.swift */,
+				67320C912C168F8B003188AA /* TherapistPatientListTVC.swift */,
+			);
+			path = TherapistPatient;
+			sourceTree = "<group>";
+		};
 		674E53EB2C0940550033F260 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +204,7 @@
 				678F33F12BFED88D00824A23 /* HelperClasses */,
 				678F33F22BFED8A400824A23 /* Fonts */,
 				678F33EC2BFED6C900824A23 /* MVVM */,
+				E8C0FADA2C0D5A09008E1CA7 /* Xibs */,
 				678F33F02BFED87A00824A23 /* StoryBoards */,
 				678F33E02BFED67A00824A23 /* Assets.xcassets */,
 				678F33E52BFED67A00824A23 /* Info.plist */,
@@ -180,6 +224,7 @@
 		678F33EC2BFED6C900824A23 /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				E8A79AD62C0D4CCF00A2EB92 /* MessageTab */,
 				674E53EB2C0940550033F260 /* Welcome */,
 				678F33F62BFED8EE00824A23 /* Therapist */,
 				678F33F52BFED8E900824A23 /* Patient */,
@@ -204,6 +249,7 @@
 		678F33EF2BFED6E300824A23 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				67B161652C138E620028E3C3 /* PatientExerciseTab */,
 				674E53FA2C0950F30033F260 /* PatientAuth */,
 				678F34052BFEDAD800824A23 /* PatientOnboarding */,
 			);
@@ -213,6 +259,8 @@
 		678F33F02BFED87A00824A23 /* StoryBoards */ = {
 			isa = PBXGroup;
 			children = (
+				F91D75A92C12766700EE71E0 /* ExerciseTab */,
+				E8A79AD32C0D4C5D00A2EB92 /* MessageTab */,
 				678F33F42BFED8E100824A23 /* Therapist */,
 				678F33F32BFED8D900824A23 /* Patient */,
 				678F33DD2BFED67800824A23 /* Main.storyboard */,
@@ -232,6 +280,7 @@
 				678F34192BFEDC3700824A23 /* NetworkingClass.swift */,
 				678F341D2BFEDC4300824A23 /* SlideTranisitionAnimator.swift */,
 				674E53F12C0946760033F260 /* StoryBoardIDs.swift */,
+				67B1616D2C141A740028E3C3 /* VideoPlayer.swift */,
 			);
 			path = HelperClasses;
 			sourceTree = "<group>";
@@ -257,6 +306,8 @@
 			children = (
 				678F34012BFED97C00824A23 /* PatientOnboarding.storyboard */,
 				678F33FC2BFED95000824A23 /* PatientAuth.storyboard */,
+				67B161632C138E540028E3C3 /* PatientExerciseTab.storyboard */,
+				677F5F022C15025F006792F2 /* PatientTab.storyboard */,
 			);
 			path = Patient;
 			sourceTree = "<group>";
@@ -266,6 +317,7 @@
 			children = (
 				678F33FF2BFED96F00824A23 /* TherapistOnboarding.storyboard */,
 				678F33FA2BFED93A00824A23 /* TherapistAuth.storyboard */,
+				67320C8C2C168C0B003188AA /* TherapistTab.storyboard */,
 			);
 			path = Therapist;
 			sourceTree = "<group>";
@@ -310,6 +362,8 @@
 		678F33F92BFED90B00824A23 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				67320C8E2C168F61003188AA /* TherapistPatient */,
+				F91D75AC2C1276C000EE71E0 /* Exercise */,
 				674E53EE2C09440A0033F260 /* TherapistOnboarding */,
 				678F34062BFEDB0000824A23 /* TherapistAuth */,
 			);
@@ -356,6 +410,24 @@
 			path = TherapistLogin;
 			sourceTree = "<group>";
 		};
+		67B161652C138E620028E3C3 /* PatientExerciseTab */ = {
+			isa = PBXGroup;
+			children = (
+				67B1616A2C1417440028E3C3 /* ExerciseDetail */,
+				67B161662C138E7A0028E3C3 /* PatientExerciseTabVC.swift */,
+				67B161682C13F1490028E3C3 /* PatientExerciseTabTVC.swift */,
+			);
+			path = PatientExerciseTab;
+			sourceTree = "<group>";
+		};
+		67B1616A2C1417440028E3C3 /* ExerciseDetail */ = {
+			isa = PBXGroup;
+			children = (
+				67B1616B2C14179B0028E3C3 /* PatientExerciseDetailVC.swift */,
+			);
+			path = ExerciseDetail;
+			sourceTree = "<group>";
+		};
 		78C8844A1FFAE5CA50F47C66 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,6 +443,65 @@
 				644C11C617AB09AD38A62E4D /* Pods_PhysioSync.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E8A79AD32C0D4C5D00A2EB92 /* MessageTab */ = {
+			isa = PBXGroup;
+			children = (
+				E8A79AD42C0D4C8C00A2EB92 /* Message.storyboard */,
+			);
+			path = MessageTab;
+			sourceTree = "<group>";
+		};
+		E8A79AD62C0D4CCF00A2EB92 /* MessageTab */ = {
+			isa = PBXGroup;
+			children = (
+				E8A79AD72C0D4D0800A2EB92 /* MessageTabVC.swift */,
+			);
+			path = MessageTab;
+			sourceTree = "<group>";
+		};
+		E8C0FADA2C0D5A09008E1CA7 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				F91D75AF2C1277BD00EE71E0 /* ExerciseGrid */,
+				E8C0FADF2C0D5A32008E1CA7 /* Message */,
+			);
+			path = Xibs;
+			sourceTree = "<group>";
+		};
+		E8C0FADF2C0D5A32008E1CA7 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				E8C0FADB2C0D5A2E008E1CA7 /* MessageTVC.swift */,
+				E8C0FADC2C0D5A2E008E1CA7 /* MessageTVC.xib */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		F91D75A92C12766700EE71E0 /* ExerciseTab */ = {
+			isa = PBXGroup;
+			children = (
+				F91D75AA2C1276AA00EE71E0 /* ExerciseTab.storyboard */,
+			);
+			path = ExerciseTab;
+			sourceTree = "<group>";
+		};
+		F91D75AC2C1276C000EE71E0 /* Exercise */ = {
+			isa = PBXGroup;
+			children = (
+				F91D75AD2C1276F200EE71E0 /* ExerciseCategoryVC.swift */,
+			);
+			path = Exercise;
+			sourceTree = "<group>";
+		};
+		F91D75AF2C1277BD00EE71E0 /* ExerciseGrid */ = {
+			isa = PBXGroup;
+			children = (
+				F91D75B02C1277F900EE71E0 /* ExerciseGridCVC.swift */,
+				F91D75B12C1277F900EE71E0 /* ExerciseGridCVC.xib */,
+			);
+			path = ExerciseGrid;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -434,19 +565,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				676BEA632C0C404E00A193CF /* Outfit-Light.ttf in Resources */,
+				E8C0FADE2C0D5A2E008E1CA7 /* MessageTVC.xib in Resources */,
 				676BEA5E2C0C404E00A193CF /* Outfit-Bold.ttf in Resources */,
 				676BEA612C0C404E00A193CF /* Outfit-ExtraLight.ttf in Resources */,
+				67B161642C138E540028E3C3 /* PatientExerciseTab.storyboard in Resources */,
 				678F33E12BFED67A00824A23 /* Assets.xcassets in Resources */,
 				678F33FB2BFED93A00824A23 /* TherapistAuth.storyboard in Resources */,
+				F91D75B22C1277F900EE71E0 /* ExerciseGridCVC.xib in Resources */,
 				676BEA622C0C404E00A193CF /* Outfit-ExtraBold.ttf in Resources */,
 				676BEA652C0C404E00A193CF /* Outfit-Thin.ttf in Resources */,
 				678F34002BFED96F00824A23 /* TherapistOnboarding.storyboard in Resources */,
 				678F34022BFED97C00824A23 /* PatientOnboarding.storyboard in Resources */,
 				676BEA642C0C404E00A193CF /* Outfit-Regular.ttf in Resources */,
+				677F5F032C15025F006792F2 /* PatientTab.storyboard in Resources */,
 				678F33E42BFED67A00824A23 /* Base in Resources */,
 				678F33DF2BFED67800824A23 /* Base in Resources */,
 				676BEA5D2C0C404E00A193CF /* Outfit-Medium.ttf in Resources */,
+				F91D75AB2C1276AA00EE71E0 /* ExerciseTab.storyboard in Resources */,
 				678F33FD2BFED95000824A23 /* PatientAuth.storyboard in Resources */,
+				67320C8D2C168C0B003188AA /* TherapistTab.storyboard in Resources */,
+				E8A79AD52C0D4C8C00A2EB92 /* Message.storyboard in Resources */,
 				676BEA602C0C404E00A193CF /* Outfit-SemiBold.ttf in Resources */,
 				676BEA5F2C0C404E00A193CF /* Outfit-Black.ttf in Resources */,
 			);
@@ -503,10 +641,15 @@
 			files = (
 				678F34102BFEDB7800824A23 /* TherapistLoginModel.swift in Sources */,
 				674E53FE2C0951ED0033F260 /* PatientLoginVC.swift in Sources */,
+				F91D75B32C1277F900EE71E0 /* ExerciseGridCVC.swift in Sources */,
 				678F341C2BFEDC3700824A23 /* NetworkConnectivity.swift in Sources */,
+				E8A79AD82C0D4D0800A2EB92 /* MessageTabVC.swift in Sources */,
+				67320C902C168F79003188AA /* TherapistPatientVC.swift in Sources */,
 				674E53F92C094EBA0033F260 /* TherapistWelcomeVC.swift in Sources */,
 				678F34042BFEDACC00824A23 /* PatientOnboardingVC.swift in Sources */,
 				674E53F72C0947F30033F260 /* TherapistOnboardingModel.swift in Sources */,
+				67B161692C13F1490028E3C3 /* PatientExerciseTabTVC.swift in Sources */,
+				E8C0FADD2C0D5A2E008E1CA7 /* MessageTVC.swift in Sources */,
 				678F33D82BFED67800824A23 /* AppDelegate.swift in Sources */,
 				678F34142BFEDC1E00824A23 /* extensions.swift in Sources */,
 				674E53ED2C0940660033F260 /* WelcomeVC.swift in Sources */,
@@ -514,13 +657,18 @@
 				674E53F22C0946760033F260 /* StoryBoardIDs.swift in Sources */,
 				678F34182BFEDC2E00824A23 /* Loader.swift in Sources */,
 				678F34162BFEDC2700824A23 /* IBDesignables.swift in Sources */,
+				67B1616E2C141A740028E3C3 /* VideoPlayer.swift in Sources */,
 				678F33DA2BFED67800824A23 /* SceneDelegate.swift in Sources */,
+				67B161672C138E7A0028E3C3 /* PatientExerciseTabVC.swift in Sources */,
 				678F341B2BFEDC3700824A23 /* NetworkingClass.swift in Sources */,
 				678F34122BFEDC0600824A23 /* Constants.swift in Sources */,
+				67320C922C168F8B003188AA /* TherapistPatientListTVC.swift in Sources */,
 				678F34092BFEDB1E00824A23 /* TherapistLoginVC.swift in Sources */,
 				678F341E2BFEDC4300824A23 /* SlideTranisitionAnimator.swift in Sources */,
 				674E54002C09584F0033F260 /* SetPasswordVC.swift in Sources */,
+				67B1616C2C14179B0028E3C3 /* PatientExerciseDetailVC.swift in Sources */,
 				678F340D2BFEDB4400824A23 /* TherapistLoginViewModel.swift in Sources */,
+				F91D75AE2C1276F200EE71E0 /* ExerciseCategoryVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

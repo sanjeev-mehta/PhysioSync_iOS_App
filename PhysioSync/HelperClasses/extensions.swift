@@ -390,6 +390,17 @@ extension UIView {
         layer.cornerRadius = radius
         layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     }
+    
+    func addBottomCornerRadius(radius: CGFloat) {
+        clipsToBounds = true
+        layer.cornerRadius = radius
+        layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+    }
+    
+    func addCornerRadius(radius: CGFloat) {
+        layer.cornerRadius = radius
+        layer.masksToBounds = true
+    }
 }
 
 // Mark:- Wrapper for String Optional
