@@ -1,23 +1,19 @@
 //
-//  MessageTVC.swift
+//  NotificationTVC.swift
 //  PhysioSync
 //
-//  Created by Gurmeet Singh on 2024-06-02.
+//  Created by Gurmeet Singh on 2024-06-10.
 //
 
 import UIKit
 
-class MessageTVC: UITableViewCell {
+class NotificationTVC: UITableViewCell {
 
-    // MARK: - Outlets
-    @IBOutlet weak var badgeLbl: UILabel!
+    @IBOutlet weak var watchVideoBtn: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        badgeLbl.text = "hi"
         // Initialization code
-        badgeLbl.layer.cornerRadius = 11.5
-        badgeLbl.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -25,5 +21,5 @@ class MessageTVC: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }
