@@ -9,6 +9,9 @@ pod 'NVActivityIndicatorView'
 pod 'IQKeyboardManagerSwift'
 pod 'SDWebImage'
 pod 'CHIPageControl/Fresno'
+pod 'Hero'
+pod 'UIView-Shimmer', '~> 1.0'
+pod 'RAMAnimatedTabBarController'
   # Pods for PhysioSync
 
 end

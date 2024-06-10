@@ -23,4 +23,7 @@ enum Storyboard: String {
     
     // MARK: - Patient Auth
     case patientAuth = "PatientAuth"
+    
+    // MARK: - Patient Exercise Tab
+    case patientExercisTab = "PatientExerciseTab"
 }
