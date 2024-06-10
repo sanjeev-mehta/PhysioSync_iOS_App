@@ -18,5 +18,11 @@ enum StoryBoardIDs: String {
     // MARK: - Patient Auth Storyboard
     case patientLogin = "PatientLoginVC"
     case setPassword = "SetPasswordVC"
+    
+    // MARK: - Message Tab StoryBoard
+    case MessageTabVC = "MessageTabVC"
 
+    // MARK: - Therapist Notification Tab
+    
+    case TherapistNotificationVC = "TherapistNotificationVC"
 }
