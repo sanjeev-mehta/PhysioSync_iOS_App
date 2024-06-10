@@ -25,4 +25,7 @@ enum StoryBoardIDs: String {
     // MARK: - Therapist Notification Tab
     
     case TherapistNotificationVC = "TherapistNotificationVC"
+    // MARK: - Patient Exercise Tab Storyboard
+    case patientExerciseTab = "PatientExerciseTabVC"
+    case patientExerciseDetail = "PatientExerciseDetailVC"
 }
