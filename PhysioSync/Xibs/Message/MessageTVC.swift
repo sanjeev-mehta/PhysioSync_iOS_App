@@ -14,6 +14,7 @@ class MessageTVC: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        badgeLbl.text = "hi"
         // Initialization code
         badgeLbl.layer.cornerRadius = 11.5
         badgeLbl.clipsToBounds = true
