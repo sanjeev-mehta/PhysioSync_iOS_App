@@ -1,14 +1,14 @@
 //
-//  ExerciseCategoryVC.swift
+//  SingleExerciseVideoVC.swift
 //  PhysioSync
 //
-//  Created by Rohit on 2024-06-06.
+//  Created by Rohit on 2024-06-13.
 //
 
 import UIKit
 
-class ExerciseCategoryVC: UIViewController {
-    
+class SingleExerciseVC: UIViewController {
+
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -36,12 +36,12 @@ class ExerciseCategoryVC: UIViewController {
     func setCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: "ExerciseGridCVC", bundle: nil), forCellWithReuseIdentifier: "ExerciseGridCVC")
+        collectionView.register(UINib(nibName: "ExerciseGridCVC", bundle: nil), forCellWithReuseIdentifier: "SingleExerciseGridCVC")
     }
     
 }
 
-extension ExerciseCategoryVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension SingleExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 6
     }
