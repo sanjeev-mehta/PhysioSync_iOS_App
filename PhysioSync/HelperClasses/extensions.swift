@@ -334,19 +334,38 @@ extension UIViewController {
         let controllerName = String(describing: type(of: self))
         print("[\(controllerName)] \(function) [Line \(line)]: \(message)")
     }
+    
+    func setHeader(_ text: String, rightImg: UIImage = UIImage(named: "backArrow")!, isRightBtn: Bool = false, backButtonAction: (() -> Void)? = nil, rightButtonAction: (() -> Void)? = nil) {
+        let customHeaderView = CustomHeader()
+        customHeaderView.setTitle(text)
+        customHeaderView.backgroundColor = .clear
+        customHeaderView.showHideRightBtn(isRightBtn)
+        customHeaderView.setRightImage(rightImg)
+        customHeaderView.setBackImage(UIImage(named: "backArrow")!)
+        
+        if let backButtonAction = backButtonAction {
+            customHeaderView.backButtonAction = backButtonAction
+        }
+        
+        if let rightButtonAction = rightButtonAction {
+            customHeaderView.rightButtonAction = rightButtonAction
+        }
+        
+        view.addSubview(customHeaderView)
+        if UIDevice.current.hasNotch {
+            customHeaderView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 120)
+        } else {
+            customHeaderView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 90)
+        }
+    }
 }
 extension UIApplication {
     
     var keyWindow: UIWindow? {
-        // Get connected scenes
         return self.connectedScenes
-        // Keep only active scenes, onscreen and visible to the user
             .filter { $0.activationState == .foregroundActive }
-        // Keep only the first `UIWindowScene`
             .first(where: { $0 is UIWindowScene })
-        // Get its associated windows
             .flatMap({ $0 as? UIWindowScene })?.windows
-        // Finally, keep only the key window
             .first(where: \.isKeyWindow)
     }
     
@@ -422,3 +441,14 @@ extension UIColor {
 }
 
 
+extension UIDevice {
+    /// Returns `true` if the device has a notch
+    var hasNotch: Bool {
+        guard #available(iOS 11.0, *), let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return false }
+        if UIDevice.current.orientation.isPortrait {
+            return window.safeAreaInsets.top >= 44
+        } else {
+            return window.safeAreaInsets.left > 0 || window.safeAreaInsets.right > 0
+        }
+    }
+}

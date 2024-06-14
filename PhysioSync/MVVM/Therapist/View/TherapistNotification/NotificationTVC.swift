@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UIView_Shimmer
 
 class NotificationTVC: UITableViewCell {
 
