@@ -2,16 +2,21 @@
 //  TherapistPatientListTVC.swift
 //  PhysioSync
 //
-//  Created by Sanjeev Mehta on 09/06/24.
+//  Created by Gurmeet Singh on 2024-06-10.
 //
 
-import UIKit
 
-class TherapistPatientListTVC: UITableViewCell {
+import UIKit
+import UIView_Shimmer
+
+class TherapistPatientListTVC: UITableViewCell, ShimmeringViewProtocol {
 
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
     
+    var shimmeringAnimatedItems: [UIView] {
+        [imgView, nameLbl]
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

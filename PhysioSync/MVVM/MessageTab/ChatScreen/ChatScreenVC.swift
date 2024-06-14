@@ -34,6 +34,11 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         self.tableView.reloadData()
     }
     
+    // MARK: - Buttons Action
+    @IBAction func backBtnActn(_ sender: UIButton) {
+        self.dismissOrPopViewController()
+    }
+    
     // MARK: - TableView delegate & DataSource functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

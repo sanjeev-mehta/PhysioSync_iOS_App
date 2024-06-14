@@ -22,6 +22,13 @@ class MessageTabVC: UIViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "MessageTVC", bundle: nil), forCellReuseIdentifier: "MessageTVC")
     }
+    
+    // MARK: - Methods
+    func openChat() {
+        if let vc = self.switchController(.chatVC, .messageTab) as? ChatScreenVC {
+            self.pushOrPresentViewController(vc, true)
+        }
+    }
 
 }
 
@@ -39,6 +46,10 @@ extension MessageTabVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        openChat()
     }
     
 }

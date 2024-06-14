@@ -27,4 +27,10 @@ class TherapistWelcomeVC: UIViewController {
             self.dismissOrPopViewController()
     }
     
+    @IBAction func loginBtnActn(_ sender: UIButton) {
+        if let vc = self.switchController(.tabBarController, .therapistTab) {
+            self.pushOrPresentViewController(vc, true)
+        }
+    }
+    
 }
