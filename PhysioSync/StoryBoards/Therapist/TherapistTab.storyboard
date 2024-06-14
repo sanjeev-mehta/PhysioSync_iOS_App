@@ -147,7 +147,7 @@
         <!--Patients-->
         <scene sceneID="Zbf-zM-6fv">
             <objects>
-                <viewController id="Rfl-Gk-4nj" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TherapistPatientVC" id="Rfl-Gk-4nj" customClass="TherapistPatientVC" customModule="PhysioSync" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kxo-Zj-SZY">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -194,30 +194,49 @@
                                         <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="listIcon"/>
+                                        <connections>
+                                            <action selector="listGridBtnActn:" destination="Rfl-Gk-4nj" eventType="touchUpInside" id="FXv-cu-ESB"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJt-Is-MEA">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJt-Is-MEA">
                                         <rect key="frame" x="40" y="0.0" width="32" height="32"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="gridIcon"/>
+                                        <connections>
+                                            <action selector="listGridBtnActn:" destination="Rfl-Gk-4nj" eventType="touchUpInside" id="8XI-2e-e8M"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wpx-NC-UiC">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qWC-Nw-6Uv">
+                                <rect key="frame" x="16" y="148.33333333333331" width="361" height="620.66666666666674"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="68x-Yx-Zfl">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wpx-NC-UiC">
                                 <rect key="frame" x="16" y="148.33333333333331" width="361" height="620.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="91" id="Cd8-uT-B4C">
-                                        <rect key="frame" x="0.0" y="50" width="361" height="91"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TherapistPatientListTVC" rowHeight="75" id="Cd8-uT-B4C" customClass="TherapistPatientListTVC" customModule="PhysioSync" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="361" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cd8-uT-B4C" id="eWP-q8-pMq">
-                                            <rect key="frame" x="0.0" y="0.0" width="361" height="91"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="361" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gGh-Qa-eMu">
-                                                    <rect key="frame" x="0.0" y="5" width="361" height="81"/>
+                                                    <rect key="frame" x="0.0" y="5" width="361" height="65"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ukh-Yb-Zt0">
-                                                            <rect key="frame" x="0.0" y="15.666666666666671" width="50" height="50"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="patients" translatesAutoresizingMaskIntoConstraints="NO" id="ukh-Yb-Zt0">
+                                                            <rect key="frame" x="0.0" y="7.6666666666666643" width="50" height="50"/>
+                                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="50" id="7AX-j3-Aiv"/>
                                                                 <constraint firstAttribute="height" constant="50" id="qCG-EY-SXy"/>
@@ -229,7 +248,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zyken Felipe" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2R4-SP-x76">
-                                                            <rect key="frame" x="58" y="30.333333333333336" width="271" height="20.333333333333336"/>
+                                                            <rect key="frame" x="58" y="22.333333333333336" width="271" height="20.333333333333336"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -252,20 +271,13 @@
                                                 <constraint firstAttribute="bottom" secondItem="gGh-Qa-eMu" secondAttribute="bottom" constant="5" id="fb9-Jg-T7N"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imgView" destination="ukh-Yb-Zt0" id="FRa-Ae-FPB"/>
+                                            <outlet property="nameLbl" destination="2R4-SP-x76" id="na5-KH-f9C"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qWC-Nw-6Uv">
-                                <rect key="frame" x="16" y="148.33333333333331" width="361" height="620.66666666666674"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="68x-Yx-Zfl">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ISr-vF-NME">
                                 <rect key="frame" x="16" y="92.333333333333329" width="273" height="39.999999999999986"/>
                                 <subviews>
@@ -332,6 +344,10 @@
                             <outlet property="animation" destination="g5X-E8-xc1" id="ZN3-7l-HLx"/>
                         </connections>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="collectionView" destination="qWC-Nw-6Uv" id="Fuq-9Y-jfX"/>
+                        <outlet property="tableView" destination="wpx-NC-UiC" id="T1Y-bL-F6f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aoR-Tb-3zT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <customObject id="g5X-E8-xc1" customClass="RAMBounceAnimation" customModule="RAMAnimatedTabBarController">
