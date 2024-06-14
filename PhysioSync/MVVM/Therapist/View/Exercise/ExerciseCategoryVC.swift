@@ -26,9 +26,18 @@ class ExerciseCategoryVC: UIViewController {
         setCollectionView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setHeader("Exercise Library") {
+            self.dismissOrPopViewController()
+        } rightButtonAction: {
+            // No Need
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.isLoading = false
         }
     }
@@ -36,7 +45,13 @@ class ExerciseCategoryVC: UIViewController {
     func setCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: "ExerciseGridCVC", bundle: nil), forCellWithReuseIdentifier: "ExerciseGridCVC")
+        collectionView.register(UINib(nibName: "ExerciseGridCVC", bundle: nil), forCellWithReuseIdentifier: "SingleExerciseGridCVC")
+    }
+    
+    func openSingleExerciseController() {
+        if let vc = self.switchController(.singleExerciseVC, .exerciseTab) as? SingleExerciseVC {
+            self.pushOrPresentViewController(vc, true)
+        }
     }
     
 }
@@ -83,6 +98,7 @@ extension ExerciseCategoryVC: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // MARK: - Switch Controllers on tap
+        self.openSingleExerciseController()
     }
 
 }

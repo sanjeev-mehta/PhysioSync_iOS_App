@@ -1,51 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X2x-vV-r0p">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4h3-Al-2RZ">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Exercise CategoryVC-->
-        <scene sceneID="s0d-6b-0kx">
-            <objects>
-                <viewController storyboardIdentifier="ExerciseCategoryVC" id="Y6W-OH-hqX" customClass="ExerciseCategoryVC" customModule="PhysioSync" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aE5-FI-cGk">
-                                <rect key="frame" x="0.0" y="100" width="393" height="752"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lPZ-kT-oAN">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="aE5-FI-cGk" secondAttribute="bottom" id="M0d-Lf-yMK"/>
-                            <constraint firstItem="aE5-FI-cGk" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="NWu-2I-cwU"/>
-                            <constraint firstItem="aE5-FI-cGk" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="ilx-s9-2by"/>
-                            <constraint firstItem="aE5-FI-cGk" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="100" id="um5-wT-FYC"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="collectionView" destination="aE5-FI-cGk" id="2As-sY-Q5f"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="129.00763358778624" y="-23.239436619718312"/>
-        </scene>
         <!--Single ExerciseVC-->
         <scene sceneID="UNc-A4-8yJ">
             <objects>
@@ -98,7 +61,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8xo-7V-m0G">
-                                                <rect key="frame" x="24" y="110" width="345" height="160"/>
+                                                <rect key="frame" x="24" y="80" width="345" height="160"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kuY-iE-BxE">
                                                         <rect key="frame" x="0.0" y="0.0" width="345" height="160"/>
@@ -117,20 +80,20 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise 1 - Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LYz-aV-oyJ">
-                                                <rect key="frame" x="24" y="278" width="136.33333333333334" height="21"/>
+                                                <rect key="frame" x="24" y="248" width="136.33333333333334" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0xt-ZY-2iY">
-                                                <rect key="frame" x="24" y="307" width="345" height="122"/>
+                                                <rect key="frame" x="24" y="277" width="345" height="122"/>
                                                 <string key="text">In this video, we guide you through the Bird-Dog exercise, a fantastic move to strengthen your core, improve your balance, and stabilize your lower back. Suitable for all fitness levels, this exercise can be done anywhere without any equipment.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BRd-gl-olu">
-                                                <rect key="frame" x="24" y="482" width="345" height="100"/>
+                                                <rect key="frame" x="24" y="452" width="345" height="100"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="n4s-tO-4Gy"/>
@@ -144,7 +107,7 @@
                                                 <cells/>
                                             </collectionView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0DV-Cp-aX5">
-                                                <rect key="frame" x="24" y="598" width="345" height="60"/>
+                                                <rect key="frame" x="24" y="568" width="345" height="60"/>
                                                 <color key="backgroundColor" name="borderClr"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="lEJ-bn-wwo"/>
@@ -160,7 +123,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVY-hH-g4R">
-                                                <rect key="frame" x="24" y="445" width="73.666666666666671" height="21"/>
+                                                <rect key="frame" x="24" y="415" width="73.666666666666671" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -171,7 +134,7 @@
                                             <constraint firstItem="LYz-aV-oyJ" firstAttribute="leading" secondItem="mCX-qe-3YZ" secondAttribute="leading" constant="24" id="04G-ea-0ae"/>
                                             <constraint firstAttribute="trailing" secondItem="0xt-ZY-2iY" secondAttribute="trailing" constant="24" id="Ajh-rq-AKM"/>
                                             <constraint firstItem="BRd-gl-olu" firstAttribute="leading" secondItem="mCX-qe-3YZ" secondAttribute="leading" constant="24" id="EEt-n0-cBW"/>
-                                            <constraint firstItem="8xo-7V-m0G" firstAttribute="top" secondItem="mCX-qe-3YZ" secondAttribute="top" constant="110" id="Gvt-yP-9qI"/>
+                                            <constraint firstItem="8xo-7V-m0G" firstAttribute="top" secondItem="mCX-qe-3YZ" secondAttribute="top" constant="80" id="Gvt-yP-9qI"/>
                                             <constraint firstAttribute="trailing" secondItem="8xo-7V-m0G" secondAttribute="trailing" constant="24" id="IZw-gK-vto"/>
                                             <constraint firstItem="0xt-ZY-2iY" firstAttribute="top" secondItem="LYz-aV-oyJ" secondAttribute="bottom" constant="8" symbolic="YES" id="LWu-1f-4jx"/>
                                             <constraint firstItem="BRd-gl-olu" firstAttribute="top" secondItem="AVY-hH-g4R" secondAttribute="bottom" constant="16" id="X0H-uz-6Ag"/>
@@ -400,7 +363,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemCyanColor">
-            <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

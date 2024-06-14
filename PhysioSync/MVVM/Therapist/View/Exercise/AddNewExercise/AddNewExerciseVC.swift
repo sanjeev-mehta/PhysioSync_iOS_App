@@ -22,6 +22,15 @@ class AddNewExerciseVC: UIViewController {
         setData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setHeader("Add New Exercise", isRightBtn: false) {
+            self.dismissOrPopViewController()
+        } rightButtonAction: {
+            // not in use
+        }
+    }
+    
     // MARK: - Set Data
     func setData() {
         collectionView.delegate = self

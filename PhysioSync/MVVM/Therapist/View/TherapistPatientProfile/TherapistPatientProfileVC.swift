@@ -22,11 +22,27 @@ class TherapistPatientProfileVC: UIViewController {
         setUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setHeader("Therapist Profile", isRightBtn: false) {
+            self.dismissOrPopViewController()
+        } rightButtonAction: {
+            
+        }
+    }
+    
     func setUI() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 10) {
                 self.tableHeightConstraint.constant = self.tableView.contentSize.height
             }
+        }
+    }
+    
+    // MARK: -  Button Methods
+    @IBAction func viewPatientInfoBtnActn(_ sender: UIButton) {
+        if let vc = self.switchController(.therapistPatientInfoVC , .therapistPatientProfile) as? TherapistPatientInfoVC {
+            self.pushOrPresentViewController(vc, true)
         }
     }
     

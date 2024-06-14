@@ -15,11 +15,20 @@ class SingleExerciseDetailVC: UIViewController {
     
     // MARK: - Variables
     var categoryArr = [categoryData]()
-   
+    var headerTitle = "Exercise 1"
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setHeader(headerTitle,rightImg: UIImage(named: "threeDots")!, isRightBtn: true) {
+            self.dismissOrPopViewController()
+        } rightButtonAction: {
+            // open Add Exercise Controller
+        }
     }
     
     // MARK: - Set Data

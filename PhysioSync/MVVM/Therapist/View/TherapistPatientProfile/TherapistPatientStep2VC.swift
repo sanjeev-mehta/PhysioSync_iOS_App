@@ -15,15 +15,20 @@ class TherapistPatientStep2VC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setHeader("Patient Info", isRightBtn: false) {
+            self.dismissOrPopViewController()
+        } rightButtonAction: {
+            // No Need
+        }
     }
-    */
-
+    
+    // MARK: -  Buttons Actions
+    @IBAction func saveBtnActn(_ sender: UIButton) {
+        if let vc = self.switchController(.therapistPatientStep3VC, .therapistPatientProfile) as? TherapistPatientStep3VC {
+            self.pushOrPresentViewController(vc, true)
+        }
+    }
+    
 }

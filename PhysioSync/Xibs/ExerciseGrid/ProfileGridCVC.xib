@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ProfileGridCVC" customModule="PhysioSync" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="171" height="154"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="171" height="154"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r2u-Bi-En6">
+                        <rect key="frame" x="0.0" y="0.0" width="171" height="154"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sukhwinder Singh" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hmb-ZN-UNU">
+                                <rect key="frame" x="8" y="116" width="155" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PdB-ab-s6F">
+                                <rect key="frame" x="8" y="8" width="155" height="100"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="daddu" translatesAutoresizingMaskIntoConstraints="NO" id="1hZ-dD-vit">
+                                        <rect key="frame" x="0.0" y="0.0" width="155" height="100"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" name="primary"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Ooa-r6-6p4"/>
+                                    <constraint firstItem="1hZ-dD-vit" firstAttribute="leading" secondItem="PdB-ab-s6F" secondAttribute="leading" id="Tpp-Xc-bMt"/>
+                                    <constraint firstAttribute="trailing" secondItem="1hZ-dD-vit" secondAttribute="trailing" id="Uav-Sg-HGS"/>
+                                    <constraint firstItem="1hZ-dD-vit" firstAttribute="top" secondItem="PdB-ab-s6F" secondAttribute="top" id="h4u-eA-Ue7"/>
+                                    <constraint firstAttribute="bottom" secondItem="1hZ-dD-vit" secondAttribute="bottom" id="tff-j1-kJe"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Hmb-ZN-UNU" firstAttribute="top" secondItem="PdB-ab-s6F" secondAttribute="bottom" constant="8" id="CP5-3T-2kr"/>
+                            <constraint firstItem="PdB-ab-s6F" firstAttribute="leading" secondItem="r2u-Bi-En6" secondAttribute="leading" constant="8" id="D50-Bn-tn0"/>
+                            <constraint firstItem="Hmb-ZN-UNU" firstAttribute="trailing" secondItem="PdB-ab-s6F" secondAttribute="trailing" id="DT4-Cq-TqM"/>
+                            <constraint firstAttribute="trailing" secondItem="PdB-ab-s6F" secondAttribute="trailing" constant="8" id="Ecq-iy-kef"/>
+                            <constraint firstItem="Hmb-ZN-UNU" firstAttribute="leading" secondItem="PdB-ab-s6F" secondAttribute="leading" id="HAa-Dr-xEg"/>
+                            <constraint firstItem="PdB-ab-s6F" firstAttribute="top" secondItem="r2u-Bi-En6" secondAttribute="top" constant="8" id="wY8-4i-Bx2"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="r2u-Bi-En6" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Ggq-Da-PKA"/>
+                <constraint firstAttribute="trailing" secondItem="r2u-Bi-En6" secondAttribute="trailing" id="at5-68-vPS"/>
+                <constraint firstItem="r2u-Bi-En6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="hcR-6j-Jp7"/>
+                <constraint firstAttribute="bottom" secondItem="r2u-Bi-En6" secondAttribute="bottom" id="oWR-d1-W09"/>
+            </constraints>
+            <size key="customSize" width="171" height="156"/>
+            <connections>
+                <outlet property="bgView" destination="PdB-ab-s6F" id="ILl-n3-hDe"/>
+                <outlet property="imgView" destination="1hZ-dD-vit" id="wga-2d-gtz"/>
+                <outlet property="nameLbl" destination="Hmb-ZN-UNU" id="3kv-h8-H5I"/>
+            </connections>
+            <point key="canvasLocation" x="150.38167938931298" y="35.91549295774648"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="daddu" width="179" height="168"/>
+        <namedColor name="primary">
+            <color red="0.22745098039215686" green="0.0" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -27,11 +27,22 @@ enum Storyboard: String {
     // MARK: - MessageTab
     case messageTab = "Message"
     
-    
     // MARK: - Therapist Notifications
-    
     case TherapistNotification = "TherapistNotification"
     
     // MARK: - Patient Exercise Tab
     case patientExercisTab = "PatientExerciseTab"
+    
+    // MARK: - Exercise Tab
+    case exerciseTab = "ExerciseTab"
+    
+    // MARK: - Therapist Patient Profile
+    case therapistPatientProfile = "TherapistPatientProfile"
+    
+    // MARK: - Therapist Profile
+    case therapistProfile = "TherapistProfile"
+    
+    // MARK: - Therapist Tab
+    case therapistTab = "TherapistTab"
+    
 }

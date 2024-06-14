@@ -15,15 +15,20 @@ class TherapistProfileStep1VC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setHeader("Therapist Profile") {
+            self.dismissOrPopViewController()
+        } rightButtonAction: {
+            // No Need
+        }
     }
-    */
+    
+    // MARK: -  Buttons Action
+    @IBAction func saveBtnActn(_ sender: UIButton) {
+        if let vc = self.switchController(.therapistProfileStep2VC, .therapistProfile) as? TherapistProfileStep2VC {
+            self.pushOrPresentViewController(vc, true)
+        }
+    }
 
 }

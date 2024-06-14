@@ -65,6 +65,9 @@
                                                                 <real key="value" value="8"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="viewPatientInfoBtnActn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="erf-eN-1Rt"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -249,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="77" y="0.0"/>
+            <point key="canvasLocation" x="302" y="-111"/>
         </scene>
         <!--Therapist Patient Step1VC-->
         <scene sceneID="Lw5-r9-V03">
@@ -570,6 +573,9 @@
                                                         <real key="value" value="16"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="saveBtnActn:" destination="mEw-tp-XpF" eventType="touchUpInside" id="sBm-Ul-nsl"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -623,7 +629,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eEc-AX-Ej1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2368.7022900763359" y="-18.30985915492958"/>
+            <point key="canvasLocation" x="1685" y="35"/>
         </scene>
         <!--Therapist Patient InfoVC-->
         <scene sceneID="kbx-0O-RFi">
@@ -943,20 +949,9 @@
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EoV-FU-hXR">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="110"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="editProfile" translatesAutoresizingMaskIntoConstraints="NO" id="2pa-4l-ujX">
-                                        <rect key="frame" x="345" y="78" width="24" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="OVS-dF-6we"/>
-                                            <constraint firstAttribute="width" constant="24" id="Ucw-6x-PdB"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
                                 <color key="backgroundColor" systemColor="systemCyanColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="2pa-4l-ujX" secondAttribute="trailing" constant="24" id="9Ao-Fk-Nka"/>
                                     <constraint firstAttribute="height" constant="110" id="aU3-hU-wuc"/>
-                                    <constraint firstAttribute="bottom" secondItem="2pa-4l-ujX" secondAttribute="bottom" constant="8" id="fBO-7g-yUk"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1077,7 +1072,7 @@
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EVs-16-SXi">
                                                                 <rect key="frame" x="8" y="8" width="329" height="80"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                 <color key="textColor" systemColor="labelColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1143,6 +1138,9 @@
                                                         <real key="value" value="16"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="saveBtnActn:" destination="6gA-Jt-r2R" eventType="touchUpInside" id="Kb5-jp-sQ8"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1208,7 +1206,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y5N-Ke-cQP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3209.9236641221373" y="-29.577464788732396"/>
+            <point key="canvasLocation" x="2364" y="-71"/>
         </scene>
         <!--Therapist Patient Step3VC-->
         <scene sceneID="M5W-uM-xCd">
@@ -1331,6 +1329,9 @@
                                         <real key="value" value="16"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="saveBtnActn:" destination="3Td-s8-QQw" eventType="touchUpInside" id="wnW-iB-qQi"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gts-dA-bO2"/>
@@ -1357,7 +1358,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GRO-zH-Cs0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4214.5038167938928" y="-41.549295774647888"/>
+            <point key="canvasLocation" x="3036" y="-123"/>
         </scene>
     </scenes>
     <resources>
@@ -1365,7 +1366,6 @@
         <image name="Calendar" width="24.333333969116211" height="24"/>
         <image name="Stepper" width="314" height="78"/>
         <image name="baburao" width="400" height="400"/>
-        <image name="editProfile" width="24" height="24"/>
         <image name="profile pic sample" width="808" height="808"/>
         <image name="profileFGraph" width="343" height="155"/>
         <image name="stepper2" width="314" height="78"/>
@@ -1380,7 +1380,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemCyanColor">
-            <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -21,6 +21,11 @@ class ExerciseGridCVC: UICollectionViewCell, ShimmeringViewProtocol {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        imgVW.image = UIImage(named: "placeholder")!
+        imgVW.cornerRadius = 22
+        imgVW.clipsToBounds = true
+        imgVW.contentMode = .redraw
+        titleLbl.text = "Wrist"
     }
 
 }

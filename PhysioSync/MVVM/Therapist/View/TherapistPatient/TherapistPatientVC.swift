@@ -34,7 +34,7 @@ class TherapistPatientVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.isLoading = false
         }
     }
@@ -42,7 +42,7 @@ class TherapistPatientVC: UIViewController {
     func setCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: "PatientProfileGridCVC", bundle: nil), forCellWithReuseIdentifier: "PatientProfileGridCVC")
+        collectionView.register(UINib(nibName: "ProfileGridCVC", bundle: nil), forCellWithReuseIdentifier: "ProfileGridCVC")
     }
     
     func setTableView() {
@@ -70,6 +70,11 @@ class TherapistPatientVC: UIViewController {
         }
     }
     
+    func openProfileInfoController() {
+        if let vc = self.switchController(.therapistPatientProfileVC, .therapistPatientProfile) as? TherapistPatientProfileVC {
+            self.pushOrPresentViewController(vc, true)
+        }
+    }
     // MARK: - Buttons Action
     @IBAction func listGridBtnActn(_ sender: UIButton) {
         if sender.tag == 0 {
@@ -89,8 +94,8 @@ extension TherapistPatientVC: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PatientProfileGridCVC", for: indexPath) as! PatientProfileGridCVC
-        cell.bgView.backgroundColor = .blue
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileGridCVC", for: indexPath) as! ProfileGridCVC
+//        cell.bgView.backgroundColor = .blue
         cell.bgView.layer.cornerRadius = 12
         cell.imgView.layer.cornerRadius = 12
         cell.imgView.clipsToBounds = true
@@ -125,6 +130,7 @@ extension TherapistPatientVC: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // MARK: - Switch Controllers on tap
+        openProfileInfoController()
     }
 }
 
@@ -154,5 +160,9 @@ extension TherapistPatientVC: UITableViewDelegate ,UITableViewDataSource {
         UIView.animate(withDuration: 0.5) {
             cell.alpha = 1
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        openProfileInfoController()
     }
 }

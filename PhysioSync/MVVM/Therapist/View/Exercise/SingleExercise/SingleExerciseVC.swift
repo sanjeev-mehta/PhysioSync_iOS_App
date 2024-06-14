@@ -19,17 +19,41 @@ class SingleExerciseVC: UIViewController {
             collectionView.reloadData()
         }
     }
+    var header = "Neck"
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setCollectionView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setHeader(header,rightImg: UIImage(named: "addIcon")!, isRightBtn: true) {
+            self.dismissOrPopViewController()
+        } rightButtonAction: {
+            self.openAddExerciseController()
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.isLoading = false
+        }
+    }
+    
+    // MARK: - Methods
+    func openAddExerciseController() {
+        if let vc = self.switchController(.addNewExerciseVC, .exerciseTab) as? AddNewExerciseVC {
+            self.pushOrPresentViewController(vc, true)
+        }
+    }
+    
+    func openExerciseDetailController() {
+        if let vc = self.switchController(.singleExerciseDetailVC, .exerciseTab) as? SingleExerciseDetailVC {
+            self.pushOrPresentViewController(vc, true)
         }
     }
     
@@ -83,6 +107,9 @@ extension SingleExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // MARK: - Switch Controllers on tap
+        self.openExerciseDetailController()
     }
+    
+   
 
 }
