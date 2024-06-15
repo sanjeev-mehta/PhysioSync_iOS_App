@@ -156,7 +156,6 @@ extension UILabel {
     
     
     private func applyCustomFont(fontName: String, fontSize: CGFloat) {
-        print(fontName, " **** ", fontSize)
         guard let customFont = UIFont(name: fontName, size: fontSize) else {
             print("Failed to load the \(fontName) \(fontSize) font.")
             return
