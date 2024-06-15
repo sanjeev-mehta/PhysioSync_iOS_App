@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="97"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePlaceHolder" translatesAutoresizingMaskIntoConstraints="NO" id="wrn-X7-nK6">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar1" translatesAutoresizingMaskIntoConstraints="NO" id="wrn-X7-nK6">
                         <rect key="frame" x="0.0" y="24.666666666666671" width="48" height="48"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="48" id="S6W-Bg-1ZE"/>
@@ -24,7 +25,7 @@
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="24"/>
+                                <real key="value" value="12"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
@@ -48,7 +49,7 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FkO-a2-X3H">
                         <rect key="frame" x="297" y="48" width="23" height="23"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="primary"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="23" id="EiK-qK-xrB"/>
                             <constraint firstAttribute="height" constant="23" id="HIt-fK-RuQ"/>
@@ -62,10 +63,18 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="online" translatesAutoresizingMaskIntoConstraints="NO" id="pAf-Rb-o8D">
+                        <rect key="frame" x="39" y="63.666666666666657" width="12" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="6UE-NN-bue"/>
+                            <constraint firstAttribute="width" constant="12" id="zuP-sB-FO4"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="iB5-o2-sGW" secondAttribute="trailing" id="3yF-zr-zac"/>
                     <constraint firstItem="9bP-sl-ZmP" firstAttribute="top" secondItem="k10-cE-OyS" secondAttribute="bottom" constant="6.3333333333333286" id="643-9k-5fA"/>
+                    <constraint firstItem="pAf-Rb-o8D" firstAttribute="bottom" secondItem="wrn-X7-nK6" secondAttribute="bottom" constant="3" id="854-fT-f5D"/>
                     <constraint firstAttribute="trailing" secondItem="FkO-a2-X3H" secondAttribute="trailing" id="J5f-Vt-55b"/>
                     <constraint firstItem="9bP-sl-ZmP" firstAttribute="leading" secondItem="k10-cE-OyS" secondAttribute="leading" id="Jek-p1-H3a"/>
                     <constraint firstItem="k10-cE-OyS" firstAttribute="top" secondItem="wrn-X7-nK6" secondAttribute="top" id="N29-QB-a49"/>
@@ -73,6 +82,7 @@
                     <constraint firstItem="FkO-a2-X3H" firstAttribute="centerY" secondItem="9bP-sl-ZmP" secondAttribute="centerY" id="gZi-AK-fvO"/>
                     <constraint firstItem="wrn-X7-nK6" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jQW-Zn-5Hw"/>
                     <constraint firstItem="FkO-a2-X3H" firstAttribute="leading" secondItem="9bP-sl-ZmP" secondAttribute="trailing" constant="32" id="pDv-2t-PZ2"/>
+                    <constraint firstItem="pAf-Rb-o8D" firstAttribute="leading" secondItem="wrn-X7-nK6" secondAttribute="trailing" constant="-9" id="s5U-86-Stz"/>
                     <constraint firstItem="wrn-X7-nK6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="sXq-sK-JPX"/>
                     <constraint firstItem="iB5-o2-sGW" firstAttribute="centerY" secondItem="k10-cE-OyS" secondAttribute="centerY" id="wGC-9i-yhj"/>
                 </constraints>
@@ -85,6 +95,10 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="profilePlaceHolder" width="48" height="48.333332061767578"/>
+        <image name="avatar1" width="36" height="36"/>
+        <image name="online" width="12" height="12"/>
+        <namedColor name="primary">
+            <color red="0.12156862745098039" green="0.34901960784313724" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

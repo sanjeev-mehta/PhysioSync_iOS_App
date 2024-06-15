@@ -396,7 +396,7 @@ extension UIImageView {
 }
 
 extension UIView {
-    func addShadow(color: UIColor = .black, opacity: Float = 0.5, offset: CGSize = CGSize(width: 1.0, height: 2.0), radius: CGFloat = 3.0) {
+    func addShadow(color: UIColor = Colors.primaryClr, opacity: Float = 0.5, offset: CGSize = CGSize(width: 1.0, height: 2.0), radius: CGFloat = 3.0) {
         layer.shadowColor = color.cgColor
         layer.shadowOpacity = opacity
         layer.shadowOffset = offset

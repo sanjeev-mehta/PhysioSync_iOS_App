@@ -33,7 +33,7 @@
 					<key>UISceneDelegateClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
 					<key>UISceneStoryboardFile</key>
-					<string>Main</string>
+					<string>TherapistTab</string>
 				</dict>
 			</array>
 		</dict>
@@ -42,7 +42,5 @@
 	<array>
 		<string>audio</string>
 	</array>
-    <key>UIUserInterfaceStyle</key>
-    <string>Light</string>
 </dict>
 </plist>
