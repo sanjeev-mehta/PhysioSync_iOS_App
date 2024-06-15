@@ -118,3 +118,44 @@ extension UILabel {
     }
 }
 
+@IBDesignable extension UIView {
+
+    @IBInspectable var customFontName: String? {
+        get {
+            return nil
+        }
+        set {
+            if let fontName = newValue {
+                applyCustomFont(fontName: fontName, fontSize: customFontSize)
+            }
+        }
+    }
+    
+    @IBInspectable var customFontSize: CGFloat {
+        get {
+            return 17.0
+        }
+        set {
+            if let fontName = customFontName {
+                applyCustomFont(fontName: fontName, fontSize: newValue)
+            }
+        }
+    }
+
+    private func applyCustomFont(fontName: String, fontSize: CGFloat) {
+        guard let customFont = UIFont(name: fontName, size: fontSize) else {
+            print("Failed to load the \(fontName) font.")
+            return
+        }
+        
+        if let label = self as? UILabel {
+            label.font = customFont
+        } else if let button = self as? UIButton {
+            button.titleLabel?.font = customFont
+        } else if let textField = self as? UITextField {
+            textField.font = customFont
+        } else if let textView = self as? UITextView {
+            textView.font = customFont
+        }
+    }
+}
