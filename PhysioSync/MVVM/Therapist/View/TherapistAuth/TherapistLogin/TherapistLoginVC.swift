@@ -27,7 +27,9 @@ class TherapistLoginVC: UIViewController {
         let parm : [String: Any] = ["email": emailTf.text!, "password": passwordTf.text!]
         vm.callTherapistLoginApi(self, with: parm) { status in
             if status {
-                
+                if let vc = self.switchController(.tabBarController, .therapistTab) {
+                    self.pushOrPresentViewController(vc, true)
+                }
             }
         }
     }
@@ -51,7 +53,9 @@ class TherapistLoginVC: UIViewController {
     }
     // Buttons Actions
     @IBAction func loginBtnActn(_ sender: UIButton) {
-        validation()
+        sender.pressedAnimation {
+            self.validation()
+        }
     }
 
 }

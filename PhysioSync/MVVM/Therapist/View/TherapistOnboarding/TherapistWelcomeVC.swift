@@ -28,8 +28,10 @@ class TherapistWelcomeVC: UIViewController {
     }
     
     @IBAction func loginBtnActn(_ sender: UIButton) {
-        if let vc = self.switchController(.tabBarController, .therapistTab) {
-            self.pushOrPresentViewController(vc, true)
+        sender.pressedAnimation {
+            if let vc = self.switchController(.therapistLoginVC, .therapistAuth) {
+                self.pushOrPresentViewController(vc, true)
+            }
         }
     }
     
