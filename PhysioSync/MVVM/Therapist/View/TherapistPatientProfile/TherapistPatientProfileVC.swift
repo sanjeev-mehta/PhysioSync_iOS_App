@@ -9,11 +9,17 @@ import UIKit
 
 class TherapistPatientProfileVC: UIViewController {
     
+    // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableHeightConstraint: NSLayoutConstraint!
     @IBOutlet var shifferEffectViews: [UIView]!
+    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var ageLbl:UILabel!
+    @IBOutlet weak var profileImgView: UIImageView!
     
+    // MARK: - Variables
     var cellCount = 6
+    var patientData: TherapistPatientData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +41,26 @@ class TherapistPatientProfileVC: UIViewController {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 10) {
                 self.tableHeightConstraint.constant = self.tableView.contentSize.height
+                if let data = self.patientData {
+                    self.nameLbl.text = "Name: " + data.firstName + " " + data.lastName
+                    self.ageLbl.text = "Age: " + "\(self.calculateAge(dob: data.dateOfBirth))"
+                    self.profileImgView.sd_setImage(with: URL(string: data.profilePhoto)!)
+                }
             }
         }
+    }
+    
+    //MARK: - Age
+    func calculateAge(dob: String) -> Int {
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXX"
+        let dateOfBirth = dateFormater.date(from: dob)
+        
+        let calender = Calendar.current
+        
+        let dateComponent = calender.dateComponents([.year, .month, .day], from: dateOfBirth!, to: Date())
+        
+        return (dateComponent.year!)
     }
     
     // MARK: -  Button Methods
@@ -59,6 +83,6 @@ extension TherapistPatientProfileVC: UITableViewDelegate ,UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       return 40
+       return 60
     }
 }
