@@ -61,11 +61,11 @@
 		67C9BFD92C1D12230092CC78 /* TherapistHomeTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C9BFD82C1D12230092CC78 /* TherapistHomeTVC.swift */; };
 		67D531352C1D3DA500404E66 /* PatientHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D531342C1D3DA500404E66 /* PatientHomeVC.swift */; };
 		67D531372C1D3DF500404E66 /* PatientHomeCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D531362C1D3DF500404E66 /* PatientHomeCVC.swift */; };
+		67E888002C24D52700948C5A /* PatientLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E887FF2C24D52700948C5A /* PatientLoginViewModel.swift */; };
 		E81033102C23AFA500F4FFDB /* TherapistPatientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E810330F2C23AFA500F4FFDB /* TherapistPatientViewModel.swift */; };
 		E81033122C23AFC000F4FFDB /* TherapistPatientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81033112C23AFC000F4FFDB /* TherapistPatientModel.swift */; };
 		E81033162C23C94100F4FFDB /* TherapistPatientProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81033152C23C94100F4FFDB /* TherapistPatientProfileModel.swift */; };
 		E81033182C23C95500F4FFDB /* TherapistPatientProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81033172C23C95500F4FFDB /* TherapistPatientProfileViewModel.swift */; };
-		67E888002C24D52700948C5A /* PatientLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E887FF2C24D52700948C5A /* PatientLoginViewModel.swift */; };
 		E850C3312C1BD2910063C9A8 /* TherapistPatientInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E850C3302C1BD2910063C9A8 /* TherapistPatientInfoVC.swift */; };
 		E850C3332C1BD2D90063C9A8 /* TherapistPatientStep1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E850C3322C1BD2D90063C9A8 /* TherapistPatientStep1VC.swift */; };
 		E850C3352C1BD30E0063C9A8 /* TherapistPatientStep2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E850C3342C1BD30E0063C9A8 /* TherapistPatientStep2VC.swift */; };
@@ -156,11 +156,11 @@
 		67C9BFD82C1D12230092CC78 /* TherapistHomeTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistHomeTVC.swift; sourceTree = "<group>"; };
 		67D531342C1D3DA500404E66 /* PatientHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientHomeVC.swift; sourceTree = "<group>"; };
 		67D531362C1D3DF500404E66 /* PatientHomeCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientHomeCVC.swift; sourceTree = "<group>"; };
+		67E887FF2C24D52700948C5A /* PatientLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientLoginViewModel.swift; sourceTree = "<group>"; };
 		E810330F2C23AFA500F4FFDB /* TherapistPatientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistPatientViewModel.swift; sourceTree = "<group>"; };
 		E81033112C23AFC000F4FFDB /* TherapistPatientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistPatientModel.swift; sourceTree = "<group>"; };
 		E81033152C23C94100F4FFDB /* TherapistPatientProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistPatientProfileModel.swift; sourceTree = "<group>"; };
 		E81033172C23C95500F4FFDB /* TherapistPatientProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistPatientProfileViewModel.swift; sourceTree = "<group>"; };
-		67E887FF2C24D52700948C5A /* PatientLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientLoginViewModel.swift; sourceTree = "<group>"; };
 		E850C3302C1BD2910063C9A8 /* TherapistPatientInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistPatientInfoVC.swift; sourceTree = "<group>"; };
 		E850C3322C1BD2D90063C9A8 /* TherapistPatientStep1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistPatientStep1VC.swift; sourceTree = "<group>"; };
 		E850C3342C1BD30E0063C9A8 /* TherapistPatientStep2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistPatientStep2VC.swift; sourceTree = "<group>"; };
