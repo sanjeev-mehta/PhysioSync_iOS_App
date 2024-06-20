@@ -18,7 +18,7 @@ class TherapistPatientViewModel {
     var therapistPatientModel: TherapistPatientModel?
     
     func getPatient(vc: UIViewController, completion: @escaping(Bool) -> ()) {
-        let url = URLS.BASE_URL + END_POINTS.GET_All_PATIENTS
+        let url = API.Endpoints.getAllPatients
         apiHelper.getApi(view: vc, url: url, isHeader: true, isLoader: true) { json, err in
             if err != nil {
                 vc.displayAlert(title: "Alert!", msg: "Something went wrong", ok: "Ok")
