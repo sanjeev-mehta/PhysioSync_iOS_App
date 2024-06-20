@@ -3,7 +3,9 @@ PODS:
   - AlamofireSwiftyJSON (1.0.2):
     - Alamofire (~> 4.0)
     - SwiftyJSON (~> 4.0)
+  - CHIPageControl/Chimayo (0.2)
   - CHIPageControl/Fresno (0.2)
+  - CHIPageControl/Jaloro (0.2)
   - Hero (1.6.3)
   - IQKeyboardManagerSwift (7.0.1)
   - NVActivityIndicatorView (5.1.1):
@@ -18,7 +20,9 @@ PODS:
 
 DEPENDENCIES:
   - AlamofireSwiftyJSON
+  - CHIPageControl/Chimayo
   - CHIPageControl/Fresno
+  - CHIPageControl/Jaloro
   - Hero
   - IQKeyboardManagerSwift
   - NVActivityIndicatorView
@@ -51,6 +55,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   UIView-Shimmer: ff0a32c73d67c7dbdea3d9e530538b10d18aea56
 
-PODFILE CHECKSUM: 5068202f19c9629e159631483e5fc3bda66ebb5b
+PODFILE CHECKSUM: 171dec8b7b3c185a17e19c4ab81a00cd61d2a7db
 
 COCOAPODS: 1.14.2

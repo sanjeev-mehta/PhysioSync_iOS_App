@@ -12,6 +12,8 @@ pod 'CHIPageControl/Fresno'
 pod 'Hero'
 pod 'UIView-Shimmer', '~> 1.0'
 pod 'RAMAnimatedTabBarController'
+pod 'CHIPageControl/Chimayo'
+pod 'CHIPageControl/Jaloro'
   # Pods for PhysioSync
 
 end
