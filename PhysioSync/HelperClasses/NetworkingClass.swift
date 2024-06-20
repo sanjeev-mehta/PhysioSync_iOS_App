@@ -28,7 +28,7 @@ class ApiHelper {
         headers = ["Authorization": "Bearer \(UserDefaults.standard.getUsernameToken() ?? "")"]
         
         guard let url = URL(string: url) else{return}
-            print(url)
+        view.debugPrint("\(url)")
         
         Alamofire.request(url,method: .post, parameters: parm,encoding: URLEncoding.default,headers: headers).validate(statusCode: 200..<500).responseJSON {response in
                  
@@ -67,7 +67,7 @@ class ApiHelper {
         }
         
         guard let url = URL(string: url) else{return}
-        print(url)
+        view.debugPrint("\(url)")
         var headers:HTTPHeaders? = nil
         if isHeader {
             headers = ["Authorization": "Bearer \(UserDefaults.standard.getUsernameToken() ?? "")"]
@@ -110,6 +110,7 @@ class ApiHelper {
         }
         
         guard let url = URL(string: url) else{return}
+        view.debugPrint("\(url)")
         var header = [String: String]()
         if isHeader {
             header = ["Authorization": "Bearer \(UserDefaults.standard.getUsernameToken() ?? "")"]

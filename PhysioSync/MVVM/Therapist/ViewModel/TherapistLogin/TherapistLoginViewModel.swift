@@ -24,6 +24,7 @@ class TherapistLoginViewModel {
                 self.therapistloginModel = TherapistLoginModel(json)
                 if let model = self.therapistloginModel?.data {
                     UserDefaults.standard.setUsernameToken(value: model.authentication?.sessionToken ?? "")
+                    completion(true)
                 }
             }
         }

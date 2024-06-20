@@ -45,6 +45,9 @@ enum Storyboard: String {
     // MARK: - Therapist Tab
     case therapistTab = "TherapistTab"
     
+    // MARK: - Therapist Auth
+    case therapistAuth = "TherapistAuth"
+
 }
 
 enum API {

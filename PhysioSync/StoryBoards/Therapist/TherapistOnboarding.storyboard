@@ -266,11 +266,6 @@
             <point key="canvasLocation" x="694" y="4"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="lhr-XS-VKy">
-            <size key="intrinsicContentSize" width="70" height="20"/>
-        </designable>
-    </designables>
     <resources>
         <image name="Icon" width="393" height="500"/>
         <image name="backArrow" width="17.666666030883789" height="17.666666030883789"/>
