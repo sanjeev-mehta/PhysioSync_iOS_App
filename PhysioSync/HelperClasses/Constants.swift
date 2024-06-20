@@ -12,7 +12,7 @@ struct Colors {
     static let primaryClr = UIColor(named: "primary")!
     static let primarySubtleClr = UIColor(named: "primary-subtle")!
     static let borderClr = UIColor(named: "borderClr")!
-
+    
 }
 
 enum Storyboard: String {
@@ -85,3 +85,20 @@ enum API {
         static let updateNotificationTime = "\(baseURL)update_notification_time"
     }
 }
+
+extension UserDefaults{
+    //MARK: Save User Data
+    func setUsernameToken(value: String){
+        set(value, forKey: UserDefaultsKeys.usernameToken.rawValue)
+    }
+    
+    //MARK: Retrieve User Data
+    func getUsernameToken() -> String?{
+        return UserDefaults.standard.value(forKey: UserDefaultsKeys.usernameToken.rawValue) as? String ?? ""
+    }
+}
+    
+    enum UserDefaultsKeys : String {
+        case usernameToken
+
+    }

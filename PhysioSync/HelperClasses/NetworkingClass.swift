@@ -25,7 +25,7 @@ class ApiHelper {
         
         
         var headers:HTTPHeaders? = nil
-        
+        headers = ["Authorization": "Bearer \(UserDefaults.standard.getUsernameToken() ?? "")"]
         
         guard let url = URL(string: url) else{return}
             print(url)
@@ -34,7 +34,6 @@ class ApiHelper {
                  
                    switch response.result{
                    case .success(let value):
-                       
                        do {
                            let jsonData = try JSON(data: response.data!)
                            completion(jsonData, nil)
@@ -70,8 +69,10 @@ class ApiHelper {
         guard let url = URL(string: url) else{return}
         print(url)
         var headers:HTTPHeaders? = nil
-        
-        
+        if isHeader {
+            headers = ["Authorization": "Bearer \(UserDefaults.standard.getUsernameToken() ?? "")"]
+        }
+
         Alamofire.request(url, method: method, parameters: parm,encoding: JSONEncoding(), headers:headers).responseJSON { response in
             av.removeFromSuperview()
             switch response.result{
@@ -79,21 +80,7 @@ class ApiHelper {
                 
                 do {
                     let jsonData = try JSON(data: response.data!)
-                    if jsonData["status"].intValue == 401{
-                        view.displayAlert(title: "Session Expired", msg: "Please try to login again", ok: "Ok") {
-                            //                            let vc =  view.switchController(identifier: "LoginVC") as! LoginVC
-                            //                              view.present(vc, animated: true, completion: nil)
-                        }
-                        
-                        
-                    }else if(jsonData["status"].intValue == 200){
-                        
-                        completion(jsonData, nil)
-                    }else {
-                        view.displayAlert(title: "Alert", msg: jsonData["message"].stringValue, ok: "Ok")
-                    }
-                    
-                    
+                    completion(jsonData, nil)
                 }catch{}
             case .failure(let err):
                 print(err)
@@ -124,7 +111,10 @@ class ApiHelper {
         
         guard let url = URL(string: url) else{return}
         var header = [String: String]()
-        
+        if isHeader {
+            header = ["Authorization": "Bearer \(UserDefaults.standard.getUsernameToken() ?? "")"]
+        }
+
         Alamofire.request(url, method: .get,encoding: URLEncoding.queryString, headers: header).responseJSON { response in
             av.removeFromSuperview()
             switch response.result{
@@ -132,20 +122,7 @@ class ApiHelper {
                 
                 do {
                     let jsonData = try JSON(data: response.data!)
-                    if jsonData["status"].intValue == 401{
-                        view.displayAlert(title: "Session Expired", msg: "Please try to login again", ok: "Ok") {
-
-                        }
-                        
-                        
-                    }else if(jsonData["status"].intValue == 200){
-                        
-                        completion(jsonData, nil)
-                    }else {
-                        view.displayAlert(title: "Error", msg: jsonData["message"].stringValue, ok: "Ok")
-                    }
-                    
-                    
+                    completion(jsonData, nil)
                 }catch{}
             case .failure(let err):
                 print(err)
