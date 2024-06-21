@@ -336,13 +336,15 @@ extension UIViewController {
         print("[\(controllerName)] \(function) [Line \(line)]: \(message)")
     }
     
-    func setHeader(_ text: String, rightImg: UIImage = UIImage(named: "backArrow")!, isRightBtn: Bool = false, backButtonAction: (() -> Void)? = nil, rightButtonAction: (() -> Void)? = nil) {
+    func setHeader(_ text: String, rightImg: UIImage = UIImage(named: "backArrow")!, isBackBtn: Bool = true, isRightBtn: Bool = false, backButtonAction: (() -> Void)? = nil, rightButtonAction: (() -> Void)? = nil) {
         let customHeaderView = CustomHeader()
         customHeaderView.setTitle(text)
         customHeaderView.backgroundColor = .clear
         customHeaderView.showHideRightBtn(isRightBtn)
         customHeaderView.setRightImage(rightImg)
-        customHeaderView.setBackImage(UIImage(named: "backArrow")!)
+        if isBackBtn {
+            customHeaderView.setBackImage(UIImage(named: "backArrow")!)
+        }
         
         if let backButtonAction = backButtonAction {
             customHeaderView.backButtonAction = backButtonAction
