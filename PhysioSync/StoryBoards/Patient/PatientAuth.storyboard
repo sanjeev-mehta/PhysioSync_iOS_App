@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon" translatesAutoresizingMaskIntoConstraints="NO" id="fA2-Pt-kRY">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="400"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="500"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IWP-3E-f6G">
-                                <rect key="frame" x="0.0" y="374" width="393" height="378"/>
+                                <rect key="frame" x="0.0" y="474" width="393" height="378"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LbH-sm-DEv">
                                         <rect key="frame" x="16" y="296" width="361" height="50"/>
@@ -47,7 +47,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter the email registered with your Physiotherapist" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANV-uD-8gs">
-                                        <rect key="frame" x="16" y="60.666666666666686" width="361" height="40.666666666666657"/>
+                                        <rect key="frame" x="16" y="60.666666666666629" width="361" height="40.666666666666657"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40.666666666666657" id="gNR-on-iO2"/>
                                         </constraints>
@@ -65,13 +65,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="U1x-fg-BDE">
-                                        <rect key="frame" x="16" y="117.3333333333333" width="361" height="162.66666666666663"/>
+                                        <rect key="frame" x="16" y="117.33333333333336" width="361" height="162.66666666666663"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PzV-vn-2Ub">
                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="77.333333333333329"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9cy-aC-ASX">
-                                                        <rect key="frame" x="0.0" y="27.333333333333314" width="361" height="50"/>
+                                                        <rect key="frame" x="0.0" y="27.333333333333258" width="361" height="50"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="enter your email here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HAZ-3a-zeA">
                                                                 <rect key="frame" x="8" y="0.0" width="353" height="50"/>
@@ -132,7 +132,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CmT-8J-am7">
-                                                <rect key="frame" x="0.0" y="85.333333333333314" width="361" height="77.333333333333314"/>
+                                                <rect key="frame" x="0.0" y="85.333333333333258" width="361" height="77.333333333333314"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ETT-8p-Crv">
                                                         <rect key="frame" x="0.0" y="27.333333333333371" width="361" height="50"/>
@@ -236,7 +236,7 @@
                             <constraint firstItem="IWP-3E-f6G" firstAttribute="trailing" secondItem="Kh3-62-YGl" secondAttribute="trailing" id="S8R-Zp-bdh"/>
                             <constraint firstItem="IWP-3E-f6G" firstAttribute="leading" secondItem="Kh3-62-YGl" secondAttribute="leading" id="Y6r-uG-plM"/>
                             <constraint firstItem="fA2-Pt-kRY" firstAttribute="leading" secondItem="Kh3-62-YGl" secondAttribute="leading" id="gAw-f6-r0O"/>
-                            <constraint firstAttribute="bottom" secondItem="IWP-3E-f6G" secondAttribute="bottom" constant="100" id="hjj-Ee-ZtR"/>
+                            <constraint firstAttribute="bottom" secondItem="IWP-3E-f6G" secondAttribute="bottom" id="hjj-Ee-ZtR"/>
                             <constraint firstItem="XMV-Ic-PzL" firstAttribute="leading" secondItem="Kh3-62-YGl" secondAttribute="leading" constant="16" id="rzN-7f-saz"/>
                         </constraints>
                     </view>
@@ -488,7 +488,7 @@
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
-            <color red="0.22745098039215686" green="0.0" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.12156862745098039" green="0.34901960784313724" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary-subtle">
             <color red="0.96862745098039216" green="0.96078431372549022" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

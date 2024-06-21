@@ -51,4 +51,7 @@ enum StoryBoardIDs: String {
     // MARK: -  Therapist Tab
     case therapistProfileVC = "TherapistProfileVC"
     case tabBarController = "tabBarController"
+    
+    //MARK: - Therapist Auth
+    case therapistLoginVC = "TherapistLoginVC"
 }

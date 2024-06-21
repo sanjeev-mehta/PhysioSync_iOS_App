@@ -20,19 +20,18 @@ class ExerciseCategoryVC: UIViewController {
         }
     }
     
+    let exerciseCategoryViewModel = ExerciseCategoryViewModel.shareInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setCollectionView()
+        getExerciseCategoryApi()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setHeader("Exercise Library") {
-            self.dismissOrPopViewController()
-        } rightButtonAction: {
-            // No Need
-        }
+        self.setHeader("Exercise Library", isBackBtn: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,27 +41,45 @@ class ExerciseCategoryVC: UIViewController {
         }
     }
     
+    // MARK: -  Call Get Exercise Category Api
+    func getExerciseCategoryApi()  {
+        exerciseCategoryViewModel.getAllCategories(vc: self) { status in
+            self.isLoading = false
+        }
+    }
+    
+    // MARK: - Set Collection View
     func setCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "ExerciseGridCVC", bundle: nil), forCellWithReuseIdentifier: "SingleExerciseGridCVC")
     }
     
-    func openSingleExerciseController() {
+    func openSingleExerciseController(name: String) {
         if let vc = self.switchController(.singleExerciseVC, .exerciseTab) as? SingleExerciseVC {
+            vc.header = name
             self.pushOrPresentViewController(vc, true)
         }
     }
     
 }
 
+// MARK: - Collection View Delegates and Data Source Methods
 extension ExerciseCategoryVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        if self.isLoading {
+            return 10
+        } else {
+            return exerciseCategoryViewModel.getArrayCount()
+        }
+       
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SingleExerciseGridCVC", for: indexPath) as! ExerciseGridCVC
+        if !self.isLoading {
+            exerciseCategoryViewModel.setCell(cell, index: indexPath.item)
+        }
         cell.imgVW.backgroundColor = .blue
         cell.imgVW.layer.cornerRadius = 12
         cell.imgVW.layer.masksToBounds = true
@@ -98,7 +115,13 @@ extension ExerciseCategoryVC: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // MARK: - Switch Controllers on tap
-        self.openSingleExerciseController()
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            cell.pressedAnimation {
+                let data = self.exerciseCategoryViewModel.categoriesModel[indexPath.item]
+                self.openSingleExerciseController(name: data.name ?? "")
+            }
+        }
+        
     }
 
 }
