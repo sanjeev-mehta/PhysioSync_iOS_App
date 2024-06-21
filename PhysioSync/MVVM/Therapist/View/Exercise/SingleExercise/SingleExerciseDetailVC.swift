@@ -12,10 +12,14 @@ class SingleExerciseDetailVC: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionHeight: NSLayoutConstraint!
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var videoDesc: UILabel!
     
     // MARK: - Variables
     var categoryArr = [categoryData]()
     var headerTitle = "Exercise 1"
+    var data: SingleExerciseModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,7 +28,7 @@ class SingleExerciseDetailVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setHeader(headerTitle,rightImg: UIImage(named: "threeDots")!, isRightBtn: true) {
+        self.setHeader(data?.videoTitle ?? "",rightImg: UIImage(named: "threeDots")!, isRightBtn: true) {
             self.dismissOrPopViewController()
         } rightButtonAction: {
             // open Add Exercise Controller
@@ -45,8 +49,12 @@ class SingleExerciseDetailVC: UIViewController {
         categoryArr.append(categoryData(name: "Neck", isSelected: false))
         categoryArr.append(categoryData(name: "Core", isSelected: false))
         categoryArr.append(categoryData(name: "Arm", isSelected: false))
-        categoryArr.append(categoryData(name: "Upper Back", isSelected: false))
+        categoryArr.append(categoryData(name: "Shoulder", isSelected: false))
         collectionView.reloadData()
+        if let data = data {
+            self.titleLbl.text = data.videoTitle
+            self.videoDesc.text = data.description
+        }
     }
     
     override func viewDidLayoutSubviews() {

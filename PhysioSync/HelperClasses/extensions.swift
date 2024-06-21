@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 extension UIView {
     
@@ -335,13 +336,15 @@ extension UIViewController {
         print("[\(controllerName)] \(function) [Line \(line)]: \(message)")
     }
     
-    func setHeader(_ text: String, rightImg: UIImage = UIImage(named: "backArrow")!, isRightBtn: Bool = false, backButtonAction: (() -> Void)? = nil, rightButtonAction: (() -> Void)? = nil) {
+    func setHeader(_ text: String, rightImg: UIImage = UIImage(named: "backArrow")!, isBackBtn: Bool = true, isRightBtn: Bool = false, backButtonAction: (() -> Void)? = nil, rightButtonAction: (() -> Void)? = nil) {
         let customHeaderView = CustomHeader()
         customHeaderView.setTitle(text)
         customHeaderView.backgroundColor = .clear
         customHeaderView.showHideRightBtn(isRightBtn)
         customHeaderView.setRightImage(rightImg)
-        customHeaderView.setBackImage(UIImage(named: "backArrow")!)
+        if isBackBtn {
+            customHeaderView.setBackImage(UIImage(named: "backArrow")!)
+        }
         
         if let backButtonAction = backButtonAction {
             customHeaderView.backButtonAction = backButtonAction
@@ -393,10 +396,25 @@ extension UIImageView {
         self.animationDuration = Double(images.count) / 30.0
         self.startAnimating()
     }
+    
+    func setImage(with urlString: String?, placeholder: UIImage? = nil, completion: ((UIImage?) -> Void)? = nil) {
+        guard let urlString = urlString, let url = URL(string: urlString) else {
+            self.image = placeholder
+            completion?(nil)
+            return
+        }
+        
+        self.sd_setImage(with: url, placeholderImage: placeholder, options: .highPriority, completed: { (image, error, cacheType, url) in
+            if error != nil {
+                print("Failed to load image: \(error?.localizedDescription ?? "Unknown error")")
+            }
+            completion?(image)
+        })
+    }
 }
 
 extension UIView {
-    func addShadow(color: UIColor = .black, opacity: Float = 0.5, offset: CGSize = CGSize(width: 1.0, height: 2.0), radius: CGFloat = 3.0) {
+    func addShadow(color: UIColor = Colors.primaryClr, opacity: Float = 0.5, offset: CGSize = CGSize(width: 1.0, height: 2.0), radius: CGFloat = 3.0) {
         layer.shadowColor = color.cgColor
         layer.shadowOpacity = opacity
         layer.shadowOffset = offset

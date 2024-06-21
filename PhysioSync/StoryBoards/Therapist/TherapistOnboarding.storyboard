@@ -266,11 +266,6 @@
             <point key="canvasLocation" x="694" y="4"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="lhr-XS-VKy">
-            <size key="intrinsicContentSize" width="70" height="20"/>
-        </designable>
-    </designables>
     <resources>
         <image name="Icon" width="393" height="500"/>
         <image name="backArrow" width="17.666666030883789" height="17.666666030883789"/>
@@ -278,7 +273,7 @@
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
-            <color red="0.22745098039215686" green="0.0" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.12156862745098039" green="0.34901960784313724" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary-subtle">
             <color red="0.96862745098039216" green="0.96078431372549022" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

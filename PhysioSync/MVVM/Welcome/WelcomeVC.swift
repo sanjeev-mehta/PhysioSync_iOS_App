@@ -39,3 +39,8 @@ class WelcomeVC: UIViewController {
         }
     }
 }
+
+enum Role {
+    case therapist
+    case patient
+}

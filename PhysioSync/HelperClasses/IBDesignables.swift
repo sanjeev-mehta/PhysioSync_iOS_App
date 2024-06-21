@@ -118,3 +118,56 @@ extension UILabel {
     }
 }
 
+// MARK: - Set Fonts
+@IBDesignable extension UIView {
+    
+    private struct AssociatedKeys {
+        static var customFontName: UnsafeRawPointer = UnsafeRawPointer(bitPattern: "Outfit-Regular".hashValue)!
+        static var customFontSize: UnsafeRawPointer = UnsafeRawPointer(bitPattern: "14.0".hashValue)!
+    }
+    
+    @IBInspectable var customFontName: String? {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.customFontName) as? String
+        }
+        set {
+            objc_setAssociatedObject(self, &AssociatedKeys.customFontName, newValue, .OBJC_ASSOCIATION_RETAIN)
+            applyCustomFontIfNeeded()
+        }
+    }
+    
+    @IBInspectable var customFontSize: CGFloat {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.customFontSize) as? CGFloat ?? 17.0
+        }
+        set {
+            objc_setAssociatedObject(self, &AssociatedKeys.customFontSize, newValue, .OBJC_ASSOCIATION_RETAIN)
+            applyCustomFontIfNeeded()
+        }
+    }
+    
+    private func applyCustomFontIfNeeded() {
+        guard let fontName = customFontName else {
+            return
+        }
+        
+        applyCustomFont(fontName: fontName, fontSize: customFontSize)
+    }
+    
+    
+    private func applyCustomFont(fontName: String, fontSize: CGFloat) {
+        guard let customFont = UIFont(name: fontName, size: fontSize) else {
+            print("Failed to load the \(fontName) \(fontSize) font.")
+            return
+        }
+        if let label = self as? UILabel {
+            label.font = customFont
+        } else if let button = self as? UIButton {
+            button.titleLabel?.font = customFont
+        } else if let textField = self as? UITextField {
+            textField.font = customFont
+        } else if let textView = self as? UITextView {
+            textView.font = customFont
+        }
+    }
+}

@@ -23,6 +23,7 @@ class TherapistPatientVC: UIViewController {
             collectionView.reloadData()
         }
     }
+    private let vm = TherapistPatientViewModel.shareInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +31,19 @@ class TherapistPatientVC: UIViewController {
         setCollectionView()
         setTableView()
         self.isLoading = true
+        callPatientApi()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            self.isLoading = false
+        
+    }
+    
+    func callPatientApi() {
+        vm.getPatient(vc: self) { status in
+            DispatchQueue.main.async {
+                self.isLoading = false
+            }
         }
     }
     
@@ -70,8 +78,9 @@ class TherapistPatientVC: UIViewController {
         }
     }
     
-    func openProfileInfoController() {
+    func openProfileInfoController(data: TherapistPatientData) {
         if let vc = self.switchController(.therapistPatientProfileVC, .therapistPatientProfile) as? TherapistPatientProfileVC {
+            vc.patientData = data
             self.pushOrPresentViewController(vc, true)
         }
     }
@@ -90,7 +99,11 @@ class TherapistPatientVC: UIViewController {
 extension TherapistPatientVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cellCount
+        if self.isLoading {
+            return cellCount
+        } else {
+            return vm.getCount()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -100,6 +113,7 @@ extension TherapistPatientVC: UICollectionViewDelegate, UICollectionViewDataSour
         cell.imgView.layer.cornerRadius = 12
         cell.imgView.clipsToBounds = true
         cell.bgView.addShadow()
+        vm.updateCellUI(tableCell: nil, collectionCell: cell, index: indexPath.row)
         return cell
     }
     
@@ -130,7 +144,8 @@ extension TherapistPatientVC: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // MARK: - Switch Controllers on tap
-        openProfileInfoController()
+        let data = vm.passData(index: indexPath.item)
+        openProfileInfoController(data: data)
     }
 }
 
@@ -138,13 +153,16 @@ extension TherapistPatientVC: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension TherapistPatientVC: UITableViewDelegate ,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return cellCount
+        if self.isLoading {
+            return cellCount
+        } else {
+            return vm.getCount()
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TherapistPatientListTVC", for: indexPath) as! TherapistPatientListTVC
-        cell.imgView.image = UIImage(named: "daddu")!
-        cell.imgView.contentMode = .scaleAspectFill
+        vm.updateCellUI(tableCell: cell, collectionCell: nil, index: indexPath.row)
         return cell
     }
     
@@ -163,6 +181,7 @@ extension TherapistPatientVC: UITableViewDelegate ,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        openProfileInfoController()
+        let data = vm.passData(index: indexPath.row)
+        openProfileInfoController(data: data)
     }
 }
