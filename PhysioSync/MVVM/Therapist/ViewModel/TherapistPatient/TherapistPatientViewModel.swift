@@ -23,7 +23,7 @@ class TherapistPatientViewModel {
             if err != nil {
                 vc.displayAlert(title: "Alert!", msg: "Something went wrong", ok: "Ok")
             } else {
-                print(json)
+                vc.debugPrint("\(json)")
                 self.therapistPatientModel = TherapistPatientModel(json)
                 guard let model = self.therapistPatientModel else { 
                     vc.displayAlert(title: "Alert", msg: "Something went wrong", ok: "Ok")

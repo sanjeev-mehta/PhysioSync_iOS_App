@@ -81,7 +81,7 @@ class TherapistPatientVC: UIViewController {
     func openProfileInfoController(data: TherapistPatientData) {
         if let vc = self.switchController(.therapistPatientProfileVC, .therapistPatientProfile) as? TherapistPatientProfileVC {
             vc.patientData = data
-            self.pushOrPresentViewController(vc, false)
+            self.pushOrPresentViewController(vc, true)
         }
     }
     // MARK: - Buttons Action
