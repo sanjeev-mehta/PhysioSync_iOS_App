@@ -19,13 +19,14 @@ class TherapistLoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        emailTf.text = "sgurmeet392@gmail.com"
+        passwordTf.text = "123456"
     }
     
     // MARK: - Api Calling
     func callApi() {
         let parm : [String: Any] = ["email": emailTf.text!, "password": passwordTf.text!]
-        vm.callTherapistLoginApi(self, with: parm) { status in
+        vm.checkAuthentication(vc: self, with: parm, emailTf.text!, passwordTf.text!) { status in
             if status {
                 if let vc = self.switchController(.tabBarController, .therapistTab) {
                     self.pushOrPresentViewController(vc, true)
@@ -43,7 +44,7 @@ class TherapistLoginVC: UIViewController {
         } else if passwordTf.text == "" {
             showAlert("Please enter password")
         } else {
-            callApi()
+            self.callApi()
         }
     }
     
