@@ -20,12 +20,14 @@ class SingleExerciseVC: UIViewController {
         }
     }
     var header = "Neck"
+    let vm = SingleExerciseViewModel.shareInstance
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setCollectionView()
+        callGetExerciseApi()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,21 +39,20 @@ class SingleExerciseVC: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+    // MARK: - Methods
+    
+    func callGetExerciseApi() {
+        vm.getSingleExercise(vc: self, name: header) { status in
             self.isLoading = false
         }
     }
-    
-    // MARK: - Methods
     func openAddExerciseController() {
         if let vc = self.switchController(.addNewExerciseVC, .exerciseTab) as? AddNewExerciseVC {
             self.pushOrPresentViewController(vc, true)
         }
     }
     
-    func openExerciseDetailController() {
+    func openExerciseDetailController(_ data: SingleExerciseModel) {
         if let vc = self.switchController(.singleExerciseDetailVC, .exerciseTab) as? SingleExerciseDetailVC {
             self.pushOrPresentViewController(vc, true)
         }
@@ -67,11 +68,18 @@ class SingleExerciseVC: UIViewController {
 
 extension SingleExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        if self.isLoading {
+            return 10
+        } else {
+            return vm.getArrayCount()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SingleExerciseGridCVC", for: indexPath) as! ExerciseGridCVC
+        if !self.isLoading {
+            vm.setCell(cell, index: indexPath.item)
+        }
         cell.imgVW.backgroundColor = .blue
         cell.imgVW.layer.cornerRadius = 12
         cell.imgVW.layer.masksToBounds = true
@@ -107,7 +115,12 @@ extension SingleExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // MARK: - Switch Controllers on tap
-        self.openExerciseDetailController()
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            cell.pressedAnimation {
+                let data = self.vm.exerciseModel[indexPath.item]
+                self.openExerciseDetailController(data)
+            }
+        }
     }
     
    
