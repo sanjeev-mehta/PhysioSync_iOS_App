@@ -11,6 +11,11 @@ class TherapistPatientInfoVC: UIViewController {
 
     // MARK: -  IBOutlets
     
+    
+    // MARK: - instances
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,4 +37,7 @@ class TherapistPatientInfoVC: UIViewController {
             self.pushOrPresentViewController(vc, true)
         }
     }
+    
+    
+    
 }
