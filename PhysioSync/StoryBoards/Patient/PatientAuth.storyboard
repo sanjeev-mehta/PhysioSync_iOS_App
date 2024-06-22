@@ -242,6 +242,8 @@
                     </view>
                     <connections>
                         <outlet property="bottomView" destination="IWP-3E-f6G" id="qAI-NR-TYB"/>
+                        <outlet property="emailTf" destination="HAZ-3a-zeA" id="JMb-cG-ytD"/>
+                        <outlet property="passwordTf" destination="sQq-h1-BZi" id="bmb-jT-UOU"/>
                         <outlet property="passwordView" destination="CmT-8J-am7" id="GgM-X4-X1w"/>
                     </connections>
                 </viewController>
@@ -474,6 +476,8 @@
                     </view>
                     <connections>
                         <outlet property="bottomView" destination="fFR-NR-lM1" id="vb2-V5-rgg"/>
+                        <outlet property="confirmPasswordTf" destination="548-XL-sRe" id="3bi-GZ-ff9"/>
+                        <outlet property="passwordTf" destination="w0g-87-oFr" id="qNv-du-CWw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2bg-Xd-84L" sceneMemberID="firstResponder"/>
