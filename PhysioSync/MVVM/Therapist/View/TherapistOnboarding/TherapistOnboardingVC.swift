@@ -108,7 +108,9 @@ class TherapistOnboardingVC: UIViewController, CHIBasePageControlDelegate {
             updateLbls(tag)
         } else {
             if isFromPatient {
-                 
+                if let vc = self.switchController(.tabBarController, .patientTab) {
+                    self.pushOrPresentViewController(vc, true)
+                }
             } else {
                 if let vc = self.switchController(.therapistWelcomeID, .therapistOnboarding) {
                     self.pushOrPresentViewController(vc, true)

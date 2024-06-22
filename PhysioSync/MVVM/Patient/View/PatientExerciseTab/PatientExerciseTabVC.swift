@@ -65,14 +65,6 @@ extension PatientExerciseTabVC: UITableViewDelegate, UITableViewDataSource {
         return 300
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "Today’s Session"
-        } else {
-            return "Completed"
-        }
-    }
-    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         // Initial state for the animation
         cell.setTemplateWithSubviews(isLoading, animate: true, viewBackgroundColor: .systemBackground)
@@ -98,4 +90,36 @@ extension PatientExerciseTabVC: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = .systemBackground
+
+        let headerLabel = UILabel()
+        headerLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        headerLabel.textColor = .label // Or any color you prefer
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
+        headerView.addSubview(headerLabel)
+
+        // Set the label text
+        if section == 0 {
+            headerLabel.text = "Today’s Session"
+        } else {
+            headerLabel.text = "Completed"
+        }
+
+        // Set up constraints for the label
+        NSLayoutConstraint.activate([
+            headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 16),
+            headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -16),
+            headerLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 8),
+            headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -8)
+        ])
+
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+            return 40
+        }
 }
