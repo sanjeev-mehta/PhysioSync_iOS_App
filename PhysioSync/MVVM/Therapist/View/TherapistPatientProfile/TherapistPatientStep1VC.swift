@@ -9,6 +9,13 @@ import UIKit
 
 class TherapistPatientStep1VC: UIViewController {
 
+    //MARK: - IBOutlets
+    @IBOutlet weak var profileImgView: UIImageView!
+    @IBOutlet var viewsTf: [UITextField]!
+    
+    // Variables
+    var isEdit = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,5 +36,9 @@ class TherapistPatientStep1VC: UIViewController {
         if let vc = self.switchController(.therapistPatientStep2VC, .therapistPatientProfile) as? TherapistPatientStep2VC {
             self.pushOrPresentViewController(vc, true)
         }
+    }
+    
+    @IBAction func uploadPictureBtnActn(_ sender: UIButton) {
+        
     }
 }

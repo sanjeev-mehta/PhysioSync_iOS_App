@@ -12,7 +12,7 @@ class TherapistPatientProfileVC: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableHeightConstraint: NSLayoutConstraint!
-    @IBOutlet var shifferEffectViews: [UIView]!
+    @IBOutlet var shimmerEffectViews: [UIView]!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var ageLbl:UILabel!
     @IBOutlet weak var profileImgView: UIImageView!
@@ -21,8 +21,8 @@ class TherapistPatientProfileVC: UIViewController {
     @IBOutlet weak var endDateLbl : UILabel!
     
     // MARK: - Variables
-    var cellCount = 6
-    var patientData: TherapistPatientData?
+//    var cellCount = 3
+    var patientData: TherapistPatientData?    
     
     // MARK: - instances
     private let vm = TherapistPatientProfileViewModel.shareInstance
@@ -66,6 +66,8 @@ class TherapistPatientProfileVC: UIViewController {
                     self.endDateLbl.text = self.formatDateString(date: data.endDate)
                     
                 }
+                self.tableView.reloadData() // Reload table view data
+
             }
         }
     }
@@ -123,11 +125,15 @@ class TherapistPatientProfileVC: UIViewController {
 extension TherapistPatientProfileVC: UITableViewDelegate ,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return cellCount
+       return 4
+       // return assignedExercises.count
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableTVC", for: indexPath) as! ScheduleTableTVC
+        cell.selectionStyle = .none
+        
         return cell
     }
     

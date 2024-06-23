@@ -7,14 +7,19 @@
 
 import UIKit
 
-class TherapistPatientVC: UIViewController {
+class TherapistPatientVC: UIViewController{
 
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var patientCountLabel: UILabel!
+    @IBOutlet weak var searchBar: UISearchBar!
+
     
     //MARK: - Variables
     var cellCount = 21
+    var numberOfPatients: Int = 0
+
     private var isLoading = true {
         didSet {
             tableView.isUserInteractionEnabled = !isLoading
@@ -30,6 +35,7 @@ class TherapistPatientVC: UIViewController {
         showCollectionView()
         setCollectionView()
         setTableView()
+        setSearchBar()
         self.isLoading = true
         callPatientApi()
     }
@@ -38,14 +44,25 @@ class TherapistPatientVC: UIViewController {
         super.viewDidAppear(animated)
         
     }
-    
+   
+    // MARK: - Call Patient API & Number of Patients
     func callPatientApi() {
         vm.getPatient(vc: self) { status in
             DispatchQueue.main.async {
                 self.isLoading = false
+                self.numberOfPatients = self.vm.getCount()
+                self.patientCountLabel.text = " \(self.numberOfPatients)"
+
+                print("hi \(self.numberOfPatients)")
             }
         }
     }
+    
+    
+    // MARK: - Set Up Search Bar
+        func setSearchBar() {
+            searchBar.delegate = self
+        }
     
     func setCollectionView() {
         collectionView.delegate = self
@@ -93,6 +110,22 @@ class TherapistPatientVC: UIViewController {
             showCollectionView()
         }
     }
+    
+    @IBAction func addPatientBtnActn(_ sender: UIButton) {
+        if let vc = self.switchController(.therapistPatientStep1VC, .therapistPatientProfile) as? TherapistPatientStep1VC {
+            vc.isEdit = false
+            self.pushOrPresentViewController(vc, true)
+        }
+    }
+}
+
+// MARK: - UISearchBarDelegate
+extension TherapistPatientVC: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        vm.searchPatients(query: searchText)
+        tableView.reloadData()
+        collectionView.reloadData()
+    }
 }
 
 // MARK: - Collection View Delegate and Data Source
@@ -113,7 +146,9 @@ extension TherapistPatientVC: UICollectionViewDelegate, UICollectionViewDataSour
         cell.imgView.layer.cornerRadius = 12
         cell.imgView.clipsToBounds = true
         cell.bgView.addShadow()
-        vm.updateCellUI(tableCell: nil, collectionCell: cell, index: indexPath.row)
+        if !self.isLoading {
+            vm.updateCellUI(tableCell: nil, collectionCell: cell, index: indexPath.row)
+        }
         return cell
     }
     
@@ -162,7 +197,9 @@ extension TherapistPatientVC: UITableViewDelegate ,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TherapistPatientListTVC", for: indexPath) as! TherapistPatientListTVC
-        vm.updateCellUI(tableCell: cell, collectionCell: nil, index: indexPath.row)
+        if !self.isLoading {
+            vm.updateCellUI(tableCell: cell, collectionCell: nil, index: indexPath.row)
+        }
         return cell
     }
     
