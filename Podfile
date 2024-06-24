@@ -16,6 +16,9 @@ pod 'CHIPageControl/Chimayo'
 pod 'CHIPageControl/Jaloro'
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
+pod 'Fastis', '~> 2.0'
+pod 'iOSDropDown'
+pod 'AWSS3'
   # Pods for PhysioSync
 
 end
