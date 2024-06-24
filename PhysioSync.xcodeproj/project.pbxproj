@@ -87,6 +87,7 @@
 		E850C3392C1BD3680063C9A8 /* TherapistProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E850C3382C1BD3680063C9A8 /* TherapistProfileVC.swift */; };
 		E850C33C2C1BD3CB0063C9A8 /* TherapistProfileStep1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E850C33B2C1BD3CB0063C9A8 /* TherapistProfileStep1VC.swift */; };
 		E850C33E2C1BD3D20063C9A8 /* TherapistProfileStep2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E850C33D2C1BD3D20063C9A8 /* TherapistProfileStep2VC.swift */; };
+		E8673FE02C27F3FF00D639CF /* ImagePickerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8673FDF2C27F3FF00D639CF /* ImagePickerHelper.swift */; };
 		E885CAB22C17D6A7007BC7AC /* TherapistPatientProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E885CAB12C17D6A7007BC7AC /* TherapistPatientProfileVC.swift */; };
 		E88AFFBF2C1AEF3C006E1AFF /* TherapistProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E88AFFBE2C1AEF3C006E1AFF /* TherapistProfile.storyboard */; };
 		E89CB9AD2C17969900A8A305 /* NotificationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89CB9AA2C17969900A8A305 /* NotificationTVC.swift */; };
@@ -101,6 +102,10 @@
 		E8A79AD82C0D4D0800A2EB92 /* MessageTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A79AD72C0D4D0800A2EB92 /* MessageTabVC.swift */; };
 		E8C0FADD2C0D5A2E008E1CA7 /* MessageTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C0FADB2C0D5A2E008E1CA7 /* MessageTVC.swift */; };
 		E8C0FADE2C0D5A2E008E1CA7 /* MessageTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8C0FADC2C0D5A2E008E1CA7 /* MessageTVC.xib */; };
+		E8C2579D2C280E2300FBE9CB /* TherapistPatientProfileStep3ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C2579C2C280E2200FBE9CB /* TherapistPatientProfileStep3ViewModel.swift */; };
+		E8C257A12C2887A100FBE9CB /* AWSHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C257A02C2887A100FBE9CB /* AWSHelper.swift */; };
+		E8C257A42C29534500FBE9CB /* TherapistProfileStep1ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C257A32C29534500FBE9CB /* TherapistProfileStep1ViewModel.swift */; };
+		E8C257A72C29548C00FBE9CB /* TherapistProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C257A62C29548C00FBE9CB /* TherapistProfileModel.swift */; };
 		F91D75AB2C1276AA00EE71E0 /* ExerciseTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F91D75AA2C1276AA00EE71E0 /* ExerciseTab.storyboard */; };
 		F91D75B22C1277F900EE71E0 /* ExerciseGridCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F91D75B12C1277F900EE71E0 /* ExerciseGridCVC.xib */; };
 		F91D75B32C1277F900EE71E0 /* ExerciseGridCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91D75B02C1277F900EE71E0 /* ExerciseGridCVC.swift */; };
@@ -201,6 +206,7 @@
 		E850C3382C1BD3680063C9A8 /* TherapistProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistProfileVC.swift; sourceTree = "<group>"; };
 		E850C33B2C1BD3CB0063C9A8 /* TherapistProfileStep1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistProfileStep1VC.swift; sourceTree = "<group>"; };
 		E850C33D2C1BD3D20063C9A8 /* TherapistProfileStep2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistProfileStep2VC.swift; sourceTree = "<group>"; };
+		E8673FDF2C27F3FF00D639CF /* ImagePickerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerHelper.swift; sourceTree = "<group>"; };
 		E885CAB12C17D6A7007BC7AC /* TherapistPatientProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistPatientProfileVC.swift; sourceTree = "<group>"; };
 		E88AFFBE2C1AEF3C006E1AFF /* TherapistProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TherapistProfile.storyboard; sourceTree = "<group>"; };
 		E89CB9AA2C17969900A8A305 /* NotificationTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTVC.swift; sourceTree = "<group>"; };
@@ -215,6 +221,10 @@
 		E8A79AD72C0D4D0800A2EB92 /* MessageTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTabVC.swift; sourceTree = "<group>"; };
 		E8C0FADB2C0D5A2E008E1CA7 /* MessageTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTVC.swift; sourceTree = "<group>"; };
 		E8C0FADC2C0D5A2E008E1CA7 /* MessageTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageTVC.xib; sourceTree = "<group>"; };
+		E8C2579C2C280E2200FBE9CB /* TherapistPatientProfileStep3ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistPatientProfileStep3ViewModel.swift; sourceTree = "<group>"; };
+		E8C257A02C2887A100FBE9CB /* AWSHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSHelper.swift; sourceTree = "<group>"; };
+		E8C257A32C29534500FBE9CB /* TherapistProfileStep1ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistProfileStep1ViewModel.swift; sourceTree = "<group>"; };
+		E8C257A62C29548C00FBE9CB /* TherapistProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistProfileModel.swift; sourceTree = "<group>"; };
 		F91D75AA2C1276AA00EE71E0 /* ExerciseTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExerciseTab.storyboard; sourceTree = "<group>"; };
 		F91D75B02C1277F900EE71E0 /* ExerciseGridCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseGridCVC.swift; sourceTree = "<group>"; };
 		F91D75B12C1277F900EE71E0 /* ExerciseGridCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExerciseGridCVC.xib; sourceTree = "<group>"; };
@@ -397,6 +407,8 @@
 				67C7FD012C1BD7FC00476601 /* CustomHeader.swift */,
 				67E888032C24F02100948C5A /* FireBaseHelper.swift */,
 				6794C7AB2C26810900E3B4F3 /* AppleHealthDataManager.swift */,
+				E8673FDF2C27F3FF00D639CF /* ImagePickerHelper.swift */,
+				E8C257A02C2887A100FBE9CB /* AWSHelper.swift */,
 			);
 			path = HelperClasses;
 			sourceTree = "<group>";
@@ -464,6 +476,7 @@
 		678F33F72BFED90000824A23 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				E8C257A22C29532F00FBE9CB /* TherapistProfile */,
 				F9E1ABCC2C24ED1B00E5E13F /* Exercise */,
 				E81033132C23C86300F4FFDB /* TherapistPateintProfile */,
 				E810330E2C23AF5900F4FFDB /* TherapistPatient */,
@@ -475,6 +488,7 @@
 		678F33F82BFED90600824A23 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E8C257A52C29547F00FBE9CB /* TherapistProfile */,
 				F9E1ABCF2C24F64000E5E13F /* Exercise */,
 				E81033142C23C91D00F4FFDB /* TherapistPateintProfile */,
 				E810330D2C23AF2F00F4FFDB /* TherapistPatient */,
@@ -653,6 +667,7 @@
 			isa = PBXGroup;
 			children = (
 				E81033172C23C95500F4FFDB /* TherapistPatientProfileViewModel.swift */,
+				E8C2579C2C280E2200FBE9CB /* TherapistPatientProfileStep3ViewModel.swift */,
 			);
 			path = TherapistPateintProfile;
 			sourceTree = "<group>";
@@ -742,6 +757,22 @@
 				E8C0FADC2C0D5A2E008E1CA7 /* MessageTVC.xib */,
 			);
 			path = Message;
+			sourceTree = "<group>";
+		};
+		E8C257A22C29532F00FBE9CB /* TherapistProfile */ = {
+			isa = PBXGroup;
+			children = (
+				E8C257A32C29534500FBE9CB /* TherapistProfileStep1ViewModel.swift */,
+			);
+			path = TherapistProfile;
+			sourceTree = "<group>";
+		};
+		E8C257A52C29547F00FBE9CB /* TherapistProfile */ = {
+			isa = PBXGroup;
+			children = (
+				E8C257A62C29548C00FBE9CB /* TherapistProfileModel.swift */,
+			);
+			path = TherapistProfile;
 			sourceTree = "<group>";
 		};
 		F91D75A92C12766700EE71E0 /* ExerciseTab */ = {
@@ -980,6 +1011,7 @@
 				E81033102C23AFA500F4FFDB /* TherapistPatientViewModel.swift in Sources */,
 				6794C7B52C26840B00E3B4F3 /* StepsChartView.swift in Sources */,
 				67C7FD022C1BD7FC00476601 /* CustomHeader.swift in Sources */,
+				E8C257A12C2887A100FBE9CB /* AWSHelper.swift in Sources */,
 				674E53FE2C0951ED0033F260 /* PatientLoginVC.swift in Sources */,
 				6794C7AC2C26810900E3B4F3 /* AppleHealthDataManager.swift in Sources */,
 				F91D75B32C1277F900EE71E0 /* ExerciseGridCVC.swift in Sources */,
@@ -987,6 +1019,7 @@
 				E850C3312C1BD2910063C9A8 /* TherapistPatientInfoVC.swift in Sources */,
 				678F341C2BFEDC3700824A23 /* NetworkConnectivity.swift in Sources */,
 				F924885E2C1BCC3200426C8E /* AddNewExerciseVC.swift in Sources */,
+				E8C257A42C29534500FBE9CB /* TherapistProfileStep1ViewModel.swift in Sources */,
 				E8A79AD82C0D4D0800A2EB92 /* MessageTabVC.swift in Sources */,
 				67D531372C1D3DF500404E66 /* PatientHomeCVC.swift in Sources */,
 				67C9BFD72C1D11D40092CC78 /* TherapistHomeCVC.swift in Sources */,
@@ -1017,6 +1050,7 @@
 				6794C7BD2C268A2E00E3B4F3 /* StatsTabVC.swift in Sources */,
 				E81033182C23C95500F4FFDB /* TherapistPatientProfileViewModel.swift in Sources */,
 				674E53F22C0946760033F260 /* StoryBoardIDs.swift in Sources */,
+				E8C257A72C29548C00FBE9CB /* TherapistProfileModel.swift in Sources */,
 				6794C7B62C26840B00E3B4F3 /* HeartRateGraphView.swift in Sources */,
 				678F34182BFEDC2E00824A23 /* Loader.swift in Sources */,
 				F92488582C1BB51700426C8E /* ChipsCVC.swift in Sources */,
@@ -1027,9 +1061,10 @@
 				67B161672C138E7A0028E3C3 /* PatientExerciseTabVC.swift in Sources */,
 				678F341B2BFEDC3700824A23 /* NetworkingClass.swift in Sources */,
 				F979EC322C18DE760006100B /* ExerciseCategoryVC.swift in Sources */,
-        6794C7A62C25BB7200E3B4F3 /* PatientLoginModel.swift in Sources */,
+				6794C7A62C25BB7200E3B4F3 /* PatientLoginModel.swift in Sources */,
 				F9458ADE2C25B900006C17D6 /* SingleExerciseModel.swift in Sources */,
 				678F34122BFEDC0600824A23 /* Constants.swift in Sources */,
+				E8C2579D2C280E2300FBE9CB /* TherapistPatientProfileStep3ViewModel.swift in Sources */,
 				E89CB9B62C1796AB00A8A305 /* demoTableCellCustomVC.swift in Sources */,
 				67320C922C168F8B003188AA /* TherapistPatientListTVC.swift in Sources */,
 				678F34092BFEDB1E00824A23 /* TherapistLoginVC.swift in Sources */,
@@ -1049,6 +1084,7 @@
 				67B1616C2C14179B0028E3C3 /* PatientExerciseDetailVC.swift in Sources */,
 				678F340D2BFEDB4400824A23 /* TherapistLoginViewModel.swift in Sources */,
 				6794C7A82C25C3EA00E3B4F3 /* SetPasswordModel.swift in Sources */,
+				E8673FE02C27F3FF00D639CF /* ImagePickerHelper.swift in Sources */,
 				67C7FD0A2C1BE16100476601 /* ProfileGridCVC.swift in Sources */,
 				E850C3372C1BD3320063C9A8 /* TherapistPatientStep3VC.swift in Sources */,
 			);

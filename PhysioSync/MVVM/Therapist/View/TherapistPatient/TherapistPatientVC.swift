@@ -36,13 +36,12 @@ class TherapistPatientVC: UIViewController{
         setCollectionView()
         setTableView()
         setSearchBar()
-        self.isLoading = true
-        callPatientApi()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        self.isLoading = true
+        callPatientApi()
     }
    
     // MARK: - Call Patient API & Number of Patients
