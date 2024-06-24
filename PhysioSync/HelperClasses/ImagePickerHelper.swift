@@ -12,7 +12,8 @@ class ImagePickerHelper: NSObject, UIImagePickerControllerDelegate, UINavigation
     private var imagePickerController: UIImagePickerController!
     private weak var viewController: UIViewController?
     private var completion: ((UIImage?) -> Void)?
-
+    private var videoCompletion: ((URL?, String?) -> Void)?
+    
     // Initialization
     init(viewController: UIViewController) {
         self.viewController = viewController
@@ -28,7 +29,7 @@ class ImagePickerHelper: NSObject, UIImagePickerControllerDelegate, UINavigation
         // Check if the source type is available
         if UIImagePickerController.isSourceTypeAvailable(sourceType) {
             self.imagePickerController.sourceType = sourceType
-            
+            self.imagePickerController.mediaTypes = ["public.image"]
             // Present the image picker controller
             self.viewController?.present(self.imagePickerController, animated: true, completion: nil)
         } else {
@@ -36,16 +37,40 @@ class ImagePickerHelper: NSObject, UIImagePickerControllerDelegate, UINavigation
             self.completion?(nil)
         }
     }
+    
+    // Show Video Picker
+     func showVideoPicker(sourceType: UIImagePickerController.SourceType, completion: @escaping (URL?, String?) -> Void) {
+         self.videoCompletion = completion
+         self.completion = nil
+
+         // Check if the source type is available
+         if UIImagePickerController.isSourceTypeAvailable(sourceType) {
+             self.imagePickerController.sourceType = sourceType
+             self.imagePickerController.mediaTypes = ["public.movie"]
+             
+             // Present the image picker controller
+             self.viewController?.present(self.imagePickerController, animated: true, completion: nil)
+         } else {
+             // Handle the error (e.g., show an alert)
+             self.videoCompletion?(nil, nil)
+         }
+     }
 
     // MARK: - UIImagePickerControllerDelegate Methods
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let image = info[.originalImage] as? UIImage
-        self.completion?(image)
+        if let image = info[.originalImage] as? UIImage {
+            self.completion?(image)
+        } else if let videoURL = info[.mediaURL] as? URL {
+            let fileName = videoURL.lastPathComponent
+            self.videoCompletion?(videoURL, fileName)
+        }
+        
         self.viewController?.dismiss(animated: true, completion: nil)
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.completion?(nil)
+        self.videoCompletion?(nil, nil)
         self.viewController?.dismiss(animated: true, completion: nil)
     }
 }

@@ -8,17 +8,24 @@
 import UIKit
 
 class AddNewExerciseVC: UIViewController {
-
+    
     // MARK: - IBOutlets
-       @IBOutlet weak var collectionView: UICollectionView!
-       @IBOutlet weak var collectionHeight: NSLayoutConstraint!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionHeight: NSLayoutConstraint!
+    @IBOutlet weak var nameTf: UITextField!
+    @IBOutlet weak var videoFileNameLbl: UILabel!
+    @IBOutlet weak var descTV: UITextView!
     
     // MARK: - Variables
-       var categoryArr = [categoryData]()
+    private var categoryArr = [categoryData]()
+    private var videoPicker: ImagePickerHelper?
+    private let vm = AddNewExerciseViewModel.shareInstance
+    private var awsHelper = AWSHelper.shared
+    private var videoUrl: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.videoPicker = ImagePickerHelper(viewController: self)
         setData()
     }
     
@@ -55,6 +62,84 @@ class AddNewExerciseVC: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionHeight.constant = collectionView.contentSize.height
+    }
+    
+    // MARK: -  openActionSheet for select image
+    func openSheet(sender: UIButton) {
+        let actionSheet = UIAlertController(title: "Select Video", message: "Choose a source", preferredStyle: .actionSheet)
+        
+        let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { _ in
+            self.videoPicker?.showVideoPicker(sourceType: .photoLibrary, completion: { url, name in
+                print(url, name)
+                self.videoUrl = url
+                self.videoFileNameLbl.text = name
+            })
+        }
+        
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { _ in
+            self.videoPicker?.showVideoPicker(sourceType: .camera) { url, name in
+                print(url, name)
+                self.videoUrl = url
+                self.videoFileNameLbl.text = name
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        actionSheet.addAction(photoLibraryAction)
+        actionSheet.addAction(cameraAction)
+        actionSheet.addAction(cancelAction)
+        
+        // For iPad compatibility
+        if let popoverController = actionSheet.popoverPresentationController {
+            popoverController.sourceView = sender
+            popoverController.sourceRect = sender.bounds
+        }
+        
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+
+    //MARK: - Validation
+    func validation() {
+        if nameTf.text == "" {
+            self.displayAlert(title: "Warning", msg: "Please enter video title", ok: "Ok")
+        } else if videoFileNameLbl.text == "Select a video file" {
+            self.displayAlert(title: "Warning", msg: "Please select video file", ok: "Ok")
+        } else if descTV.text == "" {
+            self.displayAlert(title: "Warning", msg: "Please enter description", ok: "Ok")
+        } else {
+            awsHelper.uploadVideoFile(url: self.videoUrl!, fileName: videoFileNameLbl.text!) { progress in
+                print("Upload Progress: \(progress)%")
+            } completion: { success, videoUrl, err in
+                if success {
+                    print("Upload successful, video URL: \(String(describing: videoUrl))")
+                    DispatchQueue.main.async {
+                        self.callApi(url: videoUrl!)
+                    }
+                } else {
+                    print("Upload failed, error: \(String(describing: err?.localizedDescription))")
+                }
+            }
+
+        }
+    }
+    
+    func callApi(url: String) {
+        let parm:[String: Any] = ["video_Url": url, "video_title": nameTf.text!, "description": descTV.text!]
+        vm.addExerciseApi(vc: self, parm: parm) { status in
+            if status {
+                self.dismissOrPopViewController()
+            }
+        }
+    }
+    
+    //MARK: - Button Actions
+    @IBAction func selectFileBtnActn(_ sender: UIButton) {
+        openSheet(sender: sender)
+    }
+    
+    @IBAction func saveBtnActn(_ sender: UIButton) {
+        validation()
     }
 }
 
