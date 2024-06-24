@@ -57,4 +57,39 @@ class AWSHelper {
             return nil
         }
     }
+    
+    // Upload video file
+      func uploadVideoFile(url: URL, fileName: String, progress: @escaping (Float) -> Void, completion: @escaping (Bool, String?, Error?) -> Void) {
+          let expression = AWSS3TransferUtilityUploadExpression()
+          expression.progressBlock = { (task, awsProgress) in
+              DispatchQueue.main.async {
+                  let progressPercentage = Float(awsProgress.fractionCompleted)
+                  progress(progressPercentage * 100)
+              }
+          }
+          
+          let completionHandler: AWSS3TransferUtilityUploadCompletionHandlerBlock = { (task, error) -> Void in
+              if let error = error {
+                  print("Error: \(error.localizedDescription)")
+                  completion(false, nil, error)
+              } else {
+                  let videoUrl = "https://\(task.bucket).s3.us-west-1.amazonaws.com/\(task.key)"
+                  print("Upload successful, video URL: \(videoUrl)")
+                  completion(true, videoUrl, nil)
+              }
+          }
+          
+          let transferUtility = AWSS3TransferUtility.default()
+          
+          transferUtility.uploadFile(url, bucket: "physiosync", key: fileName, contentType: "video/mp4", expression: expression, completionHandler: completionHandler).continueWith { (task) -> AnyObject? in
+              if let error = task.error {
+                  print("Error: \(error.localizedDescription)")
+                  completion(false, nil, error)
+              }
+              if task.result != nil {
+                  print("Upload started...")
+              }
+              return nil
+          }
+      }
 }

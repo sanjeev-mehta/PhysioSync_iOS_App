@@ -116,6 +116,7 @@
 		F924885E2C1BCC3200426C8E /* AddNewExerciseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F924885D2C1BCC3200426C8E /* AddNewExerciseVC.swift */; };
 		F9458ADE2C25B900006C17D6 /* SingleExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9458ADD2C25B900006C17D6 /* SingleExerciseModel.swift */; };
 		F9458AE02C25B910006C17D6 /* ExerciseCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9458ADF2C25B910006C17D6 /* ExerciseCategoryModel.swift */; };
+		F95CD6D12C297A91007C055A /* AddNewExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CD6D02C297A91007C055A /* AddNewExerciseViewModel.swift */; };
 		F979EC322C18DE760006100B /* ExerciseCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F979EC312C18DE760006100B /* ExerciseCategoryVC.swift */; };
 		F9E1ABDB2C2519D600E5E13F /* ExerciseCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E1ABDA2C2519D600E5E13F /* ExerciseCategoryViewModel.swift */; };
 		F9E1ABDD2C251A0F00E5E13F /* SingleExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E1ABDC2C251A0F00E5E13F /* SingleExerciseViewModel.swift */; };
@@ -235,6 +236,7 @@
 		F924885D2C1BCC3200426C8E /* AddNewExerciseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewExerciseVC.swift; sourceTree = "<group>"; };
 		F9458ADD2C25B900006C17D6 /* SingleExerciseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleExerciseModel.swift; sourceTree = "<group>"; };
 		F9458ADF2C25B910006C17D6 /* ExerciseCategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCategoryModel.swift; sourceTree = "<group>"; };
+		F95CD6D02C297A91007C055A /* AddNewExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewExerciseViewModel.swift; sourceTree = "<group>"; };
 		F979EC312C18DE760006100B /* ExerciseCategoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCategoryVC.swift; sourceTree = "<group>"; };
 		F9E1ABDA2C2519D600E5E13F /* ExerciseCategoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCategoryViewModel.swift; sourceTree = "<group>"; };
 		F9E1ABDC2C251A0F00E5E13F /* SingleExerciseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleExerciseViewModel.swift; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 		678F33F72BFED90000824A23 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				F95CD6CF2C297A7F007C055A /* AddNewExercise */,
 				E8C257A22C29532F00FBE9CB /* TherapistProfile */,
 				F9E1ABCC2C24ED1B00E5E13F /* Exercise */,
 				E81033132C23C86300F4FFDB /* TherapistPateintProfile */,
@@ -820,6 +823,21 @@
 			path = AddNewExercise;
 			sourceTree = "<group>";
 		};
+		F95CD6CE2C29702F007C055A /* AddNewExercise */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AddNewExercise;
+			sourceTree = "<group>";
+		};
+		F95CD6CF2C297A7F007C055A /* AddNewExercise */ = {
+			isa = PBXGroup;
+			children = (
+				F95CD6D02C297A91007C055A /* AddNewExerciseViewModel.swift */,
+			);
+			path = AddNewExercise;
+			sourceTree = "<group>";
+		};
 		F979EC302C18DE400006100B /* Exercise */ = {
 			isa = PBXGroup;
 			children = (
@@ -842,6 +860,7 @@
 		F9E1ABCF2C24F64000E5E13F /* Exercise */ = {
 			isa = PBXGroup;
 			children = (
+				F95CD6CE2C29702F007C055A /* AddNewExercise */,
 				F9E1ABD22C250B1100E5E13F /* SingleExercise */,
 				F9458ADF2C25B910006C17D6 /* ExerciseCategoryModel.swift */,
 			);
@@ -1049,6 +1068,7 @@
 				E89CB9B52C1796AB00A8A305 /* ChatTVC.swift in Sources */,
 				6794C7BD2C268A2E00E3B4F3 /* StatsTabVC.swift in Sources */,
 				E81033182C23C95500F4FFDB /* TherapistPatientProfileViewModel.swift in Sources */,
+				F95CD6D12C297A91007C055A /* AddNewExerciseViewModel.swift in Sources */,
 				674E53F22C0946760033F260 /* StoryBoardIDs.swift in Sources */,
 				E8C257A72C29548C00FBE9CB /* TherapistProfileModel.swift in Sources */,
 				6794C7B62C26840B00E3B4F3 /* HeartRateGraphView.swift in Sources */,
