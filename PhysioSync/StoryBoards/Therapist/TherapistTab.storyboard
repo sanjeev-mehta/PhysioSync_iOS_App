@@ -997,6 +997,9 @@
                                 <rect key="frame" x="362" y="58.333333333333343" width="15" height="22"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="addIcon"/>
+                                <connections>
+                                    <action selector="addPatientBtnActn:" destination="Rfl-Gk-4nj" eventType="touchUpInside" id="iAE-Ge-u9H"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YwF-2L-M5c">
                                 <rect key="frame" x="305" y="96.333333333333329" width="72" height="31.999999999999986"/>
@@ -1092,33 +1095,39 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ISr-vF-NME">
                                 <rect key="frame" x="16" y="92.333333333333329" width="273" height="39.999999999999986"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0G8-w0-QmN">
-                                        <rect key="frame" x="8" y="0.0" width="233" height="40"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nda-ym-h0O">
-                                        <rect key="frame" x="245" y="8" width="24" height="24"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="searchIcon"/>
-                                    </button>
+                                    <searchBar contentMode="redraw" placeholder="Search" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdK-bm-Msd">
+                                        <rect key="frame" x="0.0" y="0.0" width="273" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="barTintColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <scopeButtonTitles>
+                                            <string>Title</string>
+                                            <string>Title</string>
+                                        </scopeButtonTitles>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="32"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="Rfl-Gk-4nj" id="ttU-Gh-V9a"/>
+                                        </connections>
+                                    </searchBar>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="nda-ym-h0O" firstAttribute="leading" secondItem="0G8-w0-QmN" secondAttribute="trailing" constant="4" id="IIH-gX-wOL"/>
-                                    <constraint firstAttribute="trailing" secondItem="nda-ym-h0O" secondAttribute="trailing" constant="4" id="Lso-R6-rKP"/>
-                                    <constraint firstItem="0G8-w0-QmN" firstAttribute="leading" secondItem="ISr-vF-NME" secondAttribute="leading" constant="8" id="a4o-ft-KIH"/>
-                                    <constraint firstItem="nda-ym-h0O" firstAttribute="centerY" secondItem="ISr-vF-NME" secondAttribute="centerY" id="bvp-Za-76c"/>
-                                    <constraint firstItem="0G8-w0-QmN" firstAttribute="top" secondItem="ISr-vF-NME" secondAttribute="top" id="htP-J0-DJp"/>
+                                    <constraint firstAttribute="bottom" secondItem="vdK-bm-Msd" secondAttribute="bottom" id="GPt-j4-xgE"/>
+                                    <constraint firstAttribute="trailing" secondItem="vdK-bm-Msd" secondAttribute="trailing" id="Hi2-b1-sdb"/>
+                                    <constraint firstItem="vdK-bm-Msd" firstAttribute="top" secondItem="ISr-vF-NME" secondAttribute="top" id="iqc-S1-bOj"/>
+                                    <constraint firstItem="vdK-bm-Msd" firstAttribute="leading" secondItem="ISr-vF-NME" secondAttribute="leading" id="nMD-Nk-cOL"/>
                                     <constraint firstAttribute="height" constant="40" id="oOB-D7-qOC"/>
-                                    <constraint firstAttribute="bottom" secondItem="0G8-w0-QmN" secondAttribute="bottom" id="tjM-H2-fRg"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" red="0.68627450980392157" green="0.69411764705882351" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
@@ -1157,6 +1166,8 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="collectionView" destination="qWC-Nw-6Uv" id="Fuq-9Y-jfX"/>
+                        <outlet property="patientCountLabel" destination="gu0-jF-tN9" id="wMz-jR-w4T"/>
+                        <outlet property="searchBar" destination="vdK-bm-Msd" id="GwN-E4-nbI"/>
                         <outlet property="tableView" destination="wpx-NC-UiC" id="T1Y-bL-F6f"/>
                     </connections>
                 </viewController>

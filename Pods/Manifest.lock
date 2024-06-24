@@ -3,9 +3,15 @@ PODS:
   - AlamofireSwiftyJSON (1.0.2):
     - Alamofire (~> 4.0)
     - SwiftyJSON (~> 4.0)
+  - AWSCore (2.36.3)
+  - AWSS3 (2.36.3):
+    - AWSCore (= 2.36.3)
   - CHIPageControl/Chimayo (0.2)
   - CHIPageControl/Fresno (0.2)
   - CHIPageControl/Jaloro (0.2)
+  - Fastis (2.3.0):
+    - JTAppleCalendar (~> 8.0.0)
+    - PrettyCards (~> 1.0.0)
   - Firebase/Auth (10.25.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 10.25.0)
@@ -101,7 +107,9 @@ PODS:
     - GoogleUtilities/Privacy
   - GTMSessionFetcher/Core (3.4.1)
   - Hero (1.6.3)
+  - iOSDropDown (0.4.0)
   - IQKeyboardManagerSwift (7.0.1)
+  - JTAppleCalendar (8.0.5)
   - nanopb (2.30910.0):
     - nanopb/decode (= 2.30910.0)
     - nanopb/encode (= 2.30910.0)
@@ -110,6 +118,7 @@ PODS:
   - NVActivityIndicatorView (5.1.1):
     - NVActivityIndicatorView/Base (= 5.1.1)
   - NVActivityIndicatorView/Base (5.1.1)
+  - PrettyCards (1.0.5)
   - PromisesObjC (2.4.0)
   - RAMAnimatedTabBarController (5.2.0)
   - RecaptchaInterop (100.0.0)
@@ -121,12 +130,15 @@ PODS:
 
 DEPENDENCIES:
   - AlamofireSwiftyJSON
+  - AWSS3
   - CHIPageControl/Chimayo
   - CHIPageControl/Fresno
   - CHIPageControl/Jaloro
+  - Fastis (~> 2.0)
   - Firebase/Auth
   - Firebase/Core
   - Hero
+  - iOSDropDown
   - IQKeyboardManagerSwift
   - NVActivityIndicatorView
   - RAMAnimatedTabBarController
@@ -137,7 +149,10 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireSwiftyJSON
+    - AWSCore
+    - AWSS3
     - CHIPageControl
+    - Fastis
     - Firebase
     - FirebaseAnalytics
     - FirebaseAppCheckInterop
@@ -149,9 +164,12 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMSessionFetcher
     - Hero
+    - iOSDropDown
     - IQKeyboardManagerSwift
+    - JTAppleCalendar
     - nanopb
     - NVActivityIndicatorView
+    - PrettyCards
     - PromisesObjC
     - RAMAnimatedTabBarController
     - RecaptchaInterop
@@ -162,7 +180,10 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AlamofireSwiftyJSON: 74ee3804bed06d07857daf1eeb1615c85dba3997
+  AWSCore: c80f0c849456deb66aaf7d97e77854f7c2b28236
+  AWSS3: 46ebe8ae7daeea37a3d7e9faa7ba840ce678410a
   CHIPageControl: a787bf7205c9b7e7fbfc412be36c5e8636b68f86
+  Fastis: 842bc586c7c6639cc3ce16903e67bd7cae689157
   Firebase: 0312a2352584f782ea56f66d91606891d4607f06
   FirebaseAnalytics: ec00fe8b93b41dc6fe4a28784b8e51da0647a248
   FirebaseAppCheckInterop: 5da5ce93e8797a215e3f677fb0654b74e736c8b8
@@ -174,9 +195,12 @@ SPEC CHECKSUMS:
   GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
   GTMSessionFetcher: 8000756fc1c19d2e5697b90311f7832d2e33f6cd
   Hero: 419d43384355b3168512bd8ac6a33aadd3dc575b
+  iOSDropDown: ce9daa584eaa5567cafc1b633e3cc7eb6d9cea42
   IQKeyboardManagerSwift: 7f6b1b1d1497855d2beea7f2f10ffcc6978525b1
+  JTAppleCalendar: 16c6501b22cb27520372c28b0a2e0b12c8d0cd73
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
+  PrettyCards: 2b078f2396a42f7f0c4d6624b875149dcb49d3ed
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   RAMAnimatedTabBarController: 6863a386e7ae2ab227cd60aa73ab8ff56cdacfdd
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
@@ -184,6 +208,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   UIView-Shimmer: ff0a32c73d67c7dbdea3d9e530538b10d18aea56
 
-PODFILE CHECKSUM: fd7023c08cb8cd610b9b519528095202147d5921
+PODFILE CHECKSUM: f7dd984a10ee0ce13571ab4d466a8b7ae840efdb
 
 COCOAPODS: 1.15.2

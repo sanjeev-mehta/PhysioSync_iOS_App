@@ -12,9 +12,12 @@ class PatientLoginVC: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var passwordView: UIView!
     @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var emailTf: UITextField!
+    @IBOutlet weak var passwordTf: UITextField!
     
     // MARK: -  Variables
-    var isVerifiedEmail = true
+    private var isVerifiedEmail = false
+    private let vm = PatientLoginViewModel.shareInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,20 +31,66 @@ class PatientLoginVC: UIViewController {
         bottomView.addTopCornerRadius(radius: 24)
     }
     
+    // MARK: - Call Verify Email
+    func callVerifyEmailApi() {
+        vm.callVerifyEmail(vc: self, email: emailTf.text!) { status in
+            switch status {
+            case 1:
+                self.isVerifiedEmail = true
+                DispatchQueue.main.async {
+                    UIView.animate(withDuration: 0.4) {
+                        self.passwordView.isHidden = false
+                    }
+                }
+                break
+            case 2:
+                if let vc = self.switchController(.setPassword, .patientAuth) as? SetPasswordVC  {
+                    vc.email = self.emailTf.text!
+                    self.pushOrPresentViewController(vc, true)
+                }
+            default:
+                self.debugPrint("Default")
+            }
+        }
+    }
+    
+    // MARK: - Call Login Api
+    func callLoginApi() {
+        let parm = ["email": emailTf.text!, "password": passwordTf.text!]
+
+        vm.callPatientLogin(vc: self, parm: parm) { result in
+            if result {
+                if let vc = self.switchController(.patientTabBarController, .patientTab) {
+                    self.pushOrPresentViewController(vc, true)
+                }
+            }
+        }
+    }
     
     // MARK: - Buttons Action
     
     @IBAction func nextBtnActn(_ sender: UIButton) {
-        if isVerifiedEmail {
-            UIView.animate(withDuration: 0.4) {
-                self.passwordView.isHidden = false
-            }
-        } else {
-            if let vc = self.switchController(.setPassword, .patientAuth) {
-                self.pushOrPresentViewController(vc, true)
+        sender.pressedAnimation {
+            if !self.isVerifiedEmail {
+                if self.emailTf.text == "" {
+                    self.displayAlert(title: "Warning", msg: "Please enter email", ok: "Ok")
+                } else if !self.isValidEmail(self.emailTf.text!) {
+                    self.displayAlert(title: "Warning", msg: "Please enter valid email", ok: "Ok")
+                } else {
+                    self.callVerifyEmailApi()
+                }
+            } else {
+                if self.emailTf.text == "" {
+                    self.displayAlert(title: "Warning", msg: "Please enter email", ok: "Ok")
+                } else if !self.isValidEmail(self.emailTf.text!) {
+                    self.displayAlert(title: "Warning", msg: "Please enter valid email", ok: "Ok")
+                } else if self.passwordTf.text == "" {
+                    self.displayAlert(title: "Warning", msg: "Please enter password", ok: "Ok")
+                } else {
+                    self.callLoginApi()
+                }
             }
         }
-       
         
     }
     

@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import iOSDropDown
 
 extension UIView {
     
@@ -272,17 +273,17 @@ extension UIViewController {
     }
     
     //MARK:- Set DropDown
-    //    func setDropDown(dropDown:DropDown,arr:[String], arwClr: UIColor) {
-    //
-    //        dropDown.rowHeight = 40
-    //        dropDown.optionArray = arr
-    //        dropDown.arrowColor = arwClr
-    //        dropDown.isSearchEnable = false
-    //        dropDown.selectedRowColor = .clear
-    //        dropDown.textColor = .clear
-    //        dropDown.checkMarkEnabled = false
-    //
-    //    }
+    func setDropDown(dropDown:DropDown,arr:[String], arwClr: UIColor) {
+        
+        dropDown.rowHeight = 40
+        dropDown.optionArray = arr
+        dropDown.arrowColor = arwClr
+        dropDown.isSearchEnable = false
+        dropDown.selectedRowColor = .clear
+        dropDown.textColor = .clear
+        dropDown.checkMarkEnabled = false
+        
+    }
     
     func addCharactersToStringToLabels(string: String, lbls: [UILabel]) {
         let reversedString = String(string.reversed())
