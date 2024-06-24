@@ -75,6 +75,7 @@
 		67E888002C24D52700948C5A /* PatientLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E887FF2C24D52700948C5A /* PatientLoginViewModel.swift */; };
 		67E888022C24F00900948C5A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67E888012C24F00800948C5A /* GoogleService-Info.plist */; };
 		67E888042C24F02100948C5A /* FireBaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E888032C24F02100948C5A /* FireBaseHelper.swift */; };
+		67FA759B2C29823C005DD241 /* TherapistCreateSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67FA759A2C29823C005DD241 /* TherapistCreateSchedule.storyboard */; };
 		E81033102C23AFA500F4FFDB /* TherapistPatientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E810330F2C23AFA500F4FFDB /* TherapistPatientViewModel.swift */; };
 		E81033122C23AFC000F4FFDB /* TherapistPatientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81033112C23AFC000F4FFDB /* TherapistPatientModel.swift */; };
 		E81033162C23C94100F4FFDB /* TherapistPatientProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81033152C23C94100F4FFDB /* TherapistPatientProfileModel.swift */; };
@@ -195,6 +196,7 @@
 		67E887FF2C24D52700948C5A /* PatientLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientLoginViewModel.swift; sourceTree = "<group>"; };
 		67E888012C24F00800948C5A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		67E888032C24F02100948C5A /* FireBaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseHelper.swift; sourceTree = "<group>"; };
+		67FA759A2C29823C005DD241 /* TherapistCreateSchedule.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TherapistCreateSchedule.storyboard; sourceTree = "<group>"; };
 		E810330F2C23AFA500F4FFDB /* TherapistPatientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistPatientViewModel.swift; sourceTree = "<group>"; };
 		E81033112C23AFC000F4FFDB /* TherapistPatientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistPatientModel.swift; sourceTree = "<group>"; };
 		E81033152C23C94100F4FFDB /* TherapistPatientProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistPatientProfileModel.swift; sourceTree = "<group>"; };
@@ -451,6 +453,7 @@
 				67320C8C2C168C0B003188AA /* TherapistTab.storyboard */,
 				E89CB9C02C17C3D700A8A305 /* TherapistPatientProfile.storyboard */,
 				E88AFFBE2C1AEF3C006E1AFF /* TherapistProfile.storyboard */,
+				67FA759A2C29823C005DD241 /* TherapistCreateSchedule.storyboard */,
 			);
 			path = Therapist;
 			sourceTree = "<group>";
@@ -970,6 +973,7 @@
 				E89CB9C12C17C3D700A8A305 /* TherapistPatientProfile.storyboard in Resources */,
 				67320C8D2C168C0B003188AA /* TherapistTab.storyboard in Resources */,
 				E8A79AD52C0D4C8C00A2EB92 /* Message.storyboard in Resources */,
+				67FA759B2C29823C005DD241 /* TherapistCreateSchedule.storyboard in Resources */,
 				676BEA602C0C404E00A193CF /* Outfit-SemiBold.ttf in Resources */,
 				676BEA5F2C0C404E00A193CF /* Outfit-Black.ttf in Resources */,
 				E88AFFBF2C1AEF3C006E1AFF /* TherapistProfile.storyboard in Resources */,
