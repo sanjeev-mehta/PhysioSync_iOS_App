@@ -14,6 +14,7 @@ class SingleExerciseDetailVC: UIViewController {
     @IBOutlet weak var collectionHeight: NSLayoutConstraint!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var videoDesc: UILabel!
+    @IBOutlet weak var videoView: UIView!
     
     // MARK: - Variables
     var categoryArr = [categoryData]()
