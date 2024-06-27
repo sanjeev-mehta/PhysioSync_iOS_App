@@ -11,6 +11,11 @@ class MessageTVC: UITableViewCell {
 
     // MARK: - Outlets
     @IBOutlet weak var badgeLbl: UILabel!
+    @IBOutlet weak var profileImgView: UIImageView!
+    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var msgLbl: UILabel!
+    @IBOutlet weak var timeLbl: UILabel!
+    @IBOutlet weak var onlineImgView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

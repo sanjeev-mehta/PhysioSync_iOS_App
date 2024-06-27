@@ -13,13 +13,31 @@ class TherapistNotificationVC: UIViewController {
     @IBOutlet weak var notificationView: UIView!
     @IBOutlet weak var acknowledgeView: UIView!
     @IBOutlet weak var replyView: UIView!
+    @IBOutlet weak var videoView: UIView!
+    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var exerciseNameLbl: UILabel!
+    @IBOutlet weak var timeLbl: UILabel!
+
+    // MARK: - Variables
+    private let vm = TherapistHomeViewModel.shareInstance
+    private var videoPlayer: CustomVideoPlayer?
+    private var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.delegate = self
         tableView.dataSource = self
+        closeNotifcationView()
         setNotificationView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setHeader("Notifications", isBackBtn: true) {
+            self.navigationController?.popViewController(animated: true)
+        } rightButtonAction: {}
+
     }
     
     func setNotificationView() {
@@ -33,6 +51,7 @@ class TherapistNotificationVC: UIViewController {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
             self.notificationView.transform = CGAffineTransform.identity
             self.notificationView.alpha = 1.0
+            self.view.bringSubviewToFront(self.notificationView)
         }, completion: nil)
     }
     
@@ -43,10 +62,39 @@ class TherapistNotificationVC: UIViewController {
         }, completion: nil)
     }
     
+    private func setupVideoPlayer(url: String) {
+        videoPlayer = CustomVideoPlayer(frame: videoView.bounds)
+        videoPlayer?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        if let videoPlayer = videoPlayer {
+            videoView.addSubview(videoPlayer)
+            if let videoURL = URL(string: url) {
+                videoPlayer.configure(url: videoURL)
+                videoPlayer.play()
+            }
+        }
+    }
+    
     // MARK: - Buttons Actions
     @IBAction func cancelBtnActn(_ sender: UIButton) {
+        videoPlayer?.pause()
         sender.pressedAnimation {
             self.closeNotifcationView()
+        }
+    }
+    
+    @IBAction func acknowBtnActn(_ sender: UIButton) {
+        let tag = sender.tag
+        videoPlayer?.pause()
+        if let model = vm.notificationModel {
+            let parm: [String: Any] = ["is_awaiting_reviews": true]
+            vm.acknowledgeExercise(vc: self, id: model.data[tag].Id, parm: parm) { status in
+                if status {
+                    self.vm.getNotificationApi(vc: self) { status in
+                        self.closeNotifcationView()
+                        self.tableView.reloadData()
+                    }
+                }
+            }
         }
     }
 }
@@ -54,12 +102,19 @@ class TherapistNotificationVC: UIViewController {
 // MARK: - Table View DataSource and delegate methods
 extension TherapistNotificationVC: UITableViewDelegate ,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return 5
+        return vm.getCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTVC", for: indexPath) as! NotificationTVC
-        
+        if let model = self.vm.notificationModel {
+            let data = model.data[indexPath.row]
+            self.getThumbnailImageFromVideoUrl(url: URL(string: data.patientVideoUrl)!) { image in
+                cell.imgView.image = image
+            }
+            cell.daysLbl.text = data.days
+            cell.msgLbl.text = "\(data.patientId.firstName + " " + data.patientId.lastName) Sent Video"
+        }
         cell.watchVideoBtn.tag = indexPath.row
         cell.watchVideoBtn.addTarget(self, action: #selector(watchVideoBtnActn(_ :)), for: .touchUpInside)
         return cell
@@ -70,8 +125,15 @@ extension TherapistNotificationVC: UITableViewDelegate ,UITableViewDataSource {
     }
     
     @objc func watchVideoBtnActn(_ sender: UIButton) {
+        let tag = sender.tag
         sender.pressedAnimation {
-            self.openNotifcationView()
+            if let model = self.vm.notificationModel {
+                self.nameLbl.text = model.data[tag].patientId.firstName + " " + model.data[tag].patientId.lastName
+                self.timeLbl.text = model.data[tag].days
+                self.exerciseNameLbl.text = model.data[tag].video_title
+                self.setupVideoPlayer(url: model.data[tag].patientVideoUrl)
+                self.openNotifcationView()
+            }
         }
     }
 }

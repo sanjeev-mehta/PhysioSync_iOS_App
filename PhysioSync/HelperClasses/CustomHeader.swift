@@ -60,6 +60,7 @@ class CustomHeader: UIView {
         addSubview(backBtn)
         addSubview(rightImageView)
         addSubview(rightBtn)
+        backgroundColor = .white
         
         titleLbl.translatesAutoresizingMaskIntoConstraints = false
         backImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -76,8 +77,10 @@ class CustomHeader: UIView {
             
             backBtn.trailingAnchor.constraint(equalTo: backImageView.trailingAnchor),
             backBtn.leadingAnchor.constraint(equalTo: backImageView.leadingAnchor),
-            backBtn.topAnchor.constraint(equalTo: backImageView.topAnchor),
-            backBtn.bottomAnchor.constraint(equalTo: backImageView.bottomAnchor),
+            backBtn.centerYAnchor.constraint(equalTo: backImageView.centerYAnchor),
+            backBtn.centerXAnchor.constraint(equalTo: backImageView.centerXAnchor),
+            backBtn.widthAnchor.constraint(equalToConstant: 30),
+            backBtn.heightAnchor.constraint(equalToConstant: 30),
             
             titleLbl.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
             titleLbl.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 15),
@@ -91,8 +94,10 @@ class CustomHeader: UIView {
             
             rightBtn.trailingAnchor.constraint(equalTo: rightImageView.trailingAnchor),
             rightBtn.leadingAnchor.constraint(equalTo: rightImageView.leadingAnchor),
-            rightBtn.topAnchor.constraint(equalTo: rightImageView.topAnchor),
-            rightBtn.bottomAnchor.constraint(equalTo: rightImageView.bottomAnchor)
+            rightBtn.centerYAnchor.constraint(equalTo: rightImageView.centerYAnchor),
+            rightBtn.centerXAnchor.constraint(equalTo: rightImageView.centerXAnchor),
+            rightBtn.widthAnchor.constraint(equalToConstant: 30),
+            rightBtn.heightAnchor.constraint(equalToConstant: 30)
         ])
         
         backBtn.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
