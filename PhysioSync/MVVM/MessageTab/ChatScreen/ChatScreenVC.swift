@@ -79,7 +79,7 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RightVideoChatTVC", for: indexPath) as! RightVideoChatTVC
                 cell.selectionStyle = .none
                 self.setCornerRadius(radius: 16, view: cell.bgView, isLeftCell: false)
-                cell.bgView.backgroundColor = UIColor.black
+//                cell.bgView.backgroundColor = UIColor.black
                 cell.dateLbl.textColor = UIColor.white
                 cell.imgView.image = UIImage(named: data.media_link)
                 cell.dateLbl.text = data.time
@@ -91,7 +91,7 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RightChatTVC", for: indexPath) as! RightChatTVC
                 cell.messageLbl.text = data.message_text
                 self.setCornerRadius(radius: 16, view: cell.bgView, isLeftCell: false)
-                cell.bgView.backgroundColor = UIColor.black
+//                cell.bgView.backgroundColor = UIColor.black
                 cell.messageLbl.textColor = UIColor.white
                 cell.dateLbl.textColor = UIColor.white
                 cell.selectionStyle = .none
