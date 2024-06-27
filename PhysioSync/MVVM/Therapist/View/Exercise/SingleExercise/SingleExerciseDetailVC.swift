@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FTPopOverMenu_Swift
 
 class SingleExerciseDetailVC: UIViewController {
     
@@ -15,11 +16,14 @@ class SingleExerciseDetailVC: UIViewController {
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var videoDesc: UILabel!
     @IBOutlet weak var videoView: UIView!
+    @IBOutlet weak var menuBtn: UIButton!
     
     // MARK: - Variables
     var categoryArr = [categoryData]()
     var headerTitle = "Exercise 1"
     var data: SingleExerciseModel?
+    private var customVideoPlayer: CustomVideoPlayer!
+    private let vm = ExerciseCategoryViewModel.shareInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +36,54 @@ class SingleExerciseDetailVC: UIViewController {
         self.setHeader(data?.videoTitle ?? "",rightImg: UIImage(named: "threeDots")!, isRightBtn: true) {
             self.dismissOrPopViewController()
         } rightButtonAction: {
-            // open Add Exercise Controller
+            self.openPopUpMenu()
+        }
+        setupCustomVideoPlayer()
+    }
+    
+    // MARK: - Methods
+    
+    func openPopUpMenu() {
+        let configuration = FTConfiguration.shared
+        configuration.menuRowHeight = 30
+        configuration.menuWidth = 100
+        configuration.localShadow = true
+        FTPopOverMenu.showForSender(sender: self.menuBtn, with: ["Edit", "Delete"]) { (selectedIndex) -> () in
+            print(selectedIndex)
+            if selectedIndex == 0 {
+                self.openAddExerciseController()
+            } else {
+                self.callDeleteApi()
+            }
+        } cancel: {
+            
+        }
+    }
+    
+    private func setupCustomVideoPlayer() {
+        let videoPlayerFrame = CGRect(x: 0, y: 0, width: self.videoView.frame.width, height: self.videoView.frame.height)
+        customVideoPlayer = CustomVideoPlayer(frame: videoPlayerFrame)
+        self.videoView.addSubview(customVideoPlayer)
+        
+        // URL of the video you want to play
+        guard let videoURL = URL(string: data!.videoUrl) else {
+            print("Invalid URL")
+            return
+        }
+        customVideoPlayer.configure(url: videoURL)
+    }
+    
+    func openAddExerciseController() {
+        if let vc = self.switchController(.addNewExerciseVC, .exerciseTab) as? AddNewExerciseVC {
+            vc.isEdit = true
+            vc.data = self.data
+            self.pushOrPresentViewController(vc, true)
+        }
+    }
+    
+    func callDeleteApi() {
+        vm.deleteExercises(vc: self, id: data!.id) { status in
+            self.dismissOrPopViewController()
         }
     }
     
@@ -66,18 +117,14 @@ class SingleExerciseDetailVC: UIViewController {
 
 extension SingleExerciseDetailVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categoryArr.count
+        return data?.categoryName.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChipsCVC", for: indexPath) as! ChipsCVC
-        let data = categoryArr[indexPath.item]
-        cell.titleLbl.text = data.name
-        if categoryArr[indexPath.item].isSelected {
-            cell.bgView.backgroundColor = .black
-        } else {
-            cell.bgView.backgroundColor = .blue
-        }
+        let data = data!.categoryName[indexPath.item]
+        cell.titleLbl.text = data
+        cell.bgView.backgroundColor = .blue
         return cell
     }
     

@@ -37,7 +37,7 @@ class TherapistPatientProfileViewModel{
     func getCount() -> Int {
         if let data = therapistPatientprofileModel?[0].data {
             if data.exercise?.count != 0 {
-                return data.exercise?[0].exerciseIds?.count ?? 0
+                return data.exercise?[0].exerciseIds.count ?? 0
             } else {
                 return 0
             }

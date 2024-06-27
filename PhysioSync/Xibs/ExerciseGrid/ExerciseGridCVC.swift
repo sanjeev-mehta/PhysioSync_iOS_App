@@ -12,6 +12,7 @@ class ExerciseGridCVC: UICollectionViewCell, ShimmeringViewProtocol {
 
     @IBOutlet weak var imgVW: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var selectedView: UIView!
     
     var shimmeringAnimatedItems: [UIView] { [
         imgVW,

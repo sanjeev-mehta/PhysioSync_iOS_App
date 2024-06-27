@@ -118,9 +118,9 @@ class ApiHelper {
 
         Alamofire.request(url, method: .get,encoding: URLEncoding.queryString, headers: header).responseJSON { response in
             av.removeFromSuperview()
+            view.debugPrint("\(response)")
             switch response.result{
             case .success(let value):
-                
                 do {
                     let jsonData = try JSON(data: response.data!)
                     completion(jsonData, nil)

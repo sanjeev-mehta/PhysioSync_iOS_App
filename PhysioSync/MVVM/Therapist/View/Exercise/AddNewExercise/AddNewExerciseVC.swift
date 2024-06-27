@@ -22,6 +22,10 @@ class AddNewExerciseVC: UIViewController {
     private let vm = AddNewExerciseViewModel.shareInstance
     private var awsHelper = AWSHelper.shared
     private var videoUrl: URL?
+    private let exerciseVM = ExerciseCategoryViewModel.shareInstance
+    var isEdit = false
+    var data: SingleExerciseModel?
+    var isVideoChange = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,8 +58,24 @@ class AddNewExerciseVC: UIViewController {
         categoryArr.append(categoryData(name: "Arm", isSelected: false))
         categoryArr.append(categoryData(name: "Upper Back", isSelected: false))
         collectionView.reloadData()
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
+        Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false) { _ in
             self.collectionHeight.constant = self.collectionView.contentSize.height
+        }
+        
+        if let data = self.data {
+            if isEdit {
+                nameTf.text = data.videoTitle
+                videoFileNameLbl.text = data.videoTitle + ".mov"
+                descTV.text = data.description
+                for i in self.exerciseVM.categoriesModel {
+                    for v in self.data!.categoryName {
+                        if i.name == v {
+                            i.isSelected = true
+                        }
+                    }
+                }
+                self.collectionView.reloadData()
+            }
         }
     }
     
@@ -71,14 +91,17 @@ class AddNewExerciseVC: UIViewController {
         let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { _ in
             self.videoPicker?.showVideoPicker(sourceType: .photoLibrary, completion: { url, name in
                 print(url, name)
+                self.isVideoChange = true
                 self.videoUrl = url
                 self.videoFileNameLbl.text = name
+            
             })
         }
         
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { _ in
             self.videoPicker?.showVideoPicker(sourceType: .camera) { url, name in
                 print(url, name)
+                self.isVideoChange = true
                 self.videoUrl = url
                 self.videoFileNameLbl.text = name
             }
@@ -108,25 +131,88 @@ class AddNewExerciseVC: UIViewController {
         } else if descTV.text == "" {
             self.displayAlert(title: "Warning", msg: "Please enter description", ok: "Ok")
         } else {
-            awsHelper.uploadVideoFile(url: self.videoUrl!, fileName: videoFileNameLbl.text!) { progress in
-                print("Upload Progress: \(progress)%")
-            } completion: { success, videoUrl, err in
-                if success {
-                    print("Upload successful, video URL: \(String(describing: videoUrl))")
-                    DispatchQueue.main.async {
-                        self.callApi(url: videoUrl!)
+            if isVideoChange {
+                awsHelper.uploadVideoFile(url: self.videoUrl!,fileName: videoFileNameLbl.text!) { progress in
+                    print("Upload Progress: \(progress)%")
+                } completion: { success, videoUrl, err in
+                    if success {
+                        print("Upload successful, video URL: \(String(describing: videoUrl))")
+                        DispatchQueue.main.async {
+                            self.uploadThumbnailImage(videoUrl: videoUrl ?? "")
+                        }
+                    } else {
+                        print("Upload failed, error: \(String(describing: err?.localizedDescription))")
                     }
-                } else {
-                    print("Upload failed, error: \(String(describing: err?.localizedDescription))")
                 }
+            } else {
+                self.callApi(url: data!.videoUrl, imgUrl: data!.video_thumbnail)
             }
-
         }
     }
     
-    func callApi(url: String) {
-        let parm:[String: Any] = ["video_Url": url, "video_title": nameTf.text!, "description": descTV.text!]
-        vm.addExerciseApi(vc: self, parm: parm) { status in
+    func uploadThumbnailImage(videoUrl: String) {
+        self.getThumbnailImageFromVideoUrl(url: URL(string: videoUrl)!) { [weak self] img in
+            guard let self = self, let thumbnailImage = img else {
+                print("Failed to generate thumbnail image")
+                return
+            }
+            
+            if let thumbnailImageUrl = self.saveImageToTemporaryDirectory(image: thumbnailImage) {
+                // Pass the thumbnail image URL to awsHelper.uploadImageFile
+                self.awsHelper.uploadImageFile(url: thumbnailImageUrl, fileName: "thumbnail.jpg", progress: { progress in
+                    print("Upload progress: \(progress)")
+                }) { success, url, error in
+                    if success {
+                        print("Image uploaded successfully. URL: \(url ?? "No URL")")
+                        DispatchQueue.main.async {
+                            self.callApi(url: videoUrl, imgUrl: url ?? "")
+                        }
+                    } else {
+                        print("Image upload failed. Error: \(String(describing: error))")
+                    }
+                }
+            } else {
+                print("Failed to save thumbnail image to temporary directory")
+            }
+            
+        }
+        
+    }
+    
+    func saveImageToTemporaryDirectory(image: UIImage) -> URL? {
+        guard let imageData = image.jpegData(compressionQuality: 1.0) else {
+            print("Failed to convert image to JPEG data")
+            return nil
+        }
+        
+        let tempDirectory = FileManager.default.temporaryDirectory
+        let fileName = UUID().uuidString + ".jpg"
+        let fileURL = tempDirectory.appendingPathComponent(fileName)
+        
+        do {
+            try imageData.write(to: fileURL)
+            return fileURL
+        } catch {
+            print("Error saving image to temporary directory: \(error)")
+            return nil
+        }
+    }
+    
+    func callApi(url: String, imgUrl: String) {
+        var exerciseId = [String]()
+        var exerciseName = [String]()
+        for i in exerciseVM.categoriesModel {
+            if i.isSelected {
+                exerciseId.append(i.Id!)
+                exerciseName.append(i.name!)
+            }
+        }
+        let parm:[String: Any] = ["video_Url": url, "video_title": nameTf.text!, "description": descTV.text!, "video_thumbnail": imgUrl, "category_name": exerciseName, "category_id": exerciseId]
+        var id = ""
+        if isEdit {
+            id = data!.id
+        }
+        vm.addExerciseApi(vc: self, id: id ,isEdit: self.isEdit, parm: parm) { status in
             if status {
                 self.dismissOrPopViewController()
             }
@@ -145,14 +231,14 @@ class AddNewExerciseVC: UIViewController {
 
 extension AddNewExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categoryArr.count
+        return exerciseVM.getArrayCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChipsCVC", for: indexPath) as! ChipsCVC
-        let data = categoryArr[indexPath.item]
+        let data = exerciseVM.categoriesModel[indexPath.item]
         cell.titleLbl.text = data.name
-        if categoryArr[indexPath.item].isSelected {
+        if data.isSelected {
             cell.bgView.backgroundColor = .black
         } else {
             cell.bgView.backgroundColor = .blue
@@ -161,10 +247,11 @@ extension AddNewExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if categoryArr[indexPath.item].isSelected {
-            categoryArr[indexPath.item].isSelected = false
+        let data = exerciseVM.categoriesModel[indexPath.item]
+        if data.isSelected {
+            data.isSelected = false
         } else {
-            categoryArr[indexPath.item].isSelected = true
+            data.isSelected = true
         }
         collectionView.reloadData()
     }

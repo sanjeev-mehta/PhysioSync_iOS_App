@@ -69,9 +69,9 @@ class TherapistPatientProfileVC: UIViewController {
                 if let data = self.vm.therapistPatientprofileModel?[0].data {
                     if data.exercise?.count != 0 {
                         let exerciseData = data.exercise![0]
-                        self.startDateLbl.text = self.formatDateString(date: exerciseData.startDate)
-                        self.endDateLbl.text = self.formatDateString(date: exerciseData.endDate)
-                        self.tableHeightConstraint.constant = CGFloat(60 * (exerciseData.exerciseIds?.count ?? 0))
+                        self.startDateLbl.text = exerciseData.startDate
+                        self.endDateLbl.text = exerciseData.endDate
+                        self.tableHeightConstraint.constant = CGFloat(60 * exerciseData.exerciseIds.count)
                         self.scheduleNotFoundView.isHidden = true
                         for i in self.scheduleViews {
                             i.isHidden = false
@@ -119,7 +119,7 @@ class TherapistPatientProfileVC: UIViewController {
         
         func formatDateString(date: String) -> String {
             let inputFormatter = DateFormatter()
-            inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXX"
+            inputFormatter.dateFormat = "yyyy-MM-dd"
             
             let dateOfBirth = inputFormatter.date(from: date)!
             let outputFormatter = DateFormatter()
@@ -135,6 +135,19 @@ class TherapistPatientProfileVC: UIViewController {
             vc.isEdit = true
             vc.model = vm.therapistPatientprofileModel?[0].data?.patient
             self.pushOrPresentViewController(vc, true)
+        }
+    }
+    
+    @IBAction func setScheduleBtnActn(_ sender: UIButton) {
+        if let vc = self.switchController(.createScheduleVC, .ScheduleTab) as? CreateScheduleVC {
+            if sender.tag == 1 {
+                vc.exerciseModel = vm.therapistPatientprofileModel![0].data!.exercise![0].exerciseIds
+                vc.from = vm.therapistPatientprofileModel![0].data!.exercise![0].startDate
+                vc.to = vm.therapistPatientprofileModel![0].data!.exercise![0].endDate
+
+            }
+            vc.patientId = vm.therapistPatientprofileModel?[0].data?.patient!.Id ?? ""
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

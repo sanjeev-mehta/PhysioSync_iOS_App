@@ -36,4 +36,16 @@ class ExerciseCategoryViewModel {
         cell.titleLbl.text = data.name
         cell.imgVW.setImage(with: data.imageLink)
     }
+    
+    // MARK: - Delete Exercise
+    func deleteExercises(vc: UIViewController, id: String, completion: @escaping (Bool) -> ()) {
+        let url = API.Endpoints.delete_exercise + "/\(id)"
+        apiHelper.hitApi(view: vc, method: .delete, parm: [:], url: url, isHeader: true, isLoader: true) { json, err in
+            if err != nil {
+                vc.displayAlert(title: "Alert!", msg: "Something went wrong", ok:"Ok")
+            } else {
+                completion(true)
+            }
+        }
+    }
 }

@@ -26,6 +26,7 @@ class CustomVideoPlayer: UIView, AVPlayerViewControllerDelegate {
 
         guard let playerViewController = playerViewController else { return }
         playerViewController.view.frame = self.bounds
+        playerViewController.view.layer.cornerRadius = 16
         playerViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
         self.addSubview(playerViewController.view)
