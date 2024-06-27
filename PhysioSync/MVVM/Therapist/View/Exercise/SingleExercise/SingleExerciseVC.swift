@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import FTPopOverMenu_Swift
 
 class SingleExerciseVC: UIViewController {
-
+    
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var addExerciseBtn: UIButton!
     
     // MARK: -  Variables
     private var isLoading = true {
@@ -21,6 +24,9 @@ class SingleExerciseVC: UIViewController {
     }
     var header = "Neck"
     let vm = SingleExerciseViewModel.shareInstance
+    var isCreateSchedule = false
+    var delegate: SelectedExerciseData?
+    var selectedData = [SingleExerciseModel]()
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -32,17 +38,30 @@ class SingleExerciseVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setHeader(header,rightImg: UIImage(named: "addIcon")!, isRightBtn: true) {
-            self.dismissOrPopViewController()
-        } rightButtonAction: {
-            self.openAddExerciseController()
+        if isCreateSchedule {
+            self.setHeader(header, isBackBtn: true) {
+                self.dismissOrPopViewController()
+            } rightButtonAction: {}
+            collectionViewBottomConstraint.constant = 150
+            addExerciseBtn.isHidden = false
+        } else {
+            self.setHeader(header,rightImg: UIImage(named: "addIcon")!, isRightBtn: true) {
+                self.dismissOrPopViewController()
+            } rightButtonAction: {
+                self.openAddExerciseController()
+            }
         }
     }
     
-    // MARK: - Methods
-    
     func callGetExerciseApi() {
         vm.getSingleExercise(vc: self, name: header) { status in
+            for i in self.vm.exerciseModel {
+                for v in self.selectedData {
+                    if i.id == v.id {
+                        i.isSelected = true
+                    }
+                }
+            }
             self.isLoading = false
         }
     }
@@ -54,6 +73,7 @@ class SingleExerciseVC: UIViewController {
     
     func openExerciseDetailController(_ data: SingleExerciseModel) {
         if let vc = self.switchController(.singleExerciseDetailVC, .exerciseTab) as? SingleExerciseDetailVC {
+            vc.data = data
             self.pushOrPresentViewController(vc, true)
         }
     }
@@ -62,6 +82,27 @@ class SingleExerciseVC: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "ExerciseGridCVC", bundle: nil), forCellWithReuseIdentifier: "SingleExerciseGridCVC")
+    }
+    
+    //MARK: - Buttons Action
+    @IBAction func addExercseBtnActn(_ sender: UIButton) {
+        var data = [SingleExerciseModel]()
+        for i in self.vm.exerciseModel {
+            if i.isSelected {
+                data.append(i)
+            }
+        }
+        delegate?.selectedExerciseData(data: data)
+        if let navigationController = self.navigationController {
+            let viewControllers = navigationController.viewControllers
+            for (index, viewController) in viewControllers.enumerated() {
+                if let vc = viewController as? CreateScheduleVC {
+                    navigationController.popToViewController(vc, animated: true)
+                }
+            }
+        } else {
+            print("Controller is not in a navigation controller")
+        }
     }
     
 }
@@ -78,7 +119,7 @@ extension SingleExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SingleExerciseGridCVC", for: indexPath) as! ExerciseGridCVC
         if !self.isLoading {
-            vm.setCell(cell, index: indexPath.item)
+            vm.setCell(cell, index: indexPath.item, isCreateSchedule: isCreateSchedule)
         }
         cell.imgVW.backgroundColor = .blue
         cell.imgVW.layer.cornerRadius = 12
@@ -106,23 +147,46 @@ extension SingleExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource
         // MARK: - Initial state for the animation
         cell.setTemplateWithSubviews(isLoading, animate: true, viewBackgroundColor: .systemBackground)
         cell.alpha = 0
-        
-        // MARK: -  Apply animation
-        UIView.animate(withDuration: 0.5) {
-            cell.alpha = 1
-        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // MARK: - Switch Controllers on tap
         if let cell = collectionView.cellForItem(at: indexPath) {
             cell.pressedAnimation {
-                let data = self.vm.exerciseModel[indexPath.item]
-                self.openExerciseDetailController(data)
+                if self.isCreateSchedule {
+                    let data = self.vm.exerciseModel[indexPath.item]
+                    if data.isSelected {
+                        data.isSelected = false
+                    } else {
+                        data.isSelected = true
+                    }
+                    self.collectionView.reloadData()
+                    self.setBtnTitle()
+                } else {
+                    let data = self.vm.exerciseModel[indexPath.item]
+                    self.openExerciseDetailController(data)
+                }
             }
         }
     }
     
-   
+    func setBtnTitle() {
+        var count = 0
+        for i in self.vm.exerciseModel {
+            if i.isSelected {
+                count += 1
+            }
+        }
+        
+        if count != 0 {
+            self.addExerciseBtn.isEnabled = true
+            self.addExerciseBtn.setTitle("Add \(count) Exercise(s)", for: .normal)
+        } else {
+            self.addExerciseBtn.isEnabled = false
+        }
+    }
+}
 
+protocol SelectedExerciseData {
+    func selectedExerciseData(data: [SingleExerciseModel])
 }

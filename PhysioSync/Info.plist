@@ -42,5 +42,7 @@
 	<array>
 		<string>audio</string>
 	</array>
+	<key>NSHealthShareUsageDescription</key>
+	<string>We use your health data to provide personalized insights, Your privacy is our priority, and your data will only be used to enhance the features of our app.</string>
 </dict>
 </plist>

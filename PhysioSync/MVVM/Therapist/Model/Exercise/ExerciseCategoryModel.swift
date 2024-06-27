@@ -14,7 +14,7 @@ class ExerciseCatergoryModel {
     var imageLink: String?
     var name: String?
     var Id: String?
-
+    var isSelected = false
     init(_ json: JSON) {
         _v = json["__v"].intValue
         imageLink = json["image_link"].stringValue

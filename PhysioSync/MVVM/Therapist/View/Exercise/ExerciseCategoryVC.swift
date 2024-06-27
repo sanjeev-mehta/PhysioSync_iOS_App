@@ -21,6 +21,9 @@ class ExerciseCategoryVC: UIViewController {
     }
     
     let exerciseCategoryViewModel = ExerciseCategoryViewModel.shareInstance
+    var isCreateSchedule = false
+    var delegate: SelectedExerciseData?
+    var selectedData = [SingleExerciseModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +34,13 @@ class ExerciseCategoryVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setHeader("Exercise Library", isBackBtn: false)
+        if isCreateSchedule {
+            self.setHeader("Exercise Library", isBackBtn: true) {
+                self.dismissOrPopViewController()
+            } rightButtonAction: {}
+        } else {
+            self.setHeader("Exercise Library", isBackBtn: false)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,6 +67,9 @@ class ExerciseCategoryVC: UIViewController {
     func openSingleExerciseController(name: String) {
         if let vc = self.switchController(.singleExerciseVC, .exerciseTab) as? SingleExerciseVC {
             vc.header = name
+            vc.isCreateSchedule = isCreateSchedule
+            vc.delegate = self
+            vc.selectedData = selectedData
             self.pushOrPresentViewController(vc, true)
         }
     }
@@ -80,9 +92,11 @@ extension ExerciseCategoryVC: UICollectionViewDelegate, UICollectionViewDataSour
         if !self.isLoading {
             exerciseCategoryViewModel.setCell(cell, index: indexPath.item)
         }
+        cell.selectedView.isHidden = true
         cell.imgVW.backgroundColor = .blue
         cell.imgVW.layer.cornerRadius = 12
         cell.imgVW.layer.masksToBounds = true
+        cell.imgVW.contentMode = .scaleAspectFill
         cell.imgVW.addShadow()
         return cell
     }
@@ -106,11 +120,6 @@ extension ExerciseCategoryVC: UICollectionViewDelegate, UICollectionViewDataSour
         // MARK: - Initial state for the animation
         cell.setTemplateWithSubviews(isLoading, animate: true, viewBackgroundColor: .systemBackground)
         cell.alpha = 0
-        
-        // MARK: -  Apply animation
-        UIView.animate(withDuration: 0.5) {
-            cell.alpha = 1
-        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -124,4 +133,13 @@ extension ExerciseCategoryVC: UICollectionViewDelegate, UICollectionViewDataSour
         
     }
 
+}
+
+extension ExerciseCategoryVC: SelectedExerciseData {
+    func selectedExerciseData(data: [SingleExerciseModel]) {
+        print(data)
+        delegate?.selectedExerciseData(data: data)
+    }
+    
+    
 }

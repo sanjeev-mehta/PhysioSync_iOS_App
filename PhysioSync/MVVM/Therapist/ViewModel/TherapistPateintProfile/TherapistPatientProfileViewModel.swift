@@ -14,7 +14,7 @@ class TherapistPatientProfileViewModel{
     // MARK: - Variables
     static let shareInstance = TherapistPatientProfileViewModel()
     let apiHelper = ApiHelper.shareInstance
-    var therapistPatientprofileModel: TherapistPatientProfileModel?
+    var therapistPatientprofileModel: [TherapistPatientProfileModel]?
     
     func getAssignedExercise(vc: UIViewController,patientId: String, completion: @escaping(Bool) -> ()){
         let url = API.Endpoints.getAssignExercise + "/" + patientId
@@ -23,8 +23,8 @@ class TherapistPatientProfileViewModel{
                 vc.displayAlert(title: "Alert!", msg: "Something went wrong", ok: "Ok")
             } else {
                 vc.debugPrint("\(json)")
-                self.therapistPatientprofileModel = TherapistPatientProfileModel(json)
-                if self.therapistPatientprofileModel?.data?.count == 0 {
+                self.therapistPatientprofileModel = [TherapistPatientProfileModel(json)]
+                if self.therapistPatientprofileModel?.count == 0 {
                     // No data
                 } else {
                     completion(true)
@@ -34,5 +34,16 @@ class TherapistPatientProfileViewModel{
         }
     }
     
+    func getCount() -> Int {
+        if let data = therapistPatientprofileModel?[0].data {
+            if data.exercise?.count != 0 {
+                return data.exercise?[0].exerciseIds.count ?? 0
+            } else {
+                return 0
+            }
+        } else {
+            return 0
+        }
+    }
     
 }

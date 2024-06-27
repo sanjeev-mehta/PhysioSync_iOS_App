@@ -10,6 +10,8 @@ import SwiftyJSON
 
 class SingleExerciseModel {
     var videoTitle: String
+    var categoryName = [String]()
+    var categoryId = [String]()
     var categoryName: String
     var categoryId: String
     var description: String
@@ -17,15 +19,25 @@ class SingleExerciseModel {
     var videoUrl: String
     var therapistId: String
     var version: Int
+    var isSelected = false
+    var video_thumbnail = ""
     
     init(_ json: JSON) {
+        categoryId.removeAll()
+        categoryName.removeAll()
+        for i in json["category_name"].arrayValue {
+            categoryName.append(i.stringValue)
+        }
+        for i in json["category_id"].arrayValue {
+            categoryId.append(i.stringValue)
+        }
         videoTitle = json["video_title"].stringValue
-        categoryName = json["category_name"].stringValue
-        categoryId = json["category_id"].stringValue
         description = json["description"].stringValue
         id = json["_id"].stringValue
         videoUrl = json["video_Url"].stringValue
         therapistId = json["therapist_id"].stringValue
         version = json["__v"].intValue
+        video_thumbnail = json["video_thumbnail"].stringValue
+
     }
 }

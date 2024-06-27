@@ -16,6 +16,11 @@ pod 'CHIPageControl/Chimayo'
 pod 'CHIPageControl/Jaloro'
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
+pod 'Fastis', '~> 2.0'
+pod 'iOSDropDown'
+pod 'AWSS3'
+pod 'FTPopOverMenu_Swift', '~> 0.1.4'
+pod 'Socket.IO-Client-Swift', '~> 16.0.1'
   # Pods for PhysioSync
 
 end

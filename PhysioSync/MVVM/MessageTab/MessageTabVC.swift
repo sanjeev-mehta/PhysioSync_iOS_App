@@ -11,9 +11,17 @@ class MessageTabVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    let vm = MessageViewModel.shareInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.debugPrint("\(vm.getUserCount())")
+        self.tableView.reloadData()
     }
     
     // MARK: - Set Table View
@@ -24,8 +32,13 @@ class MessageTabVC: UIViewController {
     }
     
     // MARK: - Methods
-    func openChat() {
+    func openChat(_ senderId: String, name: String, link: String) {
+        let id = UserDefaults.standard.getTherapistId()
+        TherapistHomeVC.socketHandler.fetchPreviousMessage(senderId, id)
         if let vc = self.switchController(.chatVC, .messageTab) as? ChatScreenVC {
+            vc.recieverId = senderId
+            vc.name = name
+            vc.profileImgLink = link
             self.pushOrPresentViewController(vc, true)
         }
     }
@@ -35,12 +48,13 @@ class MessageTabVC: UIViewController {
 // MARK: - UITableView Delegate and Data Source Methods
 extension MessageTabVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 12
+        return vm.getUserCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageTVC", for: indexPath) as! MessageTVC
         cell.selectionStyle = .none
+        vm.setUpCell(cell, index: indexPath.row)
         return cell
     }
     
@@ -49,7 +63,8 @@ extension MessageTabVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        openChat()
+        let patient = vm.model[indexPath.row].patient!
+        openChat(patient.Id,name: patient.firstName + " " + patient.lastName, link: patient.profilePhoto)
     }
     
 }
