@@ -32,9 +32,19 @@ class SingleExerciseViewModel {
         return exerciseModel.count
     }
     
-    func setCell(_ cell: ExerciseGridCVC, index: Int) {
+    func setCell(_ cell: ExerciseGridCVC, index: Int, isCreateSchedule: Bool = false) {
         let data = exerciseModel[index]
         cell.titleLbl.text = data.videoTitle
-        cell.imgVW.setImage(with: data.videoUrl)
+        cell.imgVW.setImage(with: data.video_thumbnail)
+        cell.imgVW.contentMode = .scaleToFill
+        if isCreateSchedule {
+            if data.isSelected {
+                cell.selectedView.isHidden = false
+            } else {
+                cell.selectedView.isHidden = true
+            }
+        } else {
+            cell.selectedView.isHidden = true
+        }
     }
 }

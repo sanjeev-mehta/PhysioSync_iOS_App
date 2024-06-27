@@ -36,7 +36,7 @@ class TherapistPatientProfileData {
 class Exercise {
 
     var Id = ""
-    var exerciseIds: [ExerciseIds]?
+    var exerciseIds = [SingleExerciseModel]()
     var patientId = ""
     var startDate = ""
     var endDate = ""
@@ -47,7 +47,7 @@ class Exercise {
 
     init(_ json: JSON) {
         Id = json["_id"].stringValue
-        exerciseIds = json["exercise_ids"].arrayValue.map { ExerciseIds($0) }
+        exerciseIds = json["exercise_ids"].arrayValue.map { SingleExerciseModel($0) }
         patientId = json["patient_id"].stringValue
         startDate = json["start_date"].stringValue
         endDate = json["end_date"].stringValue
@@ -101,7 +101,8 @@ class Patient {
     var updatedAt = ""
     var _v = 0
     var isActive = false
-
+    var unreadCount = 0
+    
     init(_ json: JSON) {
         Id = json["_id"].stringValue
         therapistId = json["therapist_Id"].stringValue
@@ -121,6 +122,7 @@ class Patient {
         updatedAt = json["updated_at"].stringValue
         _v = json["__v"].intValue
         isActive = json["is_active"].boolValue
+        unreadCount = json["unreadCount"].intValue
     }
 
 }

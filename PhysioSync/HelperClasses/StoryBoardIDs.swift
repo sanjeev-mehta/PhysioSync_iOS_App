@@ -57,4 +57,8 @@ enum StoryBoardIDs: String {
     
     //MARK: -  Patient Tab
     case patientTabBarController = "patientTabBarController"
+    
+    //MARK: -  Schedule Tab
+    case createScheduleVC = "CreateScheduleVC"
+    
 }

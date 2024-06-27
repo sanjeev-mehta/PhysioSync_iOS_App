@@ -57,6 +57,7 @@ PODS:
     - GoogleUtilities/Environment (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - PromisesObjC (~> 2.1)
+  - FTPopOverMenu_Swift (0.1.4)
   - GoogleAppMeasurement (10.25.0):
     - GoogleAppMeasurement/AdIdSupport (= 10.25.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.11)
@@ -125,6 +126,9 @@ PODS:
   - SDWebImage (5.18.10):
     - SDWebImage/Core (= 5.18.10)
   - SDWebImage/Core (5.18.10)
+  - Socket.IO-Client-Swift (16.0.1):
+    - Starscream (~> 4.0)
+  - Starscream (4.0.8)
   - SwiftyJSON (4.3.0)
   - UIView-Shimmer (1.0.4)
 
@@ -137,12 +141,14 @@ DEPENDENCIES:
   - Fastis (~> 2.0)
   - Firebase/Auth
   - Firebase/Core
+  - FTPopOverMenu_Swift (~> 0.1.4)
   - Hero
   - iOSDropDown
   - IQKeyboardManagerSwift
   - NVActivityIndicatorView
   - RAMAnimatedTabBarController
   - SDWebImage
+  - Socket.IO-Client-Swift (~> 16.0.1)
   - UIView-Shimmer (~> 1.0)
 
 SPEC REPOS:
@@ -160,6 +166,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreInternal
     - FirebaseInstallations
+    - FTPopOverMenu_Swift
     - GoogleAppMeasurement
     - GoogleUtilities
     - GTMSessionFetcher
@@ -174,6 +181,8 @@ SPEC REPOS:
     - RAMAnimatedTabBarController
     - RecaptchaInterop
     - SDWebImage
+    - Socket.IO-Client-Swift
+    - Starscream
     - SwiftyJSON
     - UIView-Shimmer
 
@@ -191,6 +200,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 7ec4d0484817f12c3373955bc87762d96842d483
   FirebaseCoreInternal: 910a81992c33715fec9263ca7381d59ab3a750b7
   FirebaseInstallations: 91950fe859846fff0fbd296180909dd273103b09
+  FTPopOverMenu_Swift: e4cafd1085d8125339c710fa9e53477fd615b1e2
   GoogleAppMeasurement: 9abf64b682732fed36da827aa2a68f0221fd2356
   GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
   GTMSessionFetcher: 8000756fc1c19d2e5697b90311f7832d2e33f6cd
@@ -205,9 +215,11 @@ SPEC CHECKSUMS:
   RAMAnimatedTabBarController: 6863a386e7ae2ab227cd60aa73ab8ff56cdacfdd
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
   SDWebImage: fc8f2d48bbfd72ef39d70e981bd24a3f3be53fec
+  Socket.IO-Client-Swift: c116d6dc9fd6be9c259bacfe143f8725bce7d79e
+  Starscream: 19b5533ddb925208db698f0ac508a100b884a1b9
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   UIView-Shimmer: ff0a32c73d67c7dbdea3d9e530538b10d18aea56
 
-PODFILE CHECKSUM: f7dd984a10ee0ce13571ab4d466a8b7ae840efdb
+PODFILE CHECKSUM: a4735e8c99f287d88ee9c4fe66cc8e7882d07388
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.14.2
