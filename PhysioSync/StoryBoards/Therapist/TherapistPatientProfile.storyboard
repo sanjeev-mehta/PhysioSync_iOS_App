@@ -1349,10 +1349,21 @@
                                                                     <constraint firstAttribute="height" constant="24" id="sGR-PN-0rq"/>
                                                                 </constraints>
                                                             </imageView>
+                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1bZ-zi-bbv">
+                                                                <rect key="frame" x="273" y="10.333333333333371" width="24" height="24"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <connections>
+                                                                    <action selector="setScheduleBtnActn:" destination="fgd-mb-gcb" eventType="touchUpInside" id="WiJ-Zn-Hd4"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
+                                                            <constraint firstItem="1bZ-zi-bbv" firstAttribute="leading" secondItem="MYX-3v-EFb" secondAttribute="leading" id="50m-mB-b7e"/>
                                                             <constraint firstItem="MYX-3v-EFb" firstAttribute="centerY" secondItem="4md-3Q-Op7" secondAttribute="centerY" id="ERW-tr-BtH"/>
+                                                            <constraint firstItem="1bZ-zi-bbv" firstAttribute="trailing" secondItem="MYX-3v-EFb" secondAttribute="trailing" id="LFh-DP-E91"/>
+                                                            <constraint firstItem="1bZ-zi-bbv" firstAttribute="top" secondItem="MYX-3v-EFb" secondAttribute="top" id="Tkr-dh-8xq"/>
+                                                            <constraint firstItem="1bZ-zi-bbv" firstAttribute="bottom" secondItem="MYX-3v-EFb" secondAttribute="bottom" id="ZTW-IO-P9q"/>
                                                             <constraint firstAttribute="trailing" secondItem="MYX-3v-EFb" secondAttribute="trailing" id="b2A-ER-jKm"/>
                                                             <constraint firstItem="6st-se-Je8" firstAttribute="top" secondItem="4md-3Q-Op7" secondAttribute="top" constant="12" id="kFX-Ly-7eP"/>
                                                             <constraint firstItem="6st-se-Je8" firstAttribute="leading" secondItem="4md-3Q-Op7" secondAttribute="leading" id="sXp-fv-lHb"/>
@@ -1523,6 +1534,9 @@
                                                                         <real key="value" value="16"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="setScheduleBtnActn:" destination="fgd-mb-gcb" eventType="touchUpInside" id="dXM-fz-eZT"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

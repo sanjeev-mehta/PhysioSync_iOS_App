@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,13 +32,35 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hI6-Wh-EhB">
+                                <rect key="frame" x="8" y="8" width="238" height="160"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 23" translatesAutoresizingMaskIntoConstraints="NO" id="dji-zA-eT2">
+                                        <rect key="frame" x="103.66666666666667" y="64.666666666666671" width="31.000000000000014" height="31"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="dji-zA-eT2" firstAttribute="centerX" secondItem="hI6-Wh-EhB" secondAttribute="centerX" id="M1v-1q-Gwb"/>
+                                    <constraint firstItem="dji-zA-eT2" firstAttribute="centerY" secondItem="hI6-Wh-EhB" secondAttribute="centerY" id="bKx-vJ-6vR"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="hI6-Wh-EhB" firstAttribute="trailing" secondItem="iY1-bP-TUc" secondAttribute="trailing" id="1Nw-Aa-WbF"/>
+                            <constraint firstItem="hI6-Wh-EhB" firstAttribute="leading" secondItem="iY1-bP-TUc" secondAttribute="leading" id="Gq7-3x-GBE"/>
                             <constraint firstItem="iY1-bP-TUc" firstAttribute="leading" secondItem="c8C-fa-t8V" secondAttribute="leading" constant="8" id="KQr-8t-IFj"/>
                             <constraint firstItem="1iy-fV-4Rr" firstAttribute="centerX" secondItem="iY1-bP-TUc" secondAttribute="centerX" id="R3R-1j-zkV"/>
                             <constraint firstItem="iY1-bP-TUc" firstAttribute="top" secondItem="c8C-fa-t8V" secondAttribute="top" constant="8" id="iar-zU-QGJ"/>
                             <constraint firstAttribute="trailing" secondItem="iY1-bP-TUc" secondAttribute="trailing" constant="8" id="jqk-6V-Pg9"/>
+                            <constraint firstItem="hI6-Wh-EhB" firstAttribute="bottom" secondItem="iY1-bP-TUc" secondAttribute="bottom" id="led-AY-o3w"/>
+                            <constraint firstItem="hI6-Wh-EhB" firstAttribute="top" secondItem="iY1-bP-TUc" secondAttribute="top" id="qry-BX-YrJ"/>
                             <constraint firstItem="1iy-fV-4Rr" firstAttribute="top" secondItem="iY1-bP-TUc" secondAttribute="bottom" constant="8" symbolic="YES" id="tbJ-KJ-J9x"/>
                         </constraints>
                     </view>
@@ -54,12 +76,14 @@
             <size key="customSize" width="254" height="223"/>
             <connections>
                 <outlet property="imgVW" destination="iY1-bP-TUc" id="Pod-fk-TC9"/>
+                <outlet property="selectedView" destination="hI6-Wh-EhB" id="zUF-e2-xhb"/>
                 <outlet property="titleLbl" destination="1iy-fV-4Rr" id="iyW-TC-gwb"/>
             </connections>
             <point key="canvasLocation" x="233.58778625954199" y="58.802816901408455"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="Group 23" width="31" height="31"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

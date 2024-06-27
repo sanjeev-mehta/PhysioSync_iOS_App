@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="97"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar1" translatesAutoresizingMaskIntoConstraints="NO" id="wrn-X7-nK6">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar1" translatesAutoresizingMaskIntoConstraints="NO" id="wrn-X7-nK6">
                         <rect key="frame" x="0.0" y="24.666666666666671" width="48" height="48"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="48" id="S6W-Bg-1ZE"/>
@@ -90,6 +90,11 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="badgeLbl" destination="FkO-a2-X3H" id="4LX-PO-A7l"/>
+                <outlet property="msgLbl" destination="9bP-sl-ZmP" id="SgO-Db-eu8"/>
+                <outlet property="nameLbl" destination="k10-cE-OyS" id="DUg-cG-ff2"/>
+                <outlet property="onlineImgView" destination="pAf-Rb-o8D" id="bEY-9S-ERg"/>
+                <outlet property="profileImgView" destination="wrn-X7-nK6" id="mlV-5W-Bgk"/>
+                <outlet property="timeLbl" destination="iB5-o2-sGW" id="X7w-tt-cAP"/>
             </connections>
             <point key="canvasLocation" x="148.09160305343511" y="3.8732394366197185"/>
         </tableViewCell>
