@@ -47,11 +47,18 @@ enum Storyboard: String {
     
     // MARK: - Therapist Auth
     case therapistAuth = "TherapistAuth"
-
+    
+    // MARK: - Patient Tab
+    case patientTab = "PatientTab"
+    
+    // MARK: - Schedule Tab
+    case ScheduleTab = "TherapistCreateSchedule"
 }
 
 enum API {
-    static let baseURL = "http://35.182.100.191/"
+    //MARK: - Local Host
+    static let baseURL = "http://localhost:8080/"
+//        static let baseURL = "http://15.156.55.188:8080/"
     
     enum Endpoints {
         //MARK: - Therapist Auth
@@ -86,6 +93,15 @@ enum API {
         static let getNotificationTime = "\(baseURL)get_notification_time"
         static let newNotificationTime = "\(baseURL)new_Notification_time"
         static let updateNotificationTime = "\(baseURL)update_notification_time"
+        static let getTherapistNotification = "\(baseURL)get-therapist-notification"
+        
+        //MARK: - Patient Auth
+        static let patientVerifyEmail = "\(baseURL)patient_email/"
+        static let patientLogin = "\(baseURL)patient_login"
+        static let patientSetPassword = "\(baseURL)set_password"
+        
+        //MARK: - Chat
+        static let getUserChat = "\(baseURL)/"
     }
 }
 
@@ -95,13 +111,39 @@ extension UserDefaults{
         set(value, forKey: UserDefaultsKeys.usernameToken.rawValue)
     }
     
+    func setPatientLoginId(value: String){
+        set(value, forKey: UserDefaultsKeys.patientLoginId.rawValue)
+    }
+    
+    func isFirstTimeUser(value: Bool){
+        set(value, forKey: UserDefaultsKeys.isFirstTimeUser.rawValue)
+    }
+    
+    func setTherapistId(value: String){
+        set(value, forKey: UserDefaultsKeys.therapistId.rawValue)
+    }
+    
     //MARK: Retrieve User Data
-    func getUsernameToken() -> String?{
+    func getUsernameToken() -> String {
         return UserDefaults.standard.value(forKey: UserDefaultsKeys.usernameToken.rawValue) as? String ?? ""
     }
-}
     
-    enum UserDefaultsKeys : String {
-        case usernameToken
-
+    func getPatientLoginId() -> String {
+        return UserDefaults.standard.value(forKey: UserDefaultsKeys.patientLoginId.rawValue) as? String ?? ""
     }
+    
+    func isFirstTimeUser() -> Bool {
+        return UserDefaults.standard.value(forKey: UserDefaultsKeys.isFirstTimeUser.rawValue) as? Bool ?? false
+    }
+    
+    func getTherapistId() -> String {
+        return UserDefaults.standard.value(forKey: UserDefaultsKeys.therapistId.rawValue) as? String ?? ""
+    }
+}
+
+enum UserDefaultsKeys : String {
+    case usernameToken
+    case patientLoginId
+    case isFirstTimeUser
+    case therapistId
+}

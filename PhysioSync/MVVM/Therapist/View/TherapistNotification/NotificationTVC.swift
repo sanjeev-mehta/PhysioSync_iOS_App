@@ -11,6 +11,10 @@ import UIView_Shimmer
 class NotificationTVC: UITableViewCell {
 
     @IBOutlet weak var watchVideoBtn: UIButton!
+    @IBOutlet weak var daysLbl: UILabel!
+    @IBOutlet weak var acknowledgeBtn: UIButton!
+    @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var msgLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

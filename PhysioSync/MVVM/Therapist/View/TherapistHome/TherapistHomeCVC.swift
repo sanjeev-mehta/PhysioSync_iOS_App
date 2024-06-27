@@ -9,4 +9,9 @@ import UIKit
 
 class TherapistHomeCVC: UICollectionViewCell {
     
+    @IBOutlet weak var daysLbl: UILabel!
+    @IBOutlet weak var playBtn: UIButton!
+    @IBOutlet weak var acknowledgeBtn: UIButton!
+    @IBOutlet weak var imgView: UIImageView!
+    
 }

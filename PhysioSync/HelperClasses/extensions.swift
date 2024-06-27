@@ -7,6 +7,8 @@
 
 import UIKit
 import SDWebImage
+import iOSDropDown
+import AVFoundation
 
 extension UIView {
     
@@ -272,17 +274,17 @@ extension UIViewController {
     }
     
     //MARK:- Set DropDown
-    //    func setDropDown(dropDown:DropDown,arr:[String], arwClr: UIColor) {
-    //
-    //        dropDown.rowHeight = 40
-    //        dropDown.optionArray = arr
-    //        dropDown.arrowColor = arwClr
-    //        dropDown.isSearchEnable = false
-    //        dropDown.selectedRowColor = .clear
-    //        dropDown.textColor = .clear
-    //        dropDown.checkMarkEnabled = false
-    //
-    //    }
+    func setDropDown(dropDown:DropDown,arr:[String], arwClr: UIColor) {
+        
+        dropDown.rowHeight = 40
+        dropDown.optionArray = arr
+        dropDown.arrowColor = arwClr
+        dropDown.isSearchEnable = false
+        dropDown.selectedRowColor = .clear
+        dropDown.textColor = .clear
+        dropDown.checkMarkEnabled = false
+        
+    }
     
     func addCharactersToStringToLabels(string: String, lbls: [UILabel]) {
         let reversedString = String(string.reversed())
@@ -339,7 +341,7 @@ extension UIViewController {
     func setHeader(_ text: String, rightImg: UIImage = UIImage(named: "backArrow")!, isBackBtn: Bool = true, isRightBtn: Bool = false, backButtonAction: (() -> Void)? = nil, rightButtonAction: (() -> Void)? = nil) {
         let customHeaderView = CustomHeader()
         customHeaderView.setTitle(text)
-        customHeaderView.backgroundColor = .clear
+        customHeaderView.backgroundColor = .white
         customHeaderView.showHideRightBtn(isRightBtn)
         customHeaderView.setRightImage(rightImg)
         if isBackBtn {
@@ -467,6 +469,29 @@ extension UIDevice {
             return window.safeAreaInsets.top >= 44
         } else {
             return window.safeAreaInsets.left > 0 || window.safeAreaInsets.right > 0
+        }
+    }
+}
+
+extension UIViewController {
+    func getThumbnailImageFromVideoUrl(url: URL, completion: @escaping ((_ image: UIImage?)->Void)) {
+        DispatchQueue.global().async { //1
+            let asset = AVAsset(url: url) //2
+            let avAssetImageGenerator = AVAssetImageGenerator(asset: asset) //3
+            avAssetImageGenerator.appliesPreferredTrackTransform = true //4
+            let thumnailTime = CMTimeMake(value: 2, timescale: 1) //5
+            do {
+                let cgThumbImage = try avAssetImageGenerator.copyCGImage(at: thumnailTime, actualTime: nil) //6
+                let thumbNailImage = UIImage(cgImage: cgThumbImage) //7
+                DispatchQueue.main.async { //8
+                    completion(thumbNailImage) //9
+                }
+            } catch {
+                print(error.localizedDescription) //10
+                DispatchQueue.main.async {
+                    completion(nil) //11
+                }
+            }
         }
     }
 }

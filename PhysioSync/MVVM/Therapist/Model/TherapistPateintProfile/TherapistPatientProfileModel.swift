@@ -8,88 +8,121 @@
 import Foundation
 import SwiftyJSON
 
-class TherapistPatientProfileModel{
-    var data: [TherapistPatientProfileData]?
-    var status = 0
-    var success = false
+class TherapistPatientProfileModel {
+    
     var message = ""
+    var success = false
+    var data: TherapistPatientProfileData?
     
     init(_ json: JSON) {
-        data = json["data"].arrayValue.map { TherapistPatientProfileData($0) }
-        status = json["status"].intValue
-        success = json["success"].boolValue
         message = json["message"].stringValue
+        success = json["success"].boolValue
+        data = TherapistPatientProfileData(json["data"])
     }
 }
 
 class TherapistPatientProfileData {
+    
+    var exercise: [Exercise]?
+    var patient: Patient?
+    
+    init(_ json: JSON) {
+        exercise = json["exercise"].arrayValue.map { Exercise($0) }
+        patient = Patient(json["patient"])
+    }
+    
+}
 
-    var patientId: PatientId?
-    var assignedAt = ""
-    var exerciseId = ""
+class Exercise {
+
     var Id = ""
-    var isAwaitingReviews = false
-    var endDate = ""
-    var therapistId = ""
-    var status = ""
+    var exerciseIds = [SingleExerciseModel]()
+    var patientId = ""
     var startDate = ""
+    var endDate = ""
+    var status = ""
+    var isAwaitingReviews = false
+    var assignedAt = ""
     var _v = 0
 
     init(_ json: JSON) {
-        patientId = PatientId(json["patient_id"])
-        assignedAt = json["assigned_at"].stringValue
-        exerciseId = json["exercise_id"].stringValue
         Id = json["_id"].stringValue
-        isAwaitingReviews = json["is_awaiting_reviews"].boolValue
-        endDate = json["end_date"].stringValue
-        therapistId = json["therapist_id"].stringValue
-        status = json["status"].stringValue
+        exerciseIds = json["exercise_ids"].arrayValue.map { SingleExerciseModel($0) }
+        patientId = json["patient_id"].stringValue
         startDate = json["start_date"].stringValue
+        endDate = json["end_date"].stringValue
+        status = json["status"].stringValue
+        isAwaitingReviews = json["is_awaiting_reviews"].boolValue
+        assignedAt = json["assigned_at"].stringValue
         _v = json["__v"].intValue
     }
 
 }
 
-class PatientId {
+class ExerciseIds {
 
-    var profilePhoto = ""
-    var medicalHistory = ""
-    var therapistId = ""
-    var password = ""
-    var allergyIfAny = ""
-    var firstName = ""
-    var patientEmail = ""
-    var lastName = ""
-    var updatedAt = ""
-    var isActive = false
-    var createdAt = ""
     var Id = ""
+    var therapistId = ""
+    var categoryName = ""
+    var videoUrl = ""
+    var videoTitle = ""
+    var description = ""
     var _v = 0
-    var gender = ""
-    var dateOfBirth = ""
-    var injuryDetails = ""
-    var medicineReminderTime = ""
-    var exerciseReminderTime = ""
 
     init(_ json: JSON) {
-        profilePhoto = json["profile_photo"].stringValue
-        medicalHistory = json["medical_history"].stringValue
-        therapistId = json["therapist_Id"].stringValue
-        password = json["password"].stringValue
-        allergyIfAny = json["allergy_if_any"].stringValue
-        firstName = json["first_name"].stringValue
-        patientEmail = json["patient_email"].stringValue
-        lastName = json["last_name"].stringValue
-        updatedAt = json["updated_at"].stringValue
-        isActive = json["is_active"].boolValue
-        createdAt = json["created_at"].stringValue
         Id = json["_id"].stringValue
+        therapistId = json["therapist_id"].stringValue
+        categoryName = json["category_name"].stringValue
+        videoUrl = json["video_Url"].stringValue
+        videoTitle = json["video_title"].stringValue
+        description = json["description"].stringValue
         _v = json["__v"].intValue
-        gender = json["gender"].stringValue
-        dateOfBirth = json["date_of_birth"].stringValue
+    }
+
+}
+
+class Patient {
+
+    var Id = ""
+    var therapistId = ""
+    var firstName = ""
+    var lastName = ""
+    var patientEmail = ""
+    var injuryDetails = ""
+    var password = ""
+    var exerciseReminderTime = ""
+    var medicineReminderTime = ""
+    var dateOfBirth = ""
+    var allergyIfAny = ""
+    var profilePhoto = ""
+    var gender = ""
+    var medicalHistory = ""
+    var createdAt = ""
+    var updatedAt = ""
+    var _v = 0
+    var isActive = false
+    var unreadCount = 0
+    
+    init(_ json: JSON) {
+        Id = json["_id"].stringValue
+        therapistId = json["therapist_Id"].stringValue
+        firstName = json["first_name"].stringValue
+        lastName = json["last_name"].stringValue
+        patientEmail = json["patient_email"].stringValue
         injuryDetails = json["injury_details"].stringValue
-        medicineReminderTime = json["medicine_reminder_time"].stringValue
+        password = json["password"].stringValue
         exerciseReminderTime = json["exercise_reminder_time"].stringValue
+        medicineReminderTime = json["medicine_reminder_time"].stringValue
+        dateOfBirth = json["date_of_birth"].stringValue
+        allergyIfAny = json["allergy_if_any"].stringValue
+        profilePhoto = json["profile_photo"].stringValue
+        gender = json["gender"].stringValue
+        medicalHistory = json["medical_history"].stringValue
+        createdAt = json["created_at"].stringValue
+        updatedAt = json["updated_at"].stringValue
+        _v = json["__v"].intValue
+        isActive = json["is_active"].boolValue
+        unreadCount = json["unreadCount"].intValue
     }
 
 }
