@@ -49,8 +49,14 @@ class PatientLoginViewModel {
                 self.patientLoginModel = PatientLoginModel(json)
                 if let model = self.patientLoginModel {
                     if model.success {
-                        if let user = model.user {
+                        if let user = model.data {
                             UserDefaults.standard.setPatientLoginId(value: user.Id)
+                            if let therapist = user.therapist {
+                                UserDefaults.standard.setTherapistId(value: therapist.Id)
+                                UserDefaults.standard.setTherapistProfileImage(value: therapist.profilePhoto)
+                                UserDefaults.standard.setTherapistName(value: therapist.therapistName)
+                                UserDefaults.standard.setPatientName(value: user.firstName + " " + user.lastName)
+                            }
                         }
                         completion(true)
                     } else {

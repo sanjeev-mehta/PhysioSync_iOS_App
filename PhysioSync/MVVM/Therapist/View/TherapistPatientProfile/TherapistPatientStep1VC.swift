@@ -22,7 +22,8 @@ class TherapistPatientStep1VC: UIViewController {
     var parms = [String: Any]()
     var model: Patient?
     var isImageChange = false
-    
+    var isPatientSide = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.customImagePicker = ImagePickerHelper(viewController: self)
@@ -117,6 +118,7 @@ class TherapistPatientStep1VC: UIViewController {
                 vc.model = model
                 vc.isEdit = isEdit
                 vc.isImageChange = isImageChange
+                vc.isPatientSide = isPatientSide
                 self.pushOrPresentViewController(vc, true)
             }
         }

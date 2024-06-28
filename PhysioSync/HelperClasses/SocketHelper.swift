@@ -16,6 +16,8 @@ class SocketIOHandler {
     var messageID = [String]()
     let messageVM = MessageViewModel.shareInstance
     let chatVM = ChatViewModel.shareInstance
+    var unreadCount = 0
+    var delegate: SocketIOHandlerDelegate?
     
     init(url: String) {
         self.manager = SocketManager(socketURL: URL(string: url)!, config: [.log(true), .compress])
@@ -73,11 +75,17 @@ class SocketIOHandler {
             self.messageVM.responseParse(json: swifty)
         }
         
-        socket.on("previousMessages") { data, ack in
+        socket.on("previousMessages") { [self] data, ack in
             print(data)
             let swifty = JSON(data)
             self.chatVM.getAllMessages(json: swifty)
-            
+            self.unreadCount = 0
+            for i in self.chatVM.chatArr {
+                if !i.is_read {
+                    self.unreadCount += 1
+                }
+            }
+            delegate?.fetchMessage(unreadCount: self.unreadCount)
         }
     }
     
@@ -87,6 +95,7 @@ class SocketIOHandler {
     
     func fetchPreviousMessage(_ senderId: String, _ receiverId: String) {
         let data: [String: Any] = ["senderId": senderId, "receiverId": receiverId]
+        print(data)
         socket.emit("fetchPreviousMessages", data)
     }
     
@@ -108,4 +117,5 @@ class SocketIOHandler {
 protocol SocketIOHandlerDelegate: AnyObject {
     func didReceiveMessage()
     func updatePatientList()
+    func fetchMessage(unreadCount: Int)
 }
