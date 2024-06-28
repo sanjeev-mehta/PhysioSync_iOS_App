@@ -18,6 +18,7 @@ class SocketIOHandler {
     let chatVM = ChatViewModel.shareInstance
     var unreadCount = 0
     var delegate: SocketIOHandlerDelegate?
+    var currentUserId = ""
     
     init(url: String) {
         self.manager = SocketManager(socketURL: URL(string: url)!, config: [.log(true), .compress])
@@ -36,8 +37,14 @@ class SocketIOHandler {
     private func addHandlers() {
         socket.on(clientEvent: .connect) { [weak self] data, ack in
             print("Socket connected")
+            guard let self = self else { return }
             // Example event emission
-            // self?.socket.emit("new-user-joined", "123457")
+            if UserDefaults.standard.getPatientLoginId() != "" {
+                self.currentUserId = UserDefaults.standard.getPatientLoginId()
+            } else {
+                self.currentUserId = UserDefaults.standard.getTherapistId()
+            }
+            self.socket.emit("register", self.currentUserId)
         }
         
         socket.on(clientEvent: .disconnect) { data, ack in
@@ -56,6 +63,8 @@ class SocketIOHandler {
                 self?.messageID.append(messageId)
                 print("Received message from \(sender): \(message) \(messageId)")
             }
+            let swifty = JSON(data)
+            self?.delegate?.didReceiveMessage()
         }
         
         socket.on("user-joined") { data, ack in
@@ -76,13 +85,14 @@ class SocketIOHandler {
         }
         
         socket.on("previousMessages") { [self] data, ack in
-            print(data)
             let swifty = JSON(data)
             self.chatVM.getAllMessages(json: swifty)
             self.unreadCount = 0
             for i in self.chatVM.chatArr {
-                if !i.is_read {
-                    self.unreadCount += 1
+                if i.receiver_id == UserDefaults.standard.getPatientLoginId() {
+                    if !i.is_read {
+                        self.unreadCount += 1
+                    }
                 }
             }
             delegate?.fetchMessage(unreadCount: self.unreadCount)
@@ -95,7 +105,6 @@ class SocketIOHandler {
     
     func fetchPreviousMessage(_ senderId: String, _ receiverId: String) {
         let data: [String: Any] = ["senderId": senderId, "receiverId": receiverId]
-        print(data)
         socket.emit("fetchPreviousMessages", data)
     }
     

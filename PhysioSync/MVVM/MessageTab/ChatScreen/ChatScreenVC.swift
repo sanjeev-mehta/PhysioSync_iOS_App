@@ -38,11 +38,22 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             self.recieverId = UserDefaults.standard.getTherapistId()
             self.backBtn.isHidden = true
             self.backImgVW.isHidden = true
+            chatVM.currentUser = currentUserId
+            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+                PatientHomeVC.socketHandler.fetchPreviousMessage(self.currentUserId, self.recieverId)
+            }
+            chatVM.readMessage(isPatienSide: true)
         } else {
             self.currentUserId = UserDefaults.standard.getTherapistId()
+            chatVM.currentUser = currentUserId
             self.nameLbl.text = name
             self.profileImg.setImage(with: profileImgLink)
+            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+                TherapistHomeVC.socketHandler.fetchPreviousMessage(self.currentUserId, self.recieverId)
+            }
+            chatVM.readMessage(isPatienSide: false)
         }
+        
     }
     
     func sendMessage() {
@@ -65,6 +76,7 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         } else {
             TherapistHomeVC.socketHandler.sendMessage(userId: currentUserId, receiverId: recieverId, message: messageTf.text!, isMedia: false)
         }
+        messageTf.text = ""
         
     }
     
@@ -161,11 +173,11 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
 
 extension ChatScreenVC: ChatViewModelDelegate {
     func didReceiveMessages() {
-        self.tableView.reloadData()
-        self.tableView.scrollToRow(at: IndexPath(row: chatVM.chatArr.count - 1, section: 0), at: .bottom, animated: false)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.tableView.scrollToRow(at: IndexPath(row: self.chatVM.chatArr.count - 1, section: 0), at: .bottom, animated: false)
+        }
     }
-    
-    
 }
 
 extension Date {
@@ -173,4 +185,20 @@ extension Date {
         let formatter = ISO8601DateFormatter()
         return formatter.string(from: self)
     }
+}
+
+extension ChatScreenVC: SocketIOHandlerDelegate {
+    func didReceiveMessage() {
+        
+    }
+    
+    func updatePatientList() {
+        
+    }
+    
+    func fetchMessage(unreadCount: Int) {
+        
+    }
+    
+    
 }

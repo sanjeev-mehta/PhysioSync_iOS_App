@@ -441,6 +441,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backBtn" destination="pOw-M9-3UX" id="6wf-lE-zYi"/>
+                        <outlet property="backImgVW" destination="jKR-hV-e1B" id="G91-WM-DhA"/>
                         <outlet property="messageTf" destination="dds-dL-wdc" id="6RN-tZ-5dP"/>
                         <outlet property="nameLbl" destination="JAe-Pl-qnM" id="0fp-Oi-h6O"/>
                         <outlet property="profileImg" destination="lyo-nN-KH4" id="fkq-lw-AhU"/>
