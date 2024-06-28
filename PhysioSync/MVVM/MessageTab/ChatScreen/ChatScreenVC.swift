@@ -30,7 +30,7 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         tableView.delegate = self
         tableView.dataSource = self
         chatVM.delegate = self
-        if UserDefaults.standard.getTherapistName() != "" {
+        if UserDefaults.standard.getPatientLoginId() != "" {
             self.isPatient = true
             self.nameLbl.text = UserDefaults.standard.getTherapistName()
             self.profileImg.setImage(with: UserDefaults.standard.getTherapistProfileImage())
