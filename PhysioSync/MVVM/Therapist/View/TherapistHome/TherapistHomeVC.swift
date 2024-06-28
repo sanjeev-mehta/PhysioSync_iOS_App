@@ -33,6 +33,7 @@ class TherapistHomeVC: UIViewController {
     private var videoPlayer: CustomVideoPlayer?
     private var selectedIndex = 0
     static var socketHandler: SocketIOHandler!
+    private let patientVM = TherapistPatientViewModel.shareInstance
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -56,7 +57,12 @@ class TherapistHomeVC: UIViewController {
             i.layer.cornerRadius = 12
             i.addShadow()
         }
-        
+        patientVM.getPatient(vc: self) { _ in
+            DispatchQueue.main.async {
+                self.patientListTableView.reloadData()
+            }
+            
+        }
     }
     
     func setTableViews() {
@@ -254,7 +260,11 @@ extension TherapistHomeVC: UIScrollViewDelegate {
 extension TherapistHomeVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        if tableView == messageTableView {
+            return 3
+        } else {
+            return patientVM.getCount()
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -265,6 +275,9 @@ extension TherapistHomeVC: UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TherapistHomeTVC", for: indexPath) as! TherapistHomeTVC
             cell.selectionStyle = .none
+            let data = patientVM.filteredPatients[indexPath.row]
+            cell.imgVW.setImage(with: data.profilePhoto)
+            cell.nameLbl.text = data.firstName + " " + data.lastName
             return cell
         }
     }
