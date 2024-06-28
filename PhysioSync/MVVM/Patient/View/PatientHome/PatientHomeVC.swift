@@ -151,7 +151,19 @@ extension PatientHomeVC: UICollectionViewDelegate, UICollectionViewDataSource, U
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // MARK: - Switch Controllers on tap
-        
+        if collectionView == sessionCollectionView {
+            if let cell = collectionView.cellForItem(at: indexPath) {
+                cell.pressedAnimation {
+                    if let vc = self.switchController(.patientExerciseDetail, .patientExercisTab) as? PatientExerciseDetailVC {
+                        vc.data = self.vm.exerciseAssign[indexPath.row]
+                        vc.isHeroEnabled = true
+                        vc.heroModalAnimationType = .zoom
+                        vc.view.heroID = "cell_\(indexPath.section)_\(indexPath.row)"
+                        self.pushOrPresentViewController(vc, false)
+                    }
+                }
+            }
+        }
     }
     
 }
@@ -197,6 +209,7 @@ extension PatientHomeVC: SocketIOHandlerDelegate {
             for i in messageViewConstraints {
                 i.constant = 0
             }
+            messageViewConstraints[2].constant = 24
             self.messageView.isHidden = true
         } else {
             self.messageView.isHidden = false
