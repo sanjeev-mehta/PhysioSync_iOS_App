@@ -175,7 +175,9 @@ extension ChatScreenVC: ChatViewModelDelegate {
     func didReceiveMessages() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
-            self.tableView.scrollToRow(at: IndexPath(row: self.chatVM.chatArr.count - 1, section: 0), at: .bottom, animated: false)
+            if self.chatVM.chatArr.count != 0 {
+                self.tableView.scrollToRow(at: IndexPath(row: self.chatVM.chatArr.count - 1, section: 0), at: .bottom, animated: false)
+            }
         }
     }
 }
