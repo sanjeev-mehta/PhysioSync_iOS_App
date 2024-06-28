@@ -11,8 +11,12 @@ class PatientExerciseDetailVC: UIViewController {
     
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var videoView: UIView!
+    @IBOutlet weak var categoryLbl: UILabel!
+    @IBOutlet weak var videoTitleLbl: UILabel!
+    @IBOutlet weak var videoDescLbl: UITextView!
     
     private var customVideoPlayer: CustomVideoPlayer!
+    var data: Exercise?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,15 +28,19 @@ class PatientExerciseDetailVC: UIViewController {
         self.bottomView.addTopCornerRadius(radius: 16)
         setupCustomVideoPlayer()
         self.isHeroEnabled = true
+        self.setHeader(data?.exerciseIds[0].videoTitle ?? "", isBackBtn: true) {
+            self.dismissOrPopViewController()
+        } rightButtonAction: {}
+
     }
     
     private func setupCustomVideoPlayer() {
         let videoPlayerFrame = CGRect(x: 0, y: 0, width: self.videoView.frame.width, height: self.videoView.frame.height)
         customVideoPlayer = CustomVideoPlayer(frame: videoPlayerFrame)
         self.videoView.addSubview(customVideoPlayer)
-        
+        guard let videoUrl = data?.exerciseIds[0].videoUrl else { return }
         // URL of the video you want to play
-        guard let videoURL = URL(string: "https://www.taxmann.com/emailer/images/CompaniesAct.mp4") else {
+        guard let videoURL = URL(string: videoUrl) else {
             print("Invalid URL")
             return
         }

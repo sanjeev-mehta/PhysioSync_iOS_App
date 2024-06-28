@@ -17,11 +17,17 @@ class PatientHomeVC: UIViewController {
     @IBOutlet weak var sessionPageControl: CHIPageControlJaloro!
     @IBOutlet weak var completedPageControl: CHIPageControlJaloro!
     @IBOutlet weak var messageView: UIView!
+    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var profileImgVW: UIImageView!
+    @IBOutlet weak var messageCountLbl: UILabel!
+    @IBOutlet weak var therapistNameLbl: UILabel!
     
     // MARK: -  Variable
     var cellCount = 4
     var sessionCurrentIndex = 0
     var completedCurrentIndex = 0
+    static var socketHandler: SocketIOHandler!
+    let vm = PatientHomeViewModel.shareInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,16 +35,35 @@ class PatientHomeVC: UIViewController {
         setUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        socketConnecting()
+        nameLbl.text = "Welcome \(UserDefaults.standard.getPatientName()),"
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.callApi()
+    }
+    
     func setUI() {
         sessionCollectionView.delegate = self
         sessionCollectionView.dataSource = self
         completedCollectionView.delegate = self
         completedCollectionView.dataSource = self
-        sessionPageControl.numberOfPages = cellCount
-        sessionPageControl.set(progress: 0, animated: false)
-        completedPageControl.numberOfPages = cellCount
-        completedPageControl.set(progress: 0, animated: false)
         messageView.addShadow()
+    }
+    
+    func callApi() {
+        vm.getAssignExercise(self) { status in
+            if status {
+                self.sessionCollectionView.reloadData()
+                self.completedCollectionView.reloadData()
+                self.sessionPageControl.numberOfPages = self.vm.assignExerciseCount(.assigned)
+                self.sessionPageControl.set(progress: 0, animated: false)
+                self.completedPageControl.numberOfPages = self.vm.assignExerciseCount(.completed)
+                self.completedPageControl.set(progress: 0, animated: false)
+            }
+        }
     }
     
     func hideMessageView() {
@@ -47,6 +72,21 @@ class PatientHomeVC: UIViewController {
         }
         self.messageView.isHidden = true
     }
+    
+    func socketConnecting() {
+        PatientHomeVC.socketHandler = SocketIOHandler(url: API.SocketURL)
+        PatientHomeVC.socketHandler.connect()
+        PatientHomeVC.socketHandler.delegate = self
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
+            if UserDefaults.standard.getTherapistId() != "" {
+                PatientHomeVC.socketHandler.fetchPreviousMessage(UserDefaults.standard.getPatientLoginId(), UserDefaults.standard.getTherapistId())
+            }
+        }
+    }
+    
+    @IBAction func messageBtnActn(_ sender: UIButton) {
+        self.tabBarController?.selectedIndex = 3
+    }
 
 }
 
@@ -54,7 +94,11 @@ class PatientHomeVC: UIViewController {
 
 extension PatientHomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cellCount
+        if collectionView == sessionCollectionView {
+            return vm.assignExerciseCount(.assigned)
+        } else {
+            return vm.assignExerciseCount(.completed)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -64,6 +108,7 @@ extension PatientHomeVC: UICollectionViewDelegate, UICollectionViewDataSource, U
             cell.bottomView.addBottomCornerRadius(radius: 16)
             cell.bgView.layer.cornerRadius = 16
             cell.bgView.addShadow()
+            vm.setUpCell(cell, .assigned, indexPath.item)
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PatientHomeCVC2", for: indexPath) as! PatientHomeCVC
@@ -71,6 +116,7 @@ extension PatientHomeVC: UICollectionViewDelegate, UICollectionViewDataSource, U
             cell.bottomView.addBottomCornerRadius(radius: 16)
             cell.bgView.layer.cornerRadius = 16
             cell.bgView.addShadow()
+            vm.setUpCell(cell, .completed, indexPath.item)
             return cell
         }
        
@@ -135,4 +181,35 @@ extension PatientHomeVC: UIScrollViewDelegate {
             completedCurrentIndex = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
         }
     }
+}
+
+extension PatientHomeVC: SocketIOHandlerDelegate {
+    func didReceiveMessage() {
+        
+    }
+    
+    func updatePatientList() {
+        
+    }
+    
+    func fetchMessage(unreadCount: Int) {
+        if unreadCount == 0 {
+            for i in messageViewConstraints {
+                i.constant = 0
+            }
+            self.messageView.isHidden = true
+        } else {
+            self.messageView.isHidden = false
+            messageViewConstraints[0].constant = 16
+            messageViewConstraints[1].constant = 90
+            messageViewConstraints[2].constant = 24
+            self.messageView.isHidden = false
+            self.therapistNameLbl.text = UserDefaults.standard.getTherapistName()
+            self.profileImgVW.setImage(with: UserDefaults.standard.getTherapistProfileImage())
+            self.messageCountLbl.text = "\(unreadCount) new messages"
+
+        }
+    }
+    
+    
 }
