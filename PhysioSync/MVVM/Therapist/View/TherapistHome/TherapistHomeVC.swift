@@ -24,7 +24,8 @@ class TherapistHomeVC: UIViewController {
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var exerciseNameLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
-
+    @IBOutlet weak var therapistNameLbl: UILabel!
+    
     // MARK: -  Variables
     var cellCount = 6
     var currentIndex = 0
@@ -47,6 +48,7 @@ class TherapistHomeVC: UIViewController {
         self.collectionView.reloadData()
         self.updateCollection()
         socketConnecting()
+        self.therapistNameLbl.text = "Welcome \(UserDefaults.standard.getTherapistName())"
     }
     
     func setUI() {

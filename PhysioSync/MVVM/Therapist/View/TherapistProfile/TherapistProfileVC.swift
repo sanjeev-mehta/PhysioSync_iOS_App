@@ -34,7 +34,7 @@ class TherapistProfileVC: UIViewController {
     
     func callGetPatientProfileApi() {
         let url = API.Endpoints.getPatient + "/\(UserDefaults.standard.getPatientLoginId())"
-        ApiHelper.shareInstance.getApi(view: self, url: url, isHeader: true, isLoader: true) { json, err in
+        ApiHelper.shareInstance.getApi(view: self, url: url, isHeader: false, isLoader: true) { json, err in
             print(json)
             if err != nil {
                 self.displayAlert(title: "Alert!", msg: "something went wrong", ok: "Ok")

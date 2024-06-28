@@ -29,7 +29,6 @@ class ExerciseCategoryVC: UIViewController {
         super.viewDidLoad()
         
         setCollectionView()
-        getExerciseCategoryApi()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,9 +44,7 @@ class ExerciseCategoryVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.isLoading = false
-        }
+        self.getExerciseCategoryApi()
     }
     
     // MARK: -  Call Get Exercise Category Api
@@ -102,9 +99,7 @@ extension ExerciseCategoryVC: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         return CGSize(width: collectionView.bounds.width/2, height: 200)
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -137,9 +132,7 @@ extension ExerciseCategoryVC: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension ExerciseCategoryVC: SelectedExerciseData {
     func selectedExerciseData(data: [SingleExerciseModel]) {
-        print(data)
         delegate?.selectedExerciseData(data: data)
     }
-    
     
 }

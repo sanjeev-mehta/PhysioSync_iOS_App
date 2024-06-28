@@ -14,26 +14,32 @@ class ChatViewModel {
     var chatArr = [ChatModel]()
     var messageID = [String]()
     var delegate: ChatViewModelDelegate?
+    var currentUser = ""
     
     func getAllMessages(json: JSON) {
-        print(json)
         chatArr.removeAll()
         for i in json[0].arrayValue {
             chatArr.append(ChatModel(i))
         }
         print(chatArr)
         for i in chatArr {
-            if !i.is_read {
-                self.messageID.append(i._id)
+            if i.receiver_id == currentUser {
+                if !i.is_read {
+                    self.messageID.append(i._id)
+                }
             }
+            
         }
         chatArr.reverse()
-        print(self.messageID)
         delegate?.didReceiveMessages()
     }
     
-    func readMessage() {
-        TherapistHomeVC.socketHandler.markMessagesAsRead(messageIDs: messageID)
+    func readMessage(isPatienSide: Bool) {
+        if isPatienSide {
+            PatientHomeVC.socketHandler.markMessagesAsRead(messageIDs: messageID)
+        } else {
+            TherapistHomeVC.socketHandler.markMessagesAsRead(messageIDs: messageID)
+        }
     }
 
 }

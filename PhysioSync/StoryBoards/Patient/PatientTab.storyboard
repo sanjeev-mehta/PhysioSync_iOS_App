@@ -1343,7 +1343,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a4D-gi-ekL">
                                 <rect key="frame" x="24" y="669" width="345" height="100"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chattingMedia" translatesAutoresizingMaskIntoConstraints="NO" id="Mqr-Y5-OeS">
+                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chattingMedia" translatesAutoresizingMaskIntoConstraints="NO" id="Mqr-Y5-OeS">
                                         <rect key="frame" x="0.0" y="26" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="48" id="OBu-3V-L0o"/>
@@ -1641,6 +1641,12 @@
                             <outlet property="animation" destination="l7j-xy-O5C" id="9lR-wo-etV"/>
                         </connections>
                     </tabBarItem>
+                    <connections>
+                        <outletCollection property="lbls" destination="2SM-hN-oc6" collectionClass="NSMutableArray" id="0eM-j0-Aok"/>
+                        <outletCollection property="lbls" destination="QpA-7e-gm2" collectionClass="NSMutableArray" id="JVv-4C-gRp"/>
+                        <outletCollection property="lbls" destination="HFG-PE-E82" collectionClass="NSMutableArray" id="xg9-7h-nZH"/>
+                        <outletCollection property="lbls" destination="oKC-5M-z9U" collectionClass="NSMutableArray" id="6Ue-ul-o04"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="04y-xN-iz5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <customObject id="l7j-xy-O5C" customClass="RAMBounceAnimation" customModule="RAMAnimatedTabBarController">
