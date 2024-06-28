@@ -57,6 +57,7 @@ enum Storyboard: String {
 
 enum API {
     //MARK: - Local Host
+    static let SocketURL = "http://localhost:8080/"
     static let baseURL = "http://localhost:8080/"
 //        static let baseURL = "http://15.156.55.188:8080/"
     
@@ -88,6 +89,7 @@ enum API {
         static let getAllPatients = "\(baseURL)get_all_patients"
         static let updatePatients = "\(baseURL)update_patients"
         static let disablePatient = "\(baseURL)disable_patient"
+        static let getPatient = "\(baseURL)get_patient"
         
         //MARK: - Notification
         static let getNotificationTime = "\(baseURL)get_notification_time"
@@ -123,6 +125,18 @@ extension UserDefaults{
         set(value, forKey: UserDefaultsKeys.therapistId.rawValue)
     }
     
+    func setTherapistProfileImage(value: String) {
+        set(value, forKey: UserDefaultsKeys.therapistProfileImage.rawValue)
+    }
+    
+    func setTherapistName(value: String) {
+        set(value, forKey: UserDefaultsKeys.therapistName.rawValue)
+    }
+    
+    func setPatientName(value: String) {
+        set(value, forKey: UserDefaultsKeys.patientName.rawValue)
+    }
+    
     //MARK: Retrieve User Data
     func getUsernameToken() -> String {
         return UserDefaults.standard.value(forKey: UserDefaultsKeys.usernameToken.rawValue) as? String ?? ""
@@ -139,6 +153,18 @@ extension UserDefaults{
     func getTherapistId() -> String {
         return UserDefaults.standard.value(forKey: UserDefaultsKeys.therapistId.rawValue) as? String ?? ""
     }
+    
+    func getTherapistProfileImage() -> String {
+        return UserDefaults.standard.value(forKey: UserDefaultsKeys.therapistProfileImage.rawValue) as? String ?? ""
+    }
+    
+    func getTherapistName() -> String {
+        return UserDefaults.standard.value(forKey: UserDefaultsKeys.therapistName.rawValue) as? String ?? ""
+    }
+    
+    func getPatientName() -> String {
+        return UserDefaults.standard.value(forKey: UserDefaultsKeys.patientName.rawValue) as? String ?? ""
+    }
 }
 
 enum UserDefaultsKeys : String {
@@ -146,4 +172,7 @@ enum UserDefaultsKeys : String {
     case patientLoginId
     case isFirstTimeUser
     case therapistId
+    case therapistProfileImage
+    case therapistName
+    case patientName
 }

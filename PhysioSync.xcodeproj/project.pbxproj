@@ -30,6 +30,8 @@
 		67795B682C2A8AF600271E5C /* TherapistHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67795B672C2A8AF600271E5C /* TherapistHomeModel.swift */; };
 		67795B6B2C2A8B1500271E5C /* TherapistHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67795B6A2C2A8B1500271E5C /* TherapistHomeViewModel.swift */; };
 		677F5F032C15025F006792F2 /* PatientTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 677F5F022C15025F006792F2 /* PatientTab.storyboard */; };
+		6784A1012C2E051C001650CB /* PatientHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6784A1002C2E051C001650CB /* PatientHomeViewModel.swift */; };
+		6784A1042C2E1B08001650CB /* PatientHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6784A1032C2E1B08001650CB /* PatientHome.swift */; };
 		678F33D82BFED67800824A23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F33D72BFED67800824A23 /* AppDelegate.swift */; };
 		678F33DA2BFED67800824A23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F33D92BFED67800824A23 /* SceneDelegate.swift */; };
 		678F33DF2BFED67800824A23 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 678F33DE2BFED67800824A23 /* Base */; };
@@ -158,6 +160,8 @@
 		67795B672C2A8AF600271E5C /* TherapistHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistHomeModel.swift; sourceTree = "<group>"; };
 		67795B6A2C2A8B1500271E5C /* TherapistHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistHomeViewModel.swift; sourceTree = "<group>"; };
 		677F5F022C15025F006792F2 /* PatientTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PatientTab.storyboard; sourceTree = "<group>"; };
+		6784A1002C2E051C001650CB /* PatientHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientHomeViewModel.swift; sourceTree = "<group>"; };
+		6784A1032C2E1B08001650CB /* PatientHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientHome.swift; sourceTree = "<group>"; };
 		678F33D42BFED67800824A23 /* PhysioSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhysioSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		678F33D72BFED67800824A23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		678F33D92BFED67800824A23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -336,6 +340,22 @@
 			path = TherapistHome;
 			sourceTree = "<group>";
 		};
+		6784A0FF2C2E050B001650CB /* PatientHome */ = {
+			isa = PBXGroup;
+			children = (
+				6784A1002C2E051C001650CB /* PatientHomeViewModel.swift */,
+			);
+			path = PatientHome;
+			sourceTree = "<group>";
+		};
+		6784A1022C2E1AFB001650CB /* PatientHome */ = {
+			isa = PBXGroup;
+			children = (
+				6784A1032C2E1B08001650CB /* PatientHome.swift */,
+			);
+			path = PatientHome;
+			sourceTree = "<group>";
+		};
 		678F33CB2BFED67800824A23 = {
 			isa = PBXGroup;
 			children = (
@@ -394,6 +414,7 @@
 		678F33ED2BFED6D200824A23 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6784A1022C2E1AFB001650CB /* PatientHome */,
 				6794C7A42C25BB5700E3B4F3 /* PatientAuth */,
 			);
 			path = Model;
@@ -402,6 +423,7 @@
 		678F33EE2BFED6DC00824A23 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				6784A0FF2C2E050B001650CB /* PatientHome */,
 				67E887FE2C24D51100948C5A /* PatientAuth */,
 			);
 			path = ViewModel;
@@ -1175,6 +1197,7 @@
 				678F34162BFEDC2700824A23 /* IBDesignables.swift in Sources */,
 				67B1616E2C141A740028E3C3 /* VideoPlayer.swift in Sources */,
 				678F33DA2BFED67800824A23 /* SceneDelegate.swift in Sources */,
+				6784A1012C2E051C001650CB /* PatientHomeViewModel.swift in Sources */,
 				67B161672C138E7A0028E3C3 /* PatientExerciseTabVC.swift in Sources */,
 				678F341B2BFEDC3700824A23 /* NetworkingClass.swift in Sources */,
 				F979EC322C18DE760006100B /* ExerciseCategoryVC.swift in Sources */,
@@ -1188,6 +1211,7 @@
 				67F3DE112C2CD00C00EF856F /* MessageViewModel.swift in Sources */,
 				E81033162C23C94100F4FFDB /* TherapistPatientProfileModel.swift in Sources */,
 				6794C7B72C26840B00E3B4F3 /* ContentView.swift in Sources */,
+				6784A1042C2E1B08001650CB /* PatientHome.swift in Sources */,
 				67D531352C1D3DA500404E66 /* PatientHomeVC.swift in Sources */,
 				E89CB9B42C1796AB00A8A305 /* ChatScreenVC.swift in Sources */,
 				67795B6B2C2A8B1500271E5C /* TherapistHomeViewModel.swift in Sources */,

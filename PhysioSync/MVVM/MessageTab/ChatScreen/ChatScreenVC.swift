@@ -14,33 +14,45 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var messageTf: UITextField!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var profileImg: UIImageView!
+    @IBOutlet weak var backBtn: UIButton!
+    @IBOutlet weak var backImgVW: UIImageView!
     
     // MARK: - variables
     let chatVM = ChatViewModel.shareInstance
     var recieverId = ""
     var name = ""
     var profileImgLink = ""
-    let therapistId = UserDefaults.standard.getTherapistId()
-
+    var currentUserId = ""
+    var isPatient = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
         chatVM.delegate = self
-        self.nameLbl.text = name
-        self.profileImg.setImage(with: profileImgLink)
+        if UserDefaults.standard.getTherapistName() != "" {
+            self.isPatient = true
+            self.nameLbl.text = UserDefaults.standard.getTherapistName()
+            self.profileImg.setImage(with: UserDefaults.standard.getTherapistProfileImage())
+            self.currentUserId = UserDefaults.standard.getPatientLoginId()
+            self.recieverId = UserDefaults.standard.getTherapistId()
+            self.backBtn.isHidden = true
+            self.backImgVW.isHidden = true
+        } else {
+            self.currentUserId = UserDefaults.standard.getTherapistId()
+            self.nameLbl.text = name
+            self.profileImg.setImage(with: profileImgLink)
+        }
     }
     
     func sendMessage() {
         let newMessage = ChatModel(
-            _id: (JSON(rawValue: UUID().uuidString) ?? "").rawValue as! String, // Temporary ID
+            _id: (JSON(rawValue: UUID().uuidString) ?? "").rawValue as! String,
             createdAt: Date().iso8601String,
             is_read: false,
             message_text:  messageTf.text!,
             receiver_id: recieverId,
-            sender_id: therapistId,
+            sender_id: currentUserId,
             updatedAt: Date().iso8601String,
             is_media: false
         )
@@ -48,7 +60,12 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         // Append the new message to the local array
         chatVM.chatArr.append(newMessage)
         tableView.reloadData()
-        TherapistHomeVC.socketHandler.sendMessage(userId: therapistId, receiverId: recieverId, message: messageTf.text!, isMedia: false)
+        if isPatient {
+            PatientHomeVC.socketHandler.sendMessage(userId: currentUserId, receiverId: recieverId, message: messageTf.text!, isMedia: false)
+        } else {
+            TherapistHomeVC.socketHandler.sendMessage(userId: currentUserId, receiverId: recieverId, message: messageTf.text!, isMedia: false)
+        }
+        
     }
     
     // MARK: - Buttons Action
@@ -73,13 +90,12 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let data = chatVM.chatArr[indexPath.row]
-        if data.sender_id == therapistId {
+        if data.sender_id == currentUserId {
             
             if data.is_media {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RightVideoChatTVC", for: indexPath) as! RightVideoChatTVC
                 cell.selectionStyle = .none
                 self.setCornerRadius(radius: 16, view: cell.bgView, isLeftCell: false)
-                cell.bgView.backgroundColor = UIColor.black
                 cell.dateLbl.textColor = UIColor.white
                 cell.imgView.image = UIImage(named: data.media_link)
                 cell.dateLbl.text = data.time
@@ -91,7 +107,6 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RightChatTVC", for: indexPath) as! RightChatTVC
                 cell.messageLbl.text = data.message_text
                 self.setCornerRadius(radius: 16, view: cell.bgView, isLeftCell: false)
-                cell.bgView.backgroundColor = UIColor.black
                 cell.messageLbl.textColor = UIColor.white
                 cell.dateLbl.textColor = UIColor.white
                 cell.selectionStyle = .none
