@@ -39,6 +39,11 @@ class MessageTabVC: UIViewController {
             vc.recieverId = senderId
             vc.name = name
             vc.profileImgLink = link
+            if UserDefaults.standard.getUsernameToken() != "" {
+                vc.isPatient = false
+            } else {
+                vc.isPatient = true
+            }
             self.pushOrPresentViewController(vc, true)
         }
     }

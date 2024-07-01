@@ -36,6 +36,7 @@ class MessageViewModel {
                 cell.msgLbl.font = UIFont(name: "Outfit-Regular", size: 14.0)!
             } else {
                 cell.badgeLbl.text = "\(data.unreadCount)"
+                cell.badgeLbl.isHidden = false
                 cell.msgLbl.font = UIFont(name: "Outfit-Bold", size: 14.0)!
             }
            

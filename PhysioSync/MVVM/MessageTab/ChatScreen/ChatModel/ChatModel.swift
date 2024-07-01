@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftyJSON
+import AVFoundation
 
 class ChatModel {
     
@@ -22,6 +23,8 @@ class ChatModel {
     var is_media = false
     var is_video = false
     var time = ""
+    var progress: Float = 0.0
+    var thumbnailImg: UIImage?
     
     init(_ json: JSON) {
         self._id = json["_id"].stringValue
@@ -32,9 +35,24 @@ class ChatModel {
         self.sender_id = json["sender_id"].stringValue
         self.updatedAt = json["updatedAt"].stringValue
         self.time = getTime(dateString: self.createdAt)
+        self.media_link = json["media_link"].stringValue
+        self.is_media = json["is_media"].boolValue
+        self.is_video = json["is_video"].boolValue
+        self.progress = 1.0
+        
+        if is_video {
+            self.getThumbnailImageFromVideoUrl(url: URL(string: media_link)!, completion: { image in
+                if let img = image {
+                    print("Video Generated Image", self.media_link)
+                    self.thumbnailImg = image!
+                } else {
+                    print("IMGGGG ERROR")
+                }
+            })
+        }
     }
     
-    init(__v: Int = 0, _id: String = "", createdAt: String = "", is_read: Bool = false, message_text: String = "", receiver_id: String = "", sender_id: String = "", updatedAt: String = "", media_link: String = "", is_media: Bool = false, is_video: Bool = false, time: String = "") {
+    init(__v: Int = 0, _id: String = "", createdAt: String = "", is_read: Bool = false, message_text: String = "", receiver_id: String = "", sender_id: String = "", updatedAt: String = "", media_link: String = "", is_media: Bool = false, is_video: Bool = false, time: String = "", progess: Float = 0.0) {
         self.__v = __v
         self._id = _id
         self.createdAt = createdAt
@@ -47,6 +65,7 @@ class ChatModel {
         self.is_media = is_media
         self.is_video = is_video
         self.time = time
+        self.progress = progess
     }
     
     func getTime(dateString: String) -> String {
@@ -66,5 +85,25 @@ class ChatModel {
         }
     }
     
+    func getThumbnailImageFromVideoUrl(url: URL, completion: @escaping ((_ image: UIImage?)->Void)) {
+        DispatchQueue.global().async { //1
+            let asset = AVAsset(url: url) //2
+            let avAssetImageGenerator = AVAssetImageGenerator(asset: asset) //3
+            avAssetImageGenerator.appliesPreferredTrackTransform = true //4
+            let thumnailTime = CMTimeMake(value: 2, timescale: 1) //5
+            do {
+                let cgThumbImage = try avAssetImageGenerator.copyCGImage(at: thumnailTime, actualTime: nil) //6
+                let thumbNailImage = UIImage(cgImage: cgThumbImage) //7
+                DispatchQueue.main.async { //8
+                    completion(thumbNailImage) //9
+                }
+            } catch {
+                print(error.localizedDescription) //10
+                DispatchQueue.main.async {
+                    completion(nil) //11
+                }
+            }
+        }
+    }
 }
 
