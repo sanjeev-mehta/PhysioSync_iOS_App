@@ -23,7 +23,7 @@ class TherapistProfileVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if UserDefaults.standard.getPatientLoginId() != "" {
+        if UserDefaults.standard.getUsernameToken() == "" {
             callGetPatientProfileApi()
         } else {
             profileImgVW.setImage(with: UserDefaults.standard.getTherapistProfileImage())
@@ -53,7 +53,7 @@ class TherapistProfileVC: UIViewController {
     }
     
     @IBAction func editProfileBtnActn(_ sender: UIButton) {
-        if UserDefaults.standard.getPatientLoginId() != "" {
+         if UserDefaults.standard.getUsernameToken() == "" {
             if let vc = self.switchController(.therapistPatientStep1VC, .therapistPatientProfile) as? TherapistPatientStep1VC {
                 vc.isEdit = true
                 vc.model = patient

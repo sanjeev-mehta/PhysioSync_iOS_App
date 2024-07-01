@@ -34,6 +34,7 @@ class TherapistHomeVC: UIViewController {
     private var selectedIndex = 0
     static var socketHandler: SocketIOHandler!
     private let patientVM = TherapistPatientViewModel.shareInstance
+    private let messageVM = MessageViewModel.shareInstance
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -50,6 +51,11 @@ class TherapistHomeVC: UIViewController {
         self.updateCollection()
         socketConnecting()
         self.therapistNameLbl.text = "Welcome \(UserDefaults.standard.getTherapistName())"
+        patientVM.getPatient(vc: self) { _ in
+            DispatchQueue.main.async {
+                self.patientListTableView.reloadData()
+            }
+        }
     }
     
     func setUI() {
@@ -121,11 +127,13 @@ class TherapistHomeVC: UIViewController {
     }
     
     func socketConnecting() {
-        TherapistHomeVC.socketHandler = SocketIOHandler(url: "http://localhost:8080")
+        TherapistHomeVC.socketHandler = SocketIOHandler(url: API.SocketURL)
         TherapistHomeVC.socketHandler.connect()
+        TherapistHomeVC.socketHandler.delegate = self
         Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false) { _ in
-            if UserDefaults.standard.getTherapistId() != "" {
+            if UserDefaults.standard.getUsernameToken() != "" {
                 TherapistHomeVC.socketHandler.fetchAllPatient(id: UserDefaults.standard.getTherapistId())
+                self.messageTableView.reloadData()
             }
         }
     }
@@ -261,7 +269,7 @@ extension TherapistHomeVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == messageTableView {
-            return 3
+            return messageVM.getUserCount()
         } else {
             return patientVM.getCount()
         }
@@ -271,6 +279,16 @@ extension TherapistHomeVC: UITableViewDelegate, UITableViewDataSource {
         if tableView == messageTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! MessageTVC
             cell.selectionStyle = .none
+            let data = messageVM.model[indexPath.row]
+            cell.profileImgView.setImage(with: data.patient?.profilePhoto)
+            cell.nameLbl.text = data.patient!.firstName + "" + data.patient!.lastName
+            cell.msgLbl.text = data.message
+            if data.unreadCount != 0 {
+                cell.badgeLbl.isHidden = false
+                cell.badgeLbl.text = "\(data.unreadCount)"
+            } else {
+                cell.badgeLbl.isHidden = true
+            }
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TherapistHomeTVC", for: indexPath) as! TherapistHomeTVC
@@ -285,4 +303,20 @@ extension TherapistHomeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
+}
+
+extension TherapistHomeVC : SocketIOHandlerDelegate {
+    func didReceiveMessage() {
+        
+    }
+    
+    func updatePatientList() {
+        self.messageTableView.reloadData()
+    }
+    
+    func fetchMessage(unreadCount: Int) {
+        
+    }
+    
+    
 }

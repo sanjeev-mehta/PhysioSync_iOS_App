@@ -34,7 +34,6 @@ class TherapistPatientProfileVC: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        callApi()
         for i in shadowViews {
             i.addShadow()
         }
@@ -42,6 +41,7 @@ class TherapistPatientProfileVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        callApi()
         self.setHeader("Therapist Profile", isRightBtn: false) {
             self.dismissOrPopViewController()
         } rightButtonAction: {
