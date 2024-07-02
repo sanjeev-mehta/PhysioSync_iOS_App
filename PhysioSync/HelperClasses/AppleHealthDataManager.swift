@@ -16,6 +16,7 @@ public class HealthKitManager: ObservableObject {
     @Published var stepCountData: [(weekday: Date, steps: Int)] = []
 
     private let healthStore = HKHealthStore()
+    static var ishealthkitPermissionPermitted = false
 
     init() {
         requestAuthorization()
@@ -39,6 +40,7 @@ public class HealthKitManager: ObservableObject {
                 self.fetchHeartRateData()
                 self.fetchCalorieData()
                 self.fetchStepCountData()
+                HealthKitManager.ishealthkitPermissionPermitted = true
             } else {
                 if let error = error {
                     print("HealthKit authorization failed. Error: \(error.localizedDescription)")
@@ -291,4 +293,50 @@ struct SleepData: Identifiable {
     let id = UUID()
     let category: String
     let hours: Double
+}
+
+extension HealthKitManager {
+    var formattedCalorieData: [[String: Any]] {
+        return calorieData.map { data in
+            [
+                "day": DateFormatter.localizedString(from: data.date, dateStyle: .short, timeStyle: .none),
+                "values": [data.caloriesBurned]
+            ]
+        }
+    }
+
+    var formattedHeartRateData: [[String: Any]] {
+        return heartRateData.map { data in
+            [
+                "day": DateFormatter.localizedString(from: data.weekday, dateStyle: .short, timeStyle: .none),
+                "bpm_minimum": data.dailyMin,
+                "bpm_maximum": data.dailyMax
+            ]
+        }
+    }
+
+    var formattedSleepData: [[String: Any]] {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let today = dateFormatter.string(from: Date())
+        let sleep = sleepData.reduce(into: [String: Double]()) { (result, data) in
+            result[data.category.lowercased() + "_hours"] = data.hours
+        }
+        return [[
+            "day": today,
+            "awake_hours": sleep["awake_hours"] ?? 0.0,
+            "rem_hours": sleep["rem_hours"] ?? 0.0,
+            "core_hours": sleep["core_hours"] ?? 0.0,
+            "deep_hours": sleep["deep_hours"] ?? 0.0
+        ]]
+    }
+
+    var formattedStepCountData: [[String: Any]] {
+        return stepCountData.map { data in
+            [
+                "day": DateFormatter.localizedString(from: data.weekday, dateStyle: .short, timeStyle: .none),
+                "steps": data.steps
+            ]
+        }
+    }
 }
