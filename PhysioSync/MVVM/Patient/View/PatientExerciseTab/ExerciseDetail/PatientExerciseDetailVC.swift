@@ -20,7 +20,6 @@ class PatientExerciseDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setUI()
     }
     
@@ -29,9 +28,9 @@ class PatientExerciseDetailVC: UIViewController {
         setupCustomVideoPlayer()
         self.isHeroEnabled = true
         self.setHeader(data?.exerciseIds[0].videoTitle ?? "", isBackBtn: true) {
+            self.heroModalAnimationType = .zoomOut
             self.dismissOrPopViewController()
         } rightButtonAction: {}
-
     }
     
     private func setupCustomVideoPlayer() {
@@ -48,9 +47,10 @@ class PatientExerciseDetailVC: UIViewController {
     }
     
     // MARK: -  Buttons Action
-    @IBAction func backBtnActn(_ sender: UIButton) {
-        self.heroModalAnimationType = .zoomOut
-        self.dismissOrPopViewController()
+    
+    @IBAction func startBtnActn(_ sender: UIButton) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ExerciseVC") as! ExerciseVC
+        self.present(vc, animated: true)
     }
     
 }

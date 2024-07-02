@@ -21,7 +21,7 @@ class ChatViewModel {
         for i in json[0].arrayValue {
             chatArr.append(ChatModel(i))
         }
-        print(chatArr)
+        messageID.removeAll()
         for i in chatArr {
             if i.receiver_id == currentUser {
                 if !i.is_read {
@@ -41,9 +41,7 @@ class ChatViewModel {
             TherapistHomeVC.socketHandler.markMessagesAsRead(messageIDs: messageID)
         }
     }
-
 }
-
 
 protocol ChatViewModelDelegate: AnyObject {
     func didReceiveMessages()

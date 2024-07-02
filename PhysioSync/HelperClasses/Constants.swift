@@ -106,6 +106,9 @@ enum API {
         
         //MARK: - Chat
         static let getUserChat = "\(baseURL)/"
+        
+        //MARK: - Watch Data
+        static let watchdata = "\(baseURL)watchdata"
     }
 }
 

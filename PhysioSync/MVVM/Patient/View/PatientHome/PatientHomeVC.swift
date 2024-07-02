@@ -28,11 +28,17 @@ class PatientHomeVC: UIViewController {
     var completedCurrentIndex = 0
     static var socketHandler: SocketIOHandler!
     let vm = PatientHomeViewModel.shareInstance
+    let chatVM = ChatViewModel.shareInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setUI()
+        if UserDefaults.standard.getUsernameToken() != "" {
+            chatVM.currentUser = UserDefaults.standard.getTherapistId()
+        } else {
+            chatVM.currentUser = UserDefaults.standard.getPatientLoginId()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +49,8 @@ class PatientHomeVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         self.callApi()
+        PatientHomeVC.socketHandler.fetchPreviousMessage(UserDefaults.standard.getPatientLoginId(), UserDefaults.standard.getTherapistId())
+        vm.submitWatchData()
     }
     
     func setUI() {
@@ -78,9 +86,7 @@ class PatientHomeVC: UIViewController {
         PatientHomeVC.socketHandler.connect()
         PatientHomeVC.socketHandler.delegate = self
         Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
-            if UserDefaults.standard.getTherapistId() != "" {
-                PatientHomeVC.socketHandler.fetchPreviousMessage(UserDefaults.standard.getPatientLoginId(), UserDefaults.standard.getTherapistId())
-            }
+            PatientHomeVC.socketHandler.fetchPreviousMessage(UserDefaults.standard.getPatientLoginId(), UserDefaults.standard.getTherapistId())
         }
     }
     

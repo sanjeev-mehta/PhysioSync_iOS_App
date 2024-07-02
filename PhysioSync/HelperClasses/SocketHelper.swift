@@ -21,7 +21,7 @@ class SocketIOHandler {
     var currentUserId = ""
     
     init(url: String) {
-        self.manager = SocketManager(socketURL: URL(string: url)!, config: [.log(true), .compress])
+        self.manager = SocketManager(socketURL: URL(string: url)!, config: [.log(false), .compress])
         self.socket = manager.defaultSocket
         addHandlers()
     }
@@ -39,12 +39,12 @@ class SocketIOHandler {
             print("Socket connected")
             guard let self = self else { return }
             // Example event emission
-            if UserDefaults.standard.getPatientLoginId() != "" {
+            if UserDefaults.standard.getUsernameToken() == "" {
                 self.currentUserId = UserDefaults.standard.getPatientLoginId()
             } else {
                 self.currentUserId = UserDefaults.standard.getTherapistId()
             }
-            self.socket.emit("register", self.currentUserId)
+       //     self.socket.emit("register", self.currentUserId)
         }
         
         socket.on(clientEvent: .disconnect) { data, ack in
@@ -52,7 +52,7 @@ class SocketIOHandler {
         }
         
         socket.on(clientEvent: .error) { data, ack in
-            print("Socket error: \(data)", ack)
+//            print("Socket error: \(data)", ack)
         }
         
         socket.on("receive") { [weak self] data, ack in
@@ -68,20 +68,21 @@ class SocketIOHandler {
         }
         
         socket.on("user-joined") { data, ack in
-            print(data)
+          //  print(data)
         }
         
         socket.on("messageReadResponse") { data, ack in
-            
+            print("------ Messages Read")
         }
         
         socket.on("typing") { data, ack in
-            print(data, ack)
+//            print(data, ack)
         }
         
         socket.on("allPatientsWithDetails") { data, ack in
             let swifty = JSON(data)
             self.messageVM.responseParse(json: swifty)
+            self.delegate?.updatePatientList()
         }
         
         socket.on("previousMessages") { [self] data, ack in
@@ -110,6 +111,11 @@ class SocketIOHandler {
     
     func sendMessage(userId: String, receiverId: String, message: String, isMedia: Bool) {
         let data: [String: Any] = ["senderId": userId, "receiverId": receiverId, "message": message, "is_media": isMedia]
+        socket.emit("send", data)
+    }
+    
+    func sendMediaMessage(userId: String, receiverId: String, message: String, isMedia: Bool, media_link: String, is_video: Bool) {
+        let data: [String: Any] = ["senderId": userId, "receiverId": receiverId, "message": message, "is_media": isMedia, "media_link": media_link, "is_video": is_video]
         socket.emit("send", data)
     }
     
