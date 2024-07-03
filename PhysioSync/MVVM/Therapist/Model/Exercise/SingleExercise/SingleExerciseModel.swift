@@ -36,5 +36,6 @@ class SingleExerciseModel {
         therapistId = json["therapist_id"].stringValue
         version = json["__v"].intValue
         video_thumbnail = json["video_thumbnail"].stringValue
+
     }
 }
