@@ -12,8 +12,6 @@ class SingleExerciseModel {
     var videoTitle: String
     var categoryName = [String]()
     var categoryId = [String]()
-    var categoryName: String
-    var categoryId: String
     var description: String
     var id: String
     var videoUrl: String
