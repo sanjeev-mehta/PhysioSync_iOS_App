@@ -12,6 +12,8 @@ class PatientExerciseTabVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    let vm = PatientHomeViewModel.shareInstance
+    
     private var isLoading = true {
         didSet {
             tableView.isUserInteractionEnabled = !isLoading
@@ -27,8 +29,7 @@ class PatientExerciseTabVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-            self.cellCount = 3
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.isLoading = false
         }
     }
@@ -38,21 +39,25 @@ class PatientExerciseTabVC: UIViewController {
 extension PatientExerciseTabVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return cellCount
+        if isLoading {
+            return 3
         } else {
-            return cellCount
+            return vm.assignExerciseCount(.assigned)
         }
+       
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PatientExerciseTabTVC", for: indexPath) as! PatientExerciseTabTVC
             cell.selectionStyle = .none
+            if !isLoading {
+                vm.setUpTableCell(cell, .assigned, indexPath.row)
+            }
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PatientExerciseTabTVC2", for: indexPath) as! PatientExerciseTabTVC2
@@ -80,10 +85,10 @@ extension PatientExerciseTabVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
             cell.pressedAnimation {
-                if let vc = self.switchController(.patientExerciseDetail, .patientExercisTab) {
+                if let vc = self.switchController(.patientExerciseDetail, .patientExercisTab) as? PatientExerciseDetailVC {
+                    vc.data = self.vm.exerciseAssign[indexPath.row]
                     vc.isHeroEnabled = true
                     vc.heroModalAnimationType = .zoom
-                    //            vc.heroModalAnimationType = .slide(direction: .left)
                     vc.view.heroID = "cell_\(indexPath.section)_\(indexPath.row)"
                     self.pushOrPresentViewController(vc, false)
                 }

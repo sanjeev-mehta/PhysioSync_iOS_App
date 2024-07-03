@@ -48,4 +48,17 @@ class ExerciseCategoryViewModel {
             }
         }
     }
+    
+    func getExerciseDetail(vc: UIViewController, completion: @escaping (Bool) -> ()) {
+        let url = API.Endpoints.getAllcategories
+        apiHelper.getApi(view: vc, url: url, isHeader: true, isLoader: true) { json, err in
+            if let error = err {
+                completion(false)
+            } else {
+                let categories = json["data"].arrayValue.map { ExerciseCatergoryModel($0) }
+                self.categoriesModel = categories
+                completion(true)
+            }
+        }
+    }
 }

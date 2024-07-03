@@ -65,19 +65,21 @@ class PatientVerifyEmailData: Codable {
 }
 
 class PatientLoginModel {
-
+    
+    var data: PatientUserData?
+    var token: Token?
     var status = 0
-    var user: PatientUserData?
-    var success = false
     var message = ""
-
+    var success = false
+    
     init(_ json: JSON) {
+        data = PatientUserData(json["data"])
+//        token = Token(json["token"])
         status = json["status"].intValue
-        user = PatientUserData(json["user"])
-        success = json["success"].boolValue
         message = json["message"].stringValue
+        success = json["success"].boolValue
     }
-
+    
 }
 
 class PatientUserData {
@@ -91,7 +93,6 @@ class PatientUserData {
     var profilePhoto = ""
     var salt = ""
     var patientEmail = ""
-    var therapistId = ""
     var injuryDetails = ""
     var medicalHistory = ""
     var updatedAt = ""
@@ -101,7 +102,8 @@ class PatientUserData {
     var gender = ""
     var Id = ""
     var _v = 0
-
+    var therapist: TherapistId?
+    
     init(_ json: JSON) {
         exerciseReminderTime = json["exercise_reminder_time"].stringValue
         lastName = json["last_name"].stringValue
@@ -112,7 +114,6 @@ class PatientUserData {
         profilePhoto = json["profile_photo"].stringValue
         salt = json["salt"].stringValue
         patientEmail = json["patient_email"].stringValue
-        therapistId = json["therapist_Id"].stringValue
         injuryDetails = json["injury_details"].stringValue
         medicalHistory = json["medical_history"].stringValue
         updatedAt = json["updated_at"].stringValue
@@ -122,6 +123,36 @@ class PatientUserData {
         gender = json["gender"].stringValue
         Id = json["_id"].stringValue
         _v = json["__v"].intValue
+        therapist = TherapistId(json["therapist_Id"])
     }
+
+}
+
+class TherapistId {
+
+    var therapistName = ""
+    var isAuthenticated = false
+    var clinic: Clinic?
+    var email = ""
+    var _v = 0
+    var authentication: Authentication?
+    var Id = ""
+    var profilePhoto = ""
+    var firebaseUid = ""
+
+    init(_ json: JSON) {
+        therapistName = json["therapist_name"].stringValue
+        isAuthenticated = json["is_authenticated"].boolValue
+        clinic = Clinic(json["clinic"])
+        email = json["email"].stringValue
+        _v = json["__v"].intValue
+        authentication = Authentication(json["authentication"])
+        Id = json["_id"].stringValue
+        profilePhoto = json["profile_photo"].stringValue
+        firebaseUid = json["firebase_uid"].stringValue
+    }
+}
+
+class Token {
 
 }

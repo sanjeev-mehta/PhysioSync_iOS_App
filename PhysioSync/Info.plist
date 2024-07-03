@@ -44,5 +44,9 @@
 	</array>
 	<key>NSHealthShareUsageDescription</key>
 	<string>We use your health data to provide personalized insights, Your privacy is our priority, and your data will only be used to enhance the features of our app.</string>
+    <key>NSCameraUsageDescription</key>
+    <string>We use camere for profile pictures</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>We use microphone to record video in the app</string>
 </dict>
 </plist>
