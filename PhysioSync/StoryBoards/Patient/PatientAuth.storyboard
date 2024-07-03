@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yzv-yN-QP8">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -17,14 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon" translatesAutoresizingMaskIntoConstraints="NO" id="fA2-Pt-kRY">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="500"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="roleBg" translatesAutoresizingMaskIntoConstraints="NO" id="fA2-Pt-kRY">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="547.66666666666663"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IWP-3E-f6G">
-                                <rect key="frame" x="0.0" y="474" width="393" height="378"/>
+                                <rect key="frame" x="0.0" y="467.66666666666674" width="393" height="384.33333333333326"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LbH-sm-DEv">
-                                        <rect key="frame" x="16" y="296" width="361" height="50"/>
+                                        <rect key="frame" x="16" y="302.33333333333331" width="361" height="50"/>
                                         <color key="backgroundColor" name="primary"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="ej3-aB-H6f"/>
@@ -41,31 +41,47 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                 <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="customFontName" value="Outfit-Regular"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="customFontSize">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="nextBtnActn:" destination="yzv-yN-QP8" eventType="touchUpInside" id="NtH-ey-xvQ"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter the email registered with your Physiotherapist" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANV-uD-8gs">
-                                        <rect key="frame" x="16" y="60.666666666666629" width="361" height="40.666666666666657"/>
+                                        <rect key="frame" x="16" y="66.999999999999943" width="361" height="40.666666666666657"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40.666666666666657" id="gNR-on-iO2"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.3803921569" green="0.3921568627" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="customFontName" value="Outfit-Regular"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="customFontSize">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qNQ-p9-jIe">
-                                        <rect key="frame" x="16" y="24" width="361" height="28.666666666666671"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registered Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qNQ-p9-jIe">
+                                        <rect key="frame" x="16" y="24" width="361" height="35"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="28.666666666666671" id="hNJ-8L-J8u"/>
+                                            <constraint firstAttribute="height" constant="35" id="hNJ-8L-J8u"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="customFontName" value="Outfit-Medium"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="customFontSize">
+                                                <real key="value" value="32"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="U1x-fg-BDE">
-                                        <rect key="frame" x="16" y="117.33333333333336" width="361" height="162.66666666666663"/>
+                                        <rect key="frame" x="16" y="123.66666666666667" width="361" height="162.66666666666663"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PzV-vn-2Ub">
                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="77.333333333333329"/>
@@ -89,6 +105,10 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                                         <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="customFontName" value="Outfit-Light"/>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="customFontSize">
+                                                                        <real key="value" value="14"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
@@ -118,6 +138,12 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="customFontName" value="Outfit-Regular"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="customFontSize">
+                                                                <real key="value" value="16"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </label>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -154,6 +180,10 @@
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                                         <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="customFontName" value="Outfit-Light"/>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="customFontSize">
+                                                                        <real key="value" value="14"/>
+                                                                    </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                         </subviews>
@@ -182,6 +212,12 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="customFontName" value="Outfit-Regular"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="customFontSize">
+                                                                <real key="value" value="16"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </label>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -231,7 +267,7 @@
                         <constraints>
                             <constraint firstItem="XMV-Ic-PzL" firstAttribute="top" secondItem="Kh3-62-YGl" secondAttribute="top" id="GNk-Vf-EBn"/>
                             <constraint firstItem="fA2-Pt-kRY" firstAttribute="trailing" secondItem="Kh3-62-YGl" secondAttribute="trailing" id="L5N-UQ-qaN"/>
-                            <constraint firstItem="IWP-3E-f6G" firstAttribute="top" secondItem="fA2-Pt-kRY" secondAttribute="bottom" constant="-26" id="L6U-IG-kWH"/>
+                            <constraint firstItem="IWP-3E-f6G" firstAttribute="top" secondItem="fA2-Pt-kRY" secondAttribute="bottom" constant="-80" id="L6U-IG-kWH"/>
                             <constraint firstItem="fA2-Pt-kRY" firstAttribute="top" secondItem="MP2-FE-JK6" secondAttribute="top" id="PJC-fq-vK4"/>
                             <constraint firstItem="IWP-3E-f6G" firstAttribute="trailing" secondItem="Kh3-62-YGl" secondAttribute="trailing" id="S8R-Zp-bdh"/>
                             <constraint firstItem="IWP-3E-f6G" firstAttribute="leading" secondItem="Kh3-62-YGl" secondAttribute="leading" id="Y6r-uG-plM"/>
@@ -242,9 +278,13 @@
                     </view>
                     <connections>
                         <outlet property="bottomView" destination="IWP-3E-f6G" id="qAI-NR-TYB"/>
+                        <outlet property="descLbl" destination="ANV-uD-8gs" id="EjW-GT-Jbh"/>
                         <outlet property="emailTf" destination="HAZ-3a-zeA" id="JMb-cG-ytD"/>
                         <outlet property="passwordTf" destination="sQq-h1-BZi" id="bmb-jT-UOU"/>
                         <outlet property="passwordView" destination="CmT-8J-am7" id="GgM-X4-X1w"/>
+                        <outlet property="titleLbl" destination="qNQ-p9-jIe" id="jQu-b9-zBU"/>
+                        <outletCollection property="labelHeight" destination="gNR-on-iO2" collectionClass="NSMutableArray" id="Xad-XU-WWX"/>
+                        <outletCollection property="labelHeight" destination="yd6-Vr-d0Q" collectionClass="NSMutableArray" id="zwr-A9-KMd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S9I-bF-Wjb" sceneMemberID="firstResponder"/>
@@ -488,6 +528,7 @@
     <resources>
         <image name="Icon" width="393" height="500"/>
         <image name="backArrow" width="17.666666030883789" height="17.666666030883789"/>
+        <image name="roleBg" width="393" height="737.33331298828125"/>
         <namedColor name="borderClr">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -495,7 +536,7 @@
             <color red="0.12156862745098039" green="0.34901960784313724" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary-subtle">
-            <color red="0.96862745098039216" green="0.96078431372549022" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.92156862745098034" green="0.94117647058823528" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

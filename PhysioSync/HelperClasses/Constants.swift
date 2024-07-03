@@ -12,7 +12,9 @@ struct Colors {
     static let primaryClr = UIColor(named: "primary")!
     static let primarySubtleClr = UIColor(named: "primary-subtle")!
     static let borderClr = UIColor(named: "borderClr")!
-    
+    static let disableBtnBg = UIColor(named: "disbaledBtnBg")!
+    static let disableBtnClr = UIColor(named: "disabledBtnClr")!
+
 }
 
 enum Storyboard: String {
