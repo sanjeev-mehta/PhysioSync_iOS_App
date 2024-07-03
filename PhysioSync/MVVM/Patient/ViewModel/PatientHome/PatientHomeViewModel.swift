@@ -14,6 +14,8 @@ class PatientHomeViewModel {
     var model: PatientHomeModel?
     var exerciseAssign = [Exercise]()
     var completedExercise = [Exercise]()
+    private let healthKitManager = HealthKitManager()
+    var timer: Timer?
     
     func getAssignExercise(_ vc: UIViewController, completion: @escaping(Bool) -> ()) {
         let userId = UserDefaults.standard.getPatientLoginId()
@@ -41,6 +43,32 @@ class PatientHomeViewModel {
                     }
                 } else {
                     vc.displayAlert(title: "Alert!", msg: "Something went wrong", ok: "Ok")
+                }
+            }
+        }
+    }
+    
+    func submitWatchData() {
+        let url = API.Endpoints.watchdata
+        let userId = UserDefaults.standard.getPatientLoginId()
+         timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { [self] _ in
+            if !HealthKitManager.ishealthkitPermissionPermitted {
+                return
+            }
+            
+            let params: [String: Any] = [
+                "patient_id": userId,
+                "calories": healthKitManager.formattedCalorieData,
+                "heartRate": healthKitManager.formattedHeartRateData,
+                "sleep": healthKitManager.formattedSleepData,
+                "stepCount": healthKitManager.formattedStepCountData
+            ]
+             apiHelper.hitApiwithoutloader(parm: params, url: url) { [self] json, err in
+                if err != nil {
+                    print(err?.localizedDescription)
+                } else {
+                    timer?.invalidate()
+                    print("Submitted Apple Watch Data")
                 }
             }
         }

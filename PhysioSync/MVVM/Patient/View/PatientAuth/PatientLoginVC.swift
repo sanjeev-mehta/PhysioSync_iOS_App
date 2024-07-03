@@ -14,6 +14,9 @@ class PatientLoginVC: UIViewController {
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var emailTf: UITextField!
     @IBOutlet weak var passwordTf: UITextField!
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet var labelHeight: [NSLayoutConstraint]!
+    @IBOutlet weak var descLbl: UILabel!
     
     // MARK: -  Variables
     private var isVerifiedEmail = false
@@ -29,6 +32,10 @@ class PatientLoginVC: UIViewController {
     func setUI() {
         passwordView.isHidden = true
         bottomView.addTopCornerRadius(radius: 24)
+        let myString = "Registered Email"
+        let attributedString = NSMutableAttributedString(string: myString)
+        attributedString.setColor(forText: ["Registered": Colors.borderClr, "Email": Colors.primaryClr])
+        titleLbl.attributedText = attributedString
     }
     
     // MARK: - Call Verify Email
@@ -40,6 +47,10 @@ class PatientLoginVC: UIViewController {
                 DispatchQueue.main.async {
                     UIView.animate(withDuration: 0.4) {
                         self.passwordView.isHidden = false
+                        self.titleLbl.text = "Login"
+                        for i in self.labelHeight {
+                            i.constant = 0
+                        }
                     }
                 }
                 break

@@ -13,22 +13,16 @@ class ApiHelper {
 
     static let shareInstance = ApiHelper()
     
-    func hitApiwithoutloader(view:UIViewController,parm:[String:Any],url:String, completion: @escaping(JSON,Error?) -> ()){
-
+    func hitApiwithoutloader(parm:[String:Any],url:String, completion: @escaping(JSON,Error?) -> ()){
       
         if !Reachability.isConnectedToNetwork(){
-           
-            view.displayAlert(title: "Alert!", msg: "No internet connection.", ok: "Ok")
-            
             return
         }
         
-        
         var headers:HTTPHeaders? = nil
-        headers = ["Authorization": "Bearer \(UserDefaults.standard.getUsernameToken() ?? "")"]
+        headers = ["Authorization": "Bearer \(UserDefaults.standard.getUsernameToken())"]
         
         guard let url = URL(string: url) else{return}
-        view.debugPrint("\(url)")
         
         Alamofire.request(url,method: .post, parameters: parm,encoding: URLEncoding.default,headers: headers).validate(statusCode: 200..<500).responseJSON {response in
                  
@@ -70,7 +64,7 @@ class ApiHelper {
         view.debugPrint("\(url)")
         var headers:HTTPHeaders? = nil
         if isHeader {
-            headers = ["Authorization": "Bearer \(UserDefaults.standard.getUsernameToken() ?? "")"]
+            headers = ["Authorization": "Bearer \(UserDefaults.standard.getUsernameToken())"]
         }
 
         Alamofire.request(url, method: method, parameters: parm,encoding: JSONEncoding(), headers:headers).responseJSON { response in
@@ -113,7 +107,7 @@ class ApiHelper {
         view.debugPrint("\(url)")
         var header = [String: String]()
         if isHeader {
-            header = ["Authorization": "Bearer \(UserDefaults.standard.getUsernameToken() ?? "")"]
+            header = ["Authorization": "Bearer \(UserDefaults.standard.getUsernameToken())"]
         }
 
         Alamofire.request(url, method: .get,encoding: URLEncoding.queryString, headers: header).responseJSON { response in

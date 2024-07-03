@@ -34,6 +34,7 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     var videoPicker: ImagePickerHelper?
     private var videoPlayer: CustomVideoPlayer?
     let awsHelper = AWSHelper.shared
+    private var isScrollFirstTime = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -305,7 +306,11 @@ extension ChatScreenVC: ChatViewModelDelegate {
         DispatchQueue.main.async {
             self.tableView.reloadData()
             if self.chatVM.chatArr.count != 0 {
-                self.tableView.scrollToRow(at: IndexPath(row: self.chatVM.chatArr.count - 1, section: 0), at: .bottom, animated: false)
+                if self.isScrollFirstTime == 0 {
+                    self.isScrollFirstTime = 1
+                    self.tableView.scrollToRow(at: IndexPath(row: self.chatVM.chatArr.count - 1, section: 0), at: .bottom, animated: false)
+                }
+               
             }
         }
     }
