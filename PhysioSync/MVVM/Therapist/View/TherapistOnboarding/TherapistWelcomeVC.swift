@@ -11,6 +11,8 @@ class TherapistWelcomeVC: UIViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var loginLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,15 @@ class TherapistWelcomeVC: UIViewController {
     // MARK: - Set UI
     func setUI() {
         bottomView.addTopCornerRadius(radius: 24)
+        let titleString = "Welcome to PhysioSync,"
+        let attributedString = NSMutableAttributedString(string: titleString)
+        attributedString.setColor(forText: ["Welcome to ": Colors.borderClr, "PhysioSync,": Colors.primaryClr])
+        titleLbl.attributedText = attributedString
+        
+        let loginString = "Already have an account? Log in"
+        let attributedStr = NSMutableAttributedString(string: loginString)
+        attributedStr.setColor(forText: ["Already have an account?": Colors.borderClr, "Log in": Colors.primaryClr])
+        loginLbl.attributedText = attributedStr
     }
 
     // MARK: - Buttons Action
@@ -29,9 +40,15 @@ class TherapistWelcomeVC: UIViewController {
     
     @IBAction func loginBtnActn(_ sender: UIButton) {
         sender.pressedAnimation {
-            if let vc = self.switchController(.therapistLoginVC, .therapistAuth) {
+            if let vc = self.switchController(.therapistOnboardingID, .therapistOnboarding) {
                 self.pushOrPresentViewController(vc, true)
             }
+        }
+    }
+    
+    @IBAction func signUpBtnActn(_ sender: UIButton) {
+        sender.pressedAnimation {
+            
         }
     }
     

@@ -21,6 +21,7 @@ class TherapistPatientStep3VC: UIViewController {
     var model: Patient?
     var isEdit = false
     var isImageChange = false
+    var isPatientSide = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +58,7 @@ class TherapistPatientStep3VC: UIViewController {
                             self.parms["injury_details"] = self.historyTV.text!
                         }
                         self.parms["profile_photo"] = link
-                        self.vm.updatePatient(vc: self, parm: self.parms) { status in
+                        self.vm.updatePatient(vc: self, parm: self.parms, id: self.model!.Id) { status in
                             if status {
                                 self.popController()
                             }
@@ -69,7 +70,7 @@ class TherapistPatientStep3VC: UIViewController {
                     self.parms["injury_details"] = self.historyTV.text!
                 }
                 self.parms["profile_photo"] = model!.profilePhoto
-                self.vm.updatePatient(vc: self, parm: self.parms) { status in
+                self.vm.updatePatient(vc: self, parm: self.parms, id: self.model!.Id) { status in
                     if status {
                         self.popController()
                     }
@@ -93,15 +94,22 @@ class TherapistPatientStep3VC: UIViewController {
     }
     
     func popController() {
-        if let viewControllers = navigationController?.viewControllers, viewControllers.count > 4 {
-            // Get the view controller at index 4
-            let targetViewController = viewControllers[4]
-            
-            // Pop to the target view controller
-            navigationController?.popToViewController(targetViewController, animated: true)
+        if isPatientSide {
+            if let viewControllers = navigationController?.viewControllers, viewControllers.count > 2 {
+                let targetViewController = viewControllers[2]
+                navigationController?.popToViewController(targetViewController, animated: true)
+            } else {
+                print("Not enough view controllers in the navigation stack.")
+            }
         } else {
-            print("Not enough view controllers in the navigation stack.")
+            if let viewControllers = navigationController?.viewControllers, viewControllers.count > 4 {
+                let targetViewController = viewControllers[4]
+                navigationController?.popToViewController(targetViewController, animated: true)
+            } else {
+                print("Not enough view controllers in the navigation stack.")
+            }
         }
+       
     }
     
     // MARK: -  Buttons Actions

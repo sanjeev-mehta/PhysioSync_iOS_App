@@ -14,12 +14,14 @@ class MessageModel {
     var message = ""
     var isRead = false
     var time = ""
+    var unreadCount = 0
     
     init(_ json: JSON) {
         self.patient = Patient(json)
         self.message = json["latestMessage"]["message_text"].stringValue
         self.isRead = json["latestMessage"]["is_read"].boolValue
         self.time = getTime(dateString: json["latestMessage"]["createdAt"].stringValue)
+        self.unreadCount = json["unreadCount"].intValue
     }
     
     func getTime(dateString: String) -> String {

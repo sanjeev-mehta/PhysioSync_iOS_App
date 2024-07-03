@@ -43,6 +43,10 @@ class SingleExerciseDetailVC: UIViewController {
     
     // MARK: - Methods
     
+    func callGetDetailExercise() {
+        
+    }
+    
     func openPopUpMenu() {
         let configuration = FTConfiguration.shared
         configuration.menuRowHeight = 30
@@ -93,8 +97,8 @@ class SingleExerciseDetailVC: UIViewController {
         collectionView.dataSource = self
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = 5 // Adjust as needed for horizontal spacing
-        layout.minimumLineSpacing = 5 // Adjust as needed for vertical spacing
+        layout.minimumInteritemSpacing = 5
+        layout.minimumLineSpacing = 5
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         collectionView.collectionViewLayout = layout
         collectionView.register(UINib(nibName: "ChipsCVC", bundle: nil), forCellWithReuseIdentifier: "ChipsCVC")

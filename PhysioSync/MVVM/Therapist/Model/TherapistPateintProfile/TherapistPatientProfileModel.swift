@@ -102,6 +102,8 @@ class Patient {
     var _v = 0
     var isActive = false
     var unreadCount = 0
+    var address = ""
+    var phone_no = ""
     
     init(_ json: JSON) {
         Id = json["_id"].stringValue
@@ -123,6 +125,8 @@ class Patient {
         _v = json["__v"].intValue
         isActive = json["is_active"].boolValue
         unreadCount = json["unreadCount"].intValue
+        address = json["address"].stringValue
+        phone_no = json["phone_no"].stringValue
     }
 
 }

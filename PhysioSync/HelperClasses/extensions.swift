@@ -495,3 +495,19 @@ extension UIViewController {
         }
     }
 }
+
+extension NSMutableAttributedString {
+
+    func setColor(forText textToFind: String, withColor color: UIColor) {
+        let range: NSRange = self.mutableString.range(of: textToFind, options: .caseInsensitive)
+        if range.location != NSNotFound {
+            self.addAttribute(.foregroundColor, value: color, range: range)
+        }
+    }
+
+    func setColor(forText textToFinds: [String: UIColor]) {
+        for (text, color) in textToFinds {
+            setColor(forText: text, withColor: color)
+        }
+    }
+}

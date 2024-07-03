@@ -9,6 +9,9 @@ import UIKit
 
 class TherapistHomeTVC: UITableViewCell {
 
+    @IBOutlet weak var imgVW: UIImageView!
+    @IBOutlet weak var nameLbl: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

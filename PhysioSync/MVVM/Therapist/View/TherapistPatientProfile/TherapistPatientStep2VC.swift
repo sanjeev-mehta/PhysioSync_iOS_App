@@ -20,7 +20,8 @@ class TherapistPatientStep2VC: UIViewController {
     var model: Patient?
     var isEdit = false
     var isImageChange = false
-    
+    var isPatientSide = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,9 +42,9 @@ class TherapistPatientStep2VC: UIViewController {
     func setData() {
         if isEdit {
             if let model = model {
-                emailId.text = model.firstName
-                phoneNumber.text = model.lastName
-//                address.text = model.address
+                emailId.text = model.patientEmail
+                phoneNumber.text = model.phone_no
+                address.text = model.address
             }
         }
     }
@@ -69,6 +70,7 @@ class TherapistPatientStep2VC: UIViewController {
                 vc.model = model
                 vc.isEdit = isEdit
                 vc.isImageChange = isImageChange
+                vc.isPatientSide = isPatientSide
                 self.pushOrPresentViewController(vc, true)
             }
         }
