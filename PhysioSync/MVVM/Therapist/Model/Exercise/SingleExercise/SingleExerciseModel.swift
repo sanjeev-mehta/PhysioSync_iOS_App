@@ -12,6 +12,8 @@ class SingleExerciseModel {
     var videoTitle: String
     var categoryName = [String]()
     var categoryId = [String]()
+    var categoryName: String
+    var categoryId: String
     var description: String
     var id: String
     var videoUrl: String
@@ -36,5 +38,6 @@ class SingleExerciseModel {
         therapistId = json["therapist_id"].stringValue
         version = json["__v"].intValue
         video_thumbnail = json["video_thumbnail"].stringValue
+
     }
 }
