@@ -53,8 +53,9 @@ class LeftVideoChatTVC: UITableViewCell {
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var playBtn: UIButton!
-    @IBOutlet weak var timeLbl: UILabel!
-    
+    @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var visualEffectView: UIVisualEffectView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -74,7 +75,8 @@ class RightVideoChatTVC: UITableViewCell {
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var playBtn: UIButton!
-    @IBOutlet weak var timeLbl: UILabel!
+    @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var visualEffectView: UIVisualEffectView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

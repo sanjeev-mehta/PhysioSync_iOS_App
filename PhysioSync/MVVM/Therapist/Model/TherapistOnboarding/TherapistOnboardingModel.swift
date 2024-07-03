@@ -8,6 +8,7 @@
 import Foundation
 
 struct TherapistOnboardingModel {
-    var title = ""
+    var title: NSAttributedString
     var description = ""
+    var img = ""
 }

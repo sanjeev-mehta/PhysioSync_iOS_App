@@ -33,7 +33,6 @@ class SingleExerciseVC: UIViewController {
         super.viewDidLoad()
         
         setCollectionView()
-        callGetExerciseApi()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,6 +50,7 @@ class SingleExerciseVC: UIViewController {
                 self.openAddExerciseController()
             }
         }
+        callGetExerciseApi()
     }
     
     func callGetExerciseApi() {

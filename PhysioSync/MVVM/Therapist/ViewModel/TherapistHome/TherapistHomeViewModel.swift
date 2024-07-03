@@ -19,7 +19,6 @@ class TherapistHomeViewModel {
             if err != nil {
                 vc.displayAlert(title: "Alert!", msg: "something went wrong", ok: "Ok")
             } else {
-                vc.debugPrint("\(json)")
                 self.notificationModel = TherapistNotificationModel(json)
                 if let model = self.notificationModel {
                     if model.success {
@@ -41,7 +40,6 @@ class TherapistHomeViewModel {
             if err != nil {
                 vc.displayAlert(title: "Alert!", msg: "something went wrong", ok: "Ok")
             } else {
-                print(json)
                 if json["success"].boolValue {
                     completion(true)
                 } else {

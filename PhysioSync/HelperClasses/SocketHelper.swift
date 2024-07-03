@@ -16,9 +16,12 @@ class SocketIOHandler {
     var messageID = [String]()
     let messageVM = MessageViewModel.shareInstance
     let chatVM = ChatViewModel.shareInstance
+    var unreadCount = 0
+    var delegate: SocketIOHandlerDelegate?
+    var currentUserId = ""
     
     init(url: String) {
-        self.manager = SocketManager(socketURL: URL(string: url)!, config: [.log(true), .compress])
+        self.manager = SocketManager(socketURL: URL(string: url)!, config: [.log(false), .compress])
         self.socket = manager.defaultSocket
         addHandlers()
     }
@@ -34,8 +37,14 @@ class SocketIOHandler {
     private func addHandlers() {
         socket.on(clientEvent: .connect) { [weak self] data, ack in
             print("Socket connected")
+            guard let self = self else { return }
             // Example event emission
-            // self?.socket.emit("new-user-joined", "123457")
+            if UserDefaults.standard.getUsernameToken() == "" {
+                self.currentUserId = UserDefaults.standard.getPatientLoginId()
+            } else {
+                self.currentUserId = UserDefaults.standard.getTherapistId()
+            }
+       //     self.socket.emit("register", self.currentUserId)
         }
         
         socket.on(clientEvent: .disconnect) { data, ack in
@@ -43,7 +52,7 @@ class SocketIOHandler {
         }
         
         socket.on(clientEvent: .error) { data, ack in
-            print("Socket error: \(data)", ack)
+//            print("Socket error: \(data)", ack)
         }
         
         socket.on("receive") { [weak self] data, ack in
@@ -54,30 +63,40 @@ class SocketIOHandler {
                 self?.messageID.append(messageId)
                 print("Received message from \(sender): \(message) \(messageId)")
             }
+            let swifty = JSON(data)
+            self?.delegate?.didReceiveMessage()
         }
         
         socket.on("user-joined") { data, ack in
-            print(data)
+          //  print(data)
         }
         
         socket.on("messageReadResponse") { data, ack in
-            
+            print("------ Messages Read")
         }
         
         socket.on("typing") { data, ack in
-            print(data, ack)
+//            print(data, ack)
         }
         
         socket.on("allPatientsWithDetails") { data, ack in
             let swifty = JSON(data)
             self.messageVM.responseParse(json: swifty)
+            self.delegate?.updatePatientList()
         }
         
-        socket.on("previousMessages") { data, ack in
-            print(data)
+        socket.on("previousMessages") { [self] data, ack in
             let swifty = JSON(data)
             self.chatVM.getAllMessages(json: swifty)
-            
+            self.unreadCount = 0
+            for i in self.chatVM.chatArr {
+                if i.receiver_id == UserDefaults.standard.getPatientLoginId() {
+                    if !i.is_read {
+                        self.unreadCount += 1
+                    }
+                }
+            }
+            delegate?.fetchMessage(unreadCount: self.unreadCount)
         }
     }
     
@@ -95,6 +114,11 @@ class SocketIOHandler {
         socket.emit("send", data)
     }
     
+    func sendMediaMessage(userId: String, receiverId: String, message: String, isMedia: Bool, media_link: String, is_video: Bool) {
+        let data: [String: Any] = ["senderId": userId, "receiverId": receiverId, "message": message, "is_media": isMedia, "media_link": media_link, "is_video": is_video]
+        socket.emit("send", data)
+    }
+    
     func sendTypingStatus(userId: String, isTyping: Bool) {
         let data = ["id": userId, "isTyping": isTyping] as [String: Any]
         socket.emit("typing", data)
@@ -108,4 +132,5 @@ class SocketIOHandler {
 protocol SocketIOHandlerDelegate: AnyObject {
     func didReceiveMessage()
     func updatePatientList()
+    func fetchMessage(unreadCount: Int)
 }
