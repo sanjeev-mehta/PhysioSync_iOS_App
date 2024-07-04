@@ -17,7 +17,6 @@ class StatsTabVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupBindings()
     }
     
@@ -78,8 +77,6 @@ class StatsTabVC: UIViewController {
             }
         }
 
-
-    
     @IBAction func statsDetailBtnActn(_ sender: UIButton) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "PatientStatsVC") as! PatientStatsVC
         self.navigationController?.pushViewController(vc, animated: true)
