@@ -10,7 +10,7 @@ import Vision
 import UIKit
 
 //Vision, AVFoundation, CreateML, MLModel
-typealias SquatsModel = Squats_MLModel
+typealias SquatsModel = left_right_srg
 
 protocol PredictorDelegate: AnyObject {
     func predictor(_ predictor: Predictor, didFindNewRecognizedPoints points: [CGPoint])
@@ -23,6 +23,7 @@ class Predictor {
     
     let predictionWindowSize = 30
     var posesWindow: [VNHumanBodyPoseObservation] = []
+    private var inactivityTimer: Timer?
     
     init() {
         posesWindow.reserveCapacity(predictionWindowSize)
@@ -52,6 +53,7 @@ class Predictor {
             
             labelActionType()
         }
+        
     }
     
     func labelActionType() {
@@ -110,15 +112,31 @@ class Predictor {
     func processObservation(_ observation: VNHumanBodyPoseObservation) {
         do {
             let recognizedPoints = try observation.recognizedPoints(forGroupKey: .all)
-            
-            let displayedPoints = recognizedPoints.map {
-                CGPoint(x: $0.value.x, y: 1 - $0.value.y)
+            resetInactivityTimer()
+            // Convert the points and update poseView only if points are detected
+            if recognizedPoints.isEmpty {
+                delegate?.predictor(self, didFindNewRecognizedPoints: [])
+            } else {
+                let displayedPoints = recognizedPoints.map {
+                    CGPoint(x: $0.value.x, y: 1 - $0.value.y)
+                }
+                delegate?.predictor(self, didFindNewRecognizedPoints: displayedPoints)
             }
-            delegate?.predictor(self, didFindNewRecognizedPoints: displayedPoints)
         } catch {
             print("Error finding points")
         }
     }
+    
+    private func resetInactivityTimer() {
+            inactivityTimer?.invalidate()
+            inactivityTimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { [weak self] _ in
+                self?.handleInactivity()
+            }
+        }
+        
+        private func handleInactivity() {
+            delegate?.predictor(self, didFindNewRecognizedPoints: [])
+        }
     
 }
 
@@ -142,7 +160,7 @@ class PoseView: UIView {
         context.setLineWidth(10.0)
         
         for point in points {
-            print(point)
+//            print(point)
             context.addEllipse(in: CGRect(x: point.x - 5, y: point.y - 5, width: 10, height: 10))
         }
         context.fillPath()
