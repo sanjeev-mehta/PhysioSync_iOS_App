@@ -133,7 +133,7 @@
 		F924885E2C1BCC3200426C8E /* AddNewExerciseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F924885D2C1BCC3200426C8E /* AddNewExerciseVC.swift */; };
 		F9458ADE2C25B900006C17D6 /* SingleExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9458ADD2C25B900006C17D6 /* SingleExerciseModel.swift */; };
 		F9458AE02C25B910006C17D6 /* ExerciseCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9458ADF2C25B910006C17D6 /* ExerciseCategoryModel.swift */; };
-    F95CD6D12C297A91007C055A /* AddNewExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CD6D02C297A91007C055A /* AddNewExerciseViewModel.swift */; };
+		F95CD6D12C297A91007C055A /* AddNewExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CD6D02C297A91007C055A /* AddNewExerciseViewModel.swift */; };
 		F979EC322C18DE760006100B /* ExerciseCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F979EC312C18DE760006100B /* ExerciseCategoryVC.swift */; };
 		F9E1ABDB2C2519D600E5E13F /* ExerciseCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E1ABDA2C2519D600E5E13F /* ExerciseCategoryViewModel.swift */; };
 		F9E1ABDD2C251A0F00E5E13F /* SingleExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E1ABDC2C251A0F00E5E13F /* SingleExerciseViewModel.swift */; };

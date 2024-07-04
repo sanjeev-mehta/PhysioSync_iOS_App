@@ -15,7 +15,7 @@ class TherapistHomeViewModel {
     
     func getNotificationApi(vc: UIViewController, completion: @escaping (Bool) -> ()) {
         let url = API.Endpoints.getTherapistNotification
-        apiHelper.getApi(view: vc, url: url, isHeader: true, isLoader: true) { json, err in
+        apiHelper.getApi(view: vc, url: url, isHeader: true, isLoader: false) { json, err in
             if err != nil {
                 vc.displayAlert(title: "Alert!", msg: "something went wrong", ok: "Ok")
             } else {

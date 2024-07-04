@@ -50,7 +50,7 @@ class PatientHomeVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         self.callApi()
         PatientHomeVC.socketHandler.fetchPreviousMessage(UserDefaults.standard.getPatientLoginId(), UserDefaults.standard.getTherapistId())
-        vm.submitWatchData()
+       // vm.submitWatchData()
     }
     
     func setUI() {

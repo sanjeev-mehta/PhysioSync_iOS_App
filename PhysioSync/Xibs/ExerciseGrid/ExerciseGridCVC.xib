@@ -75,6 +75,7 @@
             </constraints>
             <size key="customSize" width="254" height="223"/>
             <connections>
+                <outlet property="bgView" destination="c8C-fa-t8V" id="iVN-O2-iHX"/>
                 <outlet property="imgVW" destination="iY1-bP-TUc" id="Pod-fk-TC9"/>
                 <outlet property="selectedView" destination="hI6-Wh-EhB" id="zUF-e2-xhb"/>
                 <outlet property="titleLbl" destination="1iy-fV-4Rr" id="iyW-TC-gwb"/>

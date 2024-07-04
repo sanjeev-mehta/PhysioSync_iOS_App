@@ -10,18 +10,26 @@ import UIKit
 class MessageTabVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchTf: UITextField!
     
     let vm = MessageViewModel.shareInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
-        
+        searchTf.addTarget(self, action: #selector(searchActn(_ :)), for: .allEvents)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.debugPrint("\(vm.getUserCount())")
         self.tableView.reloadData()
+    }
+    
+    @objc func searchActn(_ sender: UITextField) {
+        if searchTf.text != "" {
+            vm.filter(query: searchTf.text!)
+            self.tableView.reloadData()
+        }
     }
     
     // MARK: - Set Table View

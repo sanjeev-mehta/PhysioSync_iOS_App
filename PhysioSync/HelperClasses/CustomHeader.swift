@@ -22,7 +22,7 @@ class CustomHeader: UIView {
     
     private let titleLbl: UILabel = {
         let lbl = UILabel()
-        lbl.font = UIFont(name: "Outfit-Bold", size: 20.0)!
+        lbl.font = UIFont(name: "Outfit-Medium", size: 24.0)!
         lbl.textColor = .black
         return lbl
     }()
