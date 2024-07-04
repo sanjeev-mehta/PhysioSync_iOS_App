@@ -89,10 +89,10 @@ class ApiHelper {
         
     }
     
-    func getApi(view:UIViewController,url:String, isHeader:Bool, isLoader:Bool, completion: @escaping(JSON,Error?) -> ()) {
+    func getApi(view:UIViewController,url:String, isHeader:Bool, isLoader:Bool = true, completion: @escaping(JSON,Error?) -> ()) {
         
         var av = UIView()
-        if isLoader{
+        if isLoader {
             av = Loader.start(view: view.view)
         }
         

@@ -26,9 +26,10 @@ class TherapistProfileVC: UIViewController {
         if UserDefaults.standard.getUsernameToken() == "" {
             callGetPatientProfileApi()
         } else {
-            profileImgVW.setImage(with: UserDefaults.standard.getTherapistProfileImage())
-            nameLbl.text = UserDefaults.standard.getTherapistName()
-            emailLbl.text = UserDefaults.standard.getTherapistName()
+            callGetTherapistProfileApi()
+//            profileImgVW.setImage(with: UserDefaults.standard.getTherapistProfileImage())
+//            nameLbl.text = UserDefaults.standard.getTherapistName()
+//            emailLbl.text = UserDefaults.standard.getT
         }
     }
     
@@ -46,6 +47,24 @@ class TherapistProfileVC: UIViewController {
                         self.nameLbl.text = model.firstName
                         self.emailLbl.text = model.patientEmail
                     }
+                }
+
+            }
+        }
+    }
+    
+    func callGetTherapistProfileApi() {
+        let url = API.Endpoints.getTherapist
+        ApiHelper.shareInstance.getApi(view: self, url: url, isHeader: true, isLoader: true) { json, err in
+            print(json)
+            if err != nil {
+                self.displayAlert(title: "Alert!", msg: "something went wrong", ok: "Ok")
+            } else {
+                DispatchQueue.main.async {
+                   let data = json["data"]
+                    self.profileImgVW.setImage(with: data["profile_photo"].stringValue)
+                    self.nameLbl.text = data["therapist_name"].stringValue
+                    self.emailLbl.text = data["email"].stringValue
                 }
 
             }
