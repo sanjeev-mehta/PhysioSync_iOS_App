@@ -71,7 +71,7 @@ class CustomHeader: UIView {
         NSLayoutConstraint.activate([
             
             backImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            backImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 15),
+            backImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 24),
             backImageView.heightAnchor.constraint(equalToConstant: 20),
             backImageView.widthAnchor.constraint(equalToConstant: 20),
             
@@ -83,12 +83,12 @@ class CustomHeader: UIView {
             backBtn.heightAnchor.constraint(equalToConstant: 30),
             
             titleLbl.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
-            titleLbl.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 15),
+            titleLbl.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 24),
             titleLbl.heightAnchor.constraint(equalToConstant: 80),
             
             
             rightImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            rightImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 15),
+            rightImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 24),
             rightImageView.heightAnchor.constraint(equalToConstant: 20),
             rightImageView.widthAnchor.constraint(equalToConstant: 20),
             

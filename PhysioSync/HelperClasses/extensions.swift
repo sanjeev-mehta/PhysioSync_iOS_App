@@ -345,9 +345,9 @@ extension UIViewController {
         customHeaderView.showHideRightBtn(isRightBtn)
         customHeaderView.setRightImage(rightImg)
         if isBackBtn {
-            customHeaderView.setBackImage(UIImage(named: "backArrow")!)
+            customHeaderView.setBackImage(backImg)
         }
-        
+          
         if let backButtonAction = backButtonAction {
             customHeaderView.backButtonAction = backButtonAction
         }
@@ -355,7 +355,7 @@ extension UIViewController {
         if let rightButtonAction = rightButtonAction {
             customHeaderView.rightButtonAction = rightButtonAction
         }
-        customHeaderView.setIconImage(backImg)
+
         view.addSubview(customHeaderView)
         if UIDevice.current.hasNotch {
             customHeaderView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 120)
