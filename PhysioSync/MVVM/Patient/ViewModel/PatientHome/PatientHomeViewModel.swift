@@ -24,7 +24,7 @@ class PatientHomeViewModel {
             if err != nil {
                 vc.displayAlert(title: "Alert!", msg: "Something went wrong", ok: "Ok")
             } else {
-                print(json)
+                print(json, "<<<======")
                 self.model = PatientHomeModel(json)
                 self.exerciseAssign.removeAll()
                 self.completedExercise.removeAll()

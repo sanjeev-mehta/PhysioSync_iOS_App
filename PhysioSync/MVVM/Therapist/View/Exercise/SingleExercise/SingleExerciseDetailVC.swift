@@ -17,6 +17,7 @@ class SingleExerciseDetailVC: UIViewController {
     @IBOutlet weak var videoDesc: UILabel!
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var menuBtn: UIButton!
+    @IBOutlet weak var bottomView: UIView!
     
     // MARK: - Variables
     var categoryArr = [categoryData]()
@@ -24,27 +25,32 @@ class SingleExerciseDetailVC: UIViewController {
     var data: SingleExerciseModel?
     private var customVideoPlayer: CustomVideoPlayer!
     private let vm = ExerciseCategoryViewModel.shareInstance
+    private let singleExerciseVM = SingleExerciseViewModel.shareInstance
+    var name = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setData()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setHeader(data?.videoTitle ?? "",rightImg: UIImage(named: "threeDots")!, isRightBtn: true) {
-            self.dismissOrPopViewController()
-        } rightButtonAction: {
-            self.openPopUpMenu()
-        }
-        setupCustomVideoPlayer()
+        self.bottomView.addTopCornerRadius(radius: 16)
+        callGetDetailExercise()
     }
     
     // MARK: - Methods
     
     func callGetDetailExercise() {
-        
+        self.singleExerciseVM.getSingleExercise(vc: self, name: name) { [self] status in
+            for i in self.singleExerciseVM.exerciseModel {
+                if i.id == data?.id {
+                    data = i
+                }
+            }
+            setupCustomVideoPlayer()
+            setData()
+        }
     }
     
     func openPopUpMenu() {
@@ -65,12 +71,12 @@ class SingleExerciseDetailVC: UIViewController {
     }
     
     private func setupCustomVideoPlayer() {
-        let videoPlayerFrame = CGRect(x: 0, y: 0, width: self.videoView.frame.width, height: self.videoView.frame.height)
+        let videoPlayerFrame = CGRect(x: 0, y: 0, width: self.videoView.bounds.width, height: self.videoView.frame.height)
         customVideoPlayer = CustomVideoPlayer(frame: videoPlayerFrame)
         self.videoView.addSubview(customVideoPlayer)
-        
+        guard let videoUrl = data?.videoUrl else { return }
         // URL of the video you want to play
-        guard let videoURL = URL(string: data!.videoUrl) else {
+        guard let videoURL = URL(string: videoUrl) else {
             print("Invalid URL")
             return
         }
@@ -108,8 +114,12 @@ class SingleExerciseDetailVC: UIViewController {
         categoryArr.append(categoryData(name: "Shoulder", isSelected: false))
         collectionView.reloadData()
         if let data = data {
-            self.titleLbl.text = data.videoTitle
             self.videoDesc.text = data.description
+        }
+        self.setHeader(data?.videoTitle ?? "",rightImg: UIImage(named: "threeDots")!, isRightBtn: true) {
+            self.dismissOrPopViewController()
+        } rightButtonAction: {
+            self.openPopUpMenu()
         }
     }
     
