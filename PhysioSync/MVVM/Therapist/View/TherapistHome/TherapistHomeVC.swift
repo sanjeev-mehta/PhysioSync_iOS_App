@@ -8,6 +8,7 @@
 import UIKit
 import CHIPageControl
 import SocketIO
+import RAMAnimatedTabBarController
 
 class TherapistHomeVC: UIViewController {
     
@@ -25,6 +26,9 @@ class TherapistHomeVC: UIViewController {
     @IBOutlet weak var exerciseNameLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var therapistNameLbl: UILabel!
+    @IBOutlet weak var messageCountLbl: UILabel!
+    @IBOutlet weak var patientCountLbl: UILabel!
+    @IBOutlet weak var notify: UIImageView!
     
     // MARK: -  Variables
     var cellCount = 6
@@ -35,6 +39,16 @@ class TherapistHomeVC: UIViewController {
     static var socketHandler: SocketIOHandler!
     private let patientVM = TherapistPatientViewModel.shareInstance
     private let messageVM = MessageViewModel.shareInstance
+    private var isLoading = true {
+        didSet {
+            patientListTableView.isUserInteractionEnabled = !isLoading
+            patientListTableView.reloadData()
+            messageTableView.reloadData()
+            messageTableView.isUserInteractionEnabled = !isLoading
+            collectionView.isUserInteractionEnabled = !isLoading
+            collectionView.reloadData()
+        }
+    }
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -47,10 +61,14 @@ class TherapistHomeVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        self.isLoading = true
         self.collectionView.reloadData()
         self.updateCollection()
         socketConnecting()
-        self.therapistNameLbl.text = "Welcome \(UserDefaults.standard.getTherapistName())"
+        let myString = "Welcome \(UserDefaults.standard.getTherapistName()),"
+        let attributedString = NSMutableAttributedString(string: myString)
+        attributedString.setColor(forText: ["Welcome": Colors.borderClr, "\(UserDefaults.standard.getTherapistName()),": Colors.primaryClr])
+        self.therapistNameLbl.attributedText = attributedString
         patientVM.getPatient(vc: self) { _ in
             DispatchQueue.main.async {
                 self.patientListTableView.reloadData()
@@ -83,6 +101,11 @@ class TherapistHomeVC: UIViewController {
         vm.getNotificationApi(vc: self) { status in
             self.closeNotifcationView()
             self.updateCollection()
+            if self.vm.notificationModel?.data.count != 0 {
+                self.notify.isHidden = false
+            } else {
+                self.notify.isHidden = true
+            }
         }
     }
     
@@ -134,6 +157,13 @@ class TherapistHomeVC: UIViewController {
             if UserDefaults.standard.getUsernameToken() != "" {
                 TherapistHomeVC.socketHandler.fetchAllPatient(id: UserDefaults.standard.getTherapistId())
                 self.messageTableView.reloadData()
+                self.isLoading = false
+                var unreadCount = 0
+                for i in self.messageVM.model {
+                    unreadCount += i.unreadCount
+                }
+                self.messageCountLbl.text = "\(unreadCount)"
+                self.patientCountLbl.text = "\(self.patientVM.getCount())"
             }
         }
     }
@@ -182,24 +212,44 @@ class TherapistHomeVC: UIViewController {
             }
         }
     }
+    
+    @IBAction func messageViewAllBtnActn(_ sender: UIButton) {
+        if let tabBarController = self.tabBarController as? RAMAnimatedTabBarController {
+            DispatchQueue.main.async {
+                tabBarController.setSelectIndex(from: tabBarController.selectedIndex, to: 3)
+            }
+        }
+    }
+    
+    @IBAction func addPatientBtnActn(_ sender: UIButton) {
+        if let vc = self.switchController(.therapistPatientStep1VC, .therapistPatientProfile) as? TherapistPatientStep1VC {
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
 
 // MARK: -  UICollection View Delegates and datasource methods
 
 extension TherapistHomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return vm.getCount()
+        if self.isLoading {
+            return cellCount
+        } else {
+            return vm.getCount()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TherapistHomeCVC", for: indexPath) as! TherapistHomeCVC
-        vm.setCollectionCell(cell, indexPath.item, vc: self)
-        cell.playBtn.tag = indexPath.item
-        cell.acknowledgeBtn.tag = indexPath.item
-        
-        cell.playBtn.addTarget(self, action: #selector(playBtnActn(_:)), for: .touchUpInside)
-        cell.acknowledgeBtn.addTarget(self, action: #selector(acknowledgeBtnActn(_:)), for: .touchUpInside)
-
+        if !self.isLoading {
+            vm.setCollectionCell(cell, indexPath.item, vc: self)
+            cell.playBtn.tag = indexPath.item
+            cell.acknowledgeBtn.tag = indexPath.item
+            
+            cell.playBtn.addTarget(self, action: #selector(playBtnActn(_:)), for: .touchUpInside)
+            cell.acknowledgeBtn.addTarget(self, action: #selector(acknowledgeBtnActn(_:)), for: .touchUpInside)
+            
+        }
         return cell
     }
     
@@ -246,7 +296,7 @@ extension TherapistHomeVC: UICollectionViewDelegate, UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        //        cell.setTemplateWithSubviews(isLoading, animate: true, viewBackgroundColor: .systemBackground)
+        cell.setTemplateWithSubviews(isLoading, animate: true, viewBackgroundColor: .systemBackground)
         cell.alpha = 0
         cell.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         
@@ -288,9 +338,17 @@ extension TherapistHomeVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == messageTableView {
-            return messageVM.getUserCount()
+            if self.isLoading {
+                return cellCount
+            } else {
+                return messageVM.getUserCount()
+            }
         } else {
-            return patientVM.getCount()
+            if self.isLoading {
+                return cellCount
+            } else {
+                return patientVM.getCount()
+            }
         }
     }
     
@@ -298,13 +356,17 @@ extension TherapistHomeVC: UITableViewDelegate, UITableViewDataSource {
         if tableView == messageTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! MessageTVC
             cell.selectionStyle = .none
-            let data = messageVM.model[indexPath.row]
-            cell.profileImgView.setImage(with: data.patient?.profilePhoto)
-            cell.nameLbl.text = data.patient!.firstName + "" + data.patient!.lastName
-            cell.msgLbl.text = data.message
-            if data.unreadCount != 0 {
-                cell.badgeLbl.isHidden = false
-                cell.badgeLbl.text = "\(data.unreadCount)"
+            if !self.isLoading {
+                let data = messageVM.model[indexPath.row]
+                cell.profileImgView.setImage(with: data.patient?.profilePhoto)
+                cell.nameLbl.text = data.patient!.firstName + "" + data.patient!.lastName
+                cell.msgLbl.text = data.message
+                if data.unreadCount != 0 {
+                    cell.badgeLbl.isHidden = false
+                    cell.badgeLbl.text = "\(data.unreadCount)"
+                } else {
+                    cell.badgeLbl.isHidden = true
+                }
             } else {
                 cell.badgeLbl.isHidden = true
             }
@@ -312,15 +374,21 @@ extension TherapistHomeVC: UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TherapistHomeTVC", for: indexPath) as! TherapistHomeTVC
             cell.selectionStyle = .none
-            let data = patientVM.filteredPatients[indexPath.row]
-            cell.imgVW.setImage(with: data.profilePhoto)
-            cell.nameLbl.text = data.firstName + " " + data.lastName
+            if !self.isLoading {
+                let data = patientVM.filteredPatients[indexPath.row]
+                cell.imgVW.setImage(with: data.profilePhoto)
+                cell.nameLbl.text = data.firstName + " " + data.lastName
+            }
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.setTemplateWithSubviews(isLoading, animate: true, viewBackgroundColor: .systemBackground)
     }
 }
 

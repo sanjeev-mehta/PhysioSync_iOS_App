@@ -6,11 +6,17 @@
 //
 
 import UIKit
+import UIView_Shimmer
 
-class TherapistHomeTVC: UITableViewCell {
+class TherapistHomeTVC: UITableViewCell, ShimmeringViewProtocol {
 
     @IBOutlet weak var imgVW: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var onlineImgView: UIImageView!
+    
+    var shimmeringAnimatedItems: [UIView] {
+        [imgVW, nameLbl, onlineImgView]
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

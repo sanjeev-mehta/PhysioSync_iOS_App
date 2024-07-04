@@ -338,7 +338,7 @@ extension UIViewController {
         print("[\(controllerName)] \(function) [Line \(line)]: \(message)")
     }
     
-    func setHeader(_ text: String, rightImg: UIImage = UIImage(named: "backArrow")!, isBackBtn: Bool = true, isRightBtn: Bool = false, backButtonAction: (() -> Void)? = nil, rightButtonAction: (() -> Void)? = nil) {
+    func setHeader(_ text: String, backImg: UIImage = UIImage(named: "backArrow")!,rightImg: UIImage = UIImage(named: "backArrow")!, isBackBtn: Bool = true, isRightBtn: Bool = false, backButtonAction: (() -> Void)? = nil, rightButtonAction: (() -> Void)? = nil) {
         let customHeaderView = CustomHeader()
         customHeaderView.setTitle(text)
         customHeaderView.backgroundColor = .white
@@ -355,7 +355,7 @@ extension UIViewController {
         if let rightButtonAction = rightButtonAction {
             customHeaderView.rightButtonAction = rightButtonAction
         }
-        
+        customHeaderView.setIconImage(backImg)
         view.addSubview(customHeaderView)
         if UIDevice.current.hasNotch {
             customHeaderView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 120)

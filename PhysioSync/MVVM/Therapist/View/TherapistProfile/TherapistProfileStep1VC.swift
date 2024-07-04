@@ -28,8 +28,22 @@ class TherapistProfileStep1VC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setHeader("Therapist Profile") {
-            self.dismissOrPopViewController()
+        self.setHeader("Edit Profile", backImg: UIImage(named: "Cross 1")!) {
+            let alertController = UIAlertController(title: "Discard Changes?", message: "Are you sure you want to discard your changes?", preferredStyle: .alert)
+            
+            let discardAction = UIAlertAction(title: "Discard", style: .destructive) { _ in
+                // Handle discard action here
+                self.dismissOrPopViewController()
+            }
+            
+            let keepEditingAction = UIAlertAction(title: "Keep Editing", style: .default) { _ in
+                print("Continuing to edit")
+            }
+            
+            alertController.addAction(discardAction)
+            alertController.addAction(keepEditingAction)
+            
+            self.present(alertController, animated: true, completion: nil)
         } rightButtonAction: {
             // No Need
         }

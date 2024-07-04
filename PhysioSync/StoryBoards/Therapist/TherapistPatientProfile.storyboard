@@ -26,7 +26,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iam-BG-i5n">
                                                 <rect key="frame" x="40" y="120" width="313" height="78"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Stepper" translatesAutoresizingMaskIntoConstraints="NO" id="Ays-Nb-GVx">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="patientStepper1" translatesAutoresizingMaskIntoConstraints="NO" id="Ays-Nb-GVx">
                                                         <rect key="frame" x="0.0" y="0.0" width="314" height="78"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
@@ -39,7 +39,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8aj-LS-rt4">
                                                 <rect key="frame" x="126.66666666666669" y="214" width="140" height="140"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baburao" translatesAutoresizingMaskIntoConstraints="NO" id="UeB-gv-SiL">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="patient" translatesAutoresizingMaskIntoConstraints="NO" id="UeB-gv-SiL">
                                                         <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -381,7 +381,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yPC-Vz-TvE">
                                                 <rect key="frame" x="8" y="120" width="377" height="211"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile pic sample" translatesAutoresizingMaskIntoConstraints="NO" id="gcp-sJ-grr">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="patient" translatesAutoresizingMaskIntoConstraints="NO" id="gcp-sJ-grr">
                                                         <rect key="frame" x="80.666666666666686" y="-2.3333333333333286" width="216" height="216"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="216" id="PaG-2x-M2u"/>
@@ -903,7 +903,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Q0-bP-e8j">
                                 <rect key="frame" x="40" y="134" width="313" height="78"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stepper2" translatesAutoresizingMaskIntoConstraints="NO" id="Ecd-AG-zVg">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="patientStepper2" translatesAutoresizingMaskIntoConstraints="NO" id="Ecd-AG-zVg">
                                         <rect key="frame" x="0.0" y="0.0" width="313" height="78"/>
                                     </imageView>
                                 </subviews>
@@ -1038,7 +1038,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdH-en-V0u">
                                 <rect key="frame" x="40" y="134" width="313" height="78"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stepper3" translatesAutoresizingMaskIntoConstraints="NO" id="fii-rP-5k8">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="patientStepper3" translatesAutoresizingMaskIntoConstraints="NO" id="fii-rP-5k8">
                                         <rect key="frame" x="0.0" y="0.0" width="313" height="78"/>
                                     </imageView>
                                 </subviews>
@@ -1113,10 +1113,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="1300"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="miF-nb-If6">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1165"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1105"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gNS-XS-XGz">
-                                                <rect key="frame" x="24" y="120.00000000000003" width="345" height="360.66666666666674"/>
+                                                <rect key="frame" x="24" y="60" width="345" height="360.66666666666663"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ef-R4-UKd">
                                                         <rect key="frame" x="16" y="24" width="313" height="130"/>
@@ -1124,7 +1124,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lsg-jx-tFI">
                                                                 <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="233785691e8fdb7f84d07a59fddf3150" translatesAutoresizingMaskIntoConstraints="NO" id="pX9-5J-HS3">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="patient" translatesAutoresizingMaskIntoConstraints="NO" id="pX9-5J-HS3">
                                                                         <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1203,13 +1203,15 @@
                                                             </view>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gG2-dZ-VQg">
                                                                 <rect key="frame" x="146" y="92.333333333333343" width="167" height="32"/>
-                                                                <color key="backgroundColor" name="AccentColor"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="32" id="X5o-uz-QS2"/>
                                                                 </constraints>
                                                                 <color key="tintColor" red="0.96862745100000003" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" title="Edit Details"/>
+                                                                <state key="normal" title="Edit Details">
+                                                                    <color key="titleColor" name="primary"/>
+                                                                </state>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                         <real key="value" value="8"/>
@@ -1217,6 +1219,12 @@
                                                                     <userDefinedRuntimeAttribute type="string" keyPath="customFontName" value="Outfit-Light"/>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="customFontSize">
                                                                         <real key="value" value="14"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                        <real key="value" value="0.59999999999999998"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                        <color key="value" name="primary"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
@@ -1325,10 +1333,10 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hnn-tr-gBg">
-                                                <rect key="frame" x="24" y="504.66666666666674" width="345" height="284.33333333333326"/>
+                                                <rect key="frame" x="24" y="444.66666666666674" width="345" height="284.33333333333326"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4md-3Q-Op7">
-                                                        <rect key="frame" x="24" y="15.999999999999947" width="297" height="44.333333333333343"/>
+                                                        <rect key="frame" x="24" y="16.000000000000004" width="297" height="44.333333333333343"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Schedule" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6st-se-Je8">
                                                                 <rect key="frame" x="0.0" y="11.999999999999998" width="133.33333333333334" height="20.333333333333329"/>
@@ -1343,14 +1351,14 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
                                                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Edit-patient" translatesAutoresizingMaskIntoConstraints="NO" id="MYX-3v-EFb">
-                                                                <rect key="frame" x="273" y="10.333333333333371" width="24" height="24"/>
+                                                                <rect key="frame" x="273" y="10.333333333333314" width="24" height="24"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="24" id="jUP-Cx-Q9m"/>
                                                                     <constraint firstAttribute="height" constant="24" id="sGR-PN-0rq"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1bZ-zi-bbv">
-                                                                <rect key="frame" x="273" y="10.333333333333371" width="24" height="24"/>
+                                                                <rect key="frame" x="273" y="10.333333333333314" width="24" height="24"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 <connections>
                                                                     <action selector="setScheduleBtnActn:" destination="fgd-mb-gcb" eventType="touchUpInside" id="WiJ-Zn-Hd4"/>
@@ -1575,7 +1583,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KZZ-1I-NBy">
-                                                <rect key="frame" x="24" y="813" width="345" height="336"/>
+                                                <rect key="frame" x="24" y="753" width="345" height="336"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Chb-45-qB7">
                                                         <rect key="frame" x="24" y="16" width="297" height="32"/>
@@ -1729,7 +1737,7 @@
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7n-UW-pA8">
-                                                                        <rect key="frame" x="44" y="14.333333333333256" width="59" height="19.333333333333329"/>
+                                                                        <rect key="frame" x="44" y="14.333333333333369" width="59" height="19.333333333333329"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -1834,7 +1842,7 @@
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="KZZ-1I-NBy" secondAttribute="bottom" constant="16" id="1dh-bO-44L"/>
                                             <constraint firstItem="KZZ-1I-NBy" firstAttribute="top" secondItem="Hnn-tr-gBg" secondAttribute="bottom" constant="24" id="448-11-pWq"/>
-                                            <constraint firstItem="gNS-XS-XGz" firstAttribute="top" secondItem="miF-nb-If6" secondAttribute="top" constant="120" id="4xE-Y7-g97"/>
+                                            <constraint firstItem="gNS-XS-XGz" firstAttribute="top" secondItem="miF-nb-If6" secondAttribute="top" constant="60" id="4xE-Y7-g97"/>
                                             <constraint firstItem="Hnn-tr-gBg" firstAttribute="leading" secondItem="miF-nb-If6" secondAttribute="leading" constant="24" id="9Lx-bF-g9C"/>
                                             <constraint firstAttribute="trailing" secondItem="Hnn-tr-gBg" secondAttribute="trailing" constant="24" id="FU0-n3-R9L"/>
                                             <constraint firstItem="KZZ-1I-NBy" firstAttribute="leading" secondItem="miF-nb-If6" secondAttribute="leading" constant="24" id="H2C-zE-UgB"/>
@@ -1888,7 +1896,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="233785691e8fdb7f84d07a59fddf3150" width="1024" height="1024"/>
         <image name="Arrow - Down 2" width="24.333333969116211" height="24"/>
         <image name="Calendar" width="24.333333969116211" height="24"/>
         <image name="Calendar 1" width="24" height="24.333333969116211"/>
@@ -1896,16 +1903,12 @@
         <image name="Edit-patient" width="24" height="24"/>
         <image name="Frame" width="24.333333969116211" height="24"/>
         <image name="Frame 547" width="38" height="38.333332061767578"/>
-        <image name="Stepper" width="314" height="78"/>
-        <image name="baburao" width="400" height="400"/>
         <image name="messageIcon" width="19.333333969116211" height="18.333333969116211"/>
+        <image name="patient" width="99" height="100"/>
+        <image name="patientStepper1" width="161" height="28"/>
+        <image name="patientStepper2" width="140.33332824707031" height="20"/>
+        <image name="patientStepper3" width="160.33332824707031" height="28"/>
         <image name="patients" width="24.333333969116211" height="18.333333969116211"/>
-        <image name="profile pic sample" width="808" height="808"/>
-        <image name="stepper2" width="314" height="78"/>
-        <image name="stepper3" width="314" height="72"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="borderClr">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

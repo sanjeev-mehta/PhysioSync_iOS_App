@@ -29,22 +29,29 @@ class SingleExerciseViewModel {
     
     // MARK: - Get Array Count
     func getArrayCount() -> Int {
-        return exerciseModel.count
+        return exerciseModel.count + 1
     }
     
     func setCell(_ cell: ExerciseGridCVC, index: Int, isCreateSchedule: Bool = false) {
-        let data = exerciseModel[index]
-        cell.titleLbl.text = data.videoTitle
-        cell.imgVW.setImage(with: data.video_thumbnail)
-        cell.imgVW.contentMode = .scaleToFill
-        if isCreateSchedule {
-            if data.isSelected {
-                cell.selectedView.isHidden = false
+        if index == 0 {
+            cell.titleLbl.text = "Add New Exercise"
+            cell.imgVW.image = UIImage(named: "addExercise")
+            cell.imgVW.contentMode = .scaleToFill
+            cell.selectedView.isHidden = true
+        } else {
+            let data = exerciseModel[index - 1]
+            cell.titleLbl.text = data.videoTitle
+            cell.imgVW.setImage(with: data.video_thumbnail)
+            cell.imgVW.contentMode = .scaleToFill
+            if isCreateSchedule {
+                if data.isSelected {
+                    cell.selectedView.isHidden = false
+                } else {
+                    cell.selectedView.isHidden = true
+                }
             } else {
                 cell.selectedView.isHidden = true
             }
-        } else {
-            cell.selectedView.isHidden = true
         }
     }
 }
