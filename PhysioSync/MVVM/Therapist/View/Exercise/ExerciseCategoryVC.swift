@@ -89,9 +89,8 @@ extension ExerciseCategoryVC: UICollectionViewDelegate, UICollectionViewDataSour
         if !self.isLoading {
             exerciseCategoryViewModel.setCell(cell, index: indexPath.item)
         }
-        cell.bgView.backgroundColor = Colors.primarySubtleClr
         cell.selectedView.isHidden = true
-        cell.imgVW.backgroundColor = .blue
+        cell.imgVW.backgroundColor = Colors.primarySubtleClr
         cell.imgVW.layer.cornerRadius = 12
         cell.imgVW.layer.masksToBounds = true
         cell.imgVW.contentMode = .scaleAspectFit

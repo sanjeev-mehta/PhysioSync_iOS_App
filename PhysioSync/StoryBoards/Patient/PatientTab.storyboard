@@ -1169,6 +1169,7 @@
                                     <constraint firstAttribute="trailing" secondItem="0zw-4v-SU4" secondAttribute="trailing" constant="16" id="ORK-BT-nvF"/>
                                     <constraint firstAttribute="trailing" secondItem="q8L-ol-65M" secondAttribute="trailing" constant="24" id="R71-L2-nq1"/>
                                     <constraint firstItem="0zw-4v-SU4" firstAttribute="top" secondItem="dkC-JI-fXB" secondAttribute="top" id="Xyu-oS-59S"/>
+                                    <constraint firstAttribute="height" constant="329.32999999999998" id="ZnH-9N-vzd"/>
                                     <constraint firstItem="0zw-4v-SU4" firstAttribute="bottom" secondItem="dkC-JI-fXB" secondAttribute="bottom" id="wxO-lz-LJZ"/>
                                     <constraint firstAttribute="bottom" secondItem="6id-RS-m1H" secondAttribute="bottom" constant="24" id="x8h-Dk-1Nn"/>
                                     <constraint firstItem="6id-RS-m1H" firstAttribute="top" secondItem="dkC-JI-fXB" secondAttribute="bottom" constant="24" id="xue-Ns-uwN"/>
@@ -1873,7 +1874,7 @@
         <image name="Frame 547" width="38" height="38.333332061767578"/>
         <image name="backArrow" width="17.666666030883789" height="17.666666030883789"/>
         <image name="calories" width="18" height="21.333333969116211"/>
-        <image name="chattingMedia" width="48" height="48"/>
+        <image name="chattingMedia" width="24" height="24"/>
         <image name="edit" width="24" height="24"/>
         <image name="exampleImage" width="1920" height="864"/>
         <image name="exercise" width="20.333333969116211" height="10.333333015441895"/>
@@ -1888,7 +1889,7 @@
         <image name="profile" width="20" height="20.333333969116211"/>
         <image name="profilePlaceHolder" width="48" height="48.333332061767578"/>
         <image name="rightArrow" width="9.6666669845581055" height="15.666666984558105"/>
-        <image name="sendMessage" width="46.666667938232422" height="47"/>
+        <image name="sendMessage" width="24" height="24"/>
         <image name="setting" width="24" height="24"/>
         <image name="sleep" width="20.333333969116211" height="20.666666030883789"/>
         <image name="stats" width="19" height="21"/>
@@ -1898,7 +1899,7 @@
             <color red="0.12156862745098039" green="0.34901960784313724" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary-subtle">
-            <color red="0.96862745098039216" green="0.96078431372549022" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.92156862745098034" green="0.94117647058823528" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="separatorColor">
             <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
