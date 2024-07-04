@@ -34,7 +34,7 @@ class PatientExerciseDetailVC: UIViewController {
     }
     
     private func setupCustomVideoPlayer() {
-        let videoPlayerFrame = CGRect(x: 0, y: 0, width: self.videoView.frame.width, height: self.videoView.frame.height)
+        let videoPlayerFrame = CGRect(x: 0, y: 0, width: self.videoView.bounds.width, height: self.videoView.frame.height)
         customVideoPlayer = CustomVideoPlayer(frame: videoPlayerFrame)
         self.videoView.addSubview(customVideoPlayer)
         guard let videoUrl = data?.exerciseIds[0].videoUrl else { return }

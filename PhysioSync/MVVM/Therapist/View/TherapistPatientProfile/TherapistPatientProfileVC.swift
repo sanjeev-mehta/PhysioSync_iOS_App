@@ -42,7 +42,7 @@ class TherapistPatientProfileVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         callApi()
-        self.setHeader("Therapist Profile", isRightBtn: false) {
+        self.setHeader("Patient Profile", isRightBtn: false) {
             self.dismissOrPopViewController()
         } rightButtonAction: {
             
@@ -60,7 +60,7 @@ class TherapistPatientProfileVC: UIViewController {
             UIView.animate(withDuration: 0.5) {
                 print(self.vm.therapistPatientprofileModel?[0])
                 if let data = self.vm.therapistPatientprofileModel?[0].data?.patient {
-                    self.nameLbl.text = "Name: " + data.firstName + " " + data.lastName
+                    self.nameLbl.text = data.firstName + " " + data.lastName
                     self.ageLbl.text = "Age: " + "\(self.calculateAge(dob: data.dateOfBirth))"
                     self.profileImgView.sd_setImage(with: URL(string: data.profilePhoto)!)
                     self.historyLbl.text = data.medicalHistory

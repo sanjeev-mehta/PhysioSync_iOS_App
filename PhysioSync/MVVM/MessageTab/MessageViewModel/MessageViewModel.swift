@@ -13,20 +13,22 @@ class MessageViewModel {
     static let shareInstance = MessageViewModel()
     let apiHelper = ApiHelper.shareInstance
     var model = [MessageModel]()
+    var filterArr = [MessageModel]()
     
     func responseParse(json: JSON) {
         model.removeAll()
         for i in json[0].arrayValue {
             model.append(MessageModel(i))
         }
+        filterArr = model
     }
     
     func getUserCount() -> Int {
-        return model.count
+        return filterArr.count
     }
    
     func setUpCell(_ cell: MessageTVC, index: Int) {
-        if let data = model[index].patient {
+        if let data = filterArr[index].patient {
             cell.profileImgView.setImage(with: data.profilePhoto)
             cell.nameLbl.text = data.firstName + " " + data.lastName
             cell.msgLbl.text = model[index].message
@@ -41,6 +43,16 @@ class MessageViewModel {
             }
            
             cell.timeLbl.text = model[index].time
+        }
+    }
+    
+    func filter(query: String) {
+        if query.isEmpty {
+            filterArr = model
+        } else {
+            filterArr = model.filter { chat in
+                return chat.patient!.firstName.lowercased().contains(query.lowercased())
+            }
         }
     }
     

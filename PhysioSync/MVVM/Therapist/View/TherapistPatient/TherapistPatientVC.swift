@@ -8,18 +8,19 @@
 import UIKit
 
 class TherapistPatientVC: UIViewController{
-
+    
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var patientCountLabel: UILabel!
-    @IBOutlet weak var searchBar: UISearchBar!
-
+    @IBOutlet weak var searchBar: UITextField!
+    @IBOutlet weak var listBtn: UIButton!
+    @IBOutlet weak var gridBtn: UIButton!
     
     //MARK: - Variables
     var cellCount = 21
     var numberOfPatients: Int = 0
-
+    
     private var isLoading = true {
         didSet {
             tableView.isUserInteractionEnabled = !isLoading
@@ -43,7 +44,7 @@ class TherapistPatientVC: UIViewController{
         self.isLoading = true
         callPatientApi()
     }
-   
+    
     // MARK: - Call Patient API & Number of Patients
     func callPatientApi() {
         vm.getPatient(vc: self) { status in
@@ -51,17 +52,16 @@ class TherapistPatientVC: UIViewController{
                 self.isLoading = false
                 self.numberOfPatients = self.vm.getCount()
                 self.patientCountLabel.text = " \(self.numberOfPatients)"
-
-                print("hi \(self.numberOfPatients)")
+                self.changeGridList(tag: 1)
             }
         }
     }
     
     
     // MARK: - Set Up Search Bar
-        func setSearchBar() {
-            searchBar.delegate = self
-        }
+    func setSearchBar() {
+        searchBar.addTarget(self, action: #selector(searchActn(_ :)), for: .allEvents)
+    }
     
     func setCollectionView() {
         collectionView.delegate = self
@@ -100,30 +100,53 @@ class TherapistPatientVC: UIViewController{
             self.pushOrPresentViewController(vc, true)
         }
     }
+    
+    func changeGridList(tag: Int) {
+        if tag != 0 {
+            self.gridBtn.setImage(UIImage(named: "gridEnable"), for: .normal)
+            self.listBtn.setImage(UIImage(named: "listIcon"), for: .normal)
+        } else {
+            self.gridBtn.setImage(UIImage(named: "gridIcon"), for: .normal)
+            self.listBtn.setImage(UIImage(named: "listEnable"), for: .normal)
+        }
+    }
+    
     // MARK: - Buttons Action
     @IBAction func listGridBtnActn(_ sender: UIButton) {
-        if sender.tag == 0 {
-            self.tableView.isHidden = false
-            hideCollectionView()
-        } else {
-            showCollectionView()
+        sender.pressedAnimation {
+            if sender.tag == 0 {
+                self.tableView.isHidden = false
+                self.hideCollectionView()
+            } else {
+                self.showCollectionView()
+            }
+            self.changeGridList(tag: sender.tag)
         }
     }
     
     @IBAction func addPatientBtnActn(_ sender: UIButton) {
-        if let vc = self.switchController(.therapistPatientStep1VC, .therapistPatientProfile) as? TherapistPatientStep1VC {
-            vc.isEdit = false
-            self.pushOrPresentViewController(vc, true)
+        sender.pressedAnimation {
+            if let vc = self.switchController(.therapistPatientStep1VC, .therapistPatientProfile) as? TherapistPatientStep1VC {
+                vc.isEdit = false
+                self.pushOrPresentViewController(vc, true)
+            }
         }
     }
 }
 
 // MARK: - UISearchBarDelegate
-extension TherapistPatientVC: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        vm.searchPatients(query: searchText)
-        tableView.reloadData()
-        collectionView.reloadData()
+extension TherapistPatientVC {
+    //    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    //        vm.searchPatients(query: searchText)
+    //        tableView.reloadData()
+    //        collectionView.reloadData()
+    //    }
+    @objc func searchActn(_ sender: UITextField) {
+        if searchBar.text != "" {
+            vm.searchPatients(query: searchBar.text!)
+            self.tableView.reloadData()
+            self.collectionView.reloadData()
+        }
     }
 }
 
@@ -140,7 +163,7 @@ extension TherapistPatientVC: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileGridCVC", for: indexPath) as! ProfileGridCVC
-//        cell.bgView.backgroundColor = .blue
+        //        cell.bgView.backgroundColor = .blue
         cell.bgView.layer.cornerRadius = 12
         cell.imgView.layer.cornerRadius = 12
         cell.imgView.clipsToBounds = true

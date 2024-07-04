@@ -26,7 +26,7 @@ class TherapistProfileStep2VC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setHeader("Therapist Profile") {
+        self.setHeader("Edit Profile") {
             self.dismissOrPopViewController()
         } rightButtonAction: {
             // No Need
