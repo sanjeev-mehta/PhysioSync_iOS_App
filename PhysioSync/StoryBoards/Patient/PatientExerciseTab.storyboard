@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g6S-E1-gU6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2oL-8E-fbI">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
@@ -138,7 +138,19 @@ If needed, review the video given above.</string>
                                 <rect key="frame" x="0.0" y="59" width="393" height="793"/>
                                 <color key="backgroundColor" systemColor="systemCyanColor"/>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ND0-TC-1f3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REPS" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8Q-vy-ef5">
+                                <rect key="frame" x="335.66666666666669" y="67" width="41.333333333333314" height="20.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="customFontName" value="Outfit-Regular"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="customFontSize">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ND0-TC-1f3">
                                 <rect key="frame" x="24" y="626" width="345" height="160"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IN PROGRESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ne3-hS-54l">
@@ -157,7 +169,7 @@ If needed, review the video given above.</string>
                                                 <rect key="frame" x="0.0" y="0.0" width="144.66666666666666" height="32"/>
                                                 <color key="backgroundColor" name="primary"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Restart">
+                                                <state key="normal" title="Start">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -243,14 +255,17 @@ If needed, review the video given above.</string>
                             <constraint firstItem="sjA-2l-rgB" firstAttribute="trailing" secondItem="ND0-TC-1f3" secondAttribute="trailing" constant="24" id="2vp-LG-eIC"/>
                             <constraint firstItem="F7A-ds-CZk" firstAttribute="leading" secondItem="sjA-2l-rgB" secondAttribute="leading" id="7on-7K-5k8"/>
                             <constraint firstItem="F7A-ds-CZk" firstAttribute="top" secondItem="sjA-2l-rgB" secondAttribute="top" id="BU2-WU-6sq"/>
+                            <constraint firstItem="e8Q-vy-ef5" firstAttribute="top" secondItem="sjA-2l-rgB" secondAttribute="top" constant="8" id="D2w-Gp-1dn"/>
                             <constraint firstItem="F7A-ds-CZk" firstAttribute="trailing" secondItem="sjA-2l-rgB" secondAttribute="trailing" id="DjU-hm-cFi"/>
                             <constraint firstItem="ND0-TC-1f3" firstAttribute="leading" secondItem="sjA-2l-rgB" secondAttribute="leading" constant="24" id="UCP-LE-JPx"/>
+                            <constraint firstItem="sjA-2l-rgB" firstAttribute="trailing" secondItem="e8Q-vy-ef5" secondAttribute="trailing" constant="16" id="bZ3-iT-0vP"/>
                             <constraint firstItem="ND0-TC-1f3" firstAttribute="bottom" secondItem="JwK-Nt-Hlb" secondAttribute="bottomMargin" constant="-32" id="dMe-sm-vmy"/>
                             <constraint firstAttribute="bottom" secondItem="F7A-ds-CZk" secondAttribute="bottom" id="eA6-9m-BjL"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cameraView" destination="F7A-ds-CZk" id="h6f-xo-CbE"/>
+                        <outlet property="repLbl" destination="e8Q-vy-ef5" id="Flw-xK-qeC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oA1-FS-apB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -272,10 +287,10 @@ If needed, review the video given above.</string>
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

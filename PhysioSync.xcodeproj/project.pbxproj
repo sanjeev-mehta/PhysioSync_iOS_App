@@ -10,7 +10,6 @@
 		3C4A096E17D58210E8E70B30 /* Pods_PhysioSync.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C11C617AB09AD38A62E4D /* Pods_PhysioSync.framework */; };
 		671FE5A12C33424C007BDE79 /* Predictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671FE59F2C33424C007BDE79 /* Predictor.swift */; };
 		671FE5A22C33424C007BDE79 /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671FE5A02C33424C007BDE79 /* VideoCapture.swift */; };
-		671FE5A42C33428C007BDE79 /* Squats_MLModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 671FE5A32C33428C007BDE79 /* Squats_MLModel.mlmodel */; };
 		671FE5A62C334440007BDE79 /* ExerciseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671FE5A52C334440007BDE79 /* ExerciseVC.swift */; };
 		67320C8D2C168C0B003188AA /* TherapistTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67320C8C2C168C0B003188AA /* TherapistTab.storyboard */; };
 		67320C902C168F79003188AA /* TherapistPatientVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67320C8F2C168F79003188AA /* TherapistPatientVC.swift */; };
@@ -72,6 +71,7 @@
 		67B161692C13F1490028E3C3 /* PatientExerciseTabTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B161682C13F1490028E3C3 /* PatientExerciseTabTVC.swift */; };
 		67B1616C2C14179B0028E3C3 /* PatientExerciseDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B1616B2C14179B0028E3C3 /* PatientExerciseDetailVC.swift */; };
 		67B1616E2C141A740028E3C3 /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B1616D2C141A740028E3C3 /* VideoPlayer.swift */; };
+		67C6BDDC2C36715800D86922 /* left_right_srg.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 67C6BDDB2C36715800D86922 /* left_right_srg.mlmodel */; };
 		67C7FD022C1BD7FC00476601 /* CustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C7FD012C1BD7FC00476601 /* CustomHeader.swift */; };
 		67C7FD092C1BE16100476601 /* ProfileGridCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67C7FD082C1BE16100476601 /* ProfileGridCVC.xib */; };
 		67C7FD0A2C1BE16100476601 /* ProfileGridCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C7FD072C1BE16100476601 /* ProfileGridCVC.swift */; };
@@ -144,7 +144,6 @@
 		644C11C617AB09AD38A62E4D /* Pods_PhysioSync.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhysioSync.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		671FE59F2C33424C007BDE79 /* Predictor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Predictor.swift; sourceTree = "<group>"; };
 		671FE5A02C33424C007BDE79 /* VideoCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
-		671FE5A32C33428C007BDE79 /* Squats_MLModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Squats_MLModel.mlmodel; sourceTree = "<group>"; };
 		671FE5A52C334440007BDE79 /* ExerciseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseVC.swift; sourceTree = "<group>"; };
 		67320C8C2C168C0B003188AA /* TherapistTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TherapistTab.storyboard; sourceTree = "<group>"; };
 		67320C8F2C168F79003188AA /* TherapistPatientVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistPatientVC.swift; sourceTree = "<group>"; };
@@ -209,6 +208,7 @@
 		67B161682C13F1490028E3C3 /* PatientExerciseTabTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientExerciseTabTVC.swift; sourceTree = "<group>"; };
 		67B1616B2C14179B0028E3C3 /* PatientExerciseDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientExerciseDetailVC.swift; sourceTree = "<group>"; };
 		67B1616D2C141A740028E3C3 /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
+		67C6BDDB2C36715800D86922 /* left_right_srg.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = left_right_srg.mlmodel; sourceTree = "<group>"; };
 		67C7FD012C1BD7FC00476601 /* CustomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeader.swift; sourceTree = "<group>"; };
 		67C7FD072C1BE16100476601 /* ProfileGridCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGridCVC.swift; sourceTree = "<group>"; };
 		67C7FD082C1BE16100476601 /* ProfileGridCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileGridCVC.xib; sourceTree = "<group>"; };
@@ -292,7 +292,7 @@
 		671FE59E2C3341E5007BDE79 /* Exercise */ = {
 			isa = PBXGroup;
 			children = (
-				671FE5A32C33428C007BDE79 /* Squats_MLModel.mlmodel */,
+				67C6BDDB2C36715800D86922 /* left_right_srg.mlmodel */,
 				671FE59F2C33424C007BDE79 /* Predictor.swift */,
 				671FE5A02C33424C007BDE79 /* VideoCapture.swift */,
 				671FE5A52C334440007BDE79 /* ExerciseVC.swift */,
@@ -515,8 +515,8 @@
 			isa = PBXGroup;
 			children = (
 				678F34012BFED97C00824A23 /* PatientOnboarding.storyboard */,
-				678F33FC2BFED95000824A23 /* PatientAuth.storyboard */,
 				67B161632C138E540028E3C3 /* PatientExerciseTab.storyboard */,
+				678F33FC2BFED95000824A23 /* PatientAuth.storyboard */,
 				677F5F022C15025F006792F2 /* PatientTab.storyboard */,
 			);
 			path = Patient;
@@ -1032,6 +1032,8 @@
 			dependencies = (
 			);
 			name = PhysioSync;
+			packageProductDependencies = (
+			);
 			productName = PhysioSync;
 			productReference = 678F33D42BFED67800824A23 /* PhysioSync.app */;
 			productType = "com.apple.product-type.application";
@@ -1060,6 +1062,8 @@
 				Base,
 			);
 			mainGroup = 678F33CB2BFED67800824A23;
+			packageReferences = (
+			);
 			productRefGroup = 678F33D52BFED67800824A23 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1157,7 +1161,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				671FE5A42C33428C007BDE79 /* Squats_MLModel.mlmodel in Sources */,
 				678F34102BFEDB7800824A23 /* TherapistLoginModel.swift in Sources */,
 				671FE5A62C334440007BDE79 /* ExerciseVC.swift in Sources */,
 				E8466EED2C25BB74001F36CC /* ScheduleTableTVC.swift in Sources */,
@@ -1178,6 +1181,7 @@
 				E8C257A42C29534500FBE9CB /* TherapistProfileStep1ViewModel.swift in Sources */,
 				E8A79AD82C0D4D0800A2EB92 /* MessageTabVC.swift in Sources */,
 				67F3DE132C2CE0A200EF856F /* SocketHelper.swift in Sources */,
+				67C6BDDC2C36715800D86922 /* left_right_srg.mlmodel in Sources */,
 				67D531372C1D3DF500404E66 /* PatientHomeCVC.swift in Sources */,
 				67C9BFD72C1D11D40092CC78 /* TherapistHomeCVC.swift in Sources */,
 				F9458AE02C25B910006C17D6 /* ExerciseCategoryModel.swift in Sources */,
