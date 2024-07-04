@@ -44,11 +44,9 @@ class SingleExerciseVC: UIViewController {
             collectionViewBottomConstraint.constant = 150
             addExerciseBtn.isHidden = false
         } else {
-            self.setHeader(header,rightImg: UIImage(named: "addIcon")!, isRightBtn: true) {
+            self.setHeader(header, isRightBtn: false) {
                 self.dismissOrPopViewController()
-            } rightButtonAction: {
-                self.openAddExerciseController()
-            }
+            } rightButtonAction: {}
         }
         callGetExerciseApi()
     }
@@ -74,6 +72,7 @@ class SingleExerciseVC: UIViewController {
     func openExerciseDetailController(_ data: SingleExerciseModel) {
         if let vc = self.switchController(.singleExerciseDetailVC, .exerciseTab) as? SingleExerciseDetailVC {
             vc.data = data
+            vc.name = header
             self.pushOrPresentViewController(vc, true)
         }
     }
@@ -153,18 +152,22 @@ extension SingleExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource
         // MARK: - Switch Controllers on tap
         if let cell = collectionView.cellForItem(at: indexPath) {
             cell.pressedAnimation {
-                if self.isCreateSchedule {
-                    let data = self.vm.exerciseModel[indexPath.item]
-                    if data.isSelected {
-                        data.isSelected = false
-                    } else {
-                        data.isSelected = true
-                    }
-                    self.collectionView.reloadData()
-                    self.setBtnTitle()
+                if indexPath.item == 0 {
+                    self.openAddExerciseController()
                 } else {
-                    let data = self.vm.exerciseModel[indexPath.item]
-                    self.openExerciseDetailController(data)
+                    if self.isCreateSchedule {
+                        let data = self.vm.exerciseModel[indexPath.item - 1]
+                        if data.isSelected {
+                            data.isSelected = false
+                        } else {
+                            data.isSelected = true
+                        }
+                        self.collectionView.reloadData()
+                        self.setBtnTitle()
+                    } else {
+                        let data = self.vm.exerciseModel[indexPath.item - 1]
+                        self.openExerciseDetailController(data)
+                    }
                 }
             }
         }

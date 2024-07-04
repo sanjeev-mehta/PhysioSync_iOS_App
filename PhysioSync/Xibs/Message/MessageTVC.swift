@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import UIView_Shimmer
 
-class MessageTVC: UITableViewCell {
+class MessageTVC: UITableViewCell, ShimmeringViewProtocol {
 
     // MARK: - Outlets
     @IBOutlet weak var badgeLbl: UILabel!
@@ -17,6 +18,9 @@ class MessageTVC: UITableViewCell {
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var onlineImgView: UIImageView!
     
+    var shimmeringAnimatedItems: [UIView] {
+        [profileImgView, nameLbl, msgLbl, timeLbl, onlineImgView]
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
