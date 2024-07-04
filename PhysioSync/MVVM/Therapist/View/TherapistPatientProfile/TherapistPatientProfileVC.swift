@@ -22,6 +22,7 @@ class TherapistPatientProfileVC: UIViewController {
     @IBOutlet var shadowViews: [UIView]!
     @IBOutlet var scheduleViews: [UIView]!
     @IBOutlet weak var scheduleNotFoundView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     // MARK: - Variables
 //    var cellCount = 3
@@ -34,8 +35,11 @@ class TherapistPatientProfileVC: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        for i in shadowViews {
-            i.addShadow()
+        scrollView.delegate = self
+        for i in 0..<shadowViews.count {
+            if i != 0 {
+                shadowViews[i].addShadow()
+            }
         }
     }
     
@@ -61,9 +65,9 @@ class TherapistPatientProfileVC: UIViewController {
                 print(self.vm.therapistPatientprofileModel?[0])
                 if let data = self.vm.therapistPatientprofileModel?[0].data?.patient {
                     self.nameLbl.text = data.firstName + " " + data.lastName
-                    self.ageLbl.text = "Age: " + "\(self.calculateAge(dob: data.dateOfBirth))"
+                    self.ageLbl.text =  "\(self.calculateAge(dob: data.dateOfBirth))" + "Years"
                     self.profileImgView.sd_setImage(with: URL(string: data.profilePhoto)!)
-                    self.historyLbl.text = data.medicalHistory
+                    self.historyLbl.text = data.injuryDetails
                     
                 }
                 if let data = self.vm.therapistPatientprofileModel?[0].data {
@@ -167,5 +171,14 @@ extension TherapistPatientProfileVC: UITableViewDelegate ,UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        return 60
+    }
+}
+
+extension TherapistPatientProfileVC: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(scrollView.contentOffset.y)
+        if scrollView.contentOffset.y == 0 {
+            scrollView.contentOffset.y = -40
+        }
     }
 }
