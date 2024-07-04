@@ -1025,7 +1025,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fJp-3K-NEe">
-                                <rect key="frame" x="0.0" y="120" width="393" height="649"/>
+                                <rect key="frame" x="20" y="120" width="353" height="649"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Lf6-iP-QKh">
                                     <size key="itemSize" width="128" height="128"/>
@@ -1039,10 +1039,10 @@
                         <viewLayoutGuide key="safeArea" id="ga4-30-UH8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="fJp-3K-NEe" firstAttribute="trailing" secondItem="ga4-30-UH8" secondAttribute="trailing" id="2Nr-s1-3yB"/>
+                            <constraint firstItem="fJp-3K-NEe" firstAttribute="trailing" secondItem="ga4-30-UH8" secondAttribute="trailing" constant="-20" id="2Nr-s1-3yB"/>
                             <constraint firstItem="fJp-3K-NEe" firstAttribute="bottom" secondItem="ga4-30-UH8" secondAttribute="bottom" id="FnA-7s-6WI"/>
                             <constraint firstItem="fJp-3K-NEe" firstAttribute="top" secondItem="gYQ-z9-hcy" secondAttribute="top" constant="120" id="TtE-TB-uHb"/>
-                            <constraint firstItem="fJp-3K-NEe" firstAttribute="leading" secondItem="ga4-30-UH8" secondAttribute="leading" id="Whf-XK-r2W"/>
+                            <constraint firstItem="fJp-3K-NEe" firstAttribute="leading" secondItem="ga4-30-UH8" secondAttribute="leading" constant="20" id="Whf-XK-r2W"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Exercise" image="exercise" id="lZJ-5e-a4Y" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">

@@ -34,7 +34,7 @@ class ExerciseCategoryViewModel {
     func setCell(_ cell: ExerciseGridCVC, index: Int) {
         let data = categoriesModel[index]
         cell.titleLbl.text = data.name
-        cell.imgVW.setImage(with: data.imageLink)
+        cell.imgVW.image = UIImage(named: data.name ?? "")
     }
     
     // MARK: - Delete Exercise
