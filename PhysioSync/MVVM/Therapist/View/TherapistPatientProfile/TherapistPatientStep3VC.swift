@@ -12,6 +12,7 @@ class TherapistPatientStep3VC: UIViewController {
 
     //MARK: - IBOutlets
     @IBOutlet weak var historyTV: UITextView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     //MARK: - Variables
     let awsHelper = AWSHelper.shared
@@ -27,6 +28,8 @@ class TherapistPatientStep3VC: UIViewController {
         super.viewDidLoad()
 
         self.debugPrint("\(parms)")
+        scrollView.delegate = self
+        scrollView.contentOffset.y = -50
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -113,8 +116,19 @@ class TherapistPatientStep3VC: UIViewController {
     }
     
     // MARK: -  Buttons Actions
-    @IBAction func saveBtnActn(_ sender: UIButton) {        
-        addPatient()
+    @IBAction func saveBtnActn(_ sender: UIButton) {      
+        sender.pressedAnimation {
+            self.addPatient()
+        }
     }
 
+}
+
+extension TherapistPatientStep3VC: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.debugPrint("\(scrollView.contentOffset.y)")
+        if scrollView == self.scrollView {
+            scrollView.contentOffset.y = -50
+        }
+    }
 }

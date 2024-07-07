@@ -23,6 +23,11 @@ class CreateScheduleVC: UIViewController {
     var from: String?
     var to: String?
     
+    var selectedFromDate: Date?
+    var selectedToDate: Date?
+    var isEdit = false
+    var id = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,15 +56,34 @@ class CreateScheduleVC: UIViewController {
         fastisController.title = "Choose range"
         fastisController.minimumDate = Date()
         fastisController.allowToChooseNilDate = true
+        if let fromDate = self.from, let toDate = to {
+            selectedFromDate = parseDate(from: fromDate)
+            selectedToDate = parseDate(from: toDate)
+        }
+        
+        if let fromDate = selectedFromDate, let toDate = selectedToDate {
+            fastisController.initialValue = FastisRange(from: fromDate, to: toDate)
+        }
+        
         fastisController.dismissHandler = {
         }
         fastisController.doneHandler = { [self] value in
+            self.selectedFromDate = value!.fromDate
+            self.selectedToDate = value?.toDate
             self.fromDateLbl.text = "\(dateFormat(value!.fromDate))"
             self.toDateLbl.text = "\(dateFormat(value!.toDate))"
 
         }
         fastisController.present(above: self)
     }
+    
+    //MARK: - Parse Date
+    func parseDate(from string: String?) -> Date? {
+           guard let dateString = string else { return nil }
+           let formatter = DateFormatter()
+           formatter.dateFormat = "yyyy-MM-dd"
+           return formatter.date(from: dateString)
+       }
     
     //MARK: - Date Formatter
     func dateFormat(_ value: Date) -> String {
@@ -80,8 +104,14 @@ class CreateScheduleVC: UIViewController {
                 ids.append(i.id)
             }
             let parm: [String: Any] = ["exercise_ids": ids, "patient_id": patientId, "start_date": fromDateLbl.text!, "end_date": toDateLbl.text!, "status": "assigned"]
-            vm.callTherapistLoginApi(self, with: parm) { status in
-                self.dismissOrPopViewController()
+            if isEdit {
+                vm.updateExercise(self, id: id ,with: parm) { _ in
+                    self.dismissOrPopViewController()
+                }
+            } else {
+                vm.callAssignExercise(self, with: parm) { status in
+                    self.dismissOrPopViewController()
+                }
             }
         }
     }
@@ -112,7 +142,8 @@ extension CreateScheduleVC: UICollectionViewDelegate, UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreateScheduleCVC", for: indexPath) as! CreateScheduleCVC
         let data = exerciseModel[indexPath.item]
-        cell.imgView.setImage(with: data.videoUrl)
+        cell.imgView.setImage(with: data.video_thumbnail)
+        cell.imgView.contentMode = .scaleAspectFill
         cell.exerciseNameLbl.text = data.videoTitle
         cell.crossBtn.tag = indexPath.item
         cell.crossBtn.addTarget(self, action: #selector(crossBtnActn(_:)), for: .touchUpInside)

@@ -78,7 +78,7 @@ enum API {
         //MARK: - Assign Exercise
         static let addAssignExercise = "\(baseURL)add-assign-exercise"
         static let getAssignExercise = "\(baseURL)get-assign-exercise"
-        static let updateAssignExercise = "\(baseURL)update-assign-exercise"
+        static let updateAssignExercise = "\(baseURL)update-assign-exercise/"
         
         //MARK: - Exercise
         static let exerciseCategories = "\(baseURL)exercise-categories"

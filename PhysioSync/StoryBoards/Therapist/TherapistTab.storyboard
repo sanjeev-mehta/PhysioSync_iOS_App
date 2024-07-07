@@ -727,6 +727,9 @@
                         <outlet property="videoView" destination="3r6-gI-diR" id="H8J-an-9jb"/>
                         <outletCollection property="shadowViews" destination="e6g-S6-PZf" collectionClass="NSMutableArray" id="d4w-Jo-mBU"/>
                         <outletCollection property="shadowViews" destination="omd-0N-Ba9" collectionClass="NSMutableArray" id="Cgj-HP-s0X"/>
+                        <outletCollection property="topSectionConstraint" destination="dxy-ZK-BE4" collectionClass="NSMutableArray" id="TAw-ow-2WS"/>
+                        <outletCollection property="topSectionConstraint" destination="jXe-c0-zue" collectionClass="NSMutableArray" id="8FR-s3-uH6"/>
+                        <outletCollection property="topSectionConstraint" destination="a9t-1L-ncC" collectionClass="NSMutableArray" id="Ejo-eQ-tUV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xjs-QK-KHR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1201,6 +1204,8 @@
                         </connections>
                     </tabBarItem>
                     <connections>
+                        <outlet property="messageCountLbl" destination="LXZ-pk-thd" id="t6k-Bg-UeW"/>
+                        <outlet property="messageCountView" destination="ErB-Jn-YRv" id="jSP-uv-Dom"/>
                         <outlet property="searchTf" destination="srE-Yu-c4y" id="LU0-o8-eBW"/>
                         <outlet property="tableView" destination="d1Z-ix-vxc" id="bUV-YW-VO7"/>
                     </connections>
@@ -1436,11 +1441,6 @@
             <point key="canvasLocation" x="243.51145038167937" y="493.66197183098592"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="cUW-BM-1Qk">
-            <size key="intrinsicContentSize" width="-5" height="4"/>
-        </designable>
-    </designables>
     <resources>
         <image name="Edit-patient" width="24" height="24"/>
         <image name="Frame 2608250" width="96" height="96"/>

@@ -30,7 +30,8 @@ class TherapistPatientProfileVC: UIViewController {
     
     // MARK: - instances
     private let vm = TherapistPatientProfileViewModel.shareInstance
-
+    var id = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -62,7 +63,6 @@ class TherapistPatientProfileVC: UIViewController {
     func setData() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.5) {
-                print(self.vm.therapistPatientprofileModel?[0])
                 if let data = self.vm.therapistPatientprofileModel?[0].data?.patient {
                     self.nameLbl.text = data.firstName + " " + data.lastName
                     self.ageLbl.text =  "\(self.calculateAge(dob: data.dateOfBirth))" + "Years"
@@ -135,27 +135,60 @@ class TherapistPatientProfileVC: UIViewController {
     
     // MARK: -  Button Methods
     @IBAction func viewPatientInfoBtnActn(_ sender: UIButton) {
-        if let vc = self.switchController(.therapistPatientStep1VC , .therapistPatientProfile) as? TherapistPatientStep1VC {
-            vc.isEdit = true
-            vc.model = vm.therapistPatientprofileModel?[0].data?.patient
-            self.pushOrPresentViewController(vc, true)
+        sender.pressedAnimation {
+            if let vc = self.switchController(.therapistPatientStep1VC , .therapistPatientProfile) as? TherapistPatientStep1VC {
+                vc.isEdit = true
+                vc.model = self.vm.therapistPatientprofileModel?[0].data?.patient
+                self.pushOrPresentViewController(vc, true)
+            }
         }
     }
     
     @IBAction func setScheduleBtnActn(_ sender: UIButton) {
-        if let vc = self.switchController(.createScheduleVC, .ScheduleTab) as? CreateScheduleVC {
-            if sender.tag == 1 {
-                vc.exerciseModel = vm.therapistPatientprofileModel![0].data!.exercise![0].exerciseIds
-                vc.from = vm.therapistPatientprofileModel![0].data!.exercise![0].startDate
-                vc.to = vm.therapistPatientprofileModel![0].data!.exercise![0].endDate
-
+        sender.pressedAnimation {
+            if let vc = self.switchController(.createScheduleVC, .ScheduleTab) as? CreateScheduleVC {
+                if sender.tag == 1 {
+                    vc.exerciseModel = self.vm.therapistPatientprofileModel![0].data!.exercise![0].exerciseIds
+                    vc.from = self.vm.therapistPatientprofileModel![0].data!.exercise![0].startDate
+                    vc.to = self.vm.therapistPatientprofileModel![0].data!.exercise![0].endDate
+                    vc.isEdit = true
+                } else {
+                    vc.isEdit = false
+                }
+                vc.id = self.vm.therapistPatientprofileModel![0].data!.exercise![0].Id
+                vc.patientId = self.vm.therapistPatientprofileModel?[0].data?.patient!.Id ?? ""
+                self.navigationController?.pushViewController(vc, animated: true)
             }
-            vc.patientId = vm.therapistPatientprofileModel?[0].data?.patient!.Id ?? ""
-            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
+    @IBAction func phoneBtnActn(_ sender: UIButton) {
+        sender.pressedAnimation {
+            if let phoneURL = URL(string: "tel://\(self.vm.therapistPatientprofileModel?[0].data?.patient?.phone_no ?? "1234567890")") {
+                if UIApplication.shared.canOpenURL(phoneURL) {
+                    UIApplication.shared.open(phoneURL, options: [:], completionHandler: nil)
+                } else {
+                    self.displayAlert(title: "Error", msg: "Your device cannot make phone calls.", ok: "OK")
+                }
+            }
+        }
+    }
+    
+    @IBAction func messageBtnActn(_ sender: UIButton) {
+        sender.pressedAnimation {
+            if let vc = self.switchController(.chatVC, .messageTab) as? ChatScreenVC {
+                vc.isPatient = false
+                if let data = self.vm.therapistPatientprofileModel?[0].data?.patient {
+                    vc.name = data.firstName + " " + data.lastName
+                    vc.profileImgLink = data.profilePhoto
+                    vc.recieverId = data.Id
+                }
+                self.pushOrPresentViewController(vc, true)
+            }
+        }
+    }
 }
+
 extension TherapistPatientProfileVC: UITableViewDelegate ,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -164,6 +197,7 @@ extension TherapistPatientProfileVC: UITableViewDelegate ,UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableTVC", for: indexPath) as! ScheduleTableTVC
+        vm.setCategoryCell(cell, index: indexPath.row)
         cell.selectionStyle = .none
         
         return cell
@@ -177,7 +211,7 @@ extension TherapistPatientProfileVC: UITableViewDelegate ,UITableViewDataSource 
 extension TherapistPatientProfileVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print(scrollView.contentOffset.y)
-        if scrollView.contentOffset.y == 0 {
+        if scrollView.contentOffset.y.isLess(than: 0.0) {
             scrollView.contentOffset.y = -40
         }
     }

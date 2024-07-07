@@ -11,6 +11,8 @@ class MessageTabVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTf: UITextField!
+    @IBOutlet weak var messageCountLbl: UILabel!
+    @IBOutlet weak var messageCountView: UIView!
     
     let vm = MessageViewModel.shareInstance
     
@@ -21,8 +23,13 @@ class MessageTabVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.debugPrint("\(vm.getUserCount())")
         self.tableView.reloadData()
+        if vm.unreadCount() == 0 {
+            self.messageCountView.isHidden = true
+        } else {
+            self.messageCountView.isHidden = false
+            self.messageCountLbl.text = "\(vm.unreadCount())"
+        }
     }
     
     @objc func searchActn(_ sender: UITextField) {

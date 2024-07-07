@@ -15,6 +15,9 @@ class TherapistPatientStep1VC: UIViewController {
     @IBOutlet weak var profileImgView: UIImageView!
     @IBOutlet var viewsTf: [UITextField]!
     @IBOutlet weak var dropDownView: UIView!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var datePickerView: UIView!
+    @IBOutlet weak var visualEffectView: UIVisualEffectView!
     
     // Variables
     var isEdit = false
@@ -26,9 +29,11 @@ class TherapistPatientStep1VC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideDatePicker()
         self.customImagePicker = ImagePickerHelper(viewController: self)
         setDropDown()
         setData()
+        setDatePicker()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,6 +56,16 @@ class TherapistPatientStep1VC: UIViewController {
                 viewsTf[3].text = model.gender
             }
         }
+    }
+    
+    //MARK: - Set Date Picker
+    func setDatePicker() {
+        let currentDate = Date()
+        var dateComponents = DateComponents()
+        dateComponents.year = -15
+        let max = Calendar.current.date(byAdding: dateComponents, to: currentDate)
+        datePicker.maximumDate = max
+        datePicker.setValue(Colors.primaryClr, forKeyPath: "textColor")
     }
     
     // MARK: -  openActionSheet for select image
@@ -143,17 +158,27 @@ class TherapistPatientStep1VC: UIViewController {
         fastisController.present(above: self)
     }
     
+    //MARK: - Show DatePicker
+    func showDatePicker() {
+        UIView.animate(withDuration: 0.5) {
+            self.visualEffectView.isHidden = false
+            self.datePickerView.transform = CGAffineTransform(translationX: 0, y: 0)
+        }
+    }
+    
+    //MARK: - Hide DatePicker
+    func hideDatePicker() {
+        UIView.animate(withDuration: 0.5) {
+            self.visualEffectView.isHidden = true
+            self.datePickerView.transform = CGAffineTransform(translationX: 0, y: 1000)
+        }
+    }
+    
     //MARK: - Date Formatter
     func dateFormat(_ value: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.string(from: value)
-    }
-    
-    // MARK: -  Buttons Actions
-    
-    @IBAction func saveBtnActn(_ sender: UIButton) {
-        self.validation()
     }
     
     // MARK: - Drop Down
@@ -169,12 +194,38 @@ class TherapistPatientStep1VC: UIViewController {
         }
     }
     
+    // MARK: -  Buttons Actions
+    
+    @IBAction func saveBtnActn(_ sender: UIButton) {
+        sender.pressedAnimation {
+            self.validation()
+        }
+    }
+    
     @IBAction func uploadPictureBtnActn(_ sender: UIButton) {
-        openSheet(sender: sender)
+        sender.pressedAnimation {
+            self.openSheet(sender: sender)
+        }
     }
     
     @IBAction func selectDate(_ sender: UIButton) {
-        openCalendar()
+        sender.pressedAnimation {
+            self.showDatePicker()
+        }
+    }
+    
+    @IBAction func cancelBtnActn(_ sender: UIButton) {
+        sender.pressedAnimation {
+            self.hideDatePicker()
+        }
+    }
+    
+    @IBAction func doneBtnActn(_ sender: UIButton) {
+        sender.pressedAnimation {
+            self.viewsTf[2].text = "\(self.dateFormat(self.datePicker.date))"
+            self.hideDatePicker()
+        }
+       
     }
     
 }

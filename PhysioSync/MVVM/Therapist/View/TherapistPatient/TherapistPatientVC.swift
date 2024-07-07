@@ -142,11 +142,9 @@ extension TherapistPatientVC {
     //        collectionView.reloadData()
     //    }
     @objc func searchActn(_ sender: UITextField) {
-        if searchBar.text != "" {
             vm.searchPatients(query: searchBar.text!)
             self.tableView.reloadData()
             self.collectionView.reloadData()
-        }
     }
 }
 

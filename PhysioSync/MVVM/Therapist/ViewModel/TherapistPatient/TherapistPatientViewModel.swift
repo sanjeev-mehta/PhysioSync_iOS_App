@@ -83,7 +83,8 @@ class TherapistPatientViewModel {
                 filteredPatients = allPatients
             } else {
                 filteredPatients = allPatients.filter { patient in
-                    return patient.firstName.lowercased().contains(query.lowercased())
+                    return patient.firstName.lowercased().contains(query.lowercased()) ||
+                    patient.lastName.lowercased().contains(query.lowercased())
                 }
                 // Print each patient's properties
                     for patient in filteredPatients {

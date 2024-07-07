@@ -29,6 +29,7 @@ class TherapistHomeVC: UIViewController {
     @IBOutlet weak var messageCountLbl: UILabel!
     @IBOutlet weak var patientCountLbl: UILabel!
     @IBOutlet weak var notify: UIImageView!
+    @IBOutlet var topSectionConstraint: [NSLayoutConstraint]!
     
     // MARK: -  Variables
     var cellCount = 6
@@ -103,8 +104,14 @@ class TherapistHomeVC: UIViewController {
             self.updateCollection()
             if self.vm.notificationModel?.data.count != 0 {
                 self.notify.isHidden = false
+                self.topSectionConstraint[0].constant = 200
+                self.topSectionConstraint[1].constant = 24
+                self.topSectionConstraint[2].constant = 20
             } else {
                 self.notify.isHidden = true
+                for i in self.topSectionConstraint {
+                    i.constant = 0
+                }
             }
         }
     }
