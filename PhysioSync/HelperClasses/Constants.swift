@@ -14,6 +14,7 @@ struct Colors {
     static let borderClr = UIColor(named: "borderClr")!
     static let disableBtnBg = UIColor(named: "disbaledBtnBg")!
     static let disableBtnClr = UIColor(named: "disabledBtnClr")!
+    static let darkGray = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1.0)
 
 }
 

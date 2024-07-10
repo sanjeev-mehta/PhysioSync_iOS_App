@@ -38,11 +38,20 @@ class TherapistPatientStep1VC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setHeader("Therapist Profile", isRightBtn: false) {
-            self.dismissOrPopViewController()
-        } rightButtonAction: {
-            // No Need
+        if isPatientSide {
+            self.setHeader("Edit Profile", isRightBtn: false) {
+                self.dismissOrPopViewController()
+            } rightButtonAction: {
+                // No Need
+            }
+        } else {
+            self.setHeader("Patient Info", isRightBtn: false) {
+                self.dismissOrPopViewController()
+            } rightButtonAction: {
+                // No Need
+            }
         }
+        
     }
     
     // MARK: -  Set Edit Data

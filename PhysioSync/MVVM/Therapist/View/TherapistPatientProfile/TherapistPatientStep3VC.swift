@@ -34,10 +34,18 @@ class TherapistPatientStep3VC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setHeader("Therapist Profile", isRightBtn: false) {
-            self.dismissOrPopViewController()
-        } rightButtonAction: {
-            // No Need
+        if isPatientSide {
+            self.setHeader("Edit Profile", isRightBtn: false) {
+                self.dismissOrPopViewController()
+            } rightButtonAction: {
+                // No Need
+            }
+        } else {
+            self.setHeader("Patient Info", isRightBtn: false) {
+                self.dismissOrPopViewController()
+            } rightButtonAction: {
+                // No Need
+            }
         }
         setData()
     }
@@ -73,7 +81,11 @@ class TherapistPatientStep3VC: UIViewController {
                     self.parms["injury_details"] = self.historyTV.text!
                 }
                 self.parms["profile_photo"] = model!.profilePhoto
-                self.vm.updatePatient(vc: self, parm: self.parms, id: self.model!.Id) { status in
+                var isHeader = true
+                if isPatientSide {
+                    isHeader = false
+                }
+                self.vm.updatePatient(vc: self, parm: self.parms,isHeader: isHeader, id: self.model!.Id) { status in
                     if status {
                         self.popController()
                     }

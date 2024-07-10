@@ -178,6 +178,9 @@ If needed, review the video given above.</string>
                                                         <real key="value" value="8"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="startBtnActn:" destination="2oL-8E-fbI" eventType="touchUpInside" id="3Vn-jC-ksv"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePe-tu-WIp">
                                                 <rect key="frame" x="168.66666666666663" y="0.0" width="144.33333333333337" height="32"/>

@@ -303,7 +303,7 @@ extension TherapistHomeVC: UICollectionViewDelegate, UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        cell.setTemplateWithSubviews(isLoading, animate: true, viewBackgroundColor: .systemBackground)
+        cell.setTemplateWithSubviews(isLoading, color: Colors.primaryClr, animate: true, viewBackgroundColor: Colors.darkGray)
         cell.alpha = 0
         cell.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         
@@ -395,8 +395,47 @@ extension TherapistHomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.setTemplateWithSubviews(isLoading, animate: true, viewBackgroundColor: .systemBackground)
+        cell.setTemplateWithSubviews(isLoading, color: Colors.primaryClr, animate: true, viewBackgroundColor: Colors.darkGray)
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == messageTableView {
+            if let cell = tableView.cellForRow(at: indexPath) {
+                cell.pressedAnimation {
+                    let patient = self.messageVM.model[indexPath.row].patient!
+                    self.openChat(patient.Id,name: patient.firstName + " " + patient.lastName, link: patient.profilePhoto)
+                }
+            }
+        } else {
+            if let cell = tableView.cellForRow(at: indexPath) {
+                cell.pressedAnimation {
+                    if let vc = self.switchController(.therapistPatientProfileVC, .therapistPatientProfile) as? TherapistPatientProfileVC {
+                        vc.patientData = self.patientVM.filteredPatients[indexPath.row]
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    func openChat(_ recieverId: String, name: String, link: String) {
+        let id = UserDefaults.standard.getTherapistId()
+        TherapistHomeVC.socketHandler.fetchPreviousMessage(recieverId, id)
+        if let vc = self.switchController(.chatVC, .messageTab) as? ChatScreenVC {
+            vc.recieverId = recieverId
+            vc.name = name
+            vc.profileImgLink = link
+            if UserDefaults.standard.getUsernameToken() != "" {
+                vc.isPatient = false
+            } else {
+                vc.isPatient = true
+            }
+            self.pushOrPresentViewController(vc, true)
+        }
+    }
+
+    
 }
 
 extension TherapistHomeVC : SocketIOHandlerDelegate {
