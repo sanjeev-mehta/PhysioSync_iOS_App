@@ -46,4 +46,12 @@ class TherapistPatientProfileViewModel{
         }
     }
     
+    func setCategoryCell(_ cell: ScheduleTableTVC, index: Int) {
+        if let dataModel = therapistPatientprofileModel?[0].data?.exercise?[0] {
+            let data = dataModel.exerciseIds[index]
+            cell.categoryLbl.text = data.categoryName.joined(separator: ", ")
+            cell.exerciseLbl.text = data.videoTitle
+        }
+    }
+    
 }

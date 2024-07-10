@@ -56,4 +56,11 @@ class MessageViewModel {
         }
     }
     
+    func unreadCount() -> Int {
+        var count = 0
+        for i in model {
+           count += i.unreadCount
+        }
+        return count
+    }
 }

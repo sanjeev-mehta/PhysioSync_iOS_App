@@ -40,7 +40,7 @@ class TherapistLoginViewModel {
         
         firebaseHelper.checkEmailAuthentication(email, password) { isVerified, status in
             if isVerified {
-                print("Email is verified")
+                av.removeFromSuperview()
                 self.callTherapistLoginApi(vc, with: parm) { status in
                     completion(true)
                 }
@@ -49,7 +49,7 @@ class TherapistLoginViewModel {
                     // Show the illustration or an alert with the message
                     switch message {
                     case 0:
-                        print("Email is verified")
+                        av.removeFromSuperview()
                         self.callTherapistLoginApi(vc, with: parm) { status in
                             completion(true)
                         }

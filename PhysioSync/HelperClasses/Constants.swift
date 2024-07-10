@@ -14,6 +14,7 @@ struct Colors {
     static let borderClr = UIColor(named: "borderClr")!
     static let disableBtnBg = UIColor(named: "disbaledBtnBg")!
     static let disableBtnClr = UIColor(named: "disabledBtnClr")!
+    static let darkGray = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1.0)
 
 }
 
@@ -78,7 +79,7 @@ enum API {
         //MARK: - Assign Exercise
         static let addAssignExercise = "\(baseURL)add-assign-exercise"
         static let getAssignExercise = "\(baseURL)get-assign-exercise"
-        static let updateAssignExercise = "\(baseURL)update-assign-exercise"
+        static let updateAssignExercise = "\(baseURL)update-assign-exercise/"
         
         //MARK: - Exercise
         static let exerciseCategories = "\(baseURL)exercise-categories"
