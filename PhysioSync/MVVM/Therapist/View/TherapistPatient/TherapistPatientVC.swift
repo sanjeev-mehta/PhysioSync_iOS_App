@@ -142,11 +142,9 @@ extension TherapistPatientVC {
     //        collectionView.reloadData()
     //    }
     @objc func searchActn(_ sender: UITextField) {
-        if searchBar.text != "" {
             vm.searchPatients(query: searchBar.text!)
             self.tableView.reloadData()
             self.collectionView.reloadData()
-        }
     }
 }
 
@@ -190,13 +188,13 @@ extension TherapistPatientVC: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        cell.setTemplateWithSubviews(isLoading, animate: true, viewBackgroundColor: .systemBackground)
-        cell.alpha = 0
+        cell.setTemplateWithSubviews(isLoading, color: Colors.primaryClr, animate: true, viewBackgroundColor: Colors.darkGray)
+        //cell.alpha = 0
         
         // Apply animation
-        UIView.animate(withDuration: 0.5) {
-            cell.alpha = 1
-        }
+//        UIView.animate(withDuration: 0.5) {
+//            cell.alpha = 1
+//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -230,13 +228,13 @@ extension TherapistPatientVC: UITableViewDelegate ,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.setTemplateWithSubviews(isLoading, animate: true, viewBackgroundColor: .systemBackground)
-        cell.alpha = 0
+        cell.setTemplateWithSubviews(isLoading, color: Colors.primaryClr, animate: true, viewBackgroundColor: Colors.darkGray)
+        //cell.alpha = 0
         
         // Apply animation
-        UIView.animate(withDuration: 0.5) {
-            cell.alpha = 1
-        }
+//        UIView.animate(withDuration: 0.5) {
+//            cell.alpha = 1
+//        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

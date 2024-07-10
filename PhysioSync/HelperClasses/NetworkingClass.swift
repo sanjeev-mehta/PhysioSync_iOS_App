@@ -71,17 +71,18 @@ class ApiHelper {
             av.removeFromSuperview()
             switch response.result{
             case .success(let value):
-                
+                av.removeFromSuperview()
                 do {
                     let jsonData = try JSON(data: response.data!)
                     completion(jsonData, nil)
                 }catch{}
             case .failure(let err):
                 print(err)
-                
+                av.removeFromSuperview()
                 do {
                     try completion(JSON(data: NSData() as Data), err)
                 }catch{
+                    av.removeFromSuperview()
                     completion(JSON.null,err)
                 }
             }
@@ -121,7 +122,7 @@ class ApiHelper {
                 }catch{}
             case .failure(let err):
                 print(err)
-                
+                av.removeFromSuperview()
                 do {
                     try completion(JSON(data: NSData() as Data), err)
                 }catch{

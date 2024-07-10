@@ -142,12 +142,22 @@ class AddNewExerciseVC: UIViewController {
 
     //MARK: - Validation
     func validation() {
+        var isSelected = false
+        for i in exerciseVM.categoriesModel {
+            if i.isSelected {
+                isSelected = true
+                break
+            }
+        }
+        
         if nameTf.text == "" {
             self.displayAlert(title: "Warning", msg: "Please enter video title", ok: "Ok")
         } else if videoFileNameLbl.text == "Select a video file" {
             self.displayAlert(title: "Warning", msg: "Please select video file", ok: "Ok")
         } else if descTV.text == "" {
             self.displayAlert(title: "Warning", msg: "Please enter description", ok: "Ok")
+        } else if !isSelected {
+            self.displayAlert(title: "Warning", msg: "Please select atleast 1 category", ok: "Ok")
         } else {
             if isVideoChange {
                 awsHelper.uploadVideoFile(url: self.videoUrl!,fileName: videoFileNameLbl.text!) { progress in

@@ -52,18 +52,12 @@ extension PatientExerciseTabVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PatientExerciseTabTVC", for: indexPath) as! PatientExerciseTabTVC
             cell.selectionStyle = .none
             if !isLoading {
                 vm.setUpTableCell(cell, .assigned, indexPath.row)
             }
             return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PatientExerciseTabTVC2", for: indexPath) as! PatientExerciseTabTVC2
-            cell.selectionStyle = .none
-            return cell
-        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -72,7 +66,7 @@ extension PatientExerciseTabVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         // Initial state for the animation
-        cell.setTemplateWithSubviews(isLoading, animate: true, viewBackgroundColor: .systemBackground)
+        cell.setTemplateWithSubviews(isLoading, color: Colors.primaryClr, animate: true, viewBackgroundColor: Colors.darkGray)
         cell.alpha = 0
         
         // Apply animation

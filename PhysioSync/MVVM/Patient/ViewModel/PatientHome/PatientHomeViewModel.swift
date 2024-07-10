@@ -90,10 +90,12 @@ class PatientHomeViewModel {
             arr = completedExercise
         }
         
-        cell.imgView.setImage(with: arr[index].exerciseIds[0].video_thumbnail)
-        let category = arr[index].exerciseIds[0].categoryName.joined(separator: ", ")
-        cell.titleLbl.text = category
-        cell.exerciseNameLbl.text = arr[index].exerciseIds[0].videoTitle
+        if !arr[index].exerciseIds.isEmpty {
+            cell.imgView.setImage(with: arr[index].exerciseIds[0].video_thumbnail)
+            let category = arr[index].exerciseIds[0].categoryName.joined(separator: ", ")
+            cell.titleLbl.text = category
+            cell.exerciseNameLbl.text = arr[index].exerciseIds[0].videoTitle
+        }
     }
     
     //PatientExerciseTabTVC
@@ -105,10 +107,12 @@ class PatientHomeViewModel {
             arr = completedExercise
         }
         
-        cell.imgView.setImage(with: arr[index].exerciseIds[0].video_thumbnail)
-        let category = arr[index].exerciseIds[0].categoryName.joined(separator: ", ")
-        cell.titleLbl.text = category
-        cell.exerciseNameLbl.text = arr[index].exerciseIds[0].videoTitle
+        if !arr[index].exerciseIds.isEmpty {
+            cell.imgView.setImage(with: arr[index].exerciseIds[0].video_thumbnail)
+            let category = arr[index].exerciseIds[0].categoryName.joined(separator: ", ")
+            cell.titleLbl.text = category
+            cell.exerciseNameLbl.text = arr[index].exerciseIds[0].videoTitle
+        }
     }
 }
 
