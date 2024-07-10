@@ -34,6 +34,7 @@ class TherapistPatientStep1VC: UIViewController {
         setDropDown()
         setData()
         setDatePicker()
+        visualEffectView.alpha = 0.7
     }
     
     override func viewWillAppear(_ animated: Bool) {

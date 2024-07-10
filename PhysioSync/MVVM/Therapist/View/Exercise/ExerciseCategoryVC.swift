@@ -94,7 +94,7 @@ extension ExerciseCategoryVC: UICollectionViewDelegate, UICollectionViewDataSour
         cell.imgVW.layer.cornerRadius = 12
         cell.imgVW.layer.masksToBounds = true
         cell.imgVW.contentMode = .scaleAspectFit
-        cell.imgVW.addShadow()
+//        cell.imgVW.addShadow()
         return cell
     }
     
