@@ -119,8 +119,8 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today’s Session(1/4)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2BB-am-Gic">
-                                                <rect key="frame" x="24" y="183" width="156" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today’s Session" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2BB-am-Gic">
+                                                <rect key="frame" x="24.000000000000007" y="183" width="121.66666666666669" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -485,6 +485,7 @@
                         <outlet property="sessionCollectionView" destination="Tyh-rd-t81" id="UGF-jV-5FJ"/>
                         <outlet property="sessionPageControl" destination="cjA-4F-a0a" id="MsP-q9-die"/>
                         <outlet property="therapistNameLbl" destination="oCl-ZM-FWS" id="pjM-6N-ABV"/>
+                        <outlet property="todaysSessionLbl" destination="2BB-am-Gic" id="Vh9-OA-iiA"/>
                         <outletCollection property="messageViewConstraints" destination="qi9-Aq-62V" collectionClass="NSMutableArray" id="mwq-tl-RcD"/>
                         <outletCollection property="messageViewConstraints" destination="JHL-TF-GCv" collectionClass="NSMutableArray" id="ReC-gU-gN8"/>
                         <outletCollection property="messageViewConstraints" destination="d9T-1I-P4t" collectionClass="NSMutableArray" id="Gtc-rK-bho"/>
@@ -1020,13 +1021,13 @@
                                                         <rect key="frame" x="15.999999999999998" y="13.333333333333313" width="20.333333333333329" height="21.333333333333329"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWL-Cu-NZo">
-                                                        <rect key="frame" x="44.333333333333329" y="14.666666666666687" width="58.666666666666671" height="18.666666666666671"/>
+                                                        <rect key="frame" x="44.333333333333329" y="13.999999999999998" width="58.333333333333329" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2SM-hN-oc6">
-                                                        <rect key="frame" x="236.33333333333329" y="12.333333333333313" width="44.666666666666657" height="23.333333333333329"/>
+                                                        <rect key="frame" x="240" y="11.333333333333313" width="41" height="25.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="Outfit-Medium" family="Outfit" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1050,13 +1051,13 @@
                                                         <rect key="frame" x="15.999999999999998" y="11.333333333333369" width="20.333333333333329" height="25.333333333333329"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZoT-TQ-S7t">
-                                                        <rect key="frame" x="44.333333333333329" y="14.666666666666631" width="41.666666666666671" height="18.666666666666671"/>
+                                                        <rect key="frame" x="44.333333333333329" y="13.999999999999998" width="39.333333333333329" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QpA-7e-gm2">
-                                                        <rect key="frame" x="236.33333333333329" y="12.333333333333369" width="44.666666666666657" height="23.333333333333329"/>
+                                                        <rect key="frame" x="240" y="11.333333333333369" width="41" height="25.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="Outfit-Medium" family="Outfit" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1080,13 +1081,13 @@
                                                         <rect key="frame" x="15.999999999999998" y="13.666666666666631" width="20.333333333333329" height="20.666666666666671"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sleep" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="na2-0L-Snt">
-                                                        <rect key="frame" x="44.333333333333329" y="14.666666666666631" width="40.666666666666671" height="18.666666666666671"/>
+                                                        <rect key="frame" x="44.333333333333329" y="13.999999999999998" width="39" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFG-PE-E82">
-                                                        <rect key="frame" x="236.33333333333329" y="12.333333333333369" width="44.666666666666657" height="23.333333333333329"/>
+                                                        <rect key="frame" x="240" y="11.333333333333369" width="41" height="25.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="Outfit-Medium" family="Outfit" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1110,13 +1111,13 @@
                                                         <rect key="frame" x="15.999999999999998" y="14.999999999999998" width="20.333333333333329" height="18.333333333333329"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heart Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ic-SR-zB7">
-                                                        <rect key="frame" x="44.333333333333329" y="14.666666666666631" width="77" height="18.666666666666671"/>
+                                                        <rect key="frame" x="44.333333333333329" y="13.999999999999998" width="78" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oKC-5M-z9U">
-                                                        <rect key="frame" x="236.33333333333329" y="12.333333333333369" width="44.666666666666657" height="23.333333333333329"/>
+                                                        <rect key="frame" x="240" y="11.333333333333369" width="41" height="25.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="Outfit-Medium" family="Outfit" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1141,7 +1142,7 @@
                                         </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Health Stats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkC-JI-fXB">
-                                        <rect key="frame" x="24.000000000000007" y="15.999999999999998" width="109.66666666666669" height="25.333333333333329"/>
+                                        <rect key="frame" x="24" y="15.999999999999998" width="110" height="25.333333333333329"/>
                                         <fontDescription key="fontDescription" name="Outfit-Medium" family="Outfit" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1870,14 +1871,6 @@
             <point key="canvasLocation" x="35.877862595419849" y="-225.35211267605635"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="cjA-4F-a0a">
-            <size key="intrinsicContentSize" width="-5" height="4"/>
-        </designable>
-        <designable name="npu-m0-MDU">
-            <size key="intrinsicContentSize" width="-5" height="4"/>
-        </designable>
-    </designables>
     <resources>
         <image name="Frame 547" width="38" height="38.333332061767578"/>
         <image name="backArrow" width="17.666666030883789" height="17.666666030883789"/>

@@ -20,7 +20,7 @@ class PatientHomeViewModel {
     func getAssignExercise(_ vc: UIViewController, completion: @escaping(Bool) -> ()) {
         let userId = UserDefaults.standard.getPatientLoginId()
         let url = API.Endpoints.getAssignExercise + "/\(userId)"
-        apiHelper.getApi(view: vc, url: url, isHeader: true, isLoader: true) { json, err in
+        apiHelper.getApi(view: vc, url: url, isHeader: true, isLoader: false) { json, err in
             if err != nil {
                 vc.displayAlert(title: "Alert!", msg: "Something went wrong", ok: "Ok")
             } else {
