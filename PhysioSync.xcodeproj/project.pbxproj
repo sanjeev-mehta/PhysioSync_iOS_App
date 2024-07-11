@@ -30,6 +30,7 @@
 		676BEA632C0C404E00A193CF /* Outfit-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 676BEA5A2C0C404E00A193CF /* Outfit-Light.ttf */; };
 		676BEA642C0C404E00A193CF /* Outfit-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 676BEA5B2C0C404E00A193CF /* Outfit-Regular.ttf */; };
 		676BEA652C0C404E00A193CF /* Outfit-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 676BEA5C2C0C404E00A193CF /* Outfit-Thin.ttf */; };
+		677481BE2C3F2FBB00E3A23F /* V_Logo_Animation.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 677481BD2C3F2FBA00E3A23F /* V_Logo_Animation.mp4 */; };
 		67795B682C2A8AF600271E5C /* TherapistHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67795B672C2A8AF600271E5C /* TherapistHomeModel.swift */; };
 		67795B6B2C2A8B1500271E5C /* TherapistHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67795B6A2C2A8B1500271E5C /* TherapistHomeViewModel.swift */; };
 		677F5F032C15025F006792F2 /* PatientTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 677F5F022C15025F006792F2 /* PatientTab.storyboard */; };
@@ -166,6 +167,7 @@
 		676BEA5A2C0C404E00A193CF /* Outfit-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Light.ttf"; sourceTree = "<group>"; };
 		676BEA5B2C0C404E00A193CF /* Outfit-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Regular.ttf"; sourceTree = "<group>"; };
 		676BEA5C2C0C404E00A193CF /* Outfit-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Thin.ttf"; sourceTree = "<group>"; };
+		677481BD2C3F2FBA00E3A23F /* V_Logo_Animation.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = V_Logo_Animation.mp4; sourceTree = "<group>"; };
 		67795B672C2A8AF600271E5C /* TherapistHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistHomeModel.swift; sourceTree = "<group>"; };
 		67795B6A2C2A8B1500271E5C /* TherapistHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistHomeViewModel.swift; sourceTree = "<group>"; };
 		677F5F022C15025F006792F2 /* PatientTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PatientTab.storyboard; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 			children = (
 				6794C7BB2C2686DC00E3B4F3 /* PhysioSync.entitlements */,
 				67E888012C24F00800948C5A /* GoogleService-Info.plist */,
+				677481BD2C3F2FBA00E3A23F /* V_Logo_Animation.mp4 */,
 				678F33EB2BFED68400824A23 /* AppDelegates */,
 				678F33F12BFED88D00824A23 /* HelperClasses */,
 				678F33F22BFED8A400824A23 /* Fonts */,
@@ -1116,6 +1119,7 @@
 				E89CB9B92C17971600A8A305 /* TherapistNotification.storyboard in Resources */,
 				F92488572C1BB51700426C8E /* ChipsCVC.xib in Resources */,
 				678F33FD2BFED95000824A23 /* PatientAuth.storyboard in Resources */,
+				677481BE2C3F2FBB00E3A23F /* V_Logo_Animation.mp4 in Resources */,
 				E89CB9C12C17C3D700A8A305 /* TherapistPatientProfile.storyboard in Resources */,
 				67320C8D2C168C0B003188AA /* TherapistTab.storyboard in Resources */,
 				E8A79AD52C0D4C8C00A2EB92 /* Message.storyboard in Resources */,
