@@ -48,7 +48,10 @@ class TherapistWelcomeVC: UIViewController {
     
     @IBAction func signUpBtnActn(_ sender: UIButton) {
         sender.pressedAnimation {
-            
+            let storyBoard = UIStoryboard(name: "TherapistAuth", bundle: nil)
+            if let vc = storyBoard.instantiateViewController(withIdentifier: "TherapistSignUpVC") as? TherapistSignUpVC {
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
     

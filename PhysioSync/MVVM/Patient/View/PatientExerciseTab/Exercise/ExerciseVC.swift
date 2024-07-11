@@ -42,6 +42,7 @@ class ExerciseVC: UIViewController {
     var secondsElapsed = 0
     var timer: Timer?
     var videoUrl: URL!
+    var modelType: ModelType?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,7 @@ class ExerciseVC: UIViewController {
         setUpVideoPreview()
         videoCapture.predictor.delegate = self
         videoCapture.delegate = self
+        videoCapture.switchModel(to: modelType ?? .neckRotation)
         
         //MARK: - Add double tap gesture recognizer to switch Camera
         let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap(_:)))
