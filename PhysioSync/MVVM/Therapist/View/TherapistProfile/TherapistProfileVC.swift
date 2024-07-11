@@ -86,5 +86,14 @@ class TherapistProfileVC: UIViewController {
         }
         
     }
+    
+    @IBAction func settingBtnActn(_ sender: UIButton) {
+        if let vc = self.switchController(.settingVC, .setting) as? SettingsVC {
+            vc.isHeroEnabled = true
+            vc.heroModalAnimationType = .selectBy(presenting: .pull(direction: .up), dismissing: .pull(direction: .down))
+            vc.view.heroID = "settingPage"
+            self.pushOrPresentViewController(vc, true)
+        }
+    }
 
 }

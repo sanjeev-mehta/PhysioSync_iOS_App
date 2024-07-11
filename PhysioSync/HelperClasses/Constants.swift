@@ -56,6 +56,9 @@ enum Storyboard: String {
     
     // MARK: - Schedule Tab
     case ScheduleTab = "TherapistCreateSchedule"
+    
+    // MARK: - Setting Tab
+    case setting = "Settings"
 }
 
 enum API {
