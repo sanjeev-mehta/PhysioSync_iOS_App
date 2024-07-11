@@ -30,7 +30,7 @@ class ExerciseVC: UIViewController {
     var id = ""
     
     enum ExerciseStage {
-        case still, right, left
+        case still, right, left, mid, up
     }
     
     var currentStage: ExerciseStage = .still
@@ -51,7 +51,6 @@ class ExerciseVC: UIViewController {
         videoCapture.predictor.delegate = self
         videoCapture.delegate = self
         videoCapture.switchModel(to: modelType ?? .neckRotation)
-        
         //MARK: - Add double tap gesture recognizer to switch Camera
         let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap(_:)))
         doubleTapGesture.numberOfTapsRequired = 2
@@ -231,43 +230,88 @@ extension ExerciseVC: PredictorDelegate {
     }
     
     func leftRightRepCount(action: String) {
-        switch action {
-        case "still1":
-            if currentStage == .right || currentStage == .left {
-                if currentStage == .right {
-                    speakInstruction("Move to the left")
-                } else {
-                    speakInstruction("Move to the right")
+        if modelType == .neckRotation {
+            switch action {
+            case "still1":
+                if currentStage == .right || currentStage == .left {
+                    if currentStage == .right {
+                        speakInstruction("Move to the left")
+                    } else {
+                        speakInstruction("Move to the right")
+                    }
+                    currentStage = .still
                 }
-                currentStage = .still
+            case "right1":
+                if currentStage == .still {
+                    halfRep += 1
+                    currentStage = .right
+                    speakInstruction("Move back to still")
+                }
+            case "left1":
+                if currentStage == .still {
+                    halfRep += 1
+                    currentStage = .left
+                    speakInstruction("Move back to still")
+                }
+            default:
+                break
             }
-        case "right1":
-            if currentStage == .still {
-                halfRep += 1
-                currentStage = .right
-                speakInstruction("Move back to still")
+            
+            if halfRep == 2 {
+                repCount += 1
+                halfRep = 0
             }
-        case "left1":
-            if currentStage == .still {
-                halfRep += 1
-                currentStage = .left
-                speakInstruction("Move back to still")
+            DispatchQueue.main.async {
+                let myString = "REPS\n \(self.repCount)"
+                let attributedString = NSMutableAttributedString(string: myString)
+                attributedString.setColor(forText: ["REPS": .white, "\(self.repCount)": .white])
+                self.repLbl.attributedText = attributedString
             }
-        default:
-            break
+            print("Reps: \(repCount)")
+        } else if modelType == .shoulderModel {
+            switch action {
+            case "still":
+                if currentStage == .mid {
+                    speakInstruction("Move arms to Up")
+                    currentStage = .up
+                } else if currentStage == .up {
+                    speakInstruction("Move back to Mid")
+                    currentStage = .mid
+                } else if currentStage == .still {
+                    speakInstruction("Move arms to Mid")
+                    currentStage = .mid
+                }
+            case "mid":
+                if currentStage == .still {
+                    currentStage = .mid
+                    speakInstruction("Move arms to Up")
+                } else if currentStage == .up {
+                    currentStage = .mid
+                    speakInstruction("Move to Still")
+                }
+            case "up":
+                if currentStage == .mid {
+                    halfRep += 1
+                    currentStage = .up
+                    speakInstruction("Move back to Mid")
+                }
+            default:
+                break
+            }
+            
+            if halfRep == 2 {
+                repCount += 1
+                halfRep = 0
+            }
+            
+            DispatchQueue.main.async {
+                let myString = "REPS\n \(self.repCount)"
+                let attributedString = NSMutableAttributedString(string: myString)
+                attributedString.setColor(forText: ["REPS": .white, "\(self.repCount)": .white])
+                self.repLbl.attributedText = attributedString
+            }
+            print("Reps: \(repCount)")
         }
-        
-        if halfRep == 2 {
-            repCount += 1
-            halfRep = 0
-        }
-        DispatchQueue.main.async {
-            let myString = "REPS\n \(self.repCount)"
-            let attributedString = NSMutableAttributedString(string: myString)
-            attributedString.setColor(forText: ["REPS": .white, "\(self.repCount)": .white])
-            self.repLbl.attributedText = attributedString
-        }
-        print("Reps: \(repCount)")
     }
     
     //MARK: - Function to speak instructions

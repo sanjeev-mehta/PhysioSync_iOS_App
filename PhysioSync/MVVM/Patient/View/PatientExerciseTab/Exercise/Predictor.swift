@@ -11,7 +11,7 @@ import UIKit
 
 //Vision, AVFoundation, CreateML, MLModel
 typealias neckRotationModel = neckRotation
-typealias shoulderModel = Shoulder_Up_Down
+typealias shoulderModel = arm_up_down
 
 enum ModelType {
     case neckRotation
@@ -30,12 +30,12 @@ class Predictor {
     let predictionWindowSize = 30
     var posesWindow: [VNHumanBodyPoseObservation] = []
     private var inactivityTimer: Timer?
-   // let neckRotationClassifier: neckRotationModel
+    let neckRotationClassifier: neckRotationModel
     let secondModelClassifier: shoulderModel
     var currentModel: ModelType = .neckRotation
     
     init() {
-       // neckRotationClassifier = try! neckRotationModel(configuration: MLModelConfiguration())
+        neckRotationClassifier = try! neckRotationModel(configuration: MLModelConfiguration())
         secondModelClassifier = try! shoulderModel(configuration: MLModelConfiguration())
         posesWindow.reserveCapacity(predictionWindowSize)
     }
@@ -81,16 +81,16 @@ class Predictor {
     }
     
     func predictWithNeckRotationModel(_ poseMultiArray: MLMultiArray) {
-//            do {
-//                let predictions = try self.neckRotationClassifier.prediction(poses: poseMultiArray)
-//                let label = predictions.label
-//                let confidence = predictions.labelProbabilities[label] ?? 0
-//                DispatchQueue.main.async {
-//                    self.delegate?.predictor(self, didLabelAction: label, with: confidence)
-//                }
-//            } catch {
-//                print("Error predicting action with SquatsModel: \(error)")
-//            }
+            do {
+                let predictions = try self.neckRotationClassifier.prediction(poses: poseMultiArray)
+                let label = predictions.label
+                let confidence = predictions.labelProbabilities[label] ?? 0
+                DispatchQueue.main.async {
+                    self.delegate?.predictor(self, didLabelAction: label, with: confidence)
+                }
+            } catch {
+                print("Error predicting action with SquatsModel: \(error)")
+            }
         }
         
         func predictWithShoulderModel(_ poseMultiArray: MLMultiArray) {
