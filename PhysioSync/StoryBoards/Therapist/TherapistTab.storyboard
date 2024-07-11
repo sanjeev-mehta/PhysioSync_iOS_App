@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0fi-6G-Ac6">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -703,7 +703,7 @@
                             <constraint firstItem="DtW-Ks-P6J" firstAttribute="leading" secondItem="XDa-fz-gRb" secondAttribute="leading" id="zDn-eh-775"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="home" id="18e-lR-buH" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="homeSelected" id="18e-lR-buH" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
                         <connections>
                             <outlet property="animation" destination="Xig-Dm-Pqa" id="UOO-E2-wel"/>
                         </connections>
@@ -1048,7 +1048,7 @@
                             <constraint firstItem="fJp-3K-NEe" firstAttribute="leading" secondItem="ga4-30-UH8" secondAttribute="leading" constant="20" id="Whf-XK-r2W"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Exercise" image="exercise" id="lZJ-5e-a4Y" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" title="Exercise" image="exercise" selectedImage="exerciseSelected" id="lZJ-5e-a4Y" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
                         <connections>
                             <outlet property="animation" destination="bhG-ao-sSs" id="miW-xg-ZIL"/>
                         </connections>
@@ -1197,7 +1197,7 @@
                             <constraint firstItem="Bbw-8f-uA9" firstAttribute="leading" secondItem="5gg-8b-ujf" secondAttribute="leading" constant="24" id="yh3-JN-vhB"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Messages" image="message" id="wwC-Gv-iFT" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" title="Messages" image="message" selectedImage="messageSelected" id="wwC-Gv-iFT" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
                         <color key="badgeColor" name="primary"/>
                         <connections>
                             <outlet property="animation" destination="iAq-8r-Q2x" id="dEa-NW-WIB"/>
@@ -1421,7 +1421,7 @@
                             <constraint firstItem="YwF-2L-M5c" firstAttribute="leading" secondItem="ISr-vF-NME" secondAttribute="trailing" constant="16" id="yeC-VS-TKE"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Patients" image="patients" id="TkT-eS-kla" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" title="Patients" image="patients" selectedImage="patientsSelected" id="TkT-eS-kla" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
                         <connections>
                             <outlet property="animation" destination="g5X-E8-xc1" id="ZN3-7l-HLx"/>
                         </connections>
@@ -1447,6 +1447,11 @@
             <point key="canvasLocation" x="243.51145038167937" y="493.66197183098592"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="cUW-BM-1Qk">
+            <size key="intrinsicContentSize" width="-5" height="4"/>
+        </designable>
+    </designables>
     <resources>
         <image name="Edit-patient" width="24" height="24"/>
         <image name="Frame 2608250" width="96" height="96"/>
@@ -1455,16 +1460,20 @@
         <image name="avatar1" width="36" height="36"/>
         <image name="bell.fill" catalog="system" width="123" height="128"/>
         <image name="bgHomePage" width="345" height="200"/>
-        <image name="exercise" width="20.333333969116211" height="10.333333015441895"/>
+        <image name="exercise" width="21" height="21.333333969116211"/>
+        <image name="exerciseSelected" width="21" height="21.333333969116211"/>
         <image name="gridIcon" width="18" height="18"/>
         <image name="home" width="18.333333969116211" height="19"/>
+        <image name="homeSelected" width="17.666666030883789" height="18.333333969116211"/>
         <image name="linearGradient" width="344" height="200"/>
         <image name="listIcon" width="17.333333969116211" height="13.333333015441895"/>
         <image name="logout" width="24" height="24"/>
-        <image name="message" width="20.333333969116211" height="20.333333969116211"/>
+        <image name="message" width="24" height="24"/>
+        <image name="messageSelected" width="24" height="24"/>
         <image name="notify" width="6" height="6"/>
         <image name="online" width="12" height="12"/>
-        <image name="patients" width="24.333333969116211" height="18.333333969116211"/>
+        <image name="patients" width="24.333333969116211" height="24"/>
+        <image name="patientsSelected" width="24.333333969116211" height="24"/>
         <image name="plus" width="15" height="15"/>
         <image name="profile" width="20" height="20.333333969116211"/>
         <image name="searchIcon1" width="18" height="18"/>
