@@ -61,4 +61,6 @@ enum StoryBoardIDs: String {
     //MARK: -  Schedule Tab
     case createScheduleVC = "CreateScheduleVC"
     
+    //MARK: - Settings
+    case settingVC = "SettingsVC"
 }

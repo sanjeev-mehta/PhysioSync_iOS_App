@@ -62,6 +62,11 @@ class PatientExerciseDetailVC: UIViewController {
         vc.categories = categoryLbl.text ?? ""
         vc.exercise = videoTitleLbl.text ?? ""
         vc.id = data?.Id ?? ""
+        if data!.exerciseIds[0].categoryName.contains("neck") {
+            vc.modelType = .neckRotation
+        } else {
+            vc.modelType = .shoulderModel
+        }
         self.pushOrPresentViewController(vc, true)
     }
     

@@ -97,5 +97,11 @@ class TherapistLoginVC: UIViewController {
     @IBAction func backBtnActn(_ sender: UIButton) {
         self.dismissOrPopViewController()
     }
+    
+    @IBAction func signUpBtnActn(_ sender: UIButton) {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "TherapistSignUpVC") as? TherapistSignUpVC {
+            self.pushOrPresentViewController(vc, true)
+        }
+    }
 
 }
