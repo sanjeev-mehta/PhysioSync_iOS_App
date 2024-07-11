@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0fi-6G-Ac6">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -929,13 +929,24 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kar-mu-82J">
+                                                                <rect key="frame" x="0.0" y="0.0" width="345" height="40"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <connections>
+                                                                    <action selector="settingBtnActn:" destination="mSM-Io-6V5" eventType="touchUpInside" id="9Lt-om-Vlo"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="Kar-mu-82J" secondAttribute="trailing" id="IoE-VL-Olt"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Kar-mu-82J" secondAttribute="bottom" id="N7o-R1-uqJ"/>
                                                             <constraint firstItem="3Gf-cO-y6G" firstAttribute="centerY" secondItem="rvL-1T-elo" secondAttribute="centerY" id="O0Z-Ok-QQf"/>
                                                             <constraint firstItem="JNU-fI-xYL" firstAttribute="leading" secondItem="3Gf-cO-y6G" secondAttribute="trailing" constant="16" id="Xam-tj-aUY"/>
+                                                            <constraint firstItem="Kar-mu-82J" firstAttribute="leading" secondItem="rvL-1T-elo" secondAttribute="leading" id="iTL-WC-cAy"/>
                                                             <constraint firstItem="3Gf-cO-y6G" firstAttribute="leading" secondItem="rvL-1T-elo" secondAttribute="leading" id="k2Y-d1-znr"/>
                                                             <constraint firstAttribute="height" constant="40" id="ot0-l9-V5Q"/>
+                                                            <constraint firstItem="Kar-mu-82J" firstAttribute="top" secondItem="rvL-1T-elo" secondAttribute="top" id="rOU-3u-7j1"/>
                                                             <constraint firstItem="JNU-fI-xYL" firstAttribute="centerY" secondItem="rvL-1T-elo" secondAttribute="centerY" id="vGi-SO-Ozm"/>
                                                         </constraints>
                                                     </view>
