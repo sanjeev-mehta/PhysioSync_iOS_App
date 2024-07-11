@@ -84,7 +84,7 @@ extension PatientExerciseTabVC: UITableViewDelegate, UITableViewDataSource {
                     vc.isHeroEnabled = true
                     vc.heroModalAnimationType = .zoom
                     vc.view.heroID = "cell_\(indexPath.section)_\(indexPath.row)"
-                    self.pushOrPresentViewController(vc, false)
+                    self.pushOrPresentViewController(vc, true)
                 }
             }
         }
