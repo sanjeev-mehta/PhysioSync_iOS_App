@@ -12,6 +12,7 @@ class TherapistPatientStep3VC: UIViewController {
 
     //MARK: - IBOutlets
     @IBOutlet weak var historyTV: UITextView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     //MARK: - Variables
     let awsHelper = AWSHelper.shared
@@ -27,14 +28,24 @@ class TherapistPatientStep3VC: UIViewController {
         super.viewDidLoad()
 
         self.debugPrint("\(parms)")
+        scrollView.delegate = self
+        scrollView.contentOffset.y = -50
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setHeader("Therapist Profile", isRightBtn: false) {
-            self.dismissOrPopViewController()
-        } rightButtonAction: {
-            // No Need
+        if isPatientSide {
+            self.setHeader("Edit Profile", isRightBtn: false) {
+                self.dismissOrPopViewController()
+            } rightButtonAction: {
+                // No Need
+            }
+        } else {
+            self.setHeader("Patient Info", isRightBtn: false) {
+                self.dismissOrPopViewController()
+            } rightButtonAction: {
+                // No Need
+            }
         }
         setData()
     }
@@ -70,7 +81,11 @@ class TherapistPatientStep3VC: UIViewController {
                     self.parms["injury_details"] = self.historyTV.text!
                 }
                 self.parms["profile_photo"] = model!.profilePhoto
-                self.vm.updatePatient(vc: self, parm: self.parms, id: self.model!.Id) { status in
+                var isHeader = true
+                if isPatientSide {
+                    isHeader = false
+                }
+                self.vm.updatePatient(vc: self, parm: self.parms,isHeader: isHeader, id: self.model!.Id) { status in
                     if status {
                         self.popController()
                     }
@@ -113,8 +128,19 @@ class TherapistPatientStep3VC: UIViewController {
     }
     
     // MARK: -  Buttons Actions
-    @IBAction func saveBtnActn(_ sender: UIButton) {        
-        addPatient()
+    @IBAction func saveBtnActn(_ sender: UIButton) {      
+        sender.pressedAnimation {
+            self.addPatient()
+        }
     }
 
+}
+
+extension TherapistPatientStep3VC: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.debugPrint("\(scrollView.contentOffset.y)")
+        if scrollView == self.scrollView {
+            scrollView.contentOffset.y = -50
+        }
+    }
 }

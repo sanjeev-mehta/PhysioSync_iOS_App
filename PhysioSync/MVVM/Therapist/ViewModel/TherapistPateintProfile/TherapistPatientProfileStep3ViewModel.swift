@@ -35,16 +35,16 @@ class TherapistPatientProfileStep3ViewModel {
     
     // MARK: - Update Patient
     
-    func updatePatient(vc: UIViewController,parm: [String: Any], id: String,completion: @escaping(Bool) -> ()) {
+    func updatePatient(vc: UIViewController,parm: [String: Any], isHeader: Bool = true ,id: String,completion: @escaping(Bool) -> ()) {
         let url = API.Endpoints.updatePatients + "/\(id)"
-        ApiHelper.shareInstance.hitApi(view: vc, method: .put, parm: parm, url: url, isHeader: true, isLoader: true) { json, err in
+        ApiHelper.shareInstance.hitApi(view: vc, method: .put, parm: parm, url: url, isHeader: isHeader, isLoader: true) { json, err in
             if err != nil {
                 vc.displayAlert(title: "Alert!", msg: "Something went wrong", ok: "Ok")
             } else {
                 if json["success"].boolValue {
                     completion(true)
                 } else {
-                    vc.displayAlert(title: "Alert!", msg: json["data"]["success"].stringValue, ok: "Ok")
+                    vc.displayAlert(title: "Alert!", msg: json["message"].stringValue, ok: "Ok")
                 }
             }
         }

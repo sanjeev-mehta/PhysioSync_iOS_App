@@ -94,7 +94,7 @@ extension ExerciseCategoryVC: UICollectionViewDelegate, UICollectionViewDataSour
         cell.imgVW.layer.cornerRadius = 12
         cell.imgVW.layer.masksToBounds = true
         cell.imgVW.contentMode = .scaleAspectFit
-        cell.imgVW.addShadow()
+//        cell.imgVW.addShadow()
         return cell
     }
     
@@ -113,7 +113,7 @@ extension ExerciseCategoryVC: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         // MARK: - Initial state for the animation
-        cell.setTemplateWithSubviews(isLoading, animate: true, viewBackgroundColor: .systemBackground)
+        cell.setTemplateWithSubviews(isLoading, color: Colors.primaryClr, animate: true, viewBackgroundColor: Colors.darkGray)
         cell.alpha = 0
     }
     

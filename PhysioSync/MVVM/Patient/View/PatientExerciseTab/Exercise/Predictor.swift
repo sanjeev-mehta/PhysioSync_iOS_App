@@ -1,6 +1,6 @@
 //
 //  Predictor.swift
-//  befikar Ho jao
+//  PhysioSync
 //
 //  Created by Sanjeev Mehta on 17/06/24.
 //
@@ -10,7 +10,7 @@ import Vision
 import UIKit
 
 //Vision, AVFoundation, CreateML, MLModel
-typealias SquatsModel = left_right_srg
+typealias SquatsModel = neckRotation
 
 protocol PredictorDelegate: AnyObject {
     func predictor(_ predictor: Predictor, didFindNewRecognizedPoints points: [CGPoint])
@@ -24,8 +24,10 @@ class Predictor {
     let predictionWindowSize = 30
     var posesWindow: [VNHumanBodyPoseObservation] = []
     private var inactivityTimer: Timer?
-    
+    let squatsClassifier: SquatsModel
+
     init() {
+        squatsClassifier = try! SquatsModel(configuration: MLModelConfiguration())
         posesWindow.reserveCapacity(predictionWindowSize)
     }
     
@@ -57,19 +59,25 @@ class Predictor {
     }
     
     func labelActionType() {
-        guard let squatsClassifier = try? SquatsModel(configuration: MLModelConfiguration()),
-        let poseMultiArray = prepareInputWithObservation(posesWindow),
-        let predictions = try? squatsClassifier.prediction(poses: poseMultiArray)
-        else { return }
-        
-        let label = predictions.label
-        let confidence = predictions.labelProbabilities[label] ?? 0
-        delegate?.predictor(self, didLabelAction: label, with: confidence)
+        DispatchQueue.global(qos: .background).async {
+            guard let poseMultiArray = self.prepareInputWithObservation(self.posesWindow) else { return }
+            
+            do {
+                let predictions = try self.squatsClassifier.prediction(poses: poseMultiArray)
+                let label = predictions.label
+                let confidence = predictions.labelProbabilities[label] ?? 0
+                DispatchQueue.main.async {
+                    self.delegate?.predictor(self, didLabelAction: label, with: confidence)
+                }
+            } catch {
+                print("Error predicting action: \(error)")
+            }
+        }
     }
     
     func prepareInputWithObservation (_ observations: [VNHumanBodyPoseObservation]) -> MLMultiArray? {
         let numAvailableFrames = observations.count
-        let observationsNeeded = 60
+        let observationsNeeded = 30
         var multiArrayBuffer = [MLMultiArray]()
         
         for frameIndex in 0..<min(numAvailableFrames, observationsNeeded) {
@@ -112,7 +120,7 @@ class Predictor {
     func processObservation(_ observation: VNHumanBodyPoseObservation) {
         do {
             let recognizedPoints = try observation.recognizedPoints(forGroupKey: .all)
-            resetInactivityTimer()
+//            resetInactivityTimer()
             // Convert the points and update poseView only if points are detected
             if recognizedPoints.isEmpty {
                 delegate?.predictor(self, didFindNewRecognizedPoints: [])
@@ -126,18 +134,6 @@ class Predictor {
             print("Error finding points")
         }
     }
-    
-    private func resetInactivityTimer() {
-            inactivityTimer?.invalidate()
-            inactivityTimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { [weak self] _ in
-                self?.handleInactivity()
-            }
-        }
-        
-        private func handleInactivity() {
-            delegate?.predictor(self, didFindNewRecognizedPoints: [])
-        }
-    
 }
 
 class PoseView: UIView {

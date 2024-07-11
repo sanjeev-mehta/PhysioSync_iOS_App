@@ -133,10 +133,15 @@ class CustomHeader: UIView {
     }
     
     @objc private func backButtonPressed() {
-        backButtonAction?()
+        self.backImageView.pressedAnimation {
+            self.backButtonAction?()
+        }
     }
     
     @objc private func rightButtonPressed() {
-        rightButtonAction?()
+        self.rightImageView.pressedAnimation {
+            self.rightButtonAction?()
+        }
+        
     }
 }

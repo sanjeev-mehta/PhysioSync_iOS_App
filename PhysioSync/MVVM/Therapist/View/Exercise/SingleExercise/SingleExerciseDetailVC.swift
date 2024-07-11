@@ -30,7 +30,7 @@ class SingleExerciseDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.setCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,6 +46,7 @@ class SingleExerciseDetailVC: UIViewController {
             for i in self.singleExerciseVM.exerciseModel {
                 if i.id == data?.id {
                     data = i
+                    break
                 }
             }
             setupCustomVideoPlayer()
@@ -63,7 +64,9 @@ class SingleExerciseDetailVC: UIViewController {
             if selectedIndex == 0 {
                 self.openAddExerciseController()
             } else {
-                self.callDeleteApi()
+                self.displayAlert3(title: "Alert!", msg: "Are you sure, you want to delete this exercise", ok: "Yes") {
+                    self.callDeleteApi()
+                }
             }
         } cancel: {
             
@@ -97,8 +100,8 @@ class SingleExerciseDetailVC: UIViewController {
         }
     }
     
-    // MARK: - Set Data
-    func setData() {
+    //MARK: - Set Collection View
+    func setCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
         let layout = UICollectionViewFlowLayout()
@@ -108,11 +111,9 @@ class SingleExerciseDetailVC: UIViewController {
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         collectionView.collectionViewLayout = layout
         collectionView.register(UINib(nibName: "ChipsCVC", bundle: nil), forCellWithReuseIdentifier: "ChipsCVC")
-        categoryArr.append(categoryData(name: "Neck", isSelected: false))
-        categoryArr.append(categoryData(name: "Core", isSelected: false))
-        categoryArr.append(categoryData(name: "Arm", isSelected: false))
-        categoryArr.append(categoryData(name: "Shoulder", isSelected: false))
-        collectionView.reloadData()
+    }
+    // MARK: - Set Data
+    func setData() {
         if let data = data {
             self.videoDesc.text = data.description
         }
@@ -121,6 +122,7 @@ class SingleExerciseDetailVC: UIViewController {
         } rightButtonAction: {
             self.openPopUpMenu()
         }
+        self.collectionView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {

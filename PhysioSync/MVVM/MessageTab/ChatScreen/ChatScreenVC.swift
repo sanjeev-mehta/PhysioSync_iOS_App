@@ -110,6 +110,7 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             TherapistHomeVC.socketHandler.sendMessage(userId: currentUserId, receiverId: recieverId, message: messageTf.text!, isMedia: false)
         }
         messageTf.text = ""
+        self.tableView.scrollToRow(at: IndexPath(row: self.chatVM.chatArr.count - 1, section: 0), at: .bottom, animated: false)
     }
     
     func sendMediaMessage(isVideo: Bool, url: String, isAwsUpload: Bool) {
