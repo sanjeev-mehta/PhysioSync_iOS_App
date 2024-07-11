@@ -18,6 +18,7 @@ class ExerciseViewModel {
                 vc.displayAlert(title: "Alert!", msg: "something went wrong", ok: "Ok")
             } else {
                 print(json)
+                completion(true)
             }
         }
         

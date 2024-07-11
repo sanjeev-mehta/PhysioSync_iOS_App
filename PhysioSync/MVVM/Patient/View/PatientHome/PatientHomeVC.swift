@@ -21,6 +21,7 @@ class PatientHomeVC: UIViewController {
     @IBOutlet weak var profileImgVW: UIImageView!
     @IBOutlet weak var messageCountLbl: UILabel!
     @IBOutlet weak var therapistNameLbl: UILabel!
+    @IBOutlet weak var todaysSessionLbl: UILabel!
     
     // MARK: -  Variable
     var cellCount = 4
@@ -29,6 +30,14 @@ class PatientHomeVC: UIViewController {
     static var socketHandler: SocketIOHandler!
     let vm = PatientHomeViewModel.shareInstance
     let chatVM = ChatViewModel.shareInstance
+    private var isLoading = true {
+        didSet {
+            sessionCollectionView.isUserInteractionEnabled = !isLoading
+            sessionCollectionView.reloadData()
+            completedCollectionView.reloadData()
+            completedCollectionView.isUserInteractionEnabled = !isLoading
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +53,10 @@ class PatientHomeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         socketConnecting()
-        nameLbl.text = "Welcome \(UserDefaults.standard.getPatientName()),"
+        let myString = "Welcome \(UserDefaults.standard.getPatientName()),"
+        let attributedString = NSMutableAttributedString(string: myString)
+        attributedString.setColor(forText: ["Welcome": Colors.borderClr, "\(UserDefaults.standard.getPatientName()),": Colors.primaryClr])
+        self.nameLbl.attributedText = attributedString
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,12 +76,16 @@ class PatientHomeVC: UIViewController {
     func callApi() {
         vm.getAssignExercise(self) { status in
             if status {
-                self.sessionCollectionView.reloadData()
-                self.completedCollectionView.reloadData()
-                self.sessionPageControl.numberOfPages = self.vm.assignExerciseCount(.assigned)
-                self.sessionPageControl.set(progress: 0, animated: false)
-                self.completedPageControl.numberOfPages = self.vm.assignExerciseCount(.completed)
-                self.completedPageControl.set(progress: 0, animated: false)
+                DispatchQueue.main.async {
+                    self.sessionPageControl.numberOfPages = self.vm.assignExerciseCount(.assigned)
+                    self.sessionPageControl.set(progress: 0, animated: false)
+                    self.completedPageControl.numberOfPages = self.vm.assignExerciseCount(.completed)
+                    self.completedPageControl.set(progress: 0, animated: false)
+                    Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+                        self.isLoading = false
+                        self.todaysSessionLbl.text = "Today's Session (\(self.vm.assignExerciseCount(.completed))/\(self.vm.assignExerciseCount(.assigned) + (self.vm.assignExerciseCount(.completed))))"
+                    }
+                }
             }
         }
     }
@@ -100,11 +116,16 @@ class PatientHomeVC: UIViewController {
 
 extension PatientHomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == sessionCollectionView {
-            return vm.assignExerciseCount(.assigned)
+        if isLoading {
+            return 1
         } else {
-            return vm.assignExerciseCount(.completed)
+            if collectionView == sessionCollectionView {
+                return vm.assignExerciseCount(.assigned)
+            } else {
+                return vm.assignExerciseCount(.completed)
+            }
         }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -114,7 +135,9 @@ extension PatientHomeVC: UICollectionViewDelegate, UICollectionViewDataSource, U
             cell.bottomView.addBottomCornerRadius(radius: 16)
             cell.bgView.layer.cornerRadius = 16
             cell.bgView.addShadow()
-            vm.setUpCell(cell, .assigned, indexPath.item)
+            if !isLoading {
+                vm.setUpCell(cell, .assigned, indexPath.item)
+            }
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PatientHomeCVC2", for: indexPath) as! PatientHomeCVC
@@ -122,10 +145,13 @@ extension PatientHomeVC: UICollectionViewDelegate, UICollectionViewDataSource, U
             cell.bottomView.addBottomCornerRadius(radius: 16)
             cell.bgView.layer.cornerRadius = 16
             cell.bgView.addShadow()
-            vm.setUpCell(cell, .completed, indexPath.item)
+            if !isLoading {
+                vm.setUpCell(cell, .completed, indexPath.item)
+            } else {
+                
+            }
             return cell
         }
-       
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -144,7 +170,7 @@ extension PatientHomeVC: UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        //        cell.setTemplateWithSubviews(isLoading, animate: true, viewBackgroundColor: .systemBackground)
+        cell.setTemplateWithSubviews(isLoading, color: Colors.primaryClr, animate: true, viewBackgroundColor: Colors.primarySubtleClr)
         cell.alpha = 0
         cell.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         
@@ -165,7 +191,7 @@ extension PatientHomeVC: UICollectionViewDelegate, UICollectionViewDataSource, U
                         vc.isHeroEnabled = true
                         vc.heroModalAnimationType = .zoom
                         vc.view.heroID = "cell_\(indexPath.section)_\(indexPath.row)"
-                        self.pushOrPresentViewController(vc, false)
+                        self.pushOrPresentViewController(vc, true)
                     }
                 }
             }

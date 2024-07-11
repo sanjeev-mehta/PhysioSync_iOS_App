@@ -91,9 +91,6 @@ extension VideoCapture: AVCaptureVideoDataOutputSampleBufferDelegate {
 
 extension VideoCapture: AVCaptureFileOutputRecordingDelegate {
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
-            self.deleteFile(at: outputFileURL)
-        }
         if let error = error {
             print("Error recording movie: \(error)")
         } else {
