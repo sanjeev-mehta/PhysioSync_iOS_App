@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import UIView_Shimmer
 
-class PatientHomeCVC: UICollectionViewCell {
+class PatientHomeCVC: UICollectionViewCell, ShimmeringViewProtocol {
     
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var bottomView: UIView!
@@ -15,4 +16,10 @@ class PatientHomeCVC: UICollectionViewCell {
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var exerciseNameLbl: UILabel!
 
+    var shimmeringAnimatedItems: [UIView] {[
+    imgView,
+    bottomView,
+    titleLbl,
+    exerciseNameLbl
+    ]}
 }

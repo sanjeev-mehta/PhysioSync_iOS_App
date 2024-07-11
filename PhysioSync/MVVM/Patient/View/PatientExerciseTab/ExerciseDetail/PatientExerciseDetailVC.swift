@@ -31,10 +31,19 @@ class PatientExerciseDetailVC: UIViewController {
             self.heroModalAnimationType = .zoomOut
             self.dismissOrPopViewController()
         } rightButtonAction: {}
+        setData()
+    }
+    
+    private func setData() {
+        if let data = self.data {
+            categoryLbl.text = data.exerciseIds[0].categoryName.joined(separator: ", ")
+            videoTitleLbl.text = "Exercise - " + data.exerciseIds[0].videoTitle
+            videoDescLbl.text = data.exerciseIds[0].description
+        }
     }
     
     private func setupCustomVideoPlayer() {
-        let videoPlayerFrame = CGRect(x: 0, y: 0, width: self.videoView.bounds.width, height: self.videoView.frame.height)
+        let videoPlayerFrame = CGRect(x: 0, y: 0, width: self.videoView.frame.width, height: self.videoView.frame.height - 8)
         customVideoPlayer = CustomVideoPlayer(frame: videoPlayerFrame)
         self.videoView.addSubview(customVideoPlayer)
         guard let videoUrl = data?.exerciseIds[0].videoUrl else { return }
@@ -50,7 +59,10 @@ class PatientExerciseDetailVC: UIViewController {
     
     @IBAction func startBtnActn(_ sender: UIButton) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ExerciseVC") as! ExerciseVC
-        self.present(vc, animated: true)
+        vc.categories = categoryLbl.text ?? ""
+        vc.exercise = videoTitleLbl.text ?? ""
+        vc.id = data?.Id ?? ""
+        self.pushOrPresentViewController(vc, true)
     }
     
 }
