@@ -77,6 +77,10 @@ class VideoCapture: NSObject {
             movieOutput.stopRecording()
         }
     }
+    
+    func switchModel(to model: ModelType) {
+        predictor.currentModel = model
+    }
 }
 
 extension VideoCapture: AVCaptureVideoDataOutputSampleBufferDelegate {
