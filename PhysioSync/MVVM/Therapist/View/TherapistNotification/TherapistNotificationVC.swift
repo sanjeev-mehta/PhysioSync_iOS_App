@@ -97,6 +97,28 @@ class TherapistNotificationVC: UIViewController {
             }
         }
     }
+    
+    @IBAction func replyPrivatelyBtnActn(_ sender: UIButton) {
+        let tag = sender.tag
+        if let model = vm.notificationModel {
+            let parm: [String: Any] = ["is_awaiting_reviews": true]
+            vm.acknowledgeExercise(vc: self, id: model.data[tag].Id, parm: parm) { status in
+                if status {
+                    if let vc = self.switchController(.chatVC, .messageTab) as? ChatScreenVC {
+                        vc.recieverId = model.data[tag].patientId.Id
+                        vc.name = model.data[tag].patientId.firstName + " " + model.data[tag].patientId.lastName
+                        vc.profileImgLink = model.data[tag].patientId.profilePhoto
+                        vc.isPatient = false
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                    self.closeNotifcationView()
+                    self.vm.getNotificationApi(vc: self) { _ in
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        }
+    }
 }
 
 // MARK: - Table View DataSource and delegate methods
