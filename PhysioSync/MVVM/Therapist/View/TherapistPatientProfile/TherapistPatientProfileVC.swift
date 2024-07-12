@@ -199,9 +199,19 @@ class TherapistPatientProfileVC: UIViewController {
     }
     
     @IBAction func openHealthStats(_ sender: UIButton) {
-        let vc = self.storyboard!.instantiateViewController(withIdentifier: "TherapisPatientStatsVC") as! TherapisPatientStatsVC
-        vc.watchData = vm.therapistPatientprofileModel?[0].data?.watchData
-        self.pushOrPresentViewController(vc, true)
+        if let vc = self.vm.therapistPatientprofileModel?[0].data?.watchData {
+            let vc = self.storyboard!.instantiateViewController(withIdentifier: "TherapisPatientStatsVC") as! TherapisPatientStatsVC
+            if vm.therapistPatientprofileModel?[0].data?.watchData?.sleep.count == 0 {
+                self.displayAlert(title: "PhysioSync", msg: "The patient isn't using Apple Watch to monitor their health data.", ok: "ok")
+
+                return
+            }
+            vc.watchData = vm.therapistPatientprofileModel?[0].data?.watchData
+            self.pushOrPresentViewController(vc, true)
+        } else {
+            self.displayAlert(title: "PhysioSync", msg: "The patient isn't using Apple Watch to monitor their health data.", ok: "ok")
+        }
+        
     }
 }
 

@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="m5d-bs-cmW">
-                                <rect key="frame" x="0.0" y="100" width="393" height="752"/>
+                                <rect key="frame" x="0.0" y="120" width="393" height="732"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vbn-7B-sL4">
                                     <size key="itemSize" width="128" height="128"/>
@@ -58,7 +58,7 @@
                             <constraint firstItem="4J2-p6-EaN" firstAttribute="bottom" secondItem="LjR-TU-HJL" secondAttribute="bottom" constant="24" id="6cE-jS-Vh4"/>
                             <constraint firstItem="m5d-bs-cmW" firstAttribute="trailing" secondItem="4J2-p6-EaN" secondAttribute="trailing" id="ND6-jG-LZw"/>
                             <constraint firstItem="LjR-TU-HJL" firstAttribute="leading" secondItem="4J2-p6-EaN" secondAttribute="leading" constant="24" id="Wad-eH-UgZ"/>
-                            <constraint firstItem="m5d-bs-cmW" firstAttribute="top" secondItem="OnE-3e-xaX" secondAttribute="top" constant="100" id="Wfo-6B-N29"/>
+                            <constraint firstItem="m5d-bs-cmW" firstAttribute="top" secondItem="OnE-3e-xaX" secondAttribute="top" constant="120" id="Wfo-6B-N29"/>
                             <constraint firstAttribute="bottom" secondItem="m5d-bs-cmW" secondAttribute="bottom" id="jJ0-P6-QC5"/>
                             <constraint firstItem="4J2-p6-EaN" firstAttribute="trailing" secondItem="LjR-TU-HJL" secondAttribute="trailing" constant="24" id="m30-ZT-tk2"/>
                             <constraint firstItem="m5d-bs-cmW" firstAttribute="leading" secondItem="4J2-p6-EaN" secondAttribute="leading" id="xfl-2A-kD2"/>
@@ -89,14 +89,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8xo-7V-m0G">
-                                                <rect key="frame" x="0.0" y="80" width="393" height="200"/>
+                                                <rect key="frame" x="0.0" y="110" width="393" height="200"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="TPD-FM-YTu"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1M-Bm-Dv8">
-                                                <rect key="frame" x="0.0" y="264" width="393" height="588"/>
+                                                <rect key="frame" x="0.0" y="294" width="393" height="558"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LYz-aV-oyJ">
                                                         <rect key="frame" x="23.999999999999993" y="32" width="87.333333333333314" height="20.333333333333329"/>
@@ -113,7 +113,8 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0xt-ZY-2iY">
                                                         <rect key="frame" x="24" y="68.333333333333314" width="345" height="304.33333333333331"/>
                                                         <string key="text">By following these instructions, you will ensure that the machine learning model can accurately analyze and monitor your exercise.
-Set Up Your Space:
+Set Up Your Space:
+
 Ensure you have enough space around you.
 Place the camera at a height and distance where your required body part is visible.
 Make sure the area is well-lit to improve the camera's ability.
@@ -138,7 +139,7 @@ If needed, review the video given above.</string>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="M1M-Bm-Dv8" secondAttribute="trailing" id="28p-q4-vRs"/>
-                                            <constraint firstItem="8xo-7V-m0G" firstAttribute="top" secondItem="mCX-qe-3YZ" secondAttribute="top" constant="80" id="Gvt-yP-9qI"/>
+                                            <constraint firstItem="8xo-7V-m0G" firstAttribute="top" secondItem="mCX-qe-3YZ" secondAttribute="top" constant="110" id="Gvt-yP-9qI"/>
                                             <constraint firstAttribute="trailing" secondItem="8xo-7V-m0G" secondAttribute="trailing" id="IZw-gK-vto"/>
                                             <constraint firstItem="8xo-7V-m0G" firstAttribute="leading" secondItem="mCX-qe-3YZ" secondAttribute="leading" id="Ytf-k2-1gD"/>
                                             <constraint firstItem="M1M-Bm-Dv8" firstAttribute="top" secondItem="8xo-7V-m0G" secondAttribute="bottom" constant="-16" id="dlu-NQ-3SY"/>
@@ -434,14 +435,14 @@ If needed, review the video given above.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H0c-gR-Ea8">
-                                <rect key="frame" x="0.0" y="99" width="393" height="200"/>
+                                <rect key="frame" x="0.0" y="119" width="393" height="200"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="g6f-M2-Zle"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s7B-m0-gvy">
-                                <rect key="frame" x="0.0" y="295" width="393" height="557"/>
+                                <rect key="frame" x="0.0" y="315" width="393" height="537"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise - Neck Rotation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFg-V4-cdh">
                                         <rect key="frame" x="23.999999999999986" y="32" width="214.66666666666663" height="24"/>
@@ -455,7 +456,8 @@ If needed, review the video given above.</string>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FjT-Xn-u0d">
                                         <rect key="frame" x="24" y="72.000000000000014" width="345" height="223.33333333333337"/>
                                         <string key="text">By following these instructions, you will ensure that the machine learning model can accurately analyze and monitor your exercise.
-Set Up Your Space:
+Set Up Your Space:
+
 Ensure you have enough space around you.
 Place the camera at a height and distance where your required body part is visible.
 Make sure the area is well-lit to improve the camera's ability.</string>
@@ -500,7 +502,7 @@ Make sure the area is well-lit to improve the camera's ability.</string>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOC-Bw-jiS">
-                                <rect key="frame" x="339" y="59" width="30" height="16"/>
+                                <rect key="frame" x="339" y="59" width="30" height="36"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             </button>
                         </subviews>
@@ -518,7 +520,7 @@ Make sure the area is well-lit to improve the camera's ability.</string>
                             <constraint firstItem="H0c-gR-Ea8" firstAttribute="top" secondItem="lOC-Bw-jiS" secondAttribute="bottom" constant="24" id="lEe-O8-0gf"/>
                             <constraint firstAttribute="bottom" secondItem="s7B-m0-gvy" secondAttribute="bottom" id="rm5-UB-MjV"/>
                             <constraint firstItem="s7B-m0-gvy" firstAttribute="centerX" secondItem="ToF-c5-plV" secondAttribute="centerX" id="vgb-zQ-4DL"/>
-                            <constraint firstItem="H0c-gR-Ea8" firstAttribute="top" secondItem="yQn-mz-wht" secondAttribute="top" constant="40" id="wpB-IK-DsM"/>
+                            <constraint firstItem="H0c-gR-Ea8" firstAttribute="top" secondItem="yQn-mz-wht" secondAttribute="top" constant="60" id="wpB-IK-DsM"/>
                         </constraints>
                     </view>
                     <connections>

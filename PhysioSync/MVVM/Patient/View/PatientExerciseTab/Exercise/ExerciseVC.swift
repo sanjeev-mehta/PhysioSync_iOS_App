@@ -28,6 +28,7 @@ class ExerciseVC: UIViewController {
     var categories = ""
     var exercise = ""
     var id = ""
+    var isFirstTime = false
     
     enum ExerciseStage {
         case still, right, left, mid, up
@@ -81,6 +82,7 @@ class ExerciseVC: UIViewController {
     }
     
     func uploadRecordedVideo(url: URL) {
+        let av = Loader.start(view: self.view)
         let timestamp = Int(Date().timeIntervalSince1970)
         AWSHelper.shared.uploadVideoFile(url: url, fileName: "\(timestamp)") { progress in
             print(progress)
@@ -92,7 +94,12 @@ class ExerciseVC: UIViewController {
                 print(url)
                 if let url = url {
                     DispatchQueue.main.async {
-                        self.callApi(url: url)
+                        self.callApi(url: url, completion: { _ in
+                            DispatchQueue.main.async {
+                                av.removeFromSuperview()
+                                self.popController()
+                            }
+                        })
                     }
                 }
             }
@@ -100,15 +107,15 @@ class ExerciseVC: UIViewController {
         
     }
     
-    func callApi(url: String) {
+    func callApi(url: String, completion: @escaping(Bool) -> ()) {
         let today = Date()
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-dd-mm"
+        formatter.dateFormat = "yyyy-MM-dd"
         let todayStr = formatter.string(from: today)
         let parm = ["status": "completed", "patient_video_url": url, "patient_exercise_completion_date_time": todayStr]
         
         vm.updateAssignExercise(self, id: id, parm: parm) { _ in
-            self.popController()
+            completion(true)
         }
     }
     
@@ -241,6 +248,10 @@ extension ExerciseVC: PredictorDelegate {
                     }
                     currentStage = .still
                 }
+                if !isFirstTime {
+                    isFirstTime = true
+                    speakInstruction("now you can move your neck to the right")
+                }
             case "right1":
                 if currentStage == .still {
                     halfRep += 1
@@ -261,49 +272,6 @@ extension ExerciseVC: PredictorDelegate {
                 repCount += 1
                 halfRep = 0
             }
-            DispatchQueue.main.async {
-                let myString = "REPS\n \(self.repCount)"
-                let attributedString = NSMutableAttributedString(string: myString)
-                attributedString.setColor(forText: ["REPS": .white, "\(self.repCount)": .white])
-                self.repLbl.attributedText = attributedString
-            }
-            print("Reps: \(repCount)")
-        } else if modelType == .shoulderModel {
-            switch action {
-            case "still":
-                if currentStage == .mid {
-                    speakInstruction("Move arms to Up")
-                    currentStage = .up
-                } else if currentStage == .up {
-                    speakInstruction("Move back to Mid")
-                    currentStage = .mid
-                } else if currentStage == .still {
-                    speakInstruction("Move arms to Mid")
-                    currentStage = .mid
-                }
-            case "mid":
-                if currentStage == .still {
-                    currentStage = .mid
-                    speakInstruction("Move arms to Up")
-                } else if currentStage == .up {
-                    currentStage = .mid
-                    speakInstruction("Move to Still")
-                }
-            case "up":
-                if currentStage == .mid {
-                    halfRep += 1
-                    currentStage = .up
-                    speakInstruction("Move back to Mid")
-                }
-            default:
-                break
-            }
-            
-            if halfRep == 2 {
-                repCount += 1
-                halfRep = 0
-            }
-            
             DispatchQueue.main.async {
                 let myString = "REPS\n \(self.repCount)"
                 let attributedString = NSMutableAttributedString(string: myString)
