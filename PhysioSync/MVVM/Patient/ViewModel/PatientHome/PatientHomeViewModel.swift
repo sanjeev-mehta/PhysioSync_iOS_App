@@ -49,20 +49,20 @@ class PatientHomeViewModel {
     }
     
     func submitWatchData() {
-        let url = API.Endpoints.watchdata
         let userId = UserDefaults.standard.getPatientLoginId()
+        let url = API.Endpoints.watchdata + "/\(userId)"
          timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { [self] _ in
             if !HealthKitManager.ishealthkitPermissionPermitted {
                 return
             }
             
             let params: [String: Any] = [
-                "patient_id": userId,
                 "calories": healthKitManager.formattedCalorieData,
                 "heartRate": healthKitManager.formattedHeartRateData,
                 "sleep": healthKitManager.formattedSleepData,
                 "stepCount": healthKitManager.formattedStepCountData
             ]
+             print(params)
              apiHelper.hitApiwithoutloader(parm: params, url: url) { [self] json, err in
                 if err != nil {
                     print(err?.localizedDescription)

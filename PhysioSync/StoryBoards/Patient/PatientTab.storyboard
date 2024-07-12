@@ -1882,14 +1882,6 @@
             <point key="canvasLocation" x="35.877862595419849" y="-225.35211267605635"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="cjA-4F-a0a">
-            <size key="intrinsicContentSize" width="-5" height="4"/>
-        </designable>
-        <designable name="npu-m0-MDU">
-            <size key="intrinsicContentSize" width="-5" height="4"/>
-        </designable>
-    </designables>
     <resources>
         <image name="Frame 547" width="38" height="38.333332061767578"/>
         <image name="backArrow" width="17.666666030883789" height="17.666666030883789"/>
@@ -1921,13 +1913,13 @@
             <color red="0.92156862745098034" green="0.94117647058823528" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="separatorColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
