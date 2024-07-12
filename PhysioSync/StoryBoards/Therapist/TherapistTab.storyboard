@@ -1480,6 +1480,11 @@
             <point key="canvasLocation" x="243.51145038167937" y="493.66197183098592"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="cUW-BM-1Qk">
+            <size key="intrinsicContentSize" width="-5" height="4"/>
+        </designable>
+    </designables>
     <resources>
         <image name="Edit-patient" width="24" height="24"/>
         <image name="Frame 2608250" width="96" height="96"/>

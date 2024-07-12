@@ -43,5 +43,7 @@
 		<string>audio</string>
 		<string>remote-notification</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app need photo library access to select videos or photos</string>
 </dict>
 </plist>
