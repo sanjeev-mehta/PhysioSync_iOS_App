@@ -145,12 +145,12 @@ extension SingleExerciseDetailVC: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if categoryArr[indexPath.item].isSelected {
-            categoryArr[indexPath.item].isSelected = false
-        } else {
-            categoryArr[indexPath.item].isSelected = true
-        }
-        collectionView.reloadData()
+//        if categoryArr[indexPath.item].isSelected {
+//            categoryArr[indexPath.item].isSelected = false
+//        } else {
+//            categoryArr[indexPath.item].isSelected = true
+//        }
+//        collectionView.reloadData()
     }
     
 }

@@ -30,6 +30,7 @@ class TherapistHomeVC: UIViewController {
     @IBOutlet weak var patientCountLbl: UILabel!
     @IBOutlet weak var notify: UIImageView!
     @IBOutlet var topSectionConstraint: [NSLayoutConstraint]!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     // MARK: -  Variables
     var cellCount = 6
@@ -50,6 +51,8 @@ class TherapistHomeVC: UIViewController {
             collectionView.reloadData()
         }
     }
+    var timer: Timer?
+    private var refreshControl: UIRefreshControl!
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -59,6 +62,7 @@ class TherapistHomeVC: UIViewController {
         setTableViews()
         callApi()
         setNotificationView()
+        setupRefreshControl()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -97,6 +101,19 @@ class TherapistHomeVC: UIViewController {
         patientListTableView.delegate = self
         patientListTableView.dataSource = self
     }
+    
+    func setupRefreshControl() {
+            refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+            scrollView.refreshControl = refreshControl
+        }
+        
+        @objc func refreshData(_ sender: UIRefreshControl) {
+            callApi()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                sender.endRefreshing()
+            }
+        }
     
     func callApi() {
         vm.getNotificationApi(vc: self) { status in
@@ -160,11 +177,12 @@ class TherapistHomeVC: UIViewController {
         TherapistHomeVC.socketHandler = SocketIOHandler(url: API.SocketURL)
         TherapistHomeVC.socketHandler.connect()
         TherapistHomeVC.socketHandler.delegate = self
-        Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false) { _ in
+        timer?.invalidate()
+        self.isLoading = false
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
             if UserDefaults.standard.getUsernameToken() != "" {
                 TherapistHomeVC.socketHandler.fetchAllPatient(id: UserDefaults.standard.getTherapistId())
                 self.messageTableView.reloadData()
-                self.isLoading = false
                 var unreadCount = 0
                 for i in self.messageVM.model {
                     unreadCount += i.unreadCount

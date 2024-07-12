@@ -110,8 +110,11 @@ class TherapistPatientStep3VC: UIViewController {
     
     func popController() {
         if isPatientSide {
-            if let viewControllers = navigationController?.viewControllers, viewControllers.count > 2 {
-                let targetViewController = viewControllers[2]
+            if let viewControllers = navigationController?.viewControllers {
+                for i in viewControllers {
+                    print(i)
+                }
+                let targetViewController = viewControllers[3]
                 navigationController?.popToViewController(targetViewController, animated: true)
             } else {
                 print("Not enough view controllers in the navigation stack.")

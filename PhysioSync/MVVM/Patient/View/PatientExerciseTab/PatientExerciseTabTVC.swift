@@ -15,14 +15,12 @@ class PatientExerciseTabTVC: UITableViewCell, ShimmeringViewProtocol {
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var exerciseNameLbl: UILabel!
-    @IBOutlet weak var repsCountLbl: UILabel!
     @IBOutlet weak var arrowImgView: UIImageView!
     
     var shimmeringAnimatedItems: [UIView] { [
         imgView,
         titleLbl,
         exerciseNameLbl,
-        repsCountLbl,
         arrowImgView
     ]
     }
@@ -30,11 +28,7 @@ class PatientExerciseTabTVC: UITableViewCell, ShimmeringViewProtocol {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        bgView.addCornerRadius(radius: 12)
-        imgView.addTopCornerRadius(radius: 12)
-        bottomView.addBottomCornerRadius(radius: 12)
-        bgView.layer.borderColor = UIColor.black.cgColor
-        bgView.layer.borderWidth = 0.5
+       
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

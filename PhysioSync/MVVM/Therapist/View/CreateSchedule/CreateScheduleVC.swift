@@ -185,7 +185,17 @@ extension CreateScheduleVC: UICollectionViewDelegate, UICollectionViewDataSource
 
 extension CreateScheduleVC: SelectedExerciseData {
     func selectedExerciseData(data: [SingleExerciseModel]) {
-        self.exerciseModel = data
+        for i in data {
+            if exerciseModel.count == 0 {
+                self.exerciseModel.append(i)
+            } else {
+                for v in exerciseModel {
+                    if i.id != v.id {
+                        self.exerciseModel.append(i)
+                    }
+                }
+            }
+        }
         self.collectionView.reloadData()
     }
 }
