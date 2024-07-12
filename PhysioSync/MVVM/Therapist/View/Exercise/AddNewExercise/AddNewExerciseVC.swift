@@ -107,6 +107,13 @@ class AddNewExerciseVC: UIViewController {
         let actionSheet = UIAlertController(title: "Select Video", message: "Choose a source", preferredStyle: .actionSheet)
         
         let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { _ in
+//            self.videoPicker?.showCustomVideoPicker(from: self, completion: { url in
+//                DispatchQueue.main.async {
+//                    self.isVideoChange = true
+//                    self.videoUrl = url
+//                    self.videoFileNameLbl.text = "Default"
+//                }
+//            })
             self.videoPicker?.showVideoPicker(sourceType: .photoLibrary, completion: { url, name in
                 print(url, name)
                 self.isVideoChange = true
