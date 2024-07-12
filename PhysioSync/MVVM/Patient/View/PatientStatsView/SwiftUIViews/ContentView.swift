@@ -17,6 +17,7 @@ struct Item: Identifiable {
 struct ContentView: View {
     @State private var animatedData: [SleepData] = []
     @ObservedObject var healthKitManager = HealthKitManager()
+    var watchData: WatchData? = nil
     
     let items: [Item] = [Item(type: "Engineering", value: 100),Item(type: "Design", value: 35),Item(type: "Operation", value: 72),Item(type: "Management", value: 22), Item(type: "R&D", value: 72)]
     

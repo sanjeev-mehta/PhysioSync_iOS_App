@@ -24,7 +24,7 @@ class ApiHelper {
         
         guard let url = URL(string: url) else{return}
         
-        Alamofire.request(url,method: .post, parameters: parm,encoding: URLEncoding.default,headers: headers).validate(statusCode: 200..<500).responseJSON {response in
+        Alamofire.request(url,method: .put, parameters: parm,encoding: JSONEncoding(),headers: headers).validate(statusCode: 200..<500).responseJSON {response in
                  
                    switch response.result{
                    case .success(let value):

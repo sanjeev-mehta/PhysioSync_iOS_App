@@ -8,8 +8,8 @@
 import UIKit
 import CHIPageControl
 
-class PatientHomeVC: UIViewController {
-
+class PatientHomeVC: UIViewController, UNUserNotificationCenterDelegate {
+    
     // MARK: -  IBOutlets
     @IBOutlet weak var sessionCollectionView: UICollectionView!
     @IBOutlet weak var completedCollectionView: UICollectionView!
@@ -38,16 +38,19 @@ class PatientHomeVC: UIViewController {
             completedCollectionView.isUserInteractionEnabled = !isLoading
         }
     }
+    var timer: Timer?
+    private var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setUI()
         if UserDefaults.standard.getUsernameToken() != "" {
             chatVM.currentUser = UserDefaults.standard.getTherapistId()
         } else {
             chatVM.currentUser = UserDefaults.standard.getPatientLoginId()
         }
+        socketConnecting()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,8 +64,75 @@ class PatientHomeVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         self.callApi()
-        PatientHomeVC.socketHandler.fetchPreviousMessage(UserDefaults.standard.getPatientLoginId(), UserDefaults.standard.getTherapistId())
-       // vm.submitWatchData()
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+            PatientHomeVC.socketHandler.fetchPreviousMessage(UserDefaults.standard.getPatientLoginId(), UserDefaults.standard.getTherapistId())
+        }
+        vm.submitWatchData()
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if granted {
+                // Authorization granted, can now schedule notifications
+                self.scheduleNotification()
+            } else {
+                // Handle authorization denial
+                if let error = error {
+                    print("Authorization error: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+    
+    func scheduleNotification() {
+        if let timeString = UserDefaults.standard.value(forKey: "reminder_time") as? String {
+            guard let dateComponents = parseTimeString(timeString) else {
+                print("Invalid time format")
+                return
+            }
+            
+            let content = UNMutableNotificationContent()
+            content.title = "Daily Reminder"
+            content.body = "It's exercise time! Remember, consistency is key to your recovery."
+            content.sound = .default
+            
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+            
+            let request = UNNotificationRequest(identifier: "dailyTaskReminder", content: content, trigger: trigger)
+            
+            UNUserNotificationCenter.current().add(request) { error in
+                if let error = error {
+                    print("Error scheduling notification: \(error.localizedDescription)")
+                } else {
+                    print("Daily notification scheduled successfully for \(timeString)")
+                }
+            }
+        }
+    }
+    
+    // Handle notification when the app is in the foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        print("Notification received with identifier: \(notification.request.identifier)")
+        completionHandler([.banner, .sound])
+    }
+    
+    // Handle notification response
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print("Notification clicked with identifier: \(response.notification.request.identifier)")
+        completionHandler()
+    }
+    
+    func parseTimeString(_ timeString: String) -> DateComponents? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "hh:mm a"
+        
+        guard let date = dateFormatter.date(from: timeString) else {
+            return nil
+        }
+        
+        let calendar = Calendar.current
+        let dateComponents = calendar.dateComponents([.hour, .minute], from: date)
+        return dateComponents
     }
     
     func setUI() {
@@ -101,15 +171,12 @@ class PatientHomeVC: UIViewController {
         PatientHomeVC.socketHandler = SocketIOHandler(url: API.SocketURL)
         PatientHomeVC.socketHandler.connect()
         PatientHomeVC.socketHandler.delegate = self
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
-            PatientHomeVC.socketHandler.fetchPreviousMessage(UserDefaults.standard.getPatientLoginId(), UserDefaults.standard.getTherapistId())
-        }
     }
     
     @IBAction func messageBtnActn(_ sender: UIButton) {
         self.tabBarController?.selectedIndex = 3
     }
-
+    
 }
 
 // MARK: -  UICollection View Delegates and datasource methods
@@ -252,7 +319,7 @@ extension PatientHomeVC: SocketIOHandlerDelegate {
             self.therapistNameLbl.text = UserDefaults.standard.getTherapistName()
             self.profileImgVW.setImage(with: UserDefaults.standard.getTherapistProfileImage())
             self.messageCountLbl.text = "\(unreadCount) new messages"
-
+            
         }
     }
     

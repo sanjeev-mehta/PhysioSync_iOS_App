@@ -65,7 +65,7 @@ enum API {
     //MARK: - Local Host
 
       static let SocketURL = "http://15.156.55.188:8080/"
-//    static let baseURL = "http://localhost:8080/"
+//      static let SocketURL = "http://localhost:8080/"
       static let baseURL = "http://15.156.55.188:8080/"
 
     
@@ -98,7 +98,8 @@ enum API {
         static let updatePatients = "\(baseURL)update_patients"
         static let disablePatient = "\(baseURL)disable_patient"
         static let getPatient = "\(baseURL)get_patient"
-        
+        static let updatePatient = "\(baseURL)update_patient"
+
         //MARK: - Notification
         static let getNotificationTime = "\(baseURL)get_notification_time"
         static let newNotificationTime = "\(baseURL)new_Notification_time"
@@ -114,7 +115,7 @@ enum API {
         static let getUserChat = "\(baseURL)/"
         
         //MARK: - Watch Data
-        static let watchdata = "\(baseURL)watchdata"
+        static let watchdata = "\(baseURL)updateWatchdata"
     }
 }
 
