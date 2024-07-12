@@ -25,10 +25,13 @@ class TherapistPatientProfileData {
     
     var exercise: [Exercise]?
     var patient: Patient?
+    var watchData: WatchData?
     
     init(_ json: JSON) {
         exercise = json["exercise"].arrayValue.map { Exercise($0) }
         patient = Patient(json["patient"])
+        watchData = WatchData(json["watchData"])
+        
     }
     
 }

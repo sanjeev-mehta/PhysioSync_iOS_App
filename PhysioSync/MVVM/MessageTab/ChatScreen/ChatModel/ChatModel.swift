@@ -43,7 +43,6 @@ class ChatModel {
         if is_video {
             self.getThumbnailImageFromVideoUrl(url: URL(string: media_link)!, completion: { image in
                 if let img = image {
-                    print("Video Generated Image", self.media_link)
                     self.thumbnailImg = image!
                 } else {
                     print("IMGGGG ERROR")
