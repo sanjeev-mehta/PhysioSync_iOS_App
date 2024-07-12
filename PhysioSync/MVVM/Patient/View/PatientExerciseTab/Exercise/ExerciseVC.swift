@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import Lottie
 
 class ExerciseVC: UIViewController {
     
@@ -19,6 +20,17 @@ class ExerciseVC: UIViewController {
     @IBOutlet weak var statusLbl: UILabel!
     @IBOutlet weak var categoriesLbl: UILabel!
     @IBOutlet weak var exerciseNameLbl: UILabel!
+    
+    @IBOutlet weak var videoUploadingView: UIView!
+    @IBOutlet weak var videoMiddleView: UIView!
+    @IBOutlet weak var repsCompletedLbl: UILabel!
+    @IBOutlet weak var timeTakenLbl: UILabel!
+    @IBOutlet weak var progessLbl: UILabel!
+    @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var categoryLbl: UILabel!
+    @IBOutlet weak var exercisenameLbl: UILabel!
+    @IBOutlet weak var leftView: UIView!
+    @IBOutlet weak var rightView: UIView!
     
     var previewLayer: AVCaptureVideoPreviewLayer?
     let videoCapture = VideoCapture()
@@ -57,7 +69,13 @@ class ExerciseVC: UIViewController {
         doubleTapGesture.numberOfTapsRequired = 2
         cameraView.addGestureRecognizer(doubleTapGesture)
         self.categoriesLbl.text = categories
+        self.categoriesLbl.text = categories
         self.exerciseNameLbl.text = exercise
+        self.exercisenameLbl.text = exercise
+        self.videoMiddleView.addShadow()
+        self.leftView.transform = CGAffineTransform(translationX: -1000, y: 0)
+        self.rightView.transform =  CGAffineTransform(translationX: 1000, y: 0)
+        self.videoMiddleView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
     }
     
     private func setUpVideoPreview() {
@@ -82,10 +100,13 @@ class ExerciseVC: UIViewController {
     }
     
     func uploadRecordedVideo(url: URL) {
-        let av = Loader.start(view: self.view)
+        self.showVideoUploadView()
         let timestamp = Int(Date().timeIntervalSince1970)
         AWSHelper.shared.uploadVideoFile(url: url, fileName: "\(timestamp)") { progress in
             print(progress)
+            let progres = progress / 100.0
+            self.progressBar.setProgress(progres, animated: true)
+            self.progessLbl.text = "SENDING VIDEO...(\(Int(progress))%"
         } completion: { status, url, err in
             if err != nil {
                 print(status, err)
@@ -96,15 +117,17 @@ class ExerciseVC: UIViewController {
                     DispatchQueue.main.async {
                         self.callApi(url: url, completion: { _ in
                             DispatchQueue.main.async {
-                                av.removeFromSuperview()
-                                self.popController()
+                                self.playAnimation()
+                                Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
+                                    self.popController()
+                                }
+                                
                             }
                         })
                     }
                 }
             }
         }
-        
     }
     
     func callApi(url: String, completion: @escaping(Bool) -> ()) {
@@ -170,6 +193,38 @@ class ExerciseVC: UIViewController {
         } else {
             print("Not enough view controllers in the navigation stack.")
         }
+    }
+    //MARK: - SHow Upload View
+    func showVideoUploadView() {
+        self.repLbl.text = "\(repCount)"
+        self.timeTakenLbl.text =  timeLbl.text ?? ""
+        self.videoUploadingView.isHidden = false
+        UIView.animate(withDuration: 0.5) {
+            self.leftView.transform = CGAffineTransformIdentity
+            self.rightView.transform = CGAffineTransformIdentity
+        }
+        
+        UIView.animate(withDuration: 0.8) {
+            self.videoMiddleView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        }
+    }
+    
+    //MARK: - Lottie Animation
+    func playAnimation() {
+        let animationView = LottieAnimationView(name: "confetti")
+        animationView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 300)
+        animationView.center = view.center
+        animationView.contentMode = .scaleToFill
+        
+        // Optionally set loop mode and animation speed
+        animationView.loopMode = .loop
+        animationView.animationSpeed = 1.0
+        
+        // Add animationView as subview
+        view.addSubview(animationView)
+        
+        // Play animation
+        animationView.play()
     }
     
     @IBAction func startBtnActn(_ sender: UIButton) {
