@@ -35,7 +35,7 @@ class TherapistHomeViewModel {
     }
     
     func acknowledgeExercise(vc: UIViewController, id: String,parm: [String: Any], completion: @escaping (Bool) -> ()) {
-        let url = API.Endpoints.updateAssignExercise + "/\(id)"
+        let url = API.Endpoints.updateAssignExercise + "\(id)"
         apiHelper.hitApi(view: vc, method: .put, parm: parm, url: url, isHeader: true, isLoader: true) { json, err in
             if err != nil {
                 vc.displayAlert(title: "Alert!", msg: "something went wrong", ok: "Ok")

@@ -72,112 +72,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zlg-Ae-lGK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1108" y="-23"/>
-        </scene>
-        <!--Single Exercise DetailVC-->
-        <scene sceneID="RvB-Nk-6a0">
-            <objects>
-                <viewController id="xAx-su-XmA" customClass="SingleExerciseDetailVC" customModule="PhysioSync" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="n3Y-as-p8b">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tBh-Uc-3Bg">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mCX-qe-3YZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8xo-7V-m0G">
-                                                <rect key="frame" x="0.0" y="110" width="393" height="200"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="200" id="TPD-FM-YTu"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1M-Bm-Dv8">
-                                                <rect key="frame" x="0.0" y="294" width="393" height="558"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LYz-aV-oyJ">
-                                                        <rect key="frame" x="23.999999999999993" y="32" width="87.333333333333314" height="20.333333333333329"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="customFontName" value="Outfit-Regular"/>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="customFontSize">
-                                                                <real key="value" value="16"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0xt-ZY-2iY">
-                                                        <rect key="frame" x="24" y="68.333333333333314" width="345" height="304.33333333333331"/>
-                                                        <string key="text">By following these instructions, you will ensure that the machine learning model can accurately analyze and monitor your exercise.
-Set Up Your Space:
-
-Ensure you have enough space around you.
-Place the camera at a height and distance where your required body part is visible.
-Make sure the area is well-lit to improve the camera's ability.
-Understand the Exercise:
-Familiarize yourself with the exercise you will be performing.
-If needed, review the video given above.</string>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstItem="0xt-ZY-2iY" firstAttribute="leading" secondItem="M1M-Bm-Dv8" secondAttribute="leading" constant="24" id="BhC-2A-0jD"/>
-                                                    <constraint firstItem="0xt-ZY-2iY" firstAttribute="top" secondItem="LYz-aV-oyJ" secondAttribute="bottom" constant="16" id="CRM-jz-lqX"/>
-                                                    <constraint firstAttribute="trailing" secondItem="0xt-ZY-2iY" secondAttribute="trailing" constant="24" id="Q9O-Ef-NlO"/>
-                                                    <constraint firstItem="LYz-aV-oyJ" firstAttribute="leading" secondItem="M1M-Bm-Dv8" secondAttribute="leading" constant="24" id="eDA-e9-SNs"/>
-                                                    <constraint firstItem="LYz-aV-oyJ" firstAttribute="top" secondItem="M1M-Bm-Dv8" secondAttribute="top" constant="32" id="mze-ge-RRv"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="M1M-Bm-Dv8" secondAttribute="trailing" id="28p-q4-vRs"/>
-                                            <constraint firstItem="8xo-7V-m0G" firstAttribute="top" secondItem="mCX-qe-3YZ" secondAttribute="top" constant="110" id="Gvt-yP-9qI"/>
-                                            <constraint firstAttribute="trailing" secondItem="8xo-7V-m0G" secondAttribute="trailing" id="IZw-gK-vto"/>
-                                            <constraint firstItem="8xo-7V-m0G" firstAttribute="leading" secondItem="mCX-qe-3YZ" secondAttribute="leading" id="Ytf-k2-1gD"/>
-                                            <constraint firstItem="M1M-Bm-Dv8" firstAttribute="top" secondItem="8xo-7V-m0G" secondAttribute="bottom" constant="-16" id="dlu-NQ-3SY"/>
-                                            <constraint firstItem="M1M-Bm-Dv8" firstAttribute="leading" secondItem="mCX-qe-3YZ" secondAttribute="leading" id="dxC-lf-2rP"/>
-                                            <constraint firstAttribute="bottom" secondItem="M1M-Bm-Dv8" secondAttribute="bottom" id="lKQ-KO-sdS"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="mCX-qe-3YZ" firstAttribute="top" secondItem="tBh-Uc-3Bg" secondAttribute="top" id="Exi-dx-Tob"/>
-                                    <constraint firstItem="mCX-qe-3YZ" firstAttribute="leading" secondItem="tBh-Uc-3Bg" secondAttribute="leading" id="gs0-X8-dnS"/>
-                                    <constraint firstAttribute="bottom" secondItem="mCX-qe-3YZ" secondAttribute="bottom" id="pRb-8r-CVC"/>
-                                    <constraint firstAttribute="trailing" secondItem="mCX-qe-3YZ" secondAttribute="trailing" id="zLQ-gn-Aoi"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="AFJ-5K-fwT"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="tBh-Uc-3Bg" firstAttribute="trailing" secondItem="AFJ-5K-fwT" secondAttribute="trailing" id="6Mn-Gz-2HJ"/>
-                            <constraint firstItem="tBh-Uc-3Bg" firstAttribute="leading" secondItem="AFJ-5K-fwT" secondAttribute="leading" id="Tm0-za-gNe"/>
-                            <constraint firstItem="mCX-qe-3YZ" firstAttribute="height" secondItem="n3Y-as-p8b" secondAttribute="height" priority="250" id="aHh-Ru-Jbq"/>
-                            <constraint firstItem="mCX-qe-3YZ" firstAttribute="width" secondItem="n3Y-as-p8b" secondAttribute="width" id="ebX-fb-sak"/>
-                            <constraint firstAttribute="bottom" secondItem="tBh-Uc-3Bg" secondAttribute="bottom" id="hHO-mW-YAO"/>
-                            <constraint firstItem="tBh-Uc-3Bg" firstAttribute="top" secondItem="n3Y-as-p8b" secondAttribute="top" id="raj-PX-mAL"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="collectionView" destination="BRd-gl-olu" id="Mrp-1N-cLE"/>
-                        <outlet property="menuBtn" destination="lOC-Bw-jiS" id="7GL-uT-1fL"/>
-                        <outlet property="titleLbl" destination="LYz-aV-oyJ" id="dgW-rm-5Z2"/>
-                        <outlet property="videoDesc" destination="0xt-ZY-2iY" id="se3-rH-u5J"/>
-                        <outlet property="videoView" destination="8xo-7V-m0G" id="3Xe-9b-0HN"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gRx-B9-ZFT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1832.824427480916" y="-23.239436619718312"/>
+            <point key="canvasLocation" x="1107.6335877862596" y="-23.239436619718312"/>
         </scene>
         <!--Add New ExerciseVC-->
         <scene sceneID="GxF-6a-5UR">
@@ -453,26 +348,22 @@ If needed, review the video given above.</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FjT-Xn-u0d">
-                                        <rect key="frame" x="24" y="72.000000000000014" width="345" height="223.33333333333337"/>
-                                        <string key="text">By following these instructions, you will ensure that the machine learning model can accurately analyze and monitor your exercise.
-Set Up Your Space:
-
-Ensure you have enough space around you.
-Place the camera at a height and distance where your required body part is visible.
-Make sure the area is well-lit to improve the camera's ability.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eXD-Kk-VpD">
+                                        <rect key="frame" x="24" y="72" width="345" height="296.66666666666669"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" shipmentTrackingNumber="YES" flightNumber="YES" lookupSuggestion="YES"/>
+                                    </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVY-hH-g4R">
-                                        <rect key="frame" x="24" y="311.33333333333337" width="87" height="20.333333333333314"/>
+                                        <rect key="frame" x="24" y="384.66666666666663" width="87" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BRd-gl-olu">
-                                        <rect key="frame" x="24" y="339.66666666666663" width="345" height="100"/>
+                                        <rect key="frame" x="24" y="413" width="345" height="100"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="n4s-tO-4Gy"/>
@@ -489,16 +380,17 @@ Make sure the area is well-lit to improve the camera's ability.</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="BRd-gl-olu" firstAttribute="top" secondItem="AVY-hH-g4R" secondAttribute="bottom" constant="8" id="8SW-GR-Pd7"/>
+                                    <constraint firstAttribute="bottom" secondItem="BRd-gl-olu" secondAttribute="bottom" constant="24" id="HKh-Oa-vcF"/>
                                     <constraint firstAttribute="trailing" secondItem="BRd-gl-olu" secondAttribute="trailing" constant="24" id="J2M-5i-eK0"/>
-                                    <constraint firstItem="FjT-Xn-u0d" firstAttribute="top" secondItem="WFg-V4-cdh" secondAttribute="bottom" constant="16" id="lYe-44-Jld"/>
+                                    <constraint firstAttribute="trailing" secondItem="eXD-Kk-VpD" secondAttribute="trailing" constant="24" id="UIu-n9-5cU"/>
+                                    <constraint firstItem="AVY-hH-g4R" firstAttribute="top" secondItem="eXD-Kk-VpD" secondAttribute="bottom" constant="16" id="YgB-Ph-k7b"/>
+                                    <constraint firstItem="eXD-Kk-VpD" firstAttribute="top" secondItem="WFg-V4-cdh" secondAttribute="bottom" constant="16" id="frJ-V9-MES"/>
+                                    <constraint firstItem="eXD-Kk-VpD" firstAttribute="leading" secondItem="s7B-m0-gvy" secondAttribute="leading" constant="24" id="kQo-gU-WLD"/>
                                     <constraint firstItem="BRd-gl-olu" firstAttribute="leading" secondItem="s7B-m0-gvy" secondAttribute="leading" constant="24" id="mvG-LB-SBy"/>
                                     <constraint firstItem="AVY-hH-g4R" firstAttribute="leading" secondItem="s7B-m0-gvy" secondAttribute="leading" constant="24" id="nOr-d9-FkS"/>
                                     <constraint firstItem="WFg-V4-cdh" firstAttribute="top" secondItem="s7B-m0-gvy" secondAttribute="top" constant="32" id="omj-0u-dt9"/>
                                     <constraint firstItem="WFg-V4-cdh" firstAttribute="leading" secondItem="s7B-m0-gvy" secondAttribute="leading" constant="24" id="rS6-kk-phR"/>
-                                    <constraint firstAttribute="trailing" secondItem="FjT-Xn-u0d" secondAttribute="trailing" constant="24" id="uC2-x8-GOH"/>
-                                    <constraint firstItem="AVY-hH-g4R" firstAttribute="top" secondItem="FjT-Xn-u0d" secondAttribute="bottom" constant="16" id="wX2-39-UZz"/>
                                     <constraint firstItem="AVY-hH-g4R" firstAttribute="leading" secondItem="s7B-m0-gvy" secondAttribute="leading" constant="24" id="wsi-hA-AKT"/>
-                                    <constraint firstItem="FjT-Xn-u0d" firstAttribute="leading" secondItem="s7B-m0-gvy" secondAttribute="leading" constant="24" id="zU5-R5-eYS"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOC-Bw-jiS">
@@ -529,13 +421,13 @@ Make sure the area is well-lit to improve the camera's ability.</string>
                         <outlet property="collectionView" destination="BRd-gl-olu" id="FaF-JD-0zf"/>
                         <outlet property="menuBtn" destination="lOC-Bw-jiS" id="iHZ-LK-HAS"/>
                         <outlet property="titleLbl" destination="WFg-V4-cdh" id="3ny-fW-g79"/>
-                        <outlet property="videoDesc" destination="FjT-Xn-u0d" id="bzS-9N-3m0"/>
+                        <outlet property="videoDescTV" destination="eXD-Kk-VpD" id="Elg-rr-pW9"/>
                         <outlet property="videoView" destination="H0c-gR-Ea8" id="CjJ-Uf-9ql"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ie-hV-qH4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1833" y="648"/>
+            <point key="canvasLocation" x="1825" y="-23"/>
         </scene>
     </scenes>
     <resources>
@@ -554,7 +446,7 @@ Make sure the area is well-lit to improve the camera's ability.</string>
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

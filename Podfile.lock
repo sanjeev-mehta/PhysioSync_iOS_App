@@ -111,6 +111,7 @@ PODS:
   - iOSDropDown (0.4.0)
   - IQKeyboardManagerSwift (7.0.1)
   - JTAppleCalendar (8.0.5)
+  - lottie-ios (4.4.3)
   - nanopb (2.30910.0):
     - nanopb/decode (= 2.30910.0)
     - nanopb/encode (= 2.30910.0)
@@ -145,6 +146,7 @@ DEPENDENCIES:
   - Hero
   - iOSDropDown
   - IQKeyboardManagerSwift
+  - lottie-ios
   - NVActivityIndicatorView
   - RAMAnimatedTabBarController
   - SDWebImage
@@ -174,6 +176,7 @@ SPEC REPOS:
     - iOSDropDown
     - IQKeyboardManagerSwift
     - JTAppleCalendar
+    - lottie-ios
     - nanopb
     - NVActivityIndicatorView
     - PrettyCards
@@ -208,6 +211,7 @@ SPEC CHECKSUMS:
   iOSDropDown: ce9daa584eaa5567cafc1b633e3cc7eb6d9cea42
   IQKeyboardManagerSwift: 7f6b1b1d1497855d2beea7f2f10ffcc6978525b1
   JTAppleCalendar: 16c6501b22cb27520372c28b0a2e0b12c8d0cd73
+  lottie-ios: fcb5e73e17ba4c983140b7d21095c834b3087418
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   PrettyCards: 2b078f2396a42f7f0c4d6624b875149dcb49d3ed
@@ -220,6 +224,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   UIView-Shimmer: ff0a32c73d67c7dbdea3d9e530538b10d18aea56
 
-PODFILE CHECKSUM: a4735e8c99f287d88ee9c4fe66cc8e7882d07388
+PODFILE CHECKSUM: d0f2a64b4702a0c28d1c8a0039acb7dc6581cce9
 
 COCOAPODS: 1.14.2
