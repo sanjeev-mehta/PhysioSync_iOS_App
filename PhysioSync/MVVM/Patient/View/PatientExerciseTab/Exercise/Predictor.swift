@@ -10,7 +10,13 @@ import Vision
 import UIKit
 
 //Vision, AVFoundation, CreateML, MLModel
-typealias SquatsModel = neckRotation
+typealias neckRotationModel = neckRotation
+typealias shoulderModel = arm_up_down
+
+enum ModelType {
+    case neckRotation
+    case shoulderModel
+}
 
 protocol PredictorDelegate: AnyObject {
     func predictor(_ predictor: Predictor, didFindNewRecognizedPoints points: [CGPoint])
@@ -24,10 +30,13 @@ class Predictor {
     let predictionWindowSize = 30
     var posesWindow: [VNHumanBodyPoseObservation] = []
     private var inactivityTimer: Timer?
-    let squatsClassifier: SquatsModel
-
+    let neckRotationClassifier: neckRotationModel
+    let secondModelClassifier: shoulderModel
+    var currentModel: ModelType = .neckRotation
+    
     init() {
-        squatsClassifier = try! SquatsModel(configuration: MLModelConfiguration())
+        neckRotationClassifier = try! neckRotationModel(configuration: MLModelConfiguration())
+        secondModelClassifier = try! shoulderModel(configuration: MLModelConfiguration())
         posesWindow.reserveCapacity(predictionWindowSize)
     }
     
@@ -62,18 +71,40 @@ class Predictor {
         DispatchQueue.global(qos: .background).async {
             guard let poseMultiArray = self.prepareInputWithObservation(self.posesWindow) else { return }
             
+            switch self.currentModel {
+            case .neckRotation:
+                self.predictWithNeckRotationModel(poseMultiArray)
+            case .shoulderModel:
+                self.predictWithShoulderModel(poseMultiArray)
+            }
+        }
+    }
+    
+    func predictWithNeckRotationModel(_ poseMultiArray: MLMultiArray) {
             do {
-                let predictions = try self.squatsClassifier.prediction(poses: poseMultiArray)
+                let predictions = try self.neckRotationClassifier.prediction(poses: poseMultiArray)
                 let label = predictions.label
                 let confidence = predictions.labelProbabilities[label] ?? 0
                 DispatchQueue.main.async {
                     self.delegate?.predictor(self, didLabelAction: label, with: confidence)
                 }
             } catch {
-                print("Error predicting action: \(error)")
+                print("Error predicting action with SquatsModel: \(error)")
             }
         }
-    }
+        
+        func predictWithShoulderModel(_ poseMultiArray: MLMultiArray) {
+            do {
+                let predictions = try self.secondModelClassifier.prediction(poses: poseMultiArray)
+                let label = predictions.label
+                let confidence = predictions.labelProbabilities[label] ?? 0
+                DispatchQueue.main.async {
+                    self.delegate?.predictor(self, didLabelAction: label, with: confidence)
+                }
+            } catch {
+                print("Error predicting action with SecondModel: \(error)")
+            }
+        }
     
     func prepareInputWithObservation (_ observations: [VNHumanBodyPoseObservation]) -> MLMultiArray? {
         let numAvailableFrames = observations.count
