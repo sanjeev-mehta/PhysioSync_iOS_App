@@ -199,6 +199,9 @@
                                                                 <state key="normal" title="Reply Privately">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="replyPrivatelyBtnActn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="eHv-qR-hgS"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

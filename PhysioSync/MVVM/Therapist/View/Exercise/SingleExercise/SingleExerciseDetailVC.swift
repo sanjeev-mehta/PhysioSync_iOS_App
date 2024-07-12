@@ -14,10 +14,10 @@ class SingleExerciseDetailVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionHeight: NSLayoutConstraint!
     @IBOutlet weak var titleLbl: UILabel!
-    @IBOutlet weak var videoDesc: UILabel!
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var videoDescTV: UITextView!
     
     // MARK: - Variables
     var categoryArr = [categoryData]()
@@ -115,7 +115,8 @@ class SingleExerciseDetailVC: UIViewController {
     // MARK: - Set Data
     func setData() {
         if let data = data {
-            self.videoDesc.text = data.description
+            self.videoDescTV.text = data.description
+            self.titleLbl.text = data.videoTitle
         }
         self.setHeader(data?.videoTitle ?? "",rightImg: UIImage(named: "threeDots")!, isRightBtn: true) {
             self.dismissOrPopViewController()

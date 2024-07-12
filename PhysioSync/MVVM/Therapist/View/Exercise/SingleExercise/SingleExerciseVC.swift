@@ -120,9 +120,11 @@ extension SingleExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource
         if !self.isLoading {
             vm.setCell(cell, index: indexPath.item, isCreateSchedule: isCreateSchedule)
         }
+        cell.bgView.cornerRadius = 12
         cell.imgVW.backgroundColor = .blue
         cell.imgVW.layer.cornerRadius = 12
         cell.imgVW.layer.masksToBounds = true
+        cell.imgVW.contentMode = .scaleToFill
         cell.imgVW.addShadow()
         return cell
     }
