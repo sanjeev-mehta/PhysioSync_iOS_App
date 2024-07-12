@@ -30,6 +30,7 @@ class TherapistHomeVC: UIViewController {
     @IBOutlet weak var patientCountLbl: UILabel!
     @IBOutlet weak var notify: UIImageView!
     @IBOutlet var topSectionConstraint: [NSLayoutConstraint]!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     // MARK: -  Variables
     var cellCount = 6
@@ -51,6 +52,7 @@ class TherapistHomeVC: UIViewController {
         }
     }
     var timer: Timer?
+    private var refreshControl: UIRefreshControl!
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -60,6 +62,7 @@ class TherapistHomeVC: UIViewController {
         setTableViews()
         callApi()
         setNotificationView()
+        setupRefreshControl()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -98,6 +101,19 @@ class TherapistHomeVC: UIViewController {
         patientListTableView.delegate = self
         patientListTableView.dataSource = self
     }
+    
+    func setupRefreshControl() {
+            refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+            scrollView.refreshControl = refreshControl
+        }
+        
+        @objc func refreshData(_ sender: UIRefreshControl) {
+            callApi()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                sender.endRefreshing()
+            }
+        }
     
     func callApi() {
         vm.getNotificationApi(vc: self) { status in

@@ -18,13 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mJE-Ps-lge">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <rect key="frame" x="0.0" y="0.0" width="388" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qka-yS-x0C">
-                                        <rect key="frame" x="24" y="110" width="345" height="80"/>
+                                        <rect key="frame" x="24" y="120" width="340" height="80"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YDy-6X-dQl">
-                                                <rect key="frame" x="0.0" y="0.0" width="340" height="72"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YDy-6X-dQl">
+                                                <rect key="frame" x="0.0" y="4" width="340" height="72"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XS2-fz-Hdc">
                                                         <rect key="frame" x="0.0" y="0.0" width="160" height="72"/>
@@ -189,14 +189,17 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="YDy-6X-dQl" firstAttribute="leading" secondItem="Qka-yS-x0C" secondAttribute="leading" id="5dg-Jr-wk1"/>
                                             <constraint firstAttribute="height" constant="80" id="9pM-p7-q0f"/>
+                                            <constraint firstItem="YDy-6X-dQl" firstAttribute="centerY" secondItem="Qka-yS-x0C" secondAttribute="centerY" id="Kru-Pd-3wB"/>
+                                            <constraint firstAttribute="trailing" secondItem="YDy-6X-dQl" secondAttribute="trailing" id="VAE-79-TcT"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkM-tj-Hac">
-                                        <rect key="frame" x="24" y="230" width="345" height="104"/>
+                                        <rect key="frame" x="24" y="240" width="340" height="104"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yDb-BI-Ghh">
-                                                <rect key="frame" x="16" y="24" width="313" height="56"/>
+                                                <rect key="frame" x="16" y="24" width="308" height="56"/>
                                                 <color key="backgroundColor" name="primary"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="HNn-gd-o1a"/>
@@ -236,13 +239,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P7f-JX-Kyc">
-                                        <rect key="frame" x="24" y="692" width="345" height="160"/>
+                                        <rect key="frame" x="24" y="692" width="340" height="160"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="E6r-XJ-lzb">
-                                                <rect key="frame" x="0.0" y="16" width="345" height="120"/>
+                                                <rect key="frame" x="0.0" y="16" width="340" height="120"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97c-6X-LU4">
-                                                        <rect key="frame" x="0.0" y="0.0" width="345" height="56"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="340" height="56"/>
                                                         <color key="backgroundColor" red="0.96862745100000003" green="0.96078431369999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="56" id="hdC-tk-LOI"/>
@@ -268,7 +271,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GbO-6N-D2s">
-                                                        <rect key="frame" x="0.0" y="64" width="345" height="56"/>
+                                                        <rect key="frame" x="0.0" y="64" width="340" height="56"/>
                                                         <color key="backgroundColor" name="primary"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="56" id="nog-2y-CYm"/>
@@ -302,7 +305,7 @@
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iiV-CM-2UI">
-                                        <rect key="frame" x="24" y="214" width="345" height="470"/>
+                                        <rect key="frame" x="24" y="224" width="340" height="460"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WbP-wF-Vle">
                                             <size key="itemSize" width="174" height="202"/>
@@ -312,7 +315,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="CreateScheduleCVC" id="4ZX-la-9OZ" customClass="CreateScheduleCVC" customModule="PhysioSync" customModuleProvider="target">
-                                                <rect key="frame" x="85.666666666666671" y="0.0" width="174" height="202"/>
+                                                <rect key="frame" x="83" y="0.0" width="174" height="202"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                     <rect key="frame" x="0.0" y="0.0" width="174" height="202"/>
@@ -401,10 +404,10 @@
                                     <constraint firstAttribute="bottom" secondItem="P7f-JX-Kyc" secondAttribute="bottom" id="btA-ba-APj"/>
                                     <constraint firstAttribute="trailing" secondItem="Qka-yS-x0C" secondAttribute="trailing" constant="24" id="ccE-J6-4nP"/>
                                     <constraint firstItem="iiV-CM-2UI" firstAttribute="top" secondItem="Qka-yS-x0C" secondAttribute="bottom" constant="24" id="fGO-eQ-0Fc"/>
-                                    <constraint firstItem="Qka-yS-x0C" firstAttribute="top" secondItem="mJE-Ps-lge" secondAttribute="top" constant="110" id="hTw-K6-neW"/>
+                                    <constraint firstItem="Qka-yS-x0C" firstAttribute="top" secondItem="mJE-Ps-lge" secondAttribute="top" constant="120" id="hTw-K6-neW"/>
                                     <constraint firstAttribute="trailing" secondItem="P7f-JX-Kyc" secondAttribute="trailing" constant="24" id="o8J-fa-j1J"/>
                                     <constraint firstAttribute="trailing" secondItem="pkM-tj-Hac" secondAttribute="trailing" constant="24" id="v7Y-kH-taB"/>
-                                    <constraint firstItem="pkM-tj-Hac" firstAttribute="top" secondItem="Qka-yS-x0C" secondAttribute="bottom" constant="40" id="vFM-h1-a7T"/>
+                                    <constraint firstItem="pkM-tj-Hac" firstAttribute="top" secondItem="Qka-yS-x0C" secondAttribute="bottom" constant="40" id="yJA-C6-bAa"/>
                                     <constraint firstItem="Qka-yS-x0C" firstAttribute="leading" secondItem="mJE-Ps-lge" secondAttribute="leading" constant="24" id="zBc-eW-bj2"/>
                                 </constraints>
                             </view>

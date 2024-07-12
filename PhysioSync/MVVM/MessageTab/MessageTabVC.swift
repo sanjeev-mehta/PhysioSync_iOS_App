@@ -39,10 +39,8 @@ class MessageTabVC: UIViewController {
     }
     
     @objc func searchActn(_ sender: UITextField) {
-        if searchTf.text == "" {
-            vm.filter(query: searchTf.text!)
-            self.tableView.reloadData()
-        }
+        vm.filter(query: searchTf.text!)
+        self.tableView.reloadData()
     }
     
     // MARK: - Set Table View
