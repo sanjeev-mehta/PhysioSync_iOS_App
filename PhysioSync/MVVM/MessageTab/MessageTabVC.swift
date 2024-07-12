@@ -23,6 +23,12 @@ class MessageTabVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+            self.showData()
+        }
+    }
+    
+    func showData() {
         self.tableView.reloadData()
         if vm.unreadCount() == 0 {
             self.messageCountView.isHidden = true
@@ -33,10 +39,8 @@ class MessageTabVC: UIViewController {
     }
     
     @objc func searchActn(_ sender: UITextField) {
-        if searchTf.text == "" {
-            vm.filter(query: searchTf.text!)
-            self.tableView.reloadData()
-        }
+        vm.filter(query: searchTf.text!)
+        self.tableView.reloadData()
     }
     
     // MARK: - Set Table View

@@ -50,9 +50,14 @@ class MessageViewModel {
         if query.isEmpty {
             filterArr = model
         } else {
-            filterArr = model.filter { chat in
-                return chat.patient!.firstName.lowercased().contains(query.lowercased())
+            filterArr = model.filter { patient in
+                return patient.patient!.firstName.lowercased().contains(query.lowercased()) ||
+                patient.patient!.lastName.lowercased().contains(query.lowercased())
             }
+            // Print each patient's properties
+                for patient in filterArr {
+                    print("First Name: \(patient.patient?.firstName)")
+                }
         }
     }
     

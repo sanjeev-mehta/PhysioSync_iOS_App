@@ -9,7 +9,7 @@ import Foundation
 
 enum StoryBoardIDs: String {
     // MARK: - Welcome StoryBoard
-    case welcomeID = "WelecomVC"
+    case welcomeID = "WelcomeVC"
     
     // MARK: - Therapist Onboarding Storyboard
     case therapistOnboardingID = "TherapistOnboardingVC"

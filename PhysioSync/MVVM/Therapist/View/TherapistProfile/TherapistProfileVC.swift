@@ -95,5 +95,16 @@ class TherapistProfileVC: UIViewController {
             self.pushOrPresentViewController(vc, true)
         }
     }
+    
+    @IBAction func logOutBtnActn(_ sender: UIButton) {
+        if let bundleID = Bundle.main.bundleIdentifier {
+            UserDefaults.standard.removePersistentDomain(forName: bundleID)
+        }
+        
+        if let navigationController = self.navigationController {
+            // Remove all view controllers except the root view controller
+            navigationController.setViewControllers([navigationController.viewControllers.first!], animated: true)
+        }
+    }
 
 }

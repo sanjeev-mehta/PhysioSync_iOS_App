@@ -52,12 +52,16 @@ extension PatientExerciseTabVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PatientExerciseTabTVC", for: indexPath) as! PatientExerciseTabTVC
-            cell.selectionStyle = .none
-            if !isLoading {
-                vm.setUpTableCell(cell, .assigned, indexPath.row)
-            }
-            return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PatientExerciseTabTVC", for: indexPath) as! PatientExerciseTabTVC
+        cell.selectionStyle = .none
+        cell.imgView.addTopCornerRadius(radius: 16)
+        cell.bottomView.addBottomCornerRadius(radius: 16)
+        cell.bgView.layer.cornerRadius = 16
+        cell.bgView.addShadow()
+        if !isLoading {
+            vm.setUpTableCell(cell, .assigned, indexPath.row)
+        }
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
