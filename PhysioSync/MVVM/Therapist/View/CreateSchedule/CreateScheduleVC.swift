@@ -72,7 +72,8 @@ class CreateScheduleVC: UIViewController {
             self.selectedToDate = value?.toDate
             self.fromDateLbl.text = "\(dateFormat(value!.fromDate))"
             self.toDateLbl.text = "\(dateFormat(value!.toDate))"
-
+            self.from = "\(dateFormat(value!.fromDate))"
+            self.to = "\(dateFormat(value!.toDate))"
         }
         fastisController.present(above: self)
     }
