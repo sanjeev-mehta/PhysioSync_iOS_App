@@ -14,8 +14,8 @@ class AWSHelper {
     static let shared = AWSHelper()
     
     private init() {
-        let accessKey = ""
-        let secretKey = ""
+        let accessKey = UserDefaults.standard.value(forKey: "access_key") as? String ?? ""
+        let secretKey = UserDefaults.standard.value(forKey: "secret_key") as? String ?? ""
         let credentialsProvider = AWSStaticCredentialsProvider(accessKey: accessKey, secretKey: secretKey)
         let configuration = AWSServiceConfiguration(region: .USWest1, credentialsProvider: credentialsProvider)
         AWSServiceManager.default().defaultServiceConfiguration = configuration

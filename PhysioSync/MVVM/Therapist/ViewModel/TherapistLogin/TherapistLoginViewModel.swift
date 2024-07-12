@@ -28,6 +28,8 @@ class TherapistLoginViewModel {
                     UserDefaults.standard.setTherapistId(value: model.Id)
                     UserDefaults.standard.setTherapistName(value: model.therapistName)
                     UserDefaults.standard.setTherapistProfileImage(value: model.profilePhoto)
+                    UserDefaults.standard .set(json["token"]["Access_Key"].stringValue, forKey: "access_key")
+                    UserDefaults.standard .set(json["token"]["Secret_access_key"].stringValue, forKey: "secret_key")
                     completion(true)
                 }
             }

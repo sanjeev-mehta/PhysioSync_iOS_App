@@ -165,7 +165,11 @@ class TherapistPatientProfileVC: UIViewController {
                 } else {
                     vc.isEdit = false
                 }
-                vc.id = self.vm.therapistPatientprofileModel![0].data!.exercise![0].Id
+                if let exercise = self.vm.therapistPatientprofileModel?[0].data?.exercise {
+                    if exercise.count != 0 {
+                        vc.id = exercise[0].Id
+                    }
+                }
                 vc.patientId = self.vm.therapistPatientprofileModel?[0].data?.patient!.Id ?? ""
                 self.navigationController?.pushViewController(vc, animated: true)
             }

@@ -37,12 +37,33 @@ class TherapistPatientVC: UIViewController{
         setCollectionView()
         setTableView()
         setSearchBar()
+        
+        let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
+            leftSwipeGesture.direction = .left
+        self.view.addGestureRecognizer(leftSwipeGesture)
+        
+        let rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
+            rightSwipeGesture.direction = .right
+        self.view.addGestureRecognizer(rightSwipeGesture)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.isLoading = true
         callPatientApi()
+    }
+    
+    @objc func handleSwipeGesture(_ gesture: UISwipeGestureRecognizer) {
+        if gesture.direction == .left {
+            self.view.hapticFeedback(style: .soft)
+            self.showCollectionView()
+            changeGridList(tag: 1)
+        } else if gesture.direction == .right {
+            self.tableView.isHidden = false
+            self.view.hapticFeedback(style: .soft)
+            self.hideCollectionView()
+            changeGridList(tag: 0)
+        }
     }
     
     // MARK: - Call Patient API & Number of Patients
@@ -165,6 +186,7 @@ extension TherapistPatientVC: UICollectionViewDelegate, UICollectionViewDataSour
         cell.bgView.layer.cornerRadius = 12
         cell.imgView.layer.cornerRadius = 12
         cell.imgView.clipsToBounds = true
+        cell.imgView.contentMode = .scaleAspectFill
         cell.bgView.addShadow()
         if !self.isLoading {
             vm.updateCellUI(tableCell: nil, collectionCell: cell, index: indexPath.row)
@@ -220,6 +242,7 @@ extension TherapistPatientVC: UITableViewDelegate ,UITableViewDataSource {
         if !self.isLoading {
             vm.updateCellUI(tableCell: cell, collectionCell: nil, index: indexPath.row)
         }
+        cell.imgView.contentMode = .scaleAspectFill
         return cell
     }
     

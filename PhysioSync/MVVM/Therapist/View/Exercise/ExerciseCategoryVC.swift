@@ -90,6 +90,8 @@ extension ExerciseCategoryVC: UICollectionViewDelegate, UICollectionViewDataSour
             exerciseCategoryViewModel.setCell(cell, index: indexPath.item)
         }
         cell.selectedView.isHidden = true
+        cell.bgView.layer.cornerRadius = 12
+        cell.bgView.layer.masksToBounds = true
         cell.imgVW.backgroundColor = Colors.primarySubtleClr
         cell.imgVW.layer.cornerRadius = 12
         cell.imgVW.layer.masksToBounds = true

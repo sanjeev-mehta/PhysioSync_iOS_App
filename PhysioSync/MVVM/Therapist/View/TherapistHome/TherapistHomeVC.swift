@@ -60,13 +60,13 @@ class TherapistHomeVC: UIViewController {
         closeNotifcationView()
         setUI()
         setTableViews()
-        callApi()
         setNotificationView()
         setupRefreshControl()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.isLoading = true
+        callApi()
         self.collectionView.reloadData()
         self.updateCollection()
         socketConnecting()
