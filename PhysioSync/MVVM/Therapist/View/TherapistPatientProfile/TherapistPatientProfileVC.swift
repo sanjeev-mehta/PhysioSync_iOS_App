@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class TherapistPatientProfileVC: UIViewController {
     
@@ -23,6 +24,7 @@ class TherapistPatientProfileVC: UIViewController {
     @IBOutlet var scheduleViews: [UIView]!
     @IBOutlet weak var scheduleNotFoundView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet var watchDataLbls: [UILabel]!
     
     // MARK: - Variables
 //    var cellCount = 3
@@ -52,6 +54,7 @@ class TherapistPatientProfileVC: UIViewController {
         } rightButtonAction: {
             
         }
+        self.scrollView.contentOffset.y = -40
     }
     
     func callApi() {
@@ -88,6 +91,14 @@ class TherapistPatientProfileVC: UIViewController {
                         }
                         self.scheduleNotFoundView.isHidden = false
                         self.tableHeightConstraint.constant = 100
+                    }
+                    
+                    if let watchData = data.watchData {
+                        
+                        self.watchDataLbls[0].text = watchData.latestCalories()
+                        self.watchDataLbls[1].text = watchData.latestSteps()
+                        self.watchDataLbls[2].text = watchData.combinedSleep()
+                        self.watchDataLbls[3].text = watchData.averageHeartRate()
                     }
                 }
                 self.tableView.reloadData()
@@ -131,7 +142,6 @@ class TherapistPatientProfileVC: UIViewController {
             let formattedDate = outputFormatter.string(from: dateOfBirth)
             return formattedDate
         }
-   
     
     // MARK: -  Button Methods
     @IBAction func viewPatientInfoBtnActn(_ sender: UIButton) {
@@ -187,6 +197,12 @@ class TherapistPatientProfileVC: UIViewController {
             }
         }
     }
+    
+    @IBAction func openHealthStats(_ sender: UIButton) {
+        let vc = self.storyboard!.instantiateViewController(withIdentifier: "TherapisPatientStatsVC") as! TherapisPatientStatsVC
+        vc.watchData = vm.therapistPatientprofileModel?[0].data?.watchData
+        self.pushOrPresentViewController(vc, true)
+    }
 }
 
 extension TherapistPatientProfileVC: UITableViewDelegate ,UITableViewDataSource {
@@ -210,9 +226,6 @@ extension TherapistPatientProfileVC: UITableViewDelegate ,UITableViewDataSource 
 
 extension TherapistPatientProfileVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset.y)
-        if scrollView.contentOffset.y.isLess(than: 0.0) {
-            scrollView.contentOffset.y = -40
-        }
+        
     }
 }

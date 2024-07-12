@@ -1788,13 +1788,24 @@
                                                                     <constraint firstAttribute="width" constant="24" id="xhN-nf-JL8"/>
                                                                 </constraints>
                                                             </imageView>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m89-mi-VYD">
+                                                                <rect key="frame" x="0.0" y="0.0" width="297" height="32"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <connections>
+                                                                    <action selector="openHealthStats:" destination="fgd-mb-gcb" eventType="touchUpInside" id="U0b-eb-EBH"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="u1W-OA-mqx" firstAttribute="leading" secondItem="Chb-45-qB7" secondAttribute="leading" id="0uF-cA-a2Q"/>
                                                             <constraint firstAttribute="height" constant="32" id="2C7-pR-78D"/>
+                                                            <constraint firstAttribute="bottom" secondItem="m89-mi-VYD" secondAttribute="bottom" id="2k7-hD-QnC"/>
+                                                            <constraint firstAttribute="trailing" secondItem="m89-mi-VYD" secondAttribute="trailing" id="7L5-8W-icU"/>
+                                                            <constraint firstItem="m89-mi-VYD" firstAttribute="top" secondItem="Chb-45-qB7" secondAttribute="top" id="Kwt-bn-xDQ"/>
                                                             <constraint firstItem="u1W-OA-mqx" firstAttribute="top" secondItem="Chb-45-qB7" secondAttribute="top" id="OGq-tZ-ylc"/>
                                                             <constraint firstItem="ef5-F6-Zrf" firstAttribute="centerY" secondItem="Chb-45-qB7" secondAttribute="centerY" id="T4e-8v-sQo"/>
+                                                            <constraint firstItem="m89-mi-VYD" firstAttribute="leading" secondItem="Chb-45-qB7" secondAttribute="leading" id="UVc-ni-l8H"/>
                                                             <constraint firstAttribute="trailing" secondItem="ef5-F6-Zrf" secondAttribute="trailing" id="tcL-3g-aoa"/>
                                                         </constraints>
                                                     </view>
@@ -1823,8 +1834,8 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFi-yv-hQC">
-                                                                        <rect key="frame" x="242.66666666666671" y="13.999999999999998" width="38.333333333333343" height="20.333333333333329"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFi-yv-hQC">
+                                                                        <rect key="frame" x="250.33333333333329" y="13.999999999999998" width="30.666666666666657" height="20.333333333333329"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -1862,8 +1873,8 @@
                                                                             <constraint firstAttribute="width" constant="24" id="Smj-ZM-SN0"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9A-Fa-vPd">
-                                                                        <rect key="frame" x="44" y="14.333333333333369" width="59" height="19.333333333333329"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9A-Fa-vPd">
+                                                                        <rect key="frame" x="44" y="14.333333333333369" width="41.666666666666657" height="19.333333333333329"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -1874,8 +1885,8 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oU8-64-GUT">
-                                                                        <rect key="frame" x="242.66666666666671" y="13.999999999999998" width="38.333333333333343" height="20.333333333333329"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oU8-64-GUT">
+                                                                        <rect key="frame" x="250.33333333333329" y="13.999999999999998" width="30.666666666666657" height="20.333333333333329"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -1913,8 +1924,8 @@
                                                                             <constraint firstAttribute="width" constant="24" id="Zp2-SW-UDR"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7n-UW-pA8">
-                                                                        <rect key="frame" x="44" y="14.333333333333369" width="59" height="19.333333333333329"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sleep" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7n-UW-pA8">
+                                                                        <rect key="frame" x="44" y="14.333333333333369" width="41" height="19.333333333333329"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -1925,8 +1936,8 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhs-JB-bE2">
-                                                                        <rect key="frame" x="242.66666666666671" y="13.999999999999998" width="38.333333333333343" height="20.333333333333329"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhs-JB-bE2">
+                                                                        <rect key="frame" x="250.33333333333329" y="13.999999999999998" width="30.666666666666657" height="20.333333333333329"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -1964,8 +1975,8 @@
                                                                             <constraint firstAttribute="width" constant="24" id="zop-Pe-gIK"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bah-A3-3kQ">
-                                                                        <rect key="frame" x="44" y="14.333333333333256" width="59" height="19.333333333333329"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heart Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bah-A3-3kQ">
+                                                                        <rect key="frame" x="44.000000000000007" y="14.333333333333256" width="77.666666666666686" height="19.333333333333329"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -1976,8 +1987,8 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdN-pX-5cK">
-                                                                        <rect key="frame" x="242.66666666666671" y="13.999999999999998" width="38.333333333333343" height="20.333333333333329"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdN-pX-5cK">
+                                                                        <rect key="frame" x="250.33333333333329" y="13.999999999999998" width="30.666666666666657" height="20.333333333333329"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -2076,11 +2087,30 @@
                         <outletCollection property="shadowViews" destination="KZZ-1I-NBy" collectionClass="NSMutableArray" id="bP5-T1-dmS"/>
                         <outletCollection property="scheduleViews" destination="MYX-3v-EFb" collectionClass="NSMutableArray" id="za3-mi-yl8"/>
                         <outletCollection property="scheduleViews" destination="ENO-eT-A0v" collectionClass="NSMutableArray" id="8Cb-P7-39c"/>
+                        <outletCollection property="watchDataLbls" destination="cFi-yv-hQC" collectionClass="NSMutableArray" id="74k-of-ug2"/>
+                        <outletCollection property="watchDataLbls" destination="oU8-64-GUT" collectionClass="NSMutableArray" id="cEo-yq-LKR"/>
+                        <outletCollection property="watchDataLbls" destination="bhs-JB-bE2" collectionClass="NSMutableArray" id="BXx-v5-EcK"/>
+                        <outletCollection property="watchDataLbls" destination="tdN-pX-5cK" collectionClass="NSMutableArray" id="K6V-Kd-907"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qYd-Yp-f5m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="90.839694656488547" y="0.0"/>
+        </scene>
+        <!--Therapis Patient StatsVC-->
+        <scene sceneID="qOG-wH-vXk">
+            <objects>
+                <viewController storyboardIdentifier="TherapisPatientStatsVC" id="xO8-RO-1mc" customClass="TherapisPatientStatsVC" customModule="PhysioSync" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MoP-zD-IGd">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="cBs-oP-dxj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q2D-5l-tes" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="89" y="844"/>
         </scene>
     </scenes>
     <resources>
