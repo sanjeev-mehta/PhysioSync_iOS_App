@@ -50,6 +50,7 @@ class TherapistHomeVC: UIViewController {
             collectionView.reloadData()
         }
     }
+    var timer: Timer?
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -160,11 +161,12 @@ class TherapistHomeVC: UIViewController {
         TherapistHomeVC.socketHandler = SocketIOHandler(url: API.SocketURL)
         TherapistHomeVC.socketHandler.connect()
         TherapistHomeVC.socketHandler.delegate = self
-        Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false) { _ in
+        timer?.invalidate()
+        self.isLoading = false
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
             if UserDefaults.standard.getUsernameToken() != "" {
                 TherapistHomeVC.socketHandler.fetchAllPatient(id: UserDefaults.standard.getTherapistId())
                 self.messageTableView.reloadData()
-                self.isLoading = false
                 var unreadCount = 0
                 for i in self.messageVM.model {
                     unreadCount += i.unreadCount

@@ -23,6 +23,12 @@ class MessageTabVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+            self.showData()
+        }
+    }
+    
+    func showData() {
         self.tableView.reloadData()
         if vm.unreadCount() == 0 {
             self.messageCountView.isHidden = true
