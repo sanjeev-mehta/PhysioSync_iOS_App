@@ -31,6 +31,9 @@ class TherapistHomeVC: UIViewController {
     @IBOutlet weak var notify: UIImageView!
     @IBOutlet var topSectionConstraint: [NSLayoutConstraint]!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var cancelView: UIView!
+    @IBOutlet weak var notificationImgView: UIImageView!
     
     // MARK: -  Variables
     var cellCount = 6
@@ -82,16 +85,24 @@ class TherapistHomeVC: UIViewController {
     }
     
     func setUI() {
-        for i in shadowViews {
-            i.layer.cornerRadius = 12
-            i.addShadow()
-        }
+//        for i in shadowViews {
+//            i.layer.cornerRadius = 12
+//            i.addShadow()
+//        }
         patientVM.getPatient(vc: self) { _ in
             DispatchQueue.main.async {
                 self.patientListTableView.reloadData()
             }
-            
         }
+        if let imageData = UserDefaults.standard.data(forKey: "profileImage"),
+           let savedImage = UIImage(data: imageData) {
+            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { _ in
+                self.animateProfileImageToTabBar(image: savedImage, imgView: self.imgView, userName: UserDefaults.standard.getTherapistName())
+            }
+        } else {
+            print("Failed to retrieve UIImage from UserDefaults")
+        }
+        
     }
     
     func setTableViews() {
@@ -141,9 +152,9 @@ class TherapistHomeVC: UIViewController {
     
     func setNotificationView() {
         acknowledgeView.addTopCornerRadius(radius: 16)
-        replyView.clipsToBounds = true
-        replyView.layer.cornerRadius = 16
-        replyView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
+        replyView.addBottomCornerRadius(radius: 16)
+        cancelView.cornerRadius = 16
+
     }
     
     func openNotifcationView() {
@@ -251,6 +262,14 @@ class TherapistHomeVC: UIViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
+    @IBAction func openPatientTabBtnActn(_ sender: UIButton) {
+        if let tabBarController = self.tabBarController as? RAMAnimatedTabBarController {
+            DispatchQueue.main.async {
+                tabBarController.setSelectIndex(from: tabBarController.selectedIndex, to: 2)
+            }
+        }
+    }
 }
 
 // MARK: -  UICollection View Delegates and datasource methods
@@ -286,6 +305,7 @@ extension TherapistHomeVC: UICollectionViewDelegate, UICollectionViewDataSource,
             self.nameLbl.text = model.data[tag].patientId.firstName + " " + model.data[tag].patientId.lastName
             self.timeLbl.text = model.data[tag].days
             self.exerciseNameLbl.text = model.data[tag].video_title
+            notificationImgView.setImage(with: model.data[tag].patientId.profilePhoto)
             self.openNotifcationView()
         }
     }

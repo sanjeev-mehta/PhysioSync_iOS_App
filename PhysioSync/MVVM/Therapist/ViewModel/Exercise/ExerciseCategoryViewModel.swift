@@ -33,7 +33,7 @@ class ExerciseCategoryViewModel {
     
     func setCell(_ cell: ExerciseGridCVC, index: Int) {
         let data = categoriesModel[index]
-        cell.titleLbl.text = data.name
+        cell.titleLbl.text = data.name?.capitalized
         cell.imgVW.image = UIImage(named: data.name ?? "")
     }
     

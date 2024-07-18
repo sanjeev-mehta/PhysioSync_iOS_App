@@ -184,16 +184,19 @@ class ExerciseVC: UIViewController {
     
     func popController() {
         if let viewControllers = navigationController?.viewControllers {
-            // Get the view controller at index 4
-            if viewControllers.count > 3 {
-                // Get the view controller at index 3
-                let targetViewController = viewControllers[3]
-                navigationController?.popToViewController(targetViewController, animated: true)
+            for viewController in viewControllers {
+                print(viewController)
+                if viewController.isKind(of: AnimatedTabBarController.self) {
+                    navigationController?.popToViewController(viewController, animated: true)
+                    return
+                }
             }
+            print("No view controller of the specified class in the navigation stack.")
         } else {
-            print("Not enough view controllers in the navigation stack.")
+            print("Navigation controller is nil.")
         }
     }
+    
     //MARK: - SHow Upload View
     func showVideoUploadView() {
         self.repLbl.text = "\(repCount)"

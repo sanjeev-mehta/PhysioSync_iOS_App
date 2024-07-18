@@ -272,11 +272,13 @@ extension AddNewExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChipsCVC", for: indexPath) as! ChipsCVC
         let data = exerciseVM.categoriesModel[indexPath.item]
-        cell.titleLbl.text = data.name
+        cell.titleLbl.text = data.name?.capitalized 
         if data.isSelected {
-            cell.bgView.backgroundColor = .black
+            cell.bgView.backgroundColor = Colors.primaryClr
+            cell.titleLbl.textColor = .white
         } else {
-            cell.bgView.backgroundColor = .blue
+            cell.bgView.backgroundColor = Colors.chipsClr1
+            cell.titleLbl.textColor = Colors.primaryClr
         }
         return cell
     }

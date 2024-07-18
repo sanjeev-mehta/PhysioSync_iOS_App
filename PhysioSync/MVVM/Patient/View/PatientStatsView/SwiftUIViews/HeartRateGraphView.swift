@@ -6,7 +6,7 @@ struct HeartRateRangeChart: View {
     @ObservedObject var healthKitManager = HealthKitManager()
     
     @State private var barWidth = 15.0
-    @State private var chartColor: Color = .red
+    @State private var chartColor: Color = Color(red: 31/255, green: 89/255, blue: 218/255) // Blue color
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -20,7 +20,7 @@ struct HeartRateRangeChart: View {
                 .background(
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color(UIColor.systemBackground))
-                        .shadow(color: .blue.opacity(0.6), radius: 5, x: 0, y: 5)
+                        .shadow(color: chartColor.opacity(0.6), radius: 5, x: 0, y: 5) // Use chartColor for shadow
                         .padding(.horizontal, 10)
                 )
         }
@@ -37,7 +37,7 @@ struct HeartRateRangeChart: View {
                     width: .fixed(barWidth)
                 )
                 .clipShape(Capsule())
-                .foregroundStyle(chartColor.gradient)
+                .foregroundStyle(chartColor.gradient) // Use chartColor for foreground style
                 
                 if dataPoint.dailyMin == healthKitManager.minBPM {
                     PointMark(
@@ -51,7 +51,7 @@ struct HeartRateRangeChart: View {
                         Text("Min \n\(healthKitManager.minBPM)")
                             .font(.callout)
                             .fontWeight(.bold)
-                            .foregroundColor(.red)
+                            .foregroundColor(chartColor) // Use chartColor for text color
                     }
                 }
                 
@@ -67,7 +67,7 @@ struct HeartRateRangeChart: View {
                         Text("Max \n\(healthKitManager.maxBPM)")
                             .font(.callout)
                             .fontWeight(.bold)
-                            .foregroundColor(.red)
+                            .foregroundColor(chartColor) // Use chartColor for text color
                     }
                 }
                 

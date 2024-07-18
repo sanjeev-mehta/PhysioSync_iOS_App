@@ -455,7 +455,11 @@
                             <constraint firstItem="moz-m1-2gG" firstAttribute="top" secondItem="69d-1c-zOZ" secondAttribute="top" id="uic-DK-V4Z"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="home" id="HFS-5W-bQ5" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" title="Home" image="home" id="HFS-5W-bQ5" customClass="CustomTabBarItem" customModule="PhysioSync" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="homeSelected"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="unselectedImageName" value="home"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="animation" destination="obt-hr-AMU" id="w4X-9E-tbb"/>
                         </connections>
@@ -756,7 +760,11 @@
                             <constraint firstItem="cE7-6s-b8b" firstAttribute="leading" secondItem="dOL-CW-8W2" secondAttribute="leading" id="sd1-NG-Xf8"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="profile" selectedImage="profile" id="jUX-uh-fi4" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" selectedImage="profile" id="jUX-uh-fi4" customClass="CustomTabBarItem" customModule="PhysioSync" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="profile"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="unselectedImageName" value="profile"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="animation" destination="YvD-ta-Isg" id="nim-TI-3e2"/>
                         </connections>
@@ -955,7 +963,11 @@
                             <constraint firstItem="gee-s7-N33" firstAttribute="leading" secondItem="bkw-xL-rtp" secondAttribute="leading" id="ljR-16-tEx"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Exercises" image="exercise" id="nyz-Ch-K2Y" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" title="Exercises" id="nyz-Ch-K2Y" customClass="CustomTabBarItem" customModule="PhysioSync" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="exerciseSelected"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="unselectedImageName" value="exercise"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="animation" destination="AI2-Ze-Q7N" id="QYk-af-zXX"/>
                         </connections>
@@ -982,7 +994,7 @@
         <!--Animated Tab Bar Controller-->
         <scene sceneID="f3i-8p-Um7">
             <objects>
-                <tabBarController storyboardIdentifier="patientTabBarController" id="PL4-zi-iYK" customClass="RAMAnimatedTabBarController" customModule="RAMAnimatedTabBarController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="patientTabBarController" id="PL4-zi-iYK" customClass="AnimatedTabBarController" customModule="PhysioSync" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Gk3-RO-Xg9">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1217,7 +1229,11 @@
                             <constraint firstItem="11Y-Nj-crD" firstAttribute="leading" secondItem="kvq-Fb-ecq" secondAttribute="leading" constant="24" id="r30-W1-sXA"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Stats" image="stats" id="MkL-iw-Zg3" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" title="Stats" image="stats" id="MkL-iw-Zg3" customClass="CustomTabBarItem" customModule="PhysioSync" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="statSelected"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="unselectedImageName" value="stats"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="animation" destination="l7j-xy-O5C" id="9lR-wo-etV"/>
                         </connections>
@@ -1878,7 +1894,11 @@
                             <constraint firstItem="kIC-j1-ti3" firstAttribute="leading" secondItem="nco-oP-yV5" secondAttribute="leading" constant="24" id="vVG-ET-QJ0"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Messages" image="message" id="k6o-uB-8uZ" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" title="Messages" id="k6o-uB-8uZ" customClass="CustomTabBarItem" customModule="PhysioSync" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="messageSelected"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="unselectedImageName" value="message"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="animation" destination="fJX-bZ-tfd" id="trq-xi-Lwp"/>
                         </connections>
@@ -1907,17 +1927,15 @@
         <image name="Frame 547" width="38" height="38.333332061767578"/>
         <image name="Group 22" width="393" height="150"/>
         <image name="apple watch 1" width="264.33334350585938" height="308.33334350585938"/>
-        <image name="backArrow" width="17.666666030883789" height="17.666666030883789"/>
+        <image name="backArrow" width="10" height="16"/>
         <image name="calories" width="18" height="21.333333969116211"/>
         <image name="chattingMedia" width="24" height="24"/>
         <image name="edit" width="24" height="24"/>
-        <image name="exercise" width="21" height="21.333333969116211"/>
         <image name="exerciseCompleted" width="38" height="38.333332061767578"/>
         <image name="heart" width="19.666666030883789" height="18.333333969116211"/>
         <image name="home" width="18.333333969116211" height="19"/>
         <image name="image 10" width="345" height="200"/>
         <image name="logout" width="24" height="24"/>
-        <image name="message" width="24" height="24"/>
         <image name="overlay1" width="345" height="262"/>
         <image name="playIcon" width="24" height="24"/>
         <image name="profile" width="20" height="20.333333969116211"/>

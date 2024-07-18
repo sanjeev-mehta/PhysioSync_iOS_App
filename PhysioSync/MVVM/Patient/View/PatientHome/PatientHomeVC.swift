@@ -136,11 +136,20 @@ class PatientHomeVC: UIViewController, UNUserNotificationCenterDelegate {
     }
     
     func setUI() {
+        if let imageData = UserDefaults.standard.data(forKey: "profileImage"),
+           let savedImage = UIImage(data: imageData) {
+            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { _ in
+                self.animateProfileImageToTabBar(image: savedImage, userName: UserDefaults.standard.getPatientName())
+            }
+        } else {
+            print("Failed to retrieve UIImage from UserDefaults")
+        }
         sessionCollectionView.delegate = self
         sessionCollectionView.dataSource = self
         completedCollectionView.delegate = self
         completedCollectionView.dataSource = self
         messageView.addShadow()
+        
     }
     
     func callApi() {

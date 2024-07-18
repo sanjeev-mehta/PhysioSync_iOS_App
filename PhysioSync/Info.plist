@@ -45,5 +45,7 @@
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app need photo library access to select videos or photos</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>This app requires access to your health data to track and monitor your physiotherapy exercises.</string>
 </dict>
 </plist>
