@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class TherapistLoginViewModel {
     
@@ -30,7 +31,16 @@ class TherapistLoginViewModel {
                     UserDefaults.standard.setTherapistProfileImage(value: model.profilePhoto)
                     UserDefaults.standard .set(json["token"]["Access_Key"].stringValue, forKey: "access_key")
                     UserDefaults.standard .set(json["token"]["Secret_access_key"].stringValue, forKey: "secret_key")
-                    completion(true)
+                    SDWebImageManager.shared.loadImage(with: URL(string: model.profilePhoto), progress: nil) { img, data, err, cache, status, url in
+                        if let img = img {
+                            if let imageData = img.pngData() {
+                                UserDefaults.standard.set(imageData, forKey: "profileImage")
+                            } else {
+                                print("Failed to convert UIImage to Data")
+                            }
+                            completion(true)
+                        }
+                    }
                 }
             }
         }

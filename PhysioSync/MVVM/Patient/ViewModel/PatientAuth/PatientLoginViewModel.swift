@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PatientLoginViewModel {
     
@@ -57,8 +58,18 @@ class PatientLoginViewModel {
                                 UserDefaults.standard.setTherapistName(value: therapist.therapistName)
                                 UserDefaults.standard.setPatientName(value: user.firstName + " " + user.lastName)
                             }
+                            
+                            SDWebImageManager.shared.loadImage(with: URL(string: model.data?.profilePhoto ?? ""), progress: nil) { img, data, err, cache, status, url in
+                                if let img = img {
+                                    if let imageData = img.pngData() {
+                                        UserDefaults.standard.set(imageData, forKey: "profileImage")
+                                    } else {
+                                        print("Failed to convert UIImage to Data")
+                                    }
+                                    completion(true)
+                                }
+                            }
                         }
-                        completion(true)
                     } else {
                         vc.displayAlert(title: "Alert!", msg: model.message, ok: "ok")
                     }

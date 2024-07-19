@@ -12,9 +12,9 @@ struct SleepGraphView: View {
     @Binding var animatedData: [SleepData]
     
     let categoryColors: [String: [Color]] = [
-        "Awake": [Color.red, Color.orange],
-        "REM": [Color.purple, Color.pink],
-        "Core": [Color.yellow, Color.green],
+        "Awake": [Color(red: 31/255, green: 89/255, blue: 218/255, opacity: 1)],
+        "REM": [Color(red: 31/255, green: 218/255, blue: 162/255, opacity: 1)],
+        "Core": [Color(red: 0, green: 0, blue: 0, opacity: 1)],
         "Deep": [Color.blue, Color.indigo]
     ]
     
@@ -71,4 +71,3 @@ struct SleepGraphView: View {
         .padding()
     }
 }
-

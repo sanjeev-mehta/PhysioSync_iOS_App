@@ -77,15 +77,18 @@ class TherapistProfileStep2VC: UIViewController {
     
     //MARK: - Pop Controller
     func popController() {
-        if let viewControllers = navigationController?.viewControllers, viewControllers.count > 4 {
-            // Get the view controller at index 4
-            let targetViewController = viewControllers[4]
-            
-            // Pop to the target view controller
-            navigationController?.popToViewController(targetViewController, animated: true)
-        } else {
-            print("Not enough view controllers in the navigation stack.")
-        }
+        if let viewControllers = navigationController?.viewControllers {
+               for viewController in viewControllers {
+                   print(viewController)
+                   if viewController.isKind(of: AnimatedTabBarController.self) {
+                       navigationController?.popToViewController(viewController, animated: true)
+                       return
+                   }
+               }
+               print("No view controller of the specified class in the navigation stack.")
+           } else {
+               print("Navigation controller is nil.")
+           }
     }
     
     // MARK: -  Buttons Action

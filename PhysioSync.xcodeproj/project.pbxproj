@@ -76,6 +76,7 @@
 		6794C7BD2C268A2E00E3B4F3 /* StatsTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6794C7BC2C268A2E00E3B4F3 /* StatsTabVC.swift */; };
 		679512742C3DC45A00C01BDA /* neckRotation.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 679512732C3DC45900C01BDA /* neckRotation.mlmodel */; };
 		679512772C3E6A7500C01BDA /* ExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679512762C3E6A7500C01BDA /* ExerciseViewModel.swift */; };
+		679A3DF92C44643800DC1B4B /* AnimatedTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679A3DF82C44643800DC1B4B /* AnimatedTabBarController.swift */; };
 		67B161642C138E540028E3C3 /* PatientExerciseTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67B161632C138E540028E3C3 /* PatientExerciseTab.storyboard */; };
 		67B161672C138E7A0028E3C3 /* PatientExerciseTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B161662C138E7A0028E3C3 /* PatientExerciseTabVC.swift */; };
 		67B161692C13F1490028E3C3 /* PatientExerciseTabTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B161682C13F1490028E3C3 /* PatientExerciseTabTVC.swift */; };
@@ -228,6 +229,7 @@
 		6794C7BC2C268A2E00E3B4F3 /* StatsTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTabVC.swift; sourceTree = "<group>"; };
 		679512732C3DC45900C01BDA /* neckRotation.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = neckRotation.mlmodel; sourceTree = "<group>"; };
 		679512762C3E6A7500C01BDA /* ExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewModel.swift; sourceTree = "<group>"; };
+		679A3DF82C44643800DC1B4B /* AnimatedTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTabBarController.swift; sourceTree = "<group>"; };
 		67B161632C138E540028E3C3 /* PatientExerciseTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PatientExerciseTab.storyboard; sourceTree = "<group>"; };
 		67B161662C138E7A0028E3C3 /* PatientExerciseTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientExerciseTabVC.swift; sourceTree = "<group>"; };
 		67B161682C13F1490028E3C3 /* PatientExerciseTabTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientExerciseTabTVC.swift; sourceTree = "<group>"; };
@@ -467,6 +469,7 @@
 		678F33EC2BFED6C900824A23 /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				679A3DF72C44642300DC1B4B /* AnimatedTabBar */,
 				67467D9A2C4131BF008A427D /* Splash */,
 				E8BBEC6D2C4073460041962F /* SettingsVC */,
 				E8A79AD62C0D4CCF00A2EB92 /* MessageTab */,
@@ -729,6 +732,14 @@
 				679512762C3E6A7500C01BDA /* ExerciseViewModel.swift */,
 			);
 			path = Exercise;
+			sourceTree = "<group>";
+		};
+		679A3DF72C44642300DC1B4B /* AnimatedTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				679A3DF82C44643800DC1B4B /* AnimatedTabBarController.swift */,
+			);
+			path = AnimatedTabBar;
 			sourceTree = "<group>";
 		};
 		67B161652C138E620028E3C3 /* PatientExerciseTab */ = {
@@ -1262,6 +1273,7 @@
 				6760BE0E2C3FDAEA00F77774 /* still_up_iterations.mlmodel in Sources */,
 				E8466EED2C25BB74001F36CC /* ScheduleTableTVC.swift in Sources */,
 				E81033102C23AFA500F4FFDB /* TherapistPatientViewModel.swift in Sources */,
+				679A3DF92C44643800DC1B4B /* AnimatedTabBarController.swift in Sources */,
 				6794C7B52C26840B00E3B4F3 /* StepsChartView.swift in Sources */,
 				67FA57B82C40AA4E009B73C3 /* DisplayWatchData.swift in Sources */,
 				671FE5A12C33424C007BDE79 /* Predictor.swift in Sources */,
@@ -1520,7 +1532,7 @@
 				CODE_SIGN_ENTITLEMENTS = PhysioSync/PhysioSync.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = 645XZ7B7N8;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1539,13 +1551,17 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.physiosync.srg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1558,7 +1574,7 @@
 				CODE_SIGN_ENTITLEMENTS = PhysioSync/PhysioSync.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = 645XZ7B7N8;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1577,13 +1593,17 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.physiosync.srg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
