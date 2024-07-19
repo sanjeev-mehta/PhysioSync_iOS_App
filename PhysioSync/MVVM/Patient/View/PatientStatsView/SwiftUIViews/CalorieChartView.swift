@@ -17,14 +17,14 @@ struct CalorieChartView: View {
                 .font(.title)
                 .fontWeight(.bold)
                 .padding()
-            
+
             Chart(healthKitManager.calorieData, id: \.date) { dataPoint in
                 Plot {
                     AreaMark(
                         x: .value("Day", dataPoint.date, unit: .day),
                         y: .value("Calories", dataPoint.caloriesBurned)
                     )
-                    .foregroundStyle(.linearGradient(colors: [.blue, .blue.opacity(0.1)], startPoint: .bottom, endPoint: .top))
+                    .foregroundStyle(.linearGradient(colors: [Color(red: 31/255, green: 89/255, blue: 218/255), Color(red: 31/255, green: 89/255, blue: 218/255).opacity(0.1)], startPoint: .bottom, endPoint: .top))
                 }
                 .accessibilityLabel(dataPoint.date.formatted(date: .complete, time: .standard))
                 .accessibilityValue("\(Int(dataPoint.caloriesBurned)) calories burned")
@@ -44,8 +44,8 @@ struct CalorieChartView: View {
             .padding()
             .background(
                 RoundedRectangle(cornerRadius: 10)
-                    .fill(Color(UIColor.systemBackground))
-                    .shadow(color: .blue.opacity(0.6), radius: 5, x: 0, y: 5)
+                    .fill(Color(red: 235/255, green: 240/255, blue: 255/255)) // Background color
+                    .shadow(color: Color(red: 31/255, green: 89/255, blue: 218/255).opacity(0.6), radius: 5, x: 0, y: 5) // Shadow color
                     .padding(.horizontal, 10)
             )
 
@@ -53,7 +53,6 @@ struct CalorieChartView: View {
         }
     }
 }
-
 // MARK: - Accessibility
 
 extension CalorieChartView: AXChartDescriptorRepresentable {

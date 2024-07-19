@@ -17,7 +17,8 @@ class TherapistNotificationVC: UIViewController {
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var exerciseNameLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
-
+    @IBOutlet weak var imgView: UIImageView!
+    
     // MARK: - Variables
     private let vm = TherapistHomeViewModel.shareInstance
     private var videoPlayer: CustomVideoPlayer?
@@ -154,6 +155,7 @@ extension TherapistNotificationVC: UITableViewDelegate ,UITableViewDataSource {
                 self.timeLbl.text = model.data[tag].days
                 self.exerciseNameLbl.text = model.data[tag].video_title
                 self.setupVideoPlayer(url: model.data[tag].patientVideoUrl)
+                self.imgView.setImage(with: model.data[tag].patientId.profilePhoto)
                 self.openNotifcationView()
             }
         }

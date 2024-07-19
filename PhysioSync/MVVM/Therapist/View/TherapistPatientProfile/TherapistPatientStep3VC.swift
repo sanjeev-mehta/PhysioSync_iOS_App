@@ -111,23 +111,32 @@ class TherapistPatientStep3VC: UIViewController {
     func popController() {
         if isPatientSide {
             if let viewControllers = navigationController?.viewControllers {
-                for i in viewControllers {
-                    print(i)
+                for viewController in viewControllers {
+                    print(viewController)
+                    if viewController.isKind(of: AnimatedTabBarController.self) {
+                        navigationController?.popToViewController(viewController, animated: true)
+                        return
+                    }
                 }
-                let targetViewController = viewControllers[3]
-                navigationController?.popToViewController(targetViewController, animated: true)
+                print("No view controller of the specified class in the navigation stack.")
             } else {
-                print("Not enough view controllers in the navigation stack.")
+                print("Navigation controller is nil.")
             }
         } else {
-            if let viewControllers = navigationController?.viewControllers, viewControllers.count > 4 {
-                let targetViewController = viewControllers[4]
-                navigationController?.popToViewController(targetViewController, animated: true)
+            if let viewControllers = navigationController?.viewControllers {
+                for viewController in viewControllers {
+                    print(viewController)
+                    if viewController.isKind(of: AnimatedTabBarController.self) {
+                        navigationController?.popToViewController(viewController, animated: true)
+                        return
+                    }
+                }
+                print("No view controller of the specified class in the navigation stack.")
             } else {
-                print("Not enough view controllers in the navigation stack.")
+                print("Navigation controller is nil.")
             }
         }
-       
+        
     }
     
     // MARK: -  Buttons Actions

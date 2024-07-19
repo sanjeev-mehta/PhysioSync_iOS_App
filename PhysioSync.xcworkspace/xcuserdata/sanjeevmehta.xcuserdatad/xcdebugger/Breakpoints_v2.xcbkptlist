@@ -7,17 +7,95 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9F066ED6-BFBB-4CFE-9EE4-B0C9210076E7"
+            uuid = "351C5D28-158C-4368-96DF-9D6C70F482D4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PhysioSync/MVVM/Therapist/View/TherapistProfile/TherapistProfileVC.swift"
+            filePath = "PhysioSync/HelperClasses/ImagePickerHelper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "editProfileBtnActn(_:)"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "showCustomVideoPicker(from:completion:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FB634B3D-2736-444C-B2B9-6A334D111F8E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhysioSync/HelperClasses/ImagePickerHelper.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "showCustomVideoPicker(from:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E38021CB-E095-47D3-B658-CAD36974DB76"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhysioSync/HelperClasses/ImagePickerHelper.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "presentVideoPicker(viewController:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "539F6F8E-851A-4D2B-801B-18B4457EE3CF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhysioSync/HelperClasses/ImagePickerHelper.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "presentVideoPicker(viewController:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "539F6F8E-851A-4D2B-801B-18B4457EE3CF - f971650fdfb43e93"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhysioSync.ImagePickerHelper.presentVideoPicker(viewController: __C.UIViewController, completion: (Swift.Optional&lt;Foundation.URL&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PhysioSync"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanjeevmehta/Documents/GitHub/PhysioSync_iOS_App/PhysioSync/HelperClasses/ImagePickerHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94">
+               </Location>
+               <Location
+                  uuid = "539F6F8E-851A-4D2B-801B-18B4457EE3CF - 6bc61edf809f0fdf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.AVAsset&gt;, Swift.Optional&lt;__C.AVAudioMix&gt;, Swift.Optional&lt;Swift.Dictionary&lt;Swift.AnyHashable, Any&gt;&gt;) -&gt; () in PhysioSync.ImagePickerHelper.presentVideoPicker(viewController: __C.UIViewController, completion: (Swift.Optional&lt;Foundation.URL&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PhysioSync"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanjeevmehta/Documents/GitHub/PhysioSync_iOS_App/PhysioSync/HelperClasses/ImagePickerHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
