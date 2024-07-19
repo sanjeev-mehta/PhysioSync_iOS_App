@@ -56,6 +56,7 @@ class TherapistHomeViewModel {
             vc.getThumbnailImageFromVideoUrl(url: URL(string: data.patientVideoUrl)!) { image in
                 cell.imgView.image = image
             }
+            cell.profileImgView.setImage(with: data.patientId.profilePhoto)
         }
     }
     

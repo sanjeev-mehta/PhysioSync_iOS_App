@@ -37,6 +37,7 @@ class SingleExerciseDetailVC: UIViewController {
         super.viewWillAppear(animated)
         self.bottomView.addTopCornerRadius(radius: 16)
         callGetDetailExercise()
+        popOverMenu()
     }
     
     // MARK: - Methods
@@ -51,25 +52,6 @@ class SingleExerciseDetailVC: UIViewController {
             }
             setupCustomVideoPlayer()
             setData()
-        }
-    }
-    
-    func openPopUpMenu() {
-        let configuration = FTConfiguration.shared
-        configuration.menuRowHeight = 30
-        configuration.menuWidth = 100
-        configuration.localShadow = true
-        FTPopOverMenu.showForSender(sender: self.menuBtn, with: ["Edit", "Delete"]) { (selectedIndex) -> () in
-            print(selectedIndex)
-            if selectedIndex == 0 {
-                self.openAddExerciseController()
-            } else {
-                self.displayAlert3(title: "Alert!", msg: "Are you sure, you want to delete this exercise", ok: "Yes") {
-                    self.callDeleteApi()
-                }
-            }
-        } cancel: {
-            
         }
     }
     
@@ -120,15 +102,31 @@ class SingleExerciseDetailVC: UIViewController {
         }
         self.setHeader(data?.videoTitle ?? "",rightImg: UIImage(named: "threeDots")!, isRightBtn: true) {
             self.dismissOrPopViewController()
-        } rightButtonAction: {
-            self.openPopUpMenu()
-        }
+        } rightButtonAction: { }
+        self.view.bringSubviewToFront(menuBtn)
         self.collectionView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionHeight.constant = collectionView.contentSize.height
+    }
+
+    //MARK: - Pop Over Menu
+    func popOverMenu() {
+        let editItem = UIAction(title: "Edit", image: UIImage(named: "edit")) { (action) in
+            self.openAddExerciseController()
+           }
+
+           let deleteItem = UIAction(title: "Delete", image: UIImage(named: "Delete")) { (action) in
+               self.displayAlert3(title: "Alert!", msg: "Are you sure, you want to delete this exercise", ok: "Yes") {
+                   self.callDeleteApi()
+               }
+           }
+
+           let menu = UIMenu(title: "", options: .displayInline, children: [editItem , deleteItem])
+        menuBtn.menu = menu
+        menuBtn.showsMenuAsPrimaryAction = true
     }
 }
 
@@ -141,7 +139,7 @@ extension SingleExerciseDetailVC: UICollectionViewDelegate, UICollectionViewData
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChipsCVC", for: indexPath) as! ChipsCVC
         let data = data!.categoryName[indexPath.item]
         cell.titleLbl.text = data
-        cell.bgView.backgroundColor = .blue
+        cell.bgView.backgroundColor = Colors.chipsClr2
         return cell
     }
     

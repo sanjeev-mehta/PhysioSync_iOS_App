@@ -511,3 +511,63 @@ extension NSMutableAttributedString {
         }
     }
 }
+
+extension UIViewController {
+    func animateProfileImageToTabBar(image: UIImage, imgView: UIImageView = UIImageView(), userName: String,duration: TimeInterval = 1.5) {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let window = windowScene.windows.first else { return }
+        
+        let blurEffect = UIBlurEffect(style: .dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = window.bounds
+        window.addSubview(blurEffectView)
+        
+        let contentView = UIView(frame: window.bounds)
+        contentView.backgroundColor = UIColor.clear
+        blurEffectView.contentView.addSubview(contentView)
+        
+        let loggedInLabel = UILabel()
+        loggedInLabel.text = "Logged in as \(userName)"
+        loggedInLabel.textColor = .white
+        loggedInLabel.textAlignment = .center
+        loggedInLabel.font = UIFont(name: "Outfit-Regular", size: 18.0)
+        loggedInLabel.sizeToFit()
+        loggedInLabel.center = CGPoint(x: contentView.center.x, y: contentView.center.y + 90)
+        contentView.addSubview(loggedInLabel)
+        
+        let imageView = UIImageView(image: image)
+        imageView.frame.size = CGSize(width: 120, height: 120)
+        imageView.center = contentView.center
+        imageView.layer.cornerRadius = 16
+        imageView.clipsToBounds = true
+        contentView.addSubview(imageView)
+        
+        guard let tabBarController = self.tabBarController as? AnimatedTabBarController,
+              let tabBarItems = tabBarController.tabBar.items,
+              tabBarItems.count > 0 else { return }
+        
+        let tabBarItem = tabBarItems[tabBarItems.count - 1]
+        UIView.animate(withDuration: duration, delay: 0, options: [], animations: {
+            loggedInLabel.alpha = 0
+        }, completion: { _ in
+            if let tabBarItemView = tabBarItem.value(forKey: "view") as? UIView {
+                let tabBarItemFrame = tabBarItemView.convert(tabBarItemView.bounds, to: window)
+                
+                UIView.animateKeyframes(withDuration: duration, delay: 0, options: [], animations: {
+                    UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.7) {
+                        imageView.layer.cornerRadius = 4
+                        imageView.frame = CGRect(x: tabBarItemFrame.midX - 25, y: tabBarItemFrame.midY - 25, width: 25, height: 25)
+                    }
+                    
+                    UIView.addKeyframe(withRelativeStartTime: 0.7, relativeDuration: 0.3) {
+                        imageView.alpha = 0
+                    }
+                }, completion: { _ in
+                    blurEffectView.removeFromSuperview()
+                    tabBarController.setProfileImage(image)
+                })
+            }
+        })
+    }
+}
+

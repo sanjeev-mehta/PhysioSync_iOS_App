@@ -93,12 +93,24 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="customFontName" value="Outfit-Regular"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="customFontSize">
+                                                        <real key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qv7-Ca-kB4">
                                                 <rect key="frame" x="23.999999999999993" y="401" width="87.333333333333314" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="customFontName" value="Outfit-Regular"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="customFontSize">
+                                                        <real key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dr0-ns-qmn">
                                                 <rect key="frame" x="24" y="242" width="345" height="135"/>
@@ -133,9 +145,12 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="customFontName" value="Outfit-Regular"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="customFontName" value="Outfit-Light"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="customFontSize">
+                                                                <real key="value" value="14"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
@@ -184,6 +199,10 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                         <color key="value" red="0.68627450980392157" green="0.69411764705882351" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="customFontName" value="Outfit-Light"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="customFontSize">
+                                                        <real key="value" value="14"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1vW-Z3-6hV">
@@ -202,7 +221,7 @@
                                             </collectionView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M09-tI-Pup">
                                                 <rect key="frame" x="24" y="719" width="345" height="60"/>
-                                                <color key="backgroundColor" name="borderClr"/>
+                                                <color key="backgroundColor" name="primary"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="k78-Me-g3g"/>
                                                 </constraints>
@@ -212,6 +231,10 @@
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="customFontName" value="Outfit-Regular"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="customFontSize">
                                                         <real key="value" value="16"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
@@ -224,6 +247,12 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="customFontName" value="Outfit-Regular"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="customFontSize">
+                                                        <real key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AIL-Ye-jYx">
                                                 <rect key="frame" x="24" y="139" width="345" height="50"/>
@@ -232,6 +261,12 @@
                                                         <rect key="frame" x="8" y="5" width="329" height="40"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="customFontName" value="Outfit-Light"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="customFontSize">
+                                                                <real key="value" value="14"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -254,11 +289,17 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Zk-br-piE">
-                                                <rect key="frame" x="24" y="110" width="57" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Zk-br-piE">
+                                                <rect key="frame" x="24" y="110" width="45" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="customFontName" value="Outfit-Regular"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="customFontSize">
+                                                        <real key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -330,14 +371,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H0c-gR-Ea8">
-                                <rect key="frame" x="0.0" y="119" width="393" height="200"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <rect key="frame" x="0.0" y="129" width="393" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="g6f-M2-Zle"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s7B-m0-gvy">
-                                <rect key="frame" x="0.0" y="315" width="393" height="537"/>
+                                <rect key="frame" x="0.0" y="325" width="393" height="527"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise - Neck Rotation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFg-V4-cdh">
                                         <rect key="frame" x="23.999999999999986" y="32" width="214.66666666666663" height="24"/>
@@ -347,28 +388,46 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="customFontName" value="Outfit-Medium"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="customFontSize">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eXD-Kk-VpD">
-                                        <rect key="frame" x="24" y="72" width="345" height="296.66666666666669"/>
+                                        <rect key="frame" x="24" y="72" width="345" height="286.66666666666669"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" shipmentTrackingNumber="YES" flightNumber="YES" lookupSuggestion="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="customFontName" value="Outfit-Regular"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="customFontSize">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVY-hH-g4R">
-                                        <rect key="frame" x="24" y="384.66666666666663" width="87" height="20.333333333333314"/>
+                                        <rect key="frame" x="24" y="374.66666666666663" width="87" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="customFontName" value="Outfit-Medium"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="customFontSize">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BRd-gl-olu">
-                                        <rect key="frame" x="24" y="413" width="345" height="100"/>
+                                        <rect key="frame" x="24" y="403" width="345" height="100"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="n4s-tO-4Gy"/>
                                         </constraints>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="k0v-mD-z3R">
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="k0v-mD-z3R">
                                             <size key="itemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -387,32 +446,35 @@
                                     <constraint firstItem="eXD-Kk-VpD" firstAttribute="top" secondItem="WFg-V4-cdh" secondAttribute="bottom" constant="16" id="frJ-V9-MES"/>
                                     <constraint firstItem="eXD-Kk-VpD" firstAttribute="leading" secondItem="s7B-m0-gvy" secondAttribute="leading" constant="24" id="kQo-gU-WLD"/>
                                     <constraint firstItem="BRd-gl-olu" firstAttribute="leading" secondItem="s7B-m0-gvy" secondAttribute="leading" constant="24" id="mvG-LB-SBy"/>
-                                    <constraint firstItem="AVY-hH-g4R" firstAttribute="leading" secondItem="s7B-m0-gvy" secondAttribute="leading" constant="24" id="nOr-d9-FkS"/>
                                     <constraint firstItem="WFg-V4-cdh" firstAttribute="top" secondItem="s7B-m0-gvy" secondAttribute="top" constant="32" id="omj-0u-dt9"/>
                                     <constraint firstItem="WFg-V4-cdh" firstAttribute="leading" secondItem="s7B-m0-gvy" secondAttribute="leading" constant="24" id="rS6-kk-phR"/>
                                     <constraint firstItem="AVY-hH-g4R" firstAttribute="leading" secondItem="s7B-m0-gvy" secondAttribute="leading" constant="24" id="wsi-hA-AKT"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOC-Bw-jiS">
-                                <rect key="frame" x="339" y="59" width="30" height="36"/>
+                                <rect key="frame" x="343" y="9" width="50" height="120"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="2rP-aG-t4d"/>
+                                </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yQn-mz-wht"/>
-                        <color key="backgroundColor" white="1" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="borderClr"/>
                         <constraints>
-                            <constraint firstItem="yQn-mz-wht" firstAttribute="trailing" secondItem="lOC-Bw-jiS" secondAttribute="trailing" constant="24" id="9Ge-HC-PzM"/>
+                            <constraint firstItem="yQn-mz-wht" firstAttribute="trailing" secondItem="lOC-Bw-jiS" secondAttribute="trailing" id="9Ge-HC-PzM"/>
                             <constraint firstItem="yQn-mz-wht" firstAttribute="trailing" secondItem="H0c-gR-Ea8" secondAttribute="trailing" id="ACq-tO-Ai8"/>
                             <constraint firstItem="s7B-m0-gvy" firstAttribute="leading" secondItem="H0c-gR-Ea8" secondAttribute="leading" id="DlD-xe-6rt"/>
                             <constraint firstItem="s7B-m0-gvy" firstAttribute="trailing" secondItem="H0c-gR-Ea8" secondAttribute="trailing" id="FzK-YU-in6"/>
                             <constraint firstItem="s7B-m0-gvy" firstAttribute="top" secondItem="H0c-gR-Ea8" secondAttribute="bottom" constant="-4" id="JUw-8i-pNI"/>
-                            <constraint firstItem="lOC-Bw-jiS" firstAttribute="top" secondItem="ToF-c5-plV" secondAttribute="topMargin" id="Uhx-Nh-Ild"/>
+                            <constraint firstItem="lOC-Bw-jiS" firstAttribute="top" secondItem="ToF-c5-plV" secondAttribute="topMargin" constant="-50" id="Uhx-Nh-Ild"/>
                             <constraint firstItem="H0c-gR-Ea8" firstAttribute="leading" secondItem="yQn-mz-wht" secondAttribute="leading" id="YYB-w1-SQX"/>
                             <constraint firstItem="H0c-gR-Ea8" firstAttribute="centerX" secondItem="ToF-c5-plV" secondAttribute="centerX" id="goQ-yn-cpU"/>
-                            <constraint firstItem="H0c-gR-Ea8" firstAttribute="top" secondItem="lOC-Bw-jiS" secondAttribute="bottom" constant="24" id="lEe-O8-0gf"/>
+                            <constraint firstItem="H0c-gR-Ea8" firstAttribute="top" secondItem="lOC-Bw-jiS" secondAttribute="bottom" id="lEe-O8-0gf"/>
                             <constraint firstAttribute="bottom" secondItem="s7B-m0-gvy" secondAttribute="bottom" id="rm5-UB-MjV"/>
                             <constraint firstItem="s7B-m0-gvy" firstAttribute="centerX" secondItem="ToF-c5-plV" secondAttribute="centerX" id="vgb-zQ-4DL"/>
-                            <constraint firstItem="H0c-gR-Ea8" firstAttribute="top" secondItem="yQn-mz-wht" secondAttribute="top" constant="60" id="wpB-IK-DsM"/>
+                            <constraint firstItem="H0c-gR-Ea8" firstAttribute="top" secondItem="yQn-mz-wht" secondAttribute="top" constant="70" id="wpB-IK-DsM"/>
                         </constraints>
                     </view>
                     <connections>
@@ -444,9 +506,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
