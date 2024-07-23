@@ -12,7 +12,7 @@ class SingleExerciseViewModel {
     // MARK: -  Variables
     static let shareInstance = SingleExerciseViewModel()
     let apiHelper = ApiHelper.shareInstance
-    var exerciseModel = [SingleExerciseModel]()
+    var exerciseModel = [SingleExerciseModel2]()
     
     func getSingleExercise(vc: UIViewController, name: String, completion: @escaping (Bool) -> ()) {
         let url = API.Endpoints.getAllExercises + "name=\(name)"
@@ -20,7 +20,7 @@ class SingleExerciseViewModel {
             if let error = err {
                 completion(false)
             } else {
-                let exercises = json["data"].arrayValue.map { SingleExerciseModel($0) }
+                let exercises = json["data"].arrayValue.map { SingleExerciseModel2($0) }
                 self.exerciseModel = exercises
                 completion(true)
             }

@@ -26,7 +26,7 @@ class SingleExerciseVC: UIViewController {
     let vm = SingleExerciseViewModel.shareInstance
     var isCreateSchedule = false
     var delegate: SelectedExerciseData?
-    var selectedData = [SingleExerciseModel]()
+    var selectedData = [SingleExerciseModel2]()
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -69,7 +69,7 @@ class SingleExerciseVC: UIViewController {
         }
     }
     
-    func openExerciseDetailController(_ data: SingleExerciseModel) {
+    func openExerciseDetailController(_ data: SingleExerciseModel2) {
         if let vc = self.switchController(.singleExerciseDetailVC, .exerciseTab) as? SingleExerciseDetailVC {
             vc.data = data
             vc.name = header
@@ -85,7 +85,7 @@ class SingleExerciseVC: UIViewController {
     
     //MARK: - Buttons Action
     @IBAction func addExercseBtnActn(_ sender: UIButton) {
-        var data = [SingleExerciseModel]()
+        var data = [SingleExerciseModel2]()
         for i in self.vm.exerciseModel {
             if i.isSelected {
                 data.append(i)
@@ -193,5 +193,5 @@ extension SingleExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource
 }
 
 protocol SelectedExerciseData {
-    func selectedExerciseData(data: [SingleExerciseModel])
+    func selectedExerciseData(data: [SingleExerciseModel2])
 }

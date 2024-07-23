@@ -17,7 +17,7 @@ class CreateScheduleVC: UIViewController {
     @IBOutlet weak var addMoreExerciseBtn: UIButton!
     
     //MARK: - Variables
-    var exerciseModel = [SingleExerciseModel]()
+    var exerciseModel = [SingleExerciseModel2]()
     var patientId = ""
     let vm = CreateScheduleViewModel.shareInstance
     var from: String?
@@ -185,7 +185,7 @@ extension CreateScheduleVC: UICollectionViewDelegate, UICollectionViewDataSource
 }
 
 extension CreateScheduleVC: SelectedExerciseData {
-    func selectedExerciseData(data: [SingleExerciseModel]) {
+    func selectedExerciseData(data: [SingleExerciseModel2]) {
         for i in data {
             if exerciseModel.count == 0 {
                 self.exerciseModel.append(i)

@@ -44,6 +44,7 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         self.imagePicker = ImagePickerHelper(viewController: self)
         self.videoPicker = ImagePickerHelper(viewController: self)
         self.closeMediaView()
+        self.tableView.showsVerticalScrollIndicator = false
         
         if UserDefaults.standard.getUsernameToken() == "" {
             self.isPatient = true
@@ -69,7 +70,7 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    deinit {
         self.timer?.invalidate()
     }
     
@@ -311,16 +312,8 @@ extension ChatScreenVC: ChatViewModelDelegate {
                     self.isScrollFirstTime = 1
                     self.tableView.scrollToRow(at: IndexPath(row: self.chatVM.chatArr.count - 1, section: 0), at: .bottom, animated: false)
                 }
-               
             }
         }
-    }
-}
-
-extension Date {
-    var iso8601String: String {
-        let formatter = ISO8601DateFormatter()
-        return formatter.string(from: self)
     }
 }
 
@@ -416,19 +409,25 @@ extension ChatScreenVC {
         let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { _ in
             self.videoPicker?.showVideoPicker(sourceType: .photoLibrary, completion: { url, name in
                 print(url, name)
+
                 if let url = url {
                     self.sendMediaMessage(isVideo: true, url: "\(url)", isAwsUpload: false)
+                    self.copyVideoToPermanentLocation(videoURL: url) { permanentURL in
+                        guard let finalURL = permanentURL else {
+                            print("Failed to copy video to permanent location.")
+                            return
+                        }
 
-                    self.awsHelper.uploadVideoFile(url: url, fileName: name ?? "video") { progress in
-                        
-                    } completion: { success, url, err in
-                        if err != nil {
-                            self.displayAlert(title: "Error", msg: err?.localizedDescription, ok: "Ok")
-                        } else {
-                            self.sendMediaMessage(isVideo: true, url: url!, isAwsUpload: true)
+                        self.awsHelper.uploadVideoFile(url: finalURL, fileName: finalURL.lastPathComponent) { progress in
+                            
+                        } completion: { success, url, err in
+                            if err != nil {
+                                self.displayAlert(title: "Error", msg: err?.localizedDescription, ok: "Ok")
+                            } else {
+                                self.sendMediaMessage(isVideo: true, url: url!, isAwsUpload: true)
+                            }
                         }
                     }
-
                 } else {
                     
                 }
@@ -469,6 +468,23 @@ extension ChatScreenVC {
         self.present(actionSheet, animated: true, completion: nil)
     }
     
+    private func copyVideoToPermanentLocation(videoURL: URL, completion: @escaping (URL?) -> Void) {
+        let fileManager = FileManager.default
+        let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let destinationURL = documentsDirectory.appendingPathComponent(videoURL.lastPathComponent)
+        
+        do {
+            if fileManager.fileExists(atPath: destinationURL.path) {
+                try fileManager.removeItem(at: destinationURL)
+            }
+            try fileManager.copyItem(at: videoURL, to: destinationURL)
+            completion(destinationURL)
+        } catch {
+            print("Error copying video to permanent location: \(error.localizedDescription)")
+            completion(nil)
+        }
+    }
+    
     func openMediaView(isImage: Bool, isSendBtn: Bool = false, cancelTxt: String = "Cancel") {
         if isImage {
             self.imageView.isHidden = false
@@ -491,5 +507,12 @@ extension ChatScreenVC {
             self.mediaView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
             self.mediaView.alpha = 0.0
         }, completion: nil)
+    }
+}
+
+extension Date {
+    var iso8601String: String {
+        let formatter = ISO8601DateFormatter()
+        return formatter.string(from: self)
     }
 }

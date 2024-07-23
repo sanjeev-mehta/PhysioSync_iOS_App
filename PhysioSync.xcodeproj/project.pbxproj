@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3C4A096E17D58210E8E70B30 /* Pods_PhysioSync.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C11C617AB09AD38A62E4D /* Pods_PhysioSync.framework */; };
+		671E3FA92C4F7643006C6D57 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 671E3FA82C4F7642006C6D57 /* GoogleService-Info.plist */; };
 		671FE5A12C33424C007BDE79 /* Predictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671FE59F2C33424C007BDE79 /* Predictor.swift */; };
 		671FE5A22C33424C007BDE79 /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671FE5A02C33424C007BDE79 /* VideoCapture.swift */; };
 		671FE5A62C334440007BDE79 /* ExerciseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671FE5A52C334440007BDE79 /* ExerciseVC.swift */; };
@@ -94,7 +95,6 @@
 		67E14CE52C2A05B900F540D7 /* CreateScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E14CE42C2A05B900F540D7 /* CreateScheduleVC.swift */; };
 		67E14CE72C2A06B700F540D7 /* CreateScheduleCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E14CE62C2A06B700F540D7 /* CreateScheduleCVC.swift */; };
 		67E888002C24D52700948C5A /* PatientLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E887FF2C24D52700948C5A /* PatientLoginViewModel.swift */; };
-		67E888022C24F00900948C5A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67E888012C24F00800948C5A /* GoogleService-Info.plist */; };
 		67E888042C24F02100948C5A /* FireBaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E888032C24F02100948C5A /* FireBaseHelper.swift */; };
 		67F3DE112C2CD00C00EF856F /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F3DE102C2CD00C00EF856F /* MessageViewModel.swift */; };
 		67F3DE132C2CE0A200EF856F /* SocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F3DE122C2CE0A200EF856F /* SocketHelper.swift */; };
@@ -158,6 +158,7 @@
 /* Begin PBXFileReference section */
 		505D71C97A5939DC41F99F48 /* Pods-PhysioSync.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhysioSync.debug.xcconfig"; path = "Target Support Files/Pods-PhysioSync/Pods-PhysioSync.debug.xcconfig"; sourceTree = "<group>"; };
 		644C11C617AB09AD38A62E4D /* Pods_PhysioSync.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhysioSync.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		671E3FA82C4F7642006C6D57 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		671FE59F2C33424C007BDE79 /* Predictor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Predictor.swift; sourceTree = "<group>"; };
 		671FE5A02C33424C007BDE79 /* VideoCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
 		671FE5A52C334440007BDE79 /* ExerciseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseVC.swift; sourceTree = "<group>"; };
@@ -247,7 +248,6 @@
 		67E14CE42C2A05B900F540D7 /* CreateScheduleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateScheduleVC.swift; sourceTree = "<group>"; };
 		67E14CE62C2A06B700F540D7 /* CreateScheduleCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateScheduleCVC.swift; sourceTree = "<group>"; };
 		67E887FF2C24D52700948C5A /* PatientLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientLoginViewModel.swift; sourceTree = "<group>"; };
-		67E888012C24F00800948C5A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		67E888032C24F02100948C5A /* FireBaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseHelper.swift; sourceTree = "<group>"; };
 		67F3DE102C2CD00C00EF856F /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		67F3DE122C2CE0A200EF856F /* SocketHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketHelper.swift; sourceTree = "<group>"; };
@@ -442,7 +442,7 @@
 			isa = PBXGroup;
 			children = (
 				6794C7BB2C2686DC00E3B4F3 /* PhysioSync.entitlements */,
-				67E888012C24F00800948C5A /* GoogleService-Info.plist */,
+				671E3FA82C4F7642006C6D57 /* GoogleService-Info.plist */,
 				67467D982C412428008A427D /* confetti.json */,
 				677481BD2C3F2FBA00E3A23F /* V_Logo_Animation.mp4 */,
 				678F33EB2BFED68400824A23 /* AppDelegates */,
@@ -1199,7 +1199,6 @@
 				676BEA642C0C404E00A193CF /* Outfit-Regular.ttf in Resources */,
 				677F5F032C15025F006792F2 /* PatientTab.storyboard in Resources */,
 				678F33E42BFED67A00824A23 /* Base in Resources */,
-				67E888022C24F00900948C5A /* GoogleService-Info.plist in Resources */,
 				678F33DF2BFED67800824A23 /* Base in Resources */,
 				676BEA5D2C0C404E00A193CF /* Outfit-Medium.ttf in Resources */,
 				F91D75AB2C1276AA00EE71E0 /* ExerciseTab.storyboard in Resources */,
@@ -1209,6 +1208,7 @@
 				E8D3B67E2C40715D009F3463 /* Settings.storyboard in Resources */,
 				677481BE2C3F2FBB00E3A23F /* V_Logo_Animation.mp4 in Resources */,
 				E89CB9C12C17C3D700A8A305 /* TherapistPatientProfile.storyboard in Resources */,
+				671E3FA92C4F7643006C6D57 /* GoogleService-Info.plist in Resources */,
 				67467D992C412429008A427D /* confetti.json in Resources */,
 				67320C8D2C168C0B003188AA /* TherapistTab.storyboard in Resources */,
 				E8A79AD52C0D4C8C00A2EB92 /* Message.storyboard in Resources */,
