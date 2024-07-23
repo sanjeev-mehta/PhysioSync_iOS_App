@@ -40,6 +40,7 @@ class Exercise {
 
     var Id = ""
     var exerciseIds = [SingleExerciseModel]()
+    var exerciseIds2 = [SingleExerciseModel2]()
     var patientId = ""
     var startDate = ""
     var endDate = ""
@@ -51,6 +52,7 @@ class Exercise {
     init(_ json: JSON) {
         Id = json["_id"].stringValue
         exerciseIds = json["exercise_ids"].arrayValue.map { SingleExerciseModel($0) }
+        exerciseIds2 = json["exercise_ids"].arrayValue.map { SingleExerciseModel2($0) }
         patientId = json["patient_id"].stringValue
         startDate = json["start_date"].stringValue
         endDate = json["end_date"].stringValue

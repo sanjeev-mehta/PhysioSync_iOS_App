@@ -22,7 +22,7 @@ class SingleExerciseDetailVC: UIViewController {
     // MARK: - Variables
     var categoryArr = [categoryData]()
     var headerTitle = "Exercise 1"
-    var data: SingleExerciseModel?
+    var data: SingleExerciseModel2?
     private var customVideoPlayer: CustomVideoPlayer!
     private let vm = ExerciseCategoryViewModel.shareInstance
     private let singleExerciseVM = SingleExerciseViewModel.shareInstance

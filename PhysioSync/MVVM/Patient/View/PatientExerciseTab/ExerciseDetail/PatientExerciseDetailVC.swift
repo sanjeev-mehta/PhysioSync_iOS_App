@@ -16,7 +16,7 @@ class PatientExerciseDetailVC: UIViewController {
     @IBOutlet weak var videoDescLbl: UITextView!
     
     private var customVideoPlayer: CustomVideoPlayer!
-    var data: Exercise?
+    var data: SingleExerciseModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ class PatientExerciseDetailVC: UIViewController {
         self.bottomView.addTopCornerRadius(radius: 16)
         setupCustomVideoPlayer()
         self.isHeroEnabled = true
-        self.setHeader(data?.exerciseIds[0].videoTitle ?? "", isBackBtn: true) {
+        self.setHeader(data?.videoTitle ?? "", isBackBtn: true) {
             self.heroModalAnimationType = .zoomOut
             self.dismissOrPopViewController()
         } rightButtonAction: {}
@@ -36,9 +36,9 @@ class PatientExerciseDetailVC: UIViewController {
     
     private func setData() {
         if let data = self.data {
-            categoryLbl.text = data.exerciseIds[0].categoryName.joined(separator: ", ")
-            videoTitleLbl.text = "Exercise - " + data.exerciseIds[0].videoTitle
-            videoDescLbl.text = data.exerciseIds[0].description
+            categoryLbl.text = data.categoryName.joined(separator: ", ")
+            videoTitleLbl.text = "Exercise - " + data.videoTitle
+            videoDescLbl.text = data.description
         }
     }
     
@@ -46,7 +46,7 @@ class PatientExerciseDetailVC: UIViewController {
         let videoPlayerFrame = CGRect(x: 0, y: 0, width: self.videoView.frame.width, height: self.videoView.frame.height - 8)
         customVideoPlayer = CustomVideoPlayer(frame: videoPlayerFrame)
         self.videoView.addSubview(customVideoPlayer)
-        guard let videoUrl = data?.exerciseIds[0].videoUrl else { return }
+        guard let videoUrl = data?.videoUrl else { return }
         // URL of the video you want to play
         guard let videoURL = URL(string: videoUrl) else {
             print("Invalid URL")
@@ -61,8 +61,8 @@ class PatientExerciseDetailVC: UIViewController {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ExerciseVC") as! ExerciseVC
         vc.categories = categoryLbl.text ?? ""
         vc.exercise = videoTitleLbl.text ?? ""
-        vc.id = data?.Id ?? ""
-        if data!.exerciseIds[0].categoryName.contains("neck") {
+        vc.id = data?.id ?? ""
+        if data!.categoryName.contains("neck") {
             vc.modelType = .neckRotation
         } else {
             vc.modelType = .shoulderModel
