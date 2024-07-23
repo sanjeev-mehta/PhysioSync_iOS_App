@@ -57,6 +57,8 @@ class PatientLoginViewModel {
                                 UserDefaults.standard.setTherapistProfileImage(value: therapist.profilePhoto)
                                 UserDefaults.standard.setTherapistName(value: therapist.therapistName)
                                 UserDefaults.standard.setPatientName(value: user.firstName + " " + user.lastName)
+                                UserDefaults.standard .set(json["token"]["Access_Key"].stringValue, forKey: "access_key")
+                                UserDefaults.standard .set(json["token"]["Secret_access_key"].stringValue, forKey: "secret_key")
                             }
                             
                             SDWebImageManager.shared.loadImage(with: URL(string: model.data?.profilePhoto ?? ""), progress: nil) { img, data, err, cache, status, url in

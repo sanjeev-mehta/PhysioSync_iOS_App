@@ -110,7 +110,9 @@ class ExerciseVC: UIViewController {
         } completion: { status, url, err in
             if err != nil {
                 print(status, err)
-                self.displayAlert(title: "Alert!", msg: "something went wrong", ok: "Ok")
+                DispatchQueue.main.async {
+                    self.displayAlert(title: "Alert!", msg: err?.localizedDescription, ok: "Ok")
+                }
             } else {
                 print(url)
                 if let url = url {
@@ -234,6 +236,7 @@ class ExerciseVC: UIViewController {
         if sender.tag == 0 {
             repCount = 0
             sender.tag = 1
+            self.timeLbl.text = "00:00"
             startTimer()
             sender.setTitle("Stop", for: .normal)
             sender.backgroundColor = .clear

@@ -23,7 +23,7 @@ class ExerciseCategoryVC: UIViewController {
     let exerciseCategoryViewModel = ExerciseCategoryViewModel.shareInstance
     var isCreateSchedule = false
     var delegate: SelectedExerciseData?
-    var selectedData = [SingleExerciseModel]()
+    var selectedData = [SingleExerciseModel2]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,7 +132,7 @@ extension ExerciseCategoryVC: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 extension ExerciseCategoryVC: SelectedExerciseData {
-    func selectedExerciseData(data: [SingleExerciseModel]) {
+    func selectedExerciseData(data: [SingleExerciseModel2]) {
         delegate?.selectedExerciseData(data: data)
     }
     

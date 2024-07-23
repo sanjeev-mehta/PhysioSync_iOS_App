@@ -24,8 +24,8 @@ class PatientLoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        emailTf.text = "jordan@gmail.com"
-//        passwordTf.text = "123456"
+        emailTf.text = "jordan@gmail.com"
+        passwordTf.text = "123456"
         setUI()
     }
     

@@ -67,7 +67,8 @@ class VideoCapture: NSObject {
     }
     
     func startRecording() {
-        let outputFilePath = NSTemporaryDirectory() + "tempMovie.mov"
+        let timestamp = Int(Date().timeIntervalSince1970)
+        let outputFilePath = NSTemporaryDirectory() + "\(timestamp).mov"
         let outputURL = URL(fileURLWithPath: outputFilePath)
         movieOutput.startRecording(to: outputURL, recordingDelegate: self)
     }
