@@ -17,9 +17,9 @@ class ChatViewModel {
     var currentUser = ""
     
     func getAllMessages(json: JSON) {
-        chatArr.removeAll()
+        var arr = [ChatModel]()
         for i in json[0].arrayValue {
-            chatArr.append(ChatModel(i))
+            arr.append(ChatModel(i))
         }
         messageID.removeAll()
         for i in chatArr {
@@ -30,6 +30,10 @@ class ChatViewModel {
             }
             
         }
+        if chatArr.count == arr.count || arr.count == 0 {
+            return
+        }
+        chatArr = arr
         chatArr.reverse()
         delegate?.didReceiveMessages()
     }

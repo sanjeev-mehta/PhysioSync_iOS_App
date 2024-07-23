@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>Sanjeev.PhysioSync</string>
+	<string>com.physiosync.srg</string>
 	<key>PROJECT_ID</key>
 	<string>physiosync</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:108125079536:ios:3f360e029d43637140ff35</string>
+	<string>1:108125079536:ios:5ca06b988ee1403340ff35</string>
 </dict>
 </plist>

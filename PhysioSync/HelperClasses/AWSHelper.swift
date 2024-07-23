@@ -82,7 +82,7 @@ class AWSHelper {
           
           let transferUtility = AWSS3TransferUtility.default()
           
-          transferUtility.uploadFile(url, bucket: "physiosync", key: fileName, contentType: "video/mp4", expression: expression, completionHandler: completionHandler).continueWith { (task) -> AnyObject? in
+          transferUtility.uploadFile(url, bucket: "physiosync", key: fileName, contentType: "video/mov", expression: expression, completionHandler: completionHandler).continueWith { (task) -> AnyObject? in
               if let error = task.error {
                   print("Error: \(error.localizedDescription)")
                   completion(false, nil, error)

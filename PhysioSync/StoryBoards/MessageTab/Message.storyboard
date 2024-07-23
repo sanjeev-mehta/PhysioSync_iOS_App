@@ -652,7 +652,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backArrow" width="17.666666030883789" height="17.666666030883789"/>
+        <image name="backArrow" width="10" height="16"/>
         <image name="chattingMedia" width="24" height="24"/>
         <image name="playIcon" width="24" height="24"/>
         <image name="profilePlaceHolder" width="48" height="48.333332061767578"/>

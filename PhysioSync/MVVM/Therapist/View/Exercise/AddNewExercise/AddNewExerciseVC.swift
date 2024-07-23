@@ -24,7 +24,7 @@ class AddNewExerciseVC: UIViewController {
     private var videoUrl: URL?
     private let exerciseVM = ExerciseCategoryViewModel.shareInstance
     var isEdit = false
-    var data: SingleExerciseModel?
+    var data: SingleExerciseModel2?
     var isVideoChange = false
     
     override func viewDidLoad() {
@@ -107,19 +107,35 @@ class AddNewExerciseVC: UIViewController {
         let actionSheet = UIAlertController(title: "Select Video", message: "Choose a source", preferredStyle: .actionSheet)
         
         let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { _ in
-//            self.videoPicker?.showCustomVideoPicker(from: self, completion: { url in
-//                DispatchQueue.main.async {
-//                    self.isVideoChange = true
-//                    self.videoUrl = url
-//                    self.videoFileNameLbl.text = "Default"
-//                }
-//            })
+            //            self.videoPicker?.showCustomVideoPicker(from: self, completion: { url in
+            //                DispatchQueue.main.async {
+            //                    self.isVideoChange = true
+            //                    self.videoUrl = url
+            //                    self.videoFileNameLbl.text = "Default"
+            //                }
+            //            })
             self.videoPicker?.showVideoPicker(sourceType: .photoLibrary, completion: { url, name in
                 print(url, name)
-                self.isVideoChange = true
-                self.videoUrl = url
-                self.videoFileNameLbl.text = name
-            
+                DispatchQueue.main.async {
+                    guard let videoUrl = url else {
+                        print("Failed to retrieve video from photo library.")
+                        return
+                    }
+                    
+                    self.copyVideoToPermanentLocation(videoURL: videoUrl) { permanentURL in
+                        guard let finalURL = permanentURL else {
+                            print("Failed to copy video to permanent location.")
+                            return
+                        }
+                        
+                        self.isVideoChange = true
+                        self.videoUrl = finalURL
+                        self.videoFileNameLbl.text = finalURL.lastPathComponent
+                        print("Selected video URL: \(finalURL)")
+                        
+                        // Proceed with your AWS upload logic here
+                    }
+                }
             })
         }
         
@@ -191,10 +207,11 @@ class AddNewExerciseVC: UIViewController {
                 print("Failed to generate thumbnail image")
                 return
             }
-            
+            let timestamp = Int(Date().timeIntervalSince1970)
             if let thumbnailImageUrl = self.saveImageToTemporaryDirectory(image: thumbnailImage) {
                 // Pass the thumbnail image URL to awsHelper.uploadImageFile
-                self.awsHelper.uploadImageFile(url: thumbnailImageUrl, fileName: "thumbnail.jpg", progress: { progress in
+                
+                self.awsHelper.uploadImageFile(url: thumbnailImageUrl, fileName: "\(timestamp).jpg", progress: { progress in
                     print("Upload progress: \(progress)")
                 }) { success, url, error in
                     if success {
@@ -212,6 +229,23 @@ class AddNewExerciseVC: UIViewController {
             
         }
         
+    }
+    
+    private func copyVideoToPermanentLocation(videoURL: URL, completion: @escaping (URL?) -> Void) {
+        let fileManager = FileManager.default
+        let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let destinationURL = documentsDirectory.appendingPathComponent(videoURL.lastPathComponent)
+        
+        do {
+            if fileManager.fileExists(atPath: destinationURL.path) {
+                try fileManager.removeItem(at: destinationURL)
+            }
+            try fileManager.copyItem(at: videoURL, to: destinationURL)
+            completion(destinationURL)
+        } catch {
+            print("Error copying video to permanent location: \(error.localizedDescription)")
+            completion(nil)
+        }
     }
     
     func saveImageToTemporaryDirectory(image: UIImage) -> URL? {

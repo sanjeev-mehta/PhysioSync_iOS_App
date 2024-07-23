@@ -25,6 +25,10 @@ class TherapistLoginViewModel {
                 vc.debugPrint("\(json)")
                 self.therapistloginModel = TherapistLoginModel(json)
                 if let model = self.therapistloginModel?.data {
+                    if json["message"].stringValue == "User not found with these credentials in our database. Please create an account." {
+                        vc.displayAlert(title: "Alert!", msg: json["message"].stringValue, ok: "Ok")
+                        return
+                    }
                     UserDefaults.standard.setUsernameToken(value: model.authentication?.sessionToken ?? "")
                     UserDefaults.standard.setTherapistId(value: model.Id)
                     UserDefaults.standard.setTherapistName(value: model.therapistName)
@@ -41,6 +45,8 @@ class TherapistLoginViewModel {
                             completion(true)
                         }
                     }
+                } else {
+                    vc.displayAlert(title: "Alert!", msg: json["message"].stringValue, ok: "Ok")
                 }
             }
         }
