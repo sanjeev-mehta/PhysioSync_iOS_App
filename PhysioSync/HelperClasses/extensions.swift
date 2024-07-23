@@ -408,7 +408,7 @@ extension UIImageView {
         
         self.sd_setImage(with: url, placeholderImage: placeholder, options: .highPriority, completed: { (image, error, cacheType, url) in
             if error != nil {
-                print("Failed to load image: \(error?.localizedDescription ?? "Unknown error")")
+//                print("Failed to load image: \(error?.localizedDescription ?? "Unknown error")")
             }
             completion?(image)
         })

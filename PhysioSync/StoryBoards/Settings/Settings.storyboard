@@ -21,10 +21,10 @@
                                 <rect key="frame" x="24" y="113" width="345" height="200"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Q9K-Ce-YgT">
-                                        <rect key="frame" x="0.0" y="0.0" width="345" height="144"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="96"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NBF-m1-3s2">
-                                                <rect key="frame" x="0.0" y="0.0" width="345" height="48"/>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NBF-m1-3s2">
+                                                <rect key="frame" x="0.0" y="-48" width="345" height="48"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dark Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHo-5e-qbr">
                                                         <rect key="frame" x="0.0" y="13.999999999999998" width="83.666666666666671" height="20.333333333333329"/>
@@ -43,7 +43,7 @@
                                                         <color key="onTintColor" name="primary"/>
                                                     </switch>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7g-3l-Gb4">
-                                                        <rect key="frame" x="0.0" y="47.333333333333343" width="345" height="0.6666666666666643"/>
+                                                        <rect key="frame" x="0.0" y="47.333333333333329" width="345" height="0.6666666666666643"/>
                                                         <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="0.69999999999999996" id="Qdb-Fl-P7V"/>
@@ -66,7 +66,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QmL-pD-7Ca">
-                                                <rect key="frame" x="0.0" y="48" width="345" height="48"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="345" height="48"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise Reminder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDI-dD-TA9">
                                                         <rect key="frame" x="0.0" y="13.999999999999998" width="140.66666666666666" height="20.333333333333329"/>
@@ -111,7 +111,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDf-h0-D33">
-                                                <rect key="frame" x="0.0" y="96" width="345" height="48"/>
+                                                <rect key="frame" x="0.0" y="48" width="345" height="48"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQx-Xq-M0T">
                                                         <rect key="frame" x="0.0" y="13.999999999999998" width="136.66666666666666" height="20.333333333333329"/>
@@ -126,7 +126,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOO-1E-fQw">
-                                                        <rect key="frame" x="0.0" y="47.333333333333314" width="345" height="0.6666666666666643"/>
+                                                        <rect key="frame" x="0.0" y="47.333333333333343" width="345" height="0.6666666666666643"/>
                                                         <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="0.69999999999999996" id="elU-Ws-j3m"/>
@@ -164,10 +164,32 @@
                                             </view>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MX3-Nj-kQg">
+                                        <rect key="frame" x="8" y="112" width="329" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="FiX-5B-oh7"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Delete Account">
+                                            <color key="titleColor" systemColor="systemRedColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="customFontName" value="Outfit-Medium"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="customFontSize">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="deleteBtnActn:" destination="wBL-2B-Ld6" eventType="touchUpInside" id="bnR-9y-lhu"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="Q9K-Ce-YgT" firstAttribute="top" secondItem="UzG-Hp-T9a" secondAttribute="top" id="AxV-AE-ypv"/>
+                                    <constraint firstItem="MX3-Nj-kQg" firstAttribute="leading" secondItem="UzG-Hp-T9a" secondAttribute="leading" constant="8" id="LjW-f7-Wjc"/>
+                                    <constraint firstItem="MX3-Nj-kQg" firstAttribute="top" secondItem="Q9K-Ce-YgT" secondAttribute="bottom" constant="16" id="PSQ-qd-DH9"/>
+                                    <constraint firstAttribute="trailing" secondItem="MX3-Nj-kQg" secondAttribute="trailing" constant="8" id="TeQ-Xk-W6K"/>
                                     <constraint firstAttribute="height" constant="200" id="hTw-e2-a5Z"/>
                                     <constraint firstItem="Q9K-Ce-YgT" firstAttribute="leading" secondItem="UzG-Hp-T9a" secondAttribute="leading" id="udt-zQ-iOe"/>
                                     <constraint firstAttribute="trailing" secondItem="Q9K-Ce-YgT" secondAttribute="trailing" id="x3U-Ty-OgR"/>
@@ -215,6 +237,7 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="darkModeSwitch" destination="LUY-cG-c4c" id="PcW-ro-o4e"/>
+                        <outlet property="deleteBtn" destination="MX3-Nj-kQg" id="KP7-Yy-f2E"/>
                         <outlet property="reminderPicker" destination="7fV-Fu-ekf" id="7zc-6V-zDF"/>
                         <outlet property="reminderView" destination="QmL-pD-7Ca" id="nbc-sK-Sk6"/>
                     </connections>
@@ -565,7 +588,7 @@
     </scenes>
     <resources>
         <image name="Cross 1" width="24" height="24"/>
-        <image name="backArrow" width="17.666666030883789" height="17.666666030883789"/>
+        <image name="backArrow" width="10" height="16"/>
         <image name="passwordShow" width="19.333333969116211" height="16.666666030883789"/>
         <image name="rightArrow" width="9.6666669845581055" height="15.666666984558105"/>
         <namedColor name="borderClr">
@@ -576,6 +599,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

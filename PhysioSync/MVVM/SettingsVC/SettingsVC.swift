@@ -13,12 +13,14 @@ class SettingsVC: UIViewController {
     @IBOutlet weak var reminderView: UIView!
     @IBOutlet weak var darkModeSwitch: UISwitch!
     @IBOutlet weak var reminderPicker: UIDatePicker!
+    @IBOutlet weak var deleteBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.isHeroEnabled = true
         if UserDefaults.standard.getUsernameToken() == "" {
             self.reminderView.isHidden = false
+            self.deleteBtn.isHidden = true
         } else {
             self.reminderView.isHidden = true
         }
@@ -54,6 +56,27 @@ class SettingsVC: UIViewController {
     @IBAction func changePasswordBtnActn(_ sender: UIButton) {
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChangePasswordVC") as? ChangePasswordVC {
             self.pushOrPresentViewController(vc, true)
+        }
+    }
+    
+    @IBAction func deleteBtnActn(_ sender: UIButton) {
+        var url = ""
+        if UserDefaults.standard.getTherapistId() != "" {
+            url = UserDefaults.standard.getTherapistId()
+        } else {
+            url = UserDefaults.standard.getPatientLoginId()
+        }
+        sender.pressedAnimation {
+            let url = API.baseURL + "delete-therapist/\(url)"
+            ApiHelper.shareInstance.hitApi(view: self, method: .delete, parm: [:], url: url, isHeader: false, isLoader: true, completion: { json, err in
+                if err != nil {
+                    self.displayAlert(title: "Alert!", msg: "Something went wrong", ok: "Ok")
+                } else {
+                    if let vc = self.switchController(.welcomeID, .main) {
+                        self.pushOrPresentViewController(vc, true)
+                    }
+                }
+            })
         }
     }
 }

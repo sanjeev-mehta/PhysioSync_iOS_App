@@ -12,8 +12,8 @@ class PatientHomeViewModel {
     static let shareInstance = PatientHomeViewModel()
     let apiHelper = ApiHelper.shareInstance
     var model: PatientHomeModel?
-    var exerciseAssign = [Exercise]()
-    var completedExercise = [Exercise]()
+    var exerciseAssign = [SingleExerciseModel]()
+    var completedExercise = [SingleExerciseModel]()
     private let healthKitManager = HealthKitManager()
     var timer: Timer?
     
@@ -30,8 +30,8 @@ class PatientHomeViewModel {
                 self.completedExercise.removeAll()
                 if let model = self.model {
                     if model.success ?? false {
-                        for i in model.data!.exercise {
-                            if i.status == "assigned" {
+                        for i in model.data!.exercise[0].exerciseIds {
+                            if i.isAssigned == false {
                                 self.exerciseAssign.append(i)
                             } else {
                                 self.completedExercise.append(i)
@@ -51,7 +51,7 @@ class PatientHomeViewModel {
     func submitWatchData() {
         let userId = UserDefaults.standard.getPatientLoginId()
         let url = API.Endpoints.watchdata + "/\(userId)"
-         timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { [self] _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { [self] _ in
             if !HealthKitManager.ishealthkitPermissionPermitted {
                 return
             }
@@ -62,8 +62,8 @@ class PatientHomeViewModel {
                 "sleep": healthKitManager.formattedSleepData,
                 "stepCount": healthKitManager.formattedStepCountData
             ]
-             print(params)
-             apiHelper.hitApiwithoutloader(parm: params, url: url) { [self] json, err in
+            print(params)
+            apiHelper.hitApiwithoutloader(parm: params, url: url) { [self] json, err in
                 if err != nil {
                     print(err?.localizedDescription)
                 } else {
@@ -83,36 +83,32 @@ class PatientHomeViewModel {
     }
     
     func setUpCell(_ cell: PatientHomeCVC, _ status: ExerciseStatus, _ index: Int) {
-        var arr = [Exercise]()
+        var arr = [SingleExerciseModel]()
         if status == .assigned {
             arr = exerciseAssign
         } else {
             arr = completedExercise
         }
         
-        if !arr[index].exerciseIds.isEmpty {
-            cell.imgView.setImage(with: arr[index].exerciseIds[0].video_thumbnail)
-            let category = arr[index].exerciseIds[0].categoryName.joined(separator: ", ")
-            cell.titleLbl.text = category
-            cell.exerciseNameLbl.text = arr[index].exerciseIds[0].videoTitle
-        }
+        cell.imgView.setImage(with: arr[index].video_thumbnail)
+        let category = arr[index].categoryName.joined(separator: ", ")
+        cell.titleLbl.text = category
+        cell.exerciseNameLbl.text = arr[index].videoTitle
     }
     
     //PatientExerciseTabTVC
     func setUpTableCell(_ cell: PatientExerciseTabTVC, _ status: ExerciseStatus, _ index: Int) {
-        var arr = [Exercise]()
+        var arr = [SingleExerciseModel]()
         if status == .assigned {
             arr = exerciseAssign
         } else {
             arr = completedExercise
         }
         
-        if !arr[index].exerciseIds.isEmpty {
-            cell.imgView.setImage(with: arr[index].exerciseIds[0].video_thumbnail)
-            let category = arr[index].exerciseIds[0].categoryName.joined(separator: ", ")
-            cell.titleLbl.text = category
-            cell.exerciseNameLbl.text = arr[index].exerciseIds[0].videoTitle
-        }
+        cell.imgView.setImage(with: arr[index].video_thumbnail)
+        let category = arr[index].categoryName.joined(separator: ", ")
+        cell.titleLbl.text = category
+        cell.exerciseNameLbl.text = arr[index].videoTitle
     }
 }
 
