@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TherapistPatientVC: UIViewController{
+class TherapistPatientVC: UIViewController, UIContextMenuInteractionDelegate {
     
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -20,6 +20,7 @@ class TherapistPatientVC: UIViewController{
     //MARK: - Variables
     var cellCount = 21
     var numberOfPatients: Int = 0
+    var tag = 0
     
     private var isLoading = true {
         didSet {
@@ -123,6 +124,7 @@ class TherapistPatientVC: UIViewController{
     }
     
     func changeGridList(tag: Int) {
+        self.tag = tag
         if tag != 0 {
             self.gridBtn.setImage(UIImage(named: "gridEnable"), for: .normal)
             self.listBtn.setImage(UIImage(named: "listIcon"), for: .normal)
@@ -191,6 +193,9 @@ extension TherapistPatientVC: UICollectionViewDelegate, UICollectionViewDataSour
         if !self.isLoading {
             vm.updateCellUI(tableCell: nil, collectionCell: cell, index: indexPath.row)
         }
+        let interaction = UIContextMenuInteraction(delegate: self)
+        cell.addInteraction(interaction)
+        cell.tag = indexPath.item
         return cell
     }
     
@@ -243,6 +248,9 @@ extension TherapistPatientVC: UITableViewDelegate ,UITableViewDataSource {
             vm.updateCellUI(tableCell: cell, collectionCell: nil, index: indexPath.row)
         }
         cell.imgView.contentMode = .scaleAspectFill
+        let interaction = UIContextMenuInteraction(delegate: self)
+        cell.addInteraction(interaction)
+        cell.tag = indexPath.row
         return cell
     }
     
@@ -252,16 +260,53 @@ extension TherapistPatientVC: UITableViewDelegate ,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.setTemplateWithSubviews(isLoading, color: Colors.primaryClr, animate: true, viewBackgroundColor: Colors.darkGray)
-        //cell.alpha = 0
-        
-        // Apply animation
-//        UIView.animate(withDuration: 0.5) {
-//            cell.alpha = 1
-//        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let data = vm.passData(index: indexPath.row)
         openProfileInfoController(data: data)
+    }
+    
+    // MARK: - UIContextMenuInteractionDelegate
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions in
+            var index: IndexPath?
+            
+            if self.tag == 1 {
+                // Retrieve the tag from the cell in the collection view
+                if let cell = interaction.view as? UICollectionViewCell {
+                    let row = cell.tag
+                    index = IndexPath(row: row, section: 0)
+                }
+            } else {
+                // Retrieve the tag from the cell in the table view
+                if let cell = interaction.view as? UITableViewCell {
+                    let row = cell.tag
+                    index = IndexPath(row: row, section: 0)
+                }
+            }
+            
+            guard let validIndexPath = index else {
+                print("Invalid index path")
+                return nil
+            }
+            
+            let editAction = UIAction(title: "Edit", image: UIImage(named: "edit")) { action in
+                self.handleEditAction(at: validIndexPath)
+            }
+            return UIMenu(title: "", children: [editAction])
+        }
+    }
+
+    func handleEditAction(at indexPath: IndexPath) {
+        print("Edit action triggered for row \(indexPath.row)")
+        // Implement edit functionality here
+        if let vc = self.switchController(.therapistPatientStep1VC , .therapistPatientProfile) as? TherapistPatientStep1VC {
+            vc.isEdit = true
+            let data = self.vm.filteredPatients[indexPath.row]
+            let patient = Patient(Id: data.Id, therapistId: data.therapistId, firstName: data.firstName, lastName: data.lastName, patientEmail: data.patientEmail, injuryDetails: data.injuryDetails, password: "", exerciseReminderTime: data.exerciseReminderTime, medicineReminderTime: data.medicineReminderTime, dateOfBirth: data.dateOfBirth, allergyIfAny: data.allergyIfAny, profilePhoto: data.profilePhoto, gender: data.gender, medicalHistory: data.medicalHistory, createdAt: data.createdAt, updatedAt: data.updatedAt, _v: data._v, isActive: data.isActive, unreadCount: 0, address: "", phone_no: "")
+            vc.model = patient
+            self.pushOrPresentViewController(vc, true)
+        }
     }
 }

@@ -16,7 +16,7 @@ class TherapistPatientViewModel {
     static let shareInstance = TherapistPatientViewModel()
     let apiHelper = ApiHelper.shareInstance
     var therapistPatientModel: TherapistPatientModel?
-    var filteredPatients: [TherapistPatientData] = [] // Filtered data for search
+    var filteredPatients: [TherapistPatientData] = []
 
     
     func getPatient(vc: UIViewController, completion: @escaping(Bool) -> ()) {

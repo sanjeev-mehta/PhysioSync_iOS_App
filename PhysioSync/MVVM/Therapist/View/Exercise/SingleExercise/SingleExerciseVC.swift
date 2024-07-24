@@ -8,7 +8,7 @@
 import UIKit
 import FTPopOverMenu_Swift
 
-class SingleExerciseVC: UIViewController {
+class SingleExerciseVC: UIViewController, UIContextMenuInteractionDelegate {
     
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -126,13 +126,14 @@ extension SingleExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource
         cell.imgVW.layer.masksToBounds = true
         cell.imgVW.contentMode = .scaleToFill
         cell.imgVW.addShadow()
+        let interaction = UIContextMenuInteraction(delegate: self)
+        cell.addInteraction(interaction)
+        cell.tag = indexPath.row
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         return CGSize(width: collectionView.bounds.width/2, height: 200)
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -190,6 +191,51 @@ extension SingleExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource
             self.addExerciseBtn.isEnabled = false
         }
     }
+    
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions in
+            var index: IndexPath?
+            // Retrieve the tag from the cell in the collection view
+            if let cell = interaction.view as? UICollectionViewCell {
+                let row = cell.tag
+                index = IndexPath(row: row, section: 0)
+            }
+            
+            guard let validIndexPath = index else {
+                print("Invalid index path")
+                return UIMenu()
+            }
+            
+            let deleteAction = UIAction(title: "Delete", image: UIImage(named: "Delete")) { action in
+                self.handleEditAction(at: validIndexPath)
+            }
+            
+            let editAction = UIAction(title: "Edit", image: UIImage(named: "edit")) { action in
+                self.handleEditAction(at: validIndexPath)
+            }
+            
+            return UIMenu(title: "", children: [editAction])
+        }
+    }
+    
+    func handleEditAction(at indexPath: IndexPath) {
+        print("Edit action triggered for row \(indexPath.row)")
+        // Implement edit functionality here
+        if let vc = self.switchController(.therapistPatientStep1VC , .therapistPatientProfile) as? TherapistPatientStep1VC {
+            vc.isEdit = true
+            self.pushOrPresentViewController(vc, true)
+        }
+    }
+    
+    func handleDeleteAction(at indexPath: IndexPath) {
+        print("Edit action triggered for row \(indexPath.row)")
+        // Implement edit functionality here
+        if let vc = self.switchController(.therapistPatientStep1VC , .therapistPatientProfile) as? TherapistPatientStep1VC {
+            vc.isEdit = true
+            self.pushOrPresentViewController(vc, true)
+        }
+    }
+
 }
 
 protocol SelectedExerciseData {
