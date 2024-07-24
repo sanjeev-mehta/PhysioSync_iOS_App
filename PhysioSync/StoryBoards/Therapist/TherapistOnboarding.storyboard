@@ -71,9 +71,9 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iea-r3-4sO">
-                                        <rect key="frame" x="24" y="242.66666666666669" width="33" height="34"/>
+                                        <rect key="frame" x="24" y="242.66666666666669" width="35" height="34"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="skip">
+                                        <state key="normal" title="Skip">
                                             <color key="titleColor" name="borderClr"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -318,6 +318,11 @@
             <point key="canvasLocation" x="-607" y="4"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="lhr-XS-VKy">
+            <size key="intrinsicContentSize" width="70" height="20"/>
+        </designable>
+    </designables>
     <resources>
         <image name="backArrow" width="10" height="16"/>
         <image name="nextBtn" width="76" height="76"/>
