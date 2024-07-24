@@ -27,7 +27,8 @@ class SingleExerciseVC: UIViewController, UIContextMenuInteractionDelegate {
     var isCreateSchedule = false
     var delegate: SelectedExerciseData?
     var selectedData = [SingleExerciseModel2]()
-    
+    private let ExerciseVM = ExerciseCategoryViewModel.shareInstance
+
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,9 +127,11 @@ extension SingleExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource
         cell.imgVW.layer.masksToBounds = true
         cell.imgVW.contentMode = .scaleToFill
         cell.imgVW.addShadow()
-        let interaction = UIContextMenuInteraction(delegate: self)
-        cell.addInteraction(interaction)
-        cell.tag = indexPath.row
+        if indexPath.item != 0 {
+            let interaction = UIContextMenuInteraction(delegate: self)
+            cell.addInteraction(interaction)
+            cell.tag = indexPath.row
+        }
         return cell
     }
     
@@ -207,31 +210,49 @@ extension SingleExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource
             }
             
             let deleteAction = UIAction(title: "Delete", image: UIImage(named: "Delete")) { action in
-                self.handleEditAction(at: validIndexPath)
+                self.handleDeleteAction(at: validIndexPath)
             }
             
             let editAction = UIAction(title: "Edit", image: UIImage(named: "edit")) { action in
                 self.handleEditAction(at: validIndexPath)
             }
             
-            return UIMenu(title: "", children: [editAction])
+            return UIMenu(title: "", children: [editAction, deleteAction])
         }
     }
     
     func handleEditAction(at indexPath: IndexPath) {
         print("Edit action triggered for row \(indexPath.row)")
-        // Implement edit functionality here
-        if let vc = self.switchController(.therapistPatientStep1VC , .therapistPatientProfile) as? TherapistPatientStep1VC {
-            vc.isEdit = true
-            self.pushOrPresentViewController(vc, true)
-        }
+        let data = vm.exerciseModel[indexPath.row - 1]
+        self.openAddExerciseVC(data: data)
     }
     
     func handleDeleteAction(at indexPath: IndexPath) {
         print("Edit action triggered for row \(indexPath.row)")
-        // Implement edit functionality here
-        if let vc = self.switchController(.therapistPatientStep1VC , .therapistPatientProfile) as? TherapistPatientStep1VC {
+        let id = vm.exerciseModel[indexPath.row - 1].id
+        self.callDeleteApi(id: id)
+    }
+    
+    func callDeleteApi(id: String) {
+        ExerciseVM.deleteExercises(vc: self, id: id) { status in
+            self.isLoading = true
+            self.vm.getSingleExercise(vc: self, name: self.header) { _ in
+                for i in self.vm.exerciseModel {
+                    for v in self.selectedData {
+                        if i.id == v.id {
+                            i.isSelected = true
+                        }
+                    }
+                }
+                self.isLoading = false
+            }
+        }
+    }
+    
+    func openAddExerciseVC(data: SingleExerciseModel2) {
+        if let vc = self.switchController(.addNewExerciseVC, .exerciseTab) as? AddNewExerciseVC {
             vc.isEdit = true
+            vc.data = data
             self.pushOrPresentViewController(vc, true)
         }
     }
