@@ -134,4 +134,49 @@ class Patient {
         phone_no = json["phone_no"].stringValue
     }
 
+    init(
+         Id: String,
+         therapistId: String,
+         firstName: String,
+         lastName: String,
+         patientEmail: String,
+         injuryDetails: String,
+         password: String,
+         exerciseReminderTime: String,
+         medicineReminderTime: String,
+         dateOfBirth: String,
+         allergyIfAny: String,
+         profilePhoto: String,
+         gender: String,
+         medicalHistory: String,
+         createdAt: String,
+         updatedAt: String,
+         _v: Int,
+         isActive: Bool,
+         unreadCount: Int,
+         address: String,
+         phone_no: String
+     ) {
+         self.Id = Id
+         self.therapistId = therapistId
+         self.firstName = firstName
+         self.lastName = lastName
+         self.patientEmail = patientEmail
+         self.injuryDetails = injuryDetails
+         self.password = password
+         self.exerciseReminderTime = exerciseReminderTime
+         self.medicineReminderTime = medicineReminderTime
+         self.dateOfBirth = dateOfBirth
+         self.allergyIfAny = allergyIfAny
+         self.profilePhoto = profilePhoto
+         self.gender = gender
+         self.medicalHistory = medicalHistory
+         self.createdAt = createdAt
+         self.updatedAt = updatedAt
+         self._v = _v
+         self.isActive = isActive
+         self.unreadCount = unreadCount
+         self.address = address
+         self.phone_no = phone_no
+     }
 }
