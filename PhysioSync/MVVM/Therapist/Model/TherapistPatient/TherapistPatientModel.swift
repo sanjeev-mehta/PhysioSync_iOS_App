@@ -38,7 +38,7 @@ class TherapistPatientData {
     var createdAt = ""
     var firstName = ""
     var updatedAt = ""
-    var _v: Int?
+    var _v = 0
 
     init(_ json: JSON) {
         gender = json["gender"].stringValue
