@@ -18,6 +18,7 @@ class TherapistNotificationVC: UIViewController {
     @IBOutlet weak var exerciseNameLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var notificationNotFoundImgView: UIImageView!
     
     // MARK: - Variables
     private let vm = TherapistHomeViewModel.shareInstance
@@ -125,6 +126,13 @@ class TherapistNotificationVC: UIViewController {
 // MARK: - Table View DataSource and delegate methods
 extension TherapistNotificationVC: UITableViewDelegate ,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if vm.getCount() == 0 {
+            self.tableView.isHidden = true
+            self.imgView.isHidden = false
+        } else {
+            self.tableView.isHidden = false
+            self.imgView.isHidden = true
+        }
         return vm.getCount()
     }
     

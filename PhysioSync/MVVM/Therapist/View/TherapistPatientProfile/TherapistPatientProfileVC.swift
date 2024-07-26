@@ -158,7 +158,7 @@ class TherapistPatientProfileVC: UIViewController {
         sender.pressedAnimation {
             if let vc = self.switchController(.createScheduleVC, .ScheduleTab) as? CreateScheduleVC {
                 if sender.tag == 1 {
-                    vc.exerciseModel = self.vm.therapistPatientprofileModel![0].data!.exercise![0].exerciseIds2
+                    vc.exerciseModel = self.vm.therapistPatientprofileModel![0].data!.exercise![0].exerciseIds
                     vc.from = self.vm.therapistPatientprofileModel![0].data!.exercise![0].startDate
                     vc.to = self.vm.therapistPatientprofileModel![0].data!.exercise![0].endDate
                     vc.isEdit = true

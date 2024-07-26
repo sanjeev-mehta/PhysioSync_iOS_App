@@ -30,11 +30,13 @@ class PatientHomeViewModel {
                 self.completedExercise.removeAll()
                 if let model = self.model {
                     if model.success ?? false {
-                        for i in model.data!.exercise[0].exerciseIds {
-                            if i.isAssigned == false {
-                                self.exerciseAssign.append(i)
-                            } else {
-                                self.completedExercise.append(i)
+                        if model.data?.exercise.count != 0 {
+                            for i in model.data!.exercise[0].exerciseIds {
+                                if i.isAssigned == false {
+                                    self.exerciseAssign.append(i)
+                                } else {
+                                    self.completedExercise.append(i)
+                                }
                             }
                         }
                         completion(true)

@@ -41,6 +41,21 @@ class SingleExerciseModel {
         isAssigned = json["is_assigned"].boolValue
         isAwaitingReview = json["is_awaiting_reviews"].boolValue
     }
+    
+    init(videoTitle: String, categoryName: [String], categoryId: [String], description: String, id: String, videoUrl: String, therapistId: String, version: Int, isSelected: Bool = false, videoThumbnail: String, isAssigned: Bool = false, isAwaitingReview: Bool = false) {
+        self.videoTitle = videoTitle
+        self.categoryName = categoryName
+        self.categoryId = categoryId
+        self.description = description
+        self.id = id
+        self.videoUrl = videoUrl
+        self.therapistId = therapistId
+        self.version = version
+        self.isSelected = isSelected
+        self.video_thumbnail = videoThumbnail
+        self.isAssigned = isAssigned
+        self.isAwaitingReview = isAwaitingReview
+    }
 }
 
 class SingleExerciseModel2 {
@@ -75,5 +90,20 @@ class SingleExerciseModel2 {
         video_thumbnail = json["video_thumbnail"].stringValue
         isAssigned = json["is_assigned"].boolValue
         isAwaitingReview = json["is_awaiting_reviews"].boolValue
+    }
+    
+    init(videoTitle: String, categoryName: [String], categoryId: [String], description: String, id: String, videoUrl: String, therapistId: String, version: Int, isSelected: Bool = false, videoThumbnail: String, isAssigned: Bool = false, isAwaitingReview: Bool = false) {
+        self.videoTitle = videoTitle
+        self.categoryName = categoryName
+        self.categoryId = categoryId
+        self.description = description
+        self.id = id
+        self.videoUrl = videoUrl
+        self.therapistId = therapistId
+        self.version = version
+        self.isSelected = isSelected
+        self.video_thumbnail = videoThumbnail
+        self.isAssigned = isAssigned
+        self.isAwaitingReview = isAwaitingReview
     }
 }
