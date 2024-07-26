@@ -33,9 +33,7 @@ class CreateScheduleVC: UIViewController {
 
         self.setHeader("Create Schedule", isRightBtn: false) {
             self.dismissOrPopViewController()
-        } rightButtonAction: {
-            
-        }
+        } rightButtonAction: { }
     }
     
     override func viewWillAppear(_ animated: Bool) {

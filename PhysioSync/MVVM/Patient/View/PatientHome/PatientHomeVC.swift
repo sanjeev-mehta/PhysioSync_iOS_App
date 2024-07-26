@@ -208,7 +208,6 @@ extension PatientHomeVC: UICollectionViewDelegate, UICollectionViewDataSource, U
                 return vm.assignExerciseCount(.completed)
             }
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
