@@ -34,7 +34,7 @@ class TherapistHomeVC: UIViewController {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var cancelView: UIView!
     @IBOutlet weak var notificationImgView: UIImageView!
-    @IBOutlet weak var 
+    
     // MARK: -  Variables
     var cellCount = 6
     var currentIndex = 0

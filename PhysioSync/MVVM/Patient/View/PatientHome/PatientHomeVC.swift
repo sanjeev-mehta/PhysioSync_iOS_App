@@ -22,6 +22,7 @@ class PatientHomeVC: UIViewController, UNUserNotificationCenterDelegate {
     @IBOutlet weak var messageCountLbl: UILabel!
     @IBOutlet weak var therapistNameLbl: UILabel!
     @IBOutlet weak var todaysSessionLbl: UILabel!
+    @IBOutlet weak var notTaskImgView: UIImageView!
     
     // MARK: -  Variable
     var cellCount = 4
@@ -193,11 +194,17 @@ class PatientHomeVC: UIViewController, UNUserNotificationCenterDelegate {
 extension PatientHomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if isLoading {
+            notTaskImgView.isHidden = true
             return 1
         } else {
             if collectionView == sessionCollectionView {
                 return vm.assignExerciseCount(.assigned)
             } else {
+                if vm.assignExerciseCount(.completed) == 0 {
+                    notTaskImgView.isHidden = false
+                } else {
+                    notTaskImgView.isHidden = true
+                }
                 return vm.assignExerciseCount(.completed)
             }
         }

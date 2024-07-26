@@ -478,6 +478,7 @@
                         <outlet property="messageCountLbl" destination="JQO-yi-j3i" id="lfi-I2-TID"/>
                         <outlet property="messageView" destination="3bz-m4-gyq" id="M8n-ZA-Z8q"/>
                         <outlet property="nameLbl" destination="TcU-7k-Scd" id="L21-jw-xBl"/>
+                        <outlet property="notTaskImgView" destination="1hM-Bv-54P" id="OyQ-dg-aIf"/>
                         <outlet property="profileImgVW" destination="lAv-rA-qu7" id="SAi-xV-gnL"/>
                         <outlet property="sessionCollectionView" destination="Tyh-rd-t81" id="UGF-jV-5FJ"/>
                         <outlet property="sessionPageControl" destination="cjA-4F-a0a" id="MsP-q9-die"/>
@@ -1930,14 +1931,6 @@
             <point key="canvasLocation" x="35.877862595419849" y="-225.35211267605635"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="cjA-4F-a0a">
-            <size key="intrinsicContentSize" width="-5" height="4"/>
-        </designable>
-        <designable name="npu-m0-MDU">
-            <size key="intrinsicContentSize" width="-5" height="4"/>
-        </designable>
-    </designables>
     <resources>
         <image name="Forward" width="24" height="24.333333969116211"/>
         <image name="Group 22" width="393" height="150"/>
