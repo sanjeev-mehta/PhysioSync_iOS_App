@@ -30,6 +30,9 @@ class AddNewExerciseVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.videoPicker = ImagePickerHelper(viewController: self)
+        self.descTV.delegate = self
+        self.descTV.text = "Enter a brief description"
+        self.descTV.textColor = .lightGray
         setData()
     }
     
@@ -177,7 +180,7 @@ class AddNewExerciseVC: UIViewController {
             self.displayAlert(title: "Warning", msg: "Please enter video title", ok: "Ok")
         } else if videoFileNameLbl.text == "Select a video file" {
             self.displayAlert(title: "Warning", msg: "Please select video file", ok: "Ok")
-        } else if descTV.text == "" {
+        } else if descTV.text == "Enter a brief description" {
             self.displayAlert(title: "Warning", msg: "Please enter description", ok: "Ok")
         } else if !isSelected {
             self.displayAlert(title: "Warning", msg: "Please select atleast 1 category", ok: "Ok")
@@ -327,4 +330,19 @@ extension AddNewExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource
         collectionView.reloadData()
     }
     
+}
+
+extension AddNewExerciseVC: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.text = ""
+        textView.textColor = .black
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == "" {
+            textView.text = "Enter a brief description"
+            textView.textColor = .lightGray
+        }
+    }
 }

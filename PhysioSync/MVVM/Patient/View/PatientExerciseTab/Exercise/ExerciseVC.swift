@@ -59,7 +59,7 @@ class ExerciseVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        modelType = .neckRotation
         setUpVideoPreview()
         videoCapture.predictor.delegate = self
         videoCapture.delegate = self

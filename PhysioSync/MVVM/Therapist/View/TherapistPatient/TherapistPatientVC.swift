@@ -16,6 +16,7 @@ class TherapistPatientVC: UIViewController, UIContextMenuInteractionDelegate {
     @IBOutlet weak var searchBar: UITextField!
     @IBOutlet weak var listBtn: UIButton!
     @IBOutlet weak var gridBtn: UIButton!
+    @IBOutlet weak var patientNotFoundImgView: UIImageView!
     
     //MARK: - Variables
     var cellCount = 21
@@ -82,6 +83,7 @@ class TherapistPatientVC: UIViewController, UIContextMenuInteractionDelegate {
     
     // MARK: - Set Up Search Bar
     func setSearchBar() {
+        searchBar.textColor = .black
         searchBar.addTarget(self, action: #selector(searchActn(_ :)), for: .allEvents)
     }
     
@@ -176,8 +178,16 @@ extension TherapistPatientVC: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if self.isLoading {
+            patientNotFoundImgView.isHidden = true
             return cellCount
         } else {
+            if vm.getCount() == 0 {
+                patientNotFoundImgView.isHidden = false
+                tableView.isHidden = true
+            } else {
+                patientNotFoundImgView.isHidden = true
+                tableView.isHidden = false
+            }
             return vm.getCount()
         }
     }
@@ -189,7 +199,7 @@ extension TherapistPatientVC: UICollectionViewDelegate, UICollectionViewDataSour
         cell.imgView.layer.cornerRadius = 12
         cell.imgView.clipsToBounds = true
         cell.imgView.contentMode = .scaleAspectFill
-        cell.bgView.addShadow()
+//        cell.bgView.addShadow()
         if !self.isLoading {
             vm.updateCellUI(tableCell: nil, collectionCell: cell, index: indexPath.row)
         }
@@ -215,7 +225,7 @@ extension TherapistPatientVC: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        cell.setTemplateWithSubviews(isLoading, color: Colors.primaryClr, animate: true, viewBackgroundColor: Colors.darkGray)
+        cell.setTemplateWithSubviews(isLoading, color: Colors.darkGray, animate: true, viewBackgroundColor: .lightGray)
         //cell.alpha = 0
         
         // Apply animation
@@ -259,7 +269,7 @@ extension TherapistPatientVC: UITableViewDelegate ,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.setTemplateWithSubviews(isLoading, color: Colors.primaryClr, animate: true, viewBackgroundColor: Colors.darkGray)
+        cell.setTemplateWithSubviews(isLoading, color: Colors.darkGray, animate: true, viewBackgroundColor: .lightGray)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

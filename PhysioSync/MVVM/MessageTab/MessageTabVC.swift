@@ -13,6 +13,7 @@ class MessageTabVC: UIViewController {
     @IBOutlet weak var searchTf: UITextField!
     @IBOutlet weak var messageCountLbl: UILabel!
     @IBOutlet weak var messageCountView: UIView!
+    @IBOutlet weak var messageNotFoundImgView: UIImageView!
     
     let vm = MessageViewModel.shareInstance
     
@@ -72,6 +73,13 @@ class MessageTabVC: UIViewController {
 // MARK: - UITableView Delegate and Data Source Methods
 extension MessageTabVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if vm.getUserCount() == 0 {
+            self.messageNotFoundImgView.isHidden = false
+            self.tableView.isHidden = true
+        } else {
+            self.messageNotFoundImgView.isHidden = true
+            self.tableView.isHidden = false
+        }
         return vm.getUserCount()
     }
     

@@ -17,7 +17,7 @@ class CreateScheduleVC: UIViewController {
     @IBOutlet weak var addMoreExerciseBtn: UIButton!
     
     //MARK: - Variables
-    var exerciseModel = [SingleExerciseModel2]()
+    var exerciseModel = [SingleExerciseModel]()
     var patientId = ""
     let vm = CreateScheduleViewModel.shareInstance
     var from: String?
@@ -125,7 +125,11 @@ class CreateScheduleVC: UIViewController {
         if let vc = self.switchController(.exerciseCategoryVC, .therapistTab) as? ExerciseCategoryVC {
             vc.isCreateSchedule = true
             vc.delegate = self
-            vc.selectedData = exerciseModel
+            var arr = [SingleExerciseModel2]()
+            for i in self.exerciseModel {
+                arr.append(SingleExerciseModel2(videoTitle: i.videoTitle, categoryName: i.categoryName, categoryId: i.categoryId, description: i.description, id: i.id, videoUrl: i.videoUrl, therapistId: i.therapistId, version: i.version, videoThumbnail: i.video_thumbnail))
+            }
+            vc.selectedData = arr
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -185,7 +189,7 @@ extension CreateScheduleVC: UICollectionViewDelegate, UICollectionViewDataSource
 }
 
 extension CreateScheduleVC: SelectedExerciseData {
-    func selectedExerciseData(data: [SingleExerciseModel2]) {
+    func selectedExerciseData(data: [SingleExerciseModel]) {
         for i in data {
             if exerciseModel.count == 0 {
                 self.exerciseModel.append(i)

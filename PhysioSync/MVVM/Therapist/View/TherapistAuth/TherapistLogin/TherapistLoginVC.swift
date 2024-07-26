@@ -24,7 +24,7 @@ class TherapistLoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        emailTf.text = "sgurmeet392@gmail.com"
+        emailTf.text = "sgurmeet392@gmail.com"//"gsingh391@mylangara.ca"
         passwordTf.text = "123456"
         setUI()
     }
