@@ -14,8 +14,8 @@
             filePath = "PhysioSync/MVVM/Therapist/View/CreateSchedule/CreateScheduleVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "selectedExerciseData(data:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -23,49 +23,109 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "566F0DE7-76A2-431F-9451-442EE84E1405"
+            uuid = "EC2B0B40-E153-46BE-A7A8-F044E0099C66"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PhysioSync/MVVM/Therapist/View/CreateSchedule/CreateScheduleVC.swift"
+            filePath = "PhysioSync/MVVM/Patient/ViewModel/PatientHome/PatientHomeViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "callApi()"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "getAssignExercise(_:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EC2B0B40-E153-46BE-A7A8-F044E0099C66 - 267a9f97a24eb089"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhysioSync.PatientHomeViewModel.getAssignExercise(_: __C.UIViewController, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "PhysioSync"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanjeevmehta/Documents/GitHub/PhysioSync_iOS_App/PhysioSync/MVVM/Patient/ViewModel/PatientHome/PatientHomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24">
+               </Location>
+               <Location
+                  uuid = "EC2B0B40-E153-46BE-A7A8-F044E0099C66 - 7f05f881582e4085"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SwiftyJSON.JSON, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in PhysioSync.PatientHomeViewModel.getAssignExercise(_: __C.UIViewController, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "PhysioSync"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanjeevmehta/Documents/GitHub/PhysioSync_iOS_App/PhysioSync/MVVM/Patient/ViewModel/PatientHome/PatientHomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "955C8B9C-5533-4EA6-A8BB-95B653F015B2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhysioSync/MVVM/Patient/View/PatientExerciseTab/Exercise/ExerciseVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "callApi(url:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "95CBF611-B78A-45E1-B289-217BC822622A"
+            uuid = "B319E6FB-9390-48FD-BE6A-E4C505B49CBA"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PhysioSync/MVVM/Therapist/View/TherapistPatientProfile/TherapistPatientProfileVC.swift"
+            filePath = "PhysioSync/MVVM/Patient/View/PatientExerciseTab/Exercise/ExerciseVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "setScheduleBtnActn(_:)"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "uploadRecordedVideo(url:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "366B4825-C908-4B0A-B005-30B12E379AC3"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PhysioSync/MVVM/Therapist/View/CreateSchedule/CreateScheduleVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "viewWillAppear(_:)"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B319E6FB-9390-48FD-BE6A-E4C505B49CBA - 78a2fbec0fa86f4c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhysioSync.ExerciseVC.uploadRecordedVideo(url: Foundation.URL) -&gt; ()"
+                  moduleName = "PhysioSync"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanjeevmehta/Documents/GitHub/PhysioSync_iOS_App/PhysioSync/MVVM/Patient/View/PatientExerciseTab/Exercise/ExerciseVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105">
+               </Location>
+               <Location
+                  uuid = "B319E6FB-9390-48FD-BE6A-E4C505B49CBA - 78a2fbec0fa86f4c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhysioSync.ExerciseVC.uploadRecordedVideo(url: Foundation.URL) -&gt; ()"
+                  moduleName = "PhysioSync"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanjeevmehta/Documents/GitHub/PhysioSync_iOS_App/PhysioSync/MVVM/Patient/View/PatientExerciseTab/Exercise/ExerciseVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
