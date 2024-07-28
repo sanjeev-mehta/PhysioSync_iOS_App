@@ -10,7 +10,7 @@ import CHIPageControl
 import SocketIO
 import RAMAnimatedTabBarController
 
-class TherapistHomeVC: UIViewController {
+class TherapistHomeVC: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: -  IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -65,7 +65,13 @@ class TherapistHomeVC: UIViewController {
         setTableViews()
         setNotificationView()
         setupRefreshControl()
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
+    
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+           return true
+       }
     
     override func viewDidAppear(_ animated: Bool) {
         self.isLoading = true
@@ -221,7 +227,7 @@ class TherapistHomeVC: UIViewController {
     @IBAction func acknowBtnActn(_ sender: UIButton) {
         let tag = sender.tag
         if let model = vm.notificationModel {
-            let parm: [String: Any] = ["is_awaiting_reviews": true]
+            let parm: [String: Any] = ["is_awaiting_reviews": false, "status": "reviewed", "exercise_ids": [model.data[0].exerciseIds[tag].id]]
             vm.acknowledgeExercise(vc: self, id: model.data[tag].Id, parm: parm) { status in
                 if status {
                     self.callApi()
@@ -233,7 +239,7 @@ class TherapistHomeVC: UIViewController {
     @IBAction func replyBtnActn(_ sender: UIButton) {
         let tag = sender.tag
         if let model = vm.notificationModel {
-            let parm: [String: Any] = ["is_awaiting_reviews": true]
+            let parm: [String: Any] = ["is_awaiting_reviews": false, "status": "reviewed", "exercise_ids": [model.data[0].exerciseIds[tag].id]]
             vm.acknowledgeExercise(vc: self, id: model.data[tag].Id, parm: parm) { status in
                 if status {
                     if let vc = self.switchController(.chatVC, .messageTab) as? ChatScreenVC {
@@ -301,7 +307,7 @@ extension TherapistHomeVC: UICollectionViewDelegate, UICollectionViewDataSource,
         let tag = sender.tag
         selectedIndex = tag
         if let model = vm.notificationModel {
-            self.setupVideoPlayer(url: model.data[tag].patientVideoUrl)
+            self.setupVideoPlayer(url: model.data[0].exerciseIds[tag].patient_video_url)
             self.nameLbl.text = model.data[tag].patientId.firstName + " " + model.data[tag].patientId.lastName
             self.timeLbl.text = model.data[tag].days
             self.exerciseNameLbl.text = model.data[tag].video_title
@@ -315,7 +321,7 @@ extension TherapistHomeVC: UICollectionViewDelegate, UICollectionViewDataSource,
         videoPlayer?.pause()
         selectedIndex = tag
         if let model = vm.notificationModel {
-            let parm: [String: Any] = ["is_awaiting_reviews": true]
+            let parm: [String: Any] = ["is_awaiting_reviews": false, "status": "reviewed", "exercise_ids": [model.data[0].exerciseIds[tag].id]]
             vm.acknowledgeExercise(vc: self, id: model.data[selectedIndex].Id, parm: parm) { status in
                 if status {
                     self.callApi()

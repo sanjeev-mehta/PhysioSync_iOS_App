@@ -102,31 +102,34 @@ class ExerciseVC: UIViewController {
     
     func uploadRecordedVideo(url: URL) {
         self.showVideoUploadView()
-        let timestamp = Int(Date().timeIntervalSince1970)
-        AWSHelper.shared.uploadVideoFile(url: url, fileName: "\(timestamp).mp4") { progress in
-            print(progress)
-            let progres = progress / 100.0
-            self.progressBar.setProgress(progres, animated: true)
-            self.progessLbl.text = "SENDING VIDEO...(\(Int(progress))%)"
-        } completion: { status, url, err in
-            if err != nil {
-                print(status, err)
-                DispatchQueue.main.async {
-                    self.displayAlert(title: "Alert!", msg: err?.localizedDescription, ok: "Ok")
-                }
-            } else {
-                print(url)
-                if let url = url {
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+            let timestamp = Int(Date().timeIntervalSince1970)
+            print("Uploaded Temp Url", url)
+            AWSHelper.shared.uploadVideoFile(url: url, fileName: "\(timestamp).mp4") { progress in
+                print(progress)
+                let progres = progress / 100.0
+                self.progressBar.setProgress(progres, animated: true)
+                self.progessLbl.text = "SENDING VIDEO...(\(Int(progress))%)"
+            } completion: { status, url, err in
+                if err != nil {
+                    print(status, err)
                     DispatchQueue.main.async {
-                        self.callApi(url: url, completion: { _ in
-                            DispatchQueue.main.async {
-                                self.playAnimation()
-                                Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
-                                    self.popController()
+                        self.displayAlert(title: "Alert!", msg: err?.localizedDescription, ok: "Ok")
+                    }
+                } else {
+                    print(url)
+                    if let url = url {
+                        DispatchQueue.main.async {
+                            self.callApi(url: url, completion: { _ in
+                                DispatchQueue.main.async {
+                                    self.playAnimation()
+                                    Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
+                                        self.popController()
+                                    }
+                                    
                                 }
-                                
-                            }
-                        })
+                            })
+                        }
                     }
                 }
             }
@@ -284,7 +287,9 @@ extension ExerciseVC: PredictorDelegate {
     func predictor(_ predictor: Predictor, didLabelAction action: String, with confidence: Double) {
         guard confidence > 0.85 else { return }
         print("=====>>>>>",action, confidence)
-        leftRightRepCount(action: action)
+        if videoCapture.startPredicting {
+            leftRightRepCount(action: action)
+        }
     }
     
     func predictor(_ predictor: Predictor, didFindNewRecognizedPoints points: [CGPoint]) {

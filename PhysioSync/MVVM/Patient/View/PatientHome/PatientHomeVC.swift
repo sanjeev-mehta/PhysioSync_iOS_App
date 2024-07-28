@@ -8,7 +8,7 @@
 import UIKit
 import CHIPageControl
 
-class PatientHomeVC: UIViewController, UNUserNotificationCenterDelegate {
+class PatientHomeVC: UIViewController, UNUserNotificationCenterDelegate, UIGestureRecognizerDelegate {
     
     // MARK: -  IBOutlets
     @IBOutlet weak var sessionCollectionView: UICollectionView!
@@ -52,7 +52,13 @@ class PatientHomeVC: UIViewController, UNUserNotificationCenterDelegate {
             chatVM.currentUser = UserDefaults.standard.getPatientLoginId()
         }
         socketConnecting()
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
+    
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+           return true
+       }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

@@ -490,8 +490,8 @@
                                     <constraint firstItem="3rR-8W-WTY" firstAttribute="centerY" secondItem="uo3-bn-YYD" secondAttribute="centerY" id="w41-jZ-86o"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YNW-Bw-aJv">
-                                <rect key="frame" x="0.0" y="1110" width="393" height="852"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YNW-Bw-aJv">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qjo-B8-iil">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
@@ -574,7 +574,7 @@
                                                     </button>
                                                 </subviews>
                                                 <viewLayoutGuide key="safeArea" id="zVx-t1-SxY"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="Jtu-4D-zaG" firstAttribute="leading" secondItem="zVx-t1-SxY" secondAttribute="leading" id="1I0-AQ-s4v"/>
                                                     <constraint firstAttribute="height" constant="56" id="30a-yt-44i"/>

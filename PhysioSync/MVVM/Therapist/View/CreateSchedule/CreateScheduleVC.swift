@@ -102,12 +102,14 @@ class CreateScheduleVC: UIViewController {
             for i in exerciseModel {
                 ids.append(i.id)
             }
-            let parm: [String: Any] = ["exercise_ids": ids, "patient_id": patientId, "start_date": fromDateLbl.text!, "end_date": toDateLbl.text!, "status": "assigned"]
+           
             if isEdit {
+                let parm: [String: Any] = ["exercise_ids": ids, "start_date": fromDateLbl.text!, "end_date": toDateLbl.text!]
                 vm.updateExercise(self, id: id ,with: parm) { _ in
                     self.dismissOrPopViewController()
                 }
             } else {
+                let parm: [String: Any] = ["exercise_ids": ids, "patient_id": patientId, "start_date": fromDateLbl.text!, "end_date": toDateLbl.text!]
                 vm.callAssignExercise(self, with: parm) { status in
                     self.dismissOrPopViewController()
                 }

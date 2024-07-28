@@ -323,7 +323,7 @@ extension UIViewController {
     func pushOrPresentViewController(_ viewController: UIViewController, _ isPushed: Bool) {
         if isPushed {
             guard let navigationController = self.navigationController else {
-                print("This view controller is not embedded in a navigation controller.")
+               // print("This view controller is not embedded in a navigation controller.")
                 return
             }
             navigationController.setNavigationBarHidden(true, animated: true)
@@ -487,7 +487,7 @@ extension UIViewController {
                     completion(thumbNailImage) //9
                 }
             } catch {
-                print(error.localizedDescription) //10
+               // print(error.localizedDescription) //10
                 DispatchQueue.main.async {
                     completion(nil) //11
                 }
@@ -571,3 +571,35 @@ extension UIViewController {
     }
 }
 
+extension UINavigationController: UIGestureRecognizerDelegate {
+    
+    func setNavigationBarAttributes(title: String, backButtonImage: UIImage?, rightButtonImage: UIImage? = nil, rightButtonTarget: Any? = nil, rightButtonAction: Selector? = nil) {
+        // Set the title with custom font
+        let titleLabel = UILabel()
+        titleLabel.text = title
+        titleLabel.font = UIFont(name: "Outfit-Medium", size: 24.0)
+        titleLabel.sizeToFit()
+        self.navigationBar.topItem?.titleView = titleLabel
+        
+        // Set back button image
+        if let backImage = backButtonImage {
+            let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(backButtonTapped))
+            self.navigationBar.topItem?.leftBarButtonItem = backButton
+            
+        }
+        
+        // Set right button image and action if provided
+        if let rightImage = rightButtonImage, let action = rightButtonAction {
+            let rightButton = UIBarButtonItem(image: rightImage, style: .plain, target: rightButtonTarget, action: action)
+            self.navigationBar.topItem?.rightBarButtonItem = rightButton
+        }
+    }
+    
+    @objc func backButtonTapped() {
+        self.popViewController(animated: true)
+    }
+    
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+           return true
+       }
+}

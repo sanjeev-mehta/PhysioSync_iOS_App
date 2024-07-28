@@ -8,7 +8,7 @@
 import UIKit
 
 class TherapistNotificationVC: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var notificationView: UIView!
     @IBOutlet weak var acknowledgeView: UIView!
@@ -27,7 +27,7 @@ class TherapistNotificationVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         closeNotifcationView()
@@ -36,10 +36,22 @@ class TherapistNotificationVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setHeader("Notifications", isBackBtn: true) {
-            self.navigationController?.popViewController(animated: true)
-        } rightButtonAction: {}
-
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        setCustomHeader()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    private func setCustomHeader() {
+        let backImage = UIImage(named: "backArrow")!.withRenderingMode(.alwaysOriginal)
+        let rightImage = UIImage(named: "editProfile")!.withRenderingMode(.alwaysOriginal)
+        self.navigationController?.setNavigationBarAttributes(title: "Patient Info", backButtonImage: backImage, rightButtonImage: rightImage, rightButtonTarget: self, rightButtonAction: #selector(rightButtonAction))
+    }
+    
+    @objc func rightButtonAction() {
+        print("Right button tapped")
     }
     
     func setNotificationView() {
@@ -86,7 +98,7 @@ class TherapistNotificationVC: UIViewController {
         let tag = sender.tag
         videoPlayer?.pause()
         if let model = vm.notificationModel {
-            let parm: [String: Any] = ["is_awaiting_reviews": true, "exercise_ids": model.data[0].exerciseIds[tag].id]
+            let parm: [String: Any] = ["is_awaiting_reviews": false, "status": "reviewed", "exercise_ids": [model.data[0].exerciseIds[tag].id]]
             vm.acknowledgeExercise(vc: self, id: model.data[0].Id, parm: parm) { status in
                 if status {
                     self.vm.getNotificationApi(vc: self) { status in
@@ -101,7 +113,8 @@ class TherapistNotificationVC: UIViewController {
     @IBAction func replyPrivatelyBtnActn(_ sender: UIButton) {
         let tag = sender.tag
         if let model = vm.notificationModel {
-            let parm: [String: Any] = ["is_awaiting_reviews": true]
+            let parm: [String: Any] = ["is_awaiting_reviews": false, "status": "reviewed", "exercise_ids": [model.data[0].exerciseIds[tag].id]]
+            
             vm.acknowledgeExercise(vc: self, id: model.data[0].exerciseIds[tag].id, parm: parm) { status in
                 if status {
                     if let vc = self.switchController(.chatVC, .messageTab) as? ChatScreenVC {
@@ -170,3 +183,4 @@ extension TherapistNotificationVC: UITableViewDelegate ,UITableViewDataSource {
         }
     }
 }
+

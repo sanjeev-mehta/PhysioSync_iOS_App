@@ -35,8 +35,6 @@ class ApiHelper {
                        }catch{
                        }
                    case .failure(let err):
-                       print(err)
-                       
                        do {
                            try completion(JSON(data: NSData() as Data), err)
                        }catch{
@@ -77,7 +75,6 @@ class ApiHelper {
                     completion(jsonData, nil)
                 }catch{}
             case .failure(let err):
-                print(err)
                 av.removeFromSuperview()
                 do {
                     try completion(JSON(data: NSData() as Data), err)
