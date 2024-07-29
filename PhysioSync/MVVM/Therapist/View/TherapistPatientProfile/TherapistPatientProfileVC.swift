@@ -69,7 +69,7 @@ class TherapistPatientProfileVC: UIViewController {
                 if let data = self.vm.therapistPatientprofileModel?[0].data?.patient {
                     self.nameLbl.text = data.firstName + " " + data.lastName
                     self.ageLbl.text =  "\(self.calculateAge(dob: data.dateOfBirth))" + "Years"
-                    self.profileImgView.sd_setImage(with: URL(string: data.profilePhoto)!)
+                    self.profileImgView.setImage(with: data.profilePhoto)
                     self.historyLbl.text = data.injuryDetails
                     
                 }

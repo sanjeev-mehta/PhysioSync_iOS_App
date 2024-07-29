@@ -45,6 +45,7 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         self.videoPicker = ImagePickerHelper(viewController: self)
         self.closeMediaView()
         self.tableView.showsVerticalScrollIndicator = false
+        self.tableView.showsHorizontalScrollIndicator = false
         
         if UserDefaults.standard.getUsernameToken() == "" {
             self.isPatient = true
@@ -76,6 +77,10 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     override func viewDidAppear(_ animated: Bool) {
         chatVM.readMessage(isPatienSide: isPatient)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.videoPlayer?.pause()
     }
     
     private func setupVideoPlayer(url: URL?) {

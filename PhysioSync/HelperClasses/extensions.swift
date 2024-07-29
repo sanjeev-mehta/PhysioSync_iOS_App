@@ -399,14 +399,14 @@ extension UIImageView {
         self.startAnimating()
     }
     
-    func setImage(with urlString: String?, placeholder: UIImage? = nil, completion: ((UIImage?) -> Void)? = nil) {
+    func setImage(with urlString: String?, placeholder: UIImage? = UIImage(named: "image placeholder"), completion: ((UIImage?) -> Void)? = nil) {
         guard let urlString = urlString, let url = URL(string: urlString) else {
             self.image = placeholder
             completion?(nil)
             return
         }
         
-        self.sd_setImage(with: url, placeholderImage: placeholder, options: .highPriority, completed: { (image, error, cacheType, url) in
+        self.sd_setImage(with: url, placeholderImage: UIImage(named: "image placeholder")!, options: .highPriority, completed: { (image, error, cacheType, url) in
             if error != nil {
 //                print("Failed to load image: \(error?.localizedDescription ?? "Unknown error")")
             }

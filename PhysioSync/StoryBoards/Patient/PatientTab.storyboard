@@ -1247,6 +1247,7 @@
                         </connections>
                     </tabBarItem>
                     <connections>
+                        <outlet property="shadowView" destination="11Y-Nj-crD" id="Otg-fR-9Tv"/>
                         <outletCollection property="lbls" destination="2SM-hN-oc6" collectionClass="NSMutableArray" id="0eM-j0-Aok"/>
                         <outletCollection property="lbls" destination="QpA-7e-gm2" collectionClass="NSMutableArray" id="JVv-4C-gRp"/>
                         <outletCollection property="lbls" destination="HFG-PE-E82" collectionClass="NSMutableArray" id="xg9-7h-nZH"/>
@@ -1931,14 +1932,6 @@
             <point key="canvasLocation" x="35.877862595419849" y="-225.35211267605635"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="cjA-4F-a0a">
-            <size key="intrinsicContentSize" width="-5" height="4"/>
-        </designable>
-        <designable name="npu-m0-MDU">
-            <size key="intrinsicContentSize" width="-5" height="4"/>
-        </designable>
-    </designables>
     <resources>
         <image name="Forward" width="24" height="24.333333969116211"/>
         <image name="Group 22" width="393" height="150"/>
@@ -1974,7 +1967,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
