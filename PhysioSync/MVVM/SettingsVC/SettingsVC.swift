@@ -40,7 +40,6 @@ class SettingsVC: UIViewController {
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "hh:mm a"
         let str = timeFormatter.string(from: sender.date)
-        print(str)
         UserDefaults.standard.setValue(str, forKey: "reminder_time")
     }
     

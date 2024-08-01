@@ -34,7 +34,6 @@ public class HealthKitManager: ObservableObject {
         healthStore.requestAuthorization(toShare: nil, read: typesToRead) { [weak self] (success, error) in
             guard let self = self else { return }
             if success {
-                print("HealthKit authorization request successful.")
                 // Fetch data after authorization
                 self.fetchSleepData()
                 self.fetchHeartRateData()
@@ -43,7 +42,7 @@ public class HealthKitManager: ObservableObject {
                 HealthKitManager.ishealthkitPermissionPermitted = true
             } else {
                 if let error = error {
-                    print("HealthKit authorization failed. Error: \(error.localizedDescription)")
+                   // print("HealthKit authorization failed. Error: \(error.localizedDescription)")
                 }
             }
         }
@@ -58,7 +57,7 @@ public class HealthKitManager: ObservableObject {
         // Define start and end dates for the most recent night
         let startOfDay = calendar.startOfDay(for: now)
         guard let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay) else {
-            print("Error calculating end of day.")
+            //print("Error calculating end of day.")
             return
         }
         
@@ -103,7 +102,7 @@ public class HealthKitManager: ObservableObject {
                 
             } else {
                 if let error = error {
-                    print("Error fetching sleep data from HealthKit: \(error.localizedDescription)")
+                  //  print("Error fetching sleep data from HealthKit: \(error.localizedDescription)")
                 }
             }
         }
@@ -119,7 +118,7 @@ public class HealthKitManager: ObservableObject {
          
          // Define start date as 7 days ago
          guard let startDate = calendar.date(byAdding: .day, value: -7, to: now) else {
-             print("Error calculating start date.")
+            // print("Error calculating start date.")
              return
          }
          
@@ -150,7 +149,7 @@ public class HealthKitManager: ObservableObject {
                  
              } else {
                  if let error = error {
-                     print("Error fetching heart rate data from HealthKit: \(error.localizedDescription)")
+                     //print("Error fetching heart rate data from HealthKit: \(error.localizedDescription)")
                  }
              }
          }
@@ -240,7 +239,7 @@ public class HealthKitManager: ObservableObject {
         let now = Date()
         
         // Define start date as 7 days ago
-        guard let startDate = calendar.date(byAdding: .day, value: -7, to: now) else {
+        guard let startDate = calendar.date(byAdding: .day, value: -6, to: now) else {
             print("Error calculating start date.")
             return
         }

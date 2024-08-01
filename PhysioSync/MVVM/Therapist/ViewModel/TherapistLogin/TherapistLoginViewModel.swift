@@ -10,7 +10,7 @@ import SDWebImage
 
 class TherapistLoginViewModel {
     
-//    MARK: - Variables
+    //    MARK: - Variables
     static let shareInstance = TherapistLoginViewModel()
     var therapistloginModel: TherapistLoginModel?
     let apiHelper = ApiHelper.shareInstance
@@ -29,12 +29,13 @@ class TherapistLoginViewModel {
                         vc.displayAlert(title: "Alert!", msg: json["message"].stringValue, ok: "Ok")
                         return
                     }
-                    UserDefaults.standard.setUsernameToken(value: model.authentication?.sessionToken ?? "")
+                    UserDefaults.standard.setUsernameToken(value: model.authentication!.sessionToken)
                     UserDefaults.standard.setTherapistId(value: model.Id)
                     UserDefaults.standard.setTherapistName(value: model.therapistName)
                     UserDefaults.standard.setTherapistProfileImage(value: model.profilePhoto)
                     UserDefaults.standard .set(json["token"]["Access_Key"].stringValue, forKey: "access_key")
                     UserDefaults.standard .set(json["token"]["Secret_access_key"].stringValue, forKey: "secret_key")
+                    UserDefaults.standard.synchronize()
                     SDWebImageManager.shared.loadImage(with: URL(string: model.profilePhoto), progress: nil) { img, data, err, cache, status, url in
                         if let img = img {
                             if let imageData = img.pngData() {
@@ -42,7 +43,9 @@ class TherapistLoginViewModel {
                             } else {
                                 print("Failed to convert UIImage to Data")
                             }
-                            completion(true)
+                            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+                                completion(true)
+                            }
                         }
                     }
                 } else {
@@ -80,7 +83,7 @@ class TherapistLoginViewModel {
                     case 2:
                         av.removeFromSuperview()
                         print("this is an error")
-                        vc.displayAlert(title: "Alert!", msg: "Something went wrong", ok: "Ok")
+                        vc.displayAlert(title: "Alert!", msg: "Username or password is wrong", ok: "Ok")
                         break
                     default:
                         av.removeFromSuperview()
@@ -91,4 +94,5 @@ class TherapistLoginViewModel {
             }
         }
     }
+    
 }

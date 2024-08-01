@@ -25,6 +25,21 @@ struct CalorieChartView: View {
                         y: .value("Calories", dataPoint.caloriesBurned)
                     )
                     .foregroundStyle(.linearGradient(colors: [Color(red: 31/255, green: 89/255, blue: 218/255), Color(red: 31/255, green: 89/255, blue: 218/255).opacity(0.1)], startPoint: .bottom, endPoint: .top))
+                    
+                    LineMark(
+                        x: .value("Day", dataPoint.date, unit: .day),
+                        y: .value("Calories", dataPoint.caloriesBurned)
+                    )
+                    .foregroundStyle(.linearGradient(colors: [Color(red: 31/255, green: 89/255, blue: 218/255), Color(red: 31/255, green: 89/255, blue: 218/255).opacity(0.7)], startPoint: .bottom, endPoint: .top))
+                    .lineStyle(StrokeStyle(lineWidth: 3))
+                    
+                    PointMark(
+                        x: .value("Day", dataPoint.date, unit: .day),
+                        y: .value("Calories", dataPoint.caloriesBurned)
+                    )
+                    .foregroundStyle(Color(red: 31/255, green: 89/255, blue: 218/255))
+                    .symbolSize(30)
+                    .accessibilityLabel("Calories Burned: \(Int(dataPoint.caloriesBurned))")
                 }
                 .accessibilityLabel(dataPoint.date.formatted(date: .complete, time: .standard))
                 .accessibilityValue("\(Int(dataPoint.caloriesBurned)) calories burned")
@@ -44,8 +59,8 @@ struct CalorieChartView: View {
             .padding()
             .background(
                 RoundedRectangle(cornerRadius: 10)
-                    .fill(Color(red: 235/255, green: 240/255, blue: 255/255)) // Background color
-                    .shadow(color: Color(red: 31/255, green: 89/255, blue: 218/255).opacity(0.6), radius: 5, x: 0, y: 5) // Shadow color
+                    .fill(Color.white)
+                    .shadow(color: Color(red: 31/255, green: 89/255, blue: 218/255).opacity(0.3), radius: 5, x: 0, y: 5)
                     .padding(.horizontal, 10)
             )
 

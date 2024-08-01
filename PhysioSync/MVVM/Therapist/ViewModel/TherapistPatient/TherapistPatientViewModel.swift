@@ -16,7 +16,7 @@ class TherapistPatientViewModel {
     static let shareInstance = TherapistPatientViewModel()
     let apiHelper = ApiHelper.shareInstance
     var therapistPatientModel: TherapistPatientModel?
-    var filteredPatients: [TherapistPatientData] = [] // Filtered data for search
+    var filteredPatients: [TherapistPatientData] = []
 
     
     func getPatient(vc: UIViewController, completion: @escaping(Bool) -> ()) {
@@ -57,12 +57,12 @@ class TherapistPatientViewModel {
         let data = filteredPatients
         if let tvc = tableCell {
             // Table View Cell
-            tvc.imgView.sd_setImage(with: URL(string: data[index].profilePhoto))
+            tvc.imgView.setImage(with: data[index].profilePhoto)
             tvc.nameLbl.text = data[index].firstName + " " + data[index].lastName
         } else {
             // Collection View Cell
             if let cvc = collectionCell {
-                cvc.imgView.sd_setImage(with: URL(string: data[index].profilePhoto))
+                cvc.imgView.setImage(with: data[index].profilePhoto)
                 cvc.nameLbl.text = data[index].firstName + " " + data[index].lastName
             }
         }

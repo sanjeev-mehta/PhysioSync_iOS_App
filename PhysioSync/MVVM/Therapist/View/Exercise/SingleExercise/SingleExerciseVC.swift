@@ -8,7 +8,7 @@
 import UIKit
 import FTPopOverMenu_Swift
 
-class SingleExerciseVC: UIViewController {
+class SingleExerciseVC: UIViewController, UIContextMenuInteractionDelegate {
     
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -27,7 +27,8 @@ class SingleExerciseVC: UIViewController {
     var isCreateSchedule = false
     var delegate: SelectedExerciseData?
     var selectedData = [SingleExerciseModel2]()
-    
+    private let ExerciseVM = ExerciseCategoryViewModel.shareInstance
+
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,10 +86,10 @@ class SingleExerciseVC: UIViewController {
     
     //MARK: - Buttons Action
     @IBAction func addExercseBtnActn(_ sender: UIButton) {
-        var data = [SingleExerciseModel2]()
+        var data = [SingleExerciseModel]()
         for i in self.vm.exerciseModel {
             if i.isSelected {
-                data.append(i)
+                data.append(SingleExerciseModel(videoTitle: i.videoTitle, categoryName: i.categoryName, categoryId: i.categoryId, description: i.description, id: i.id, videoUrl: i.videoUrl, therapistId: i.therapistId, version: i.version, isSelected: i.isSelected, videoThumbnail: i.video_thumbnail, isAssigned: i.isAssigned, isAwaitingReview: i.isAwaitingReview))
             }
         }
         delegate?.selectedExerciseData(data: data)
@@ -125,14 +126,14 @@ extension SingleExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource
         cell.imgVW.layer.cornerRadius = 12
         cell.imgVW.layer.masksToBounds = true
         cell.imgVW.contentMode = .scaleToFill
-        cell.imgVW.addShadow()
+        let interaction = UIContextMenuInteraction(delegate: self)
+        cell.addInteraction(interaction)
+        cell.tag = indexPath.item
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         return CGSize(width: collectionView.bounds.width/2, height: 200)
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -146,8 +147,7 @@ extension SingleExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         // MARK: - Initial state for the animation
-        cell.setTemplateWithSubviews(isLoading, color: Colors.primaryClr, animate: true, viewBackgroundColor: Colors.darkGray)
-        cell.alpha = 0
+        cell.setTemplateWithSubviews(isLoading, color: Colors.darkGray, animate: true, viewBackgroundColor: .lightGray)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -190,8 +190,75 @@ extension SingleExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource
             self.addExerciseBtn.isEnabled = false
         }
     }
+    
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions in
+            var index: IndexPath?
+            // Retrieve the tag from the cell in the collection view
+            if let cell = interaction.view as? UICollectionViewCell {
+                let row = cell.tag
+                index = IndexPath(row: row, section: 0)
+            }
+            interaction.view?.hapticFeedback(style: .rigid)
+            guard let validIndexPath = index else {
+                print("Invalid index path")
+                return UIMenu()
+            }
+            
+            if validIndexPath.row == 0 {
+                return UIMenu()
+            }
+            
+            let deleteAction = UIAction(title: "Delete", image: UIImage(named: "Delete")) { action in
+                self.handleDeleteAction(at: validIndexPath)
+            }
+            
+            let editAction = UIAction(title: "Edit", image: UIImage(named: "edit")) { action in
+                self.handleEditAction(at: validIndexPath)
+            }
+            
+            return UIMenu(title: "", children: [editAction, deleteAction])
+        }
+    }
+    
+    func handleEditAction(at indexPath: IndexPath) {
+        print("Edit action triggered for row \(indexPath.row)")
+        let data = vm.exerciseModel[indexPath.row - 1]
+        self.openAddExerciseVC(data: data)
+    }
+    
+    func handleDeleteAction(at indexPath: IndexPath) {
+        print("Edit action triggered for row \(indexPath.row)")
+        let id = vm.exerciseModel[indexPath.row - 1].id
+        self.callDeleteApi(id: id)
+    }
+    
+    func callDeleteApi(id: String) {
+        ExerciseVM.deleteExercises(vc: self, id: id) { status in
+            self.isLoading = true
+            self.vm.getSingleExercise(vc: self, name: self.header) { _ in
+                for i in self.vm.exerciseModel {
+                    for v in self.selectedData {
+                        if i.id == v.id {
+                            i.isSelected = true
+                        }
+                    }
+                }
+                self.isLoading = false
+            }
+        }
+    }
+    
+    func openAddExerciseVC(data: SingleExerciseModel2) {
+        if let vc = self.switchController(.addNewExerciseVC, .exerciseTab) as? AddNewExerciseVC {
+            vc.isEdit = true
+            vc.data = data
+            self.pushOrPresentViewController(vc, true)
+        }
+    }
+
 }
 
 protocol SelectedExerciseData {
-    func selectedExerciseData(data: [SingleExerciseModel2])
+    func selectedExerciseData(data: [SingleExerciseModel])
 }

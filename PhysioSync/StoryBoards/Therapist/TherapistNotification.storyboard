@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7kh-Tp-alw">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7kh-Tp-alw">
                                 <rect key="frame" x="24" y="123" width="345" height="695"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -59,15 +59,17 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFk-rc-Ef9">
-                                                            <rect key="frame" x="76" y="52" width="70" height="32"/>
-                                                            <color key="backgroundColor" red="0.043137254901960784" green="0.043137254901960784" blue="0.043137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <rect key="frame" x="76" y="52" width="140" height="32"/>
+                                                            <color key="backgroundColor" name="primary"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="70" id="5bc-nO-89Y"/>
+                                                                <constraint firstAttribute="width" constant="140" id="5bc-nO-89Y"/>
                                                                 <constraint firstAttribute="height" constant="32" id="GrW-Jc-vL4"/>
                                                             </constraints>
                                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                            <state key="normal" title="View"/>
+                                                            <state key="normal" title="Watch Video">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </state>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                     <real key="value" value="8"/>
@@ -106,8 +108,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGY-5f-qgG">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rGY-5f-qgG">
+                                <rect key="frame" x="0.0" y="1110" width="393" height="852"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QjZ-mA-tIt">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
@@ -196,7 +198,7 @@
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 <state key="normal" title="Mark Acknowledged">
-                                                                    <color key="titleColor" name="borderClr"/>
+                                                                    <color key="titleColor" name="primary"/>
                                                                 </state>
                                                                 <connections>
                                                                     <action selector="acknowBtnActn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="aSs-hH-6P8"/>
@@ -224,7 +226,7 @@
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 <state key="normal" title="Reply Privately">
-                                                                    <color key="titleColor" name="borderClr"/>
+                                                                    <color key="titleColor" name="primary"/>
                                                                 </state>
                                                                 <connections>
                                                                     <action selector="replyPrivatelyBtnActn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="eHv-qR-hgS"/>
@@ -253,6 +255,11 @@
                                                         <state key="normal" title="Cancel">
                                                             <color key="titleColor" red="1" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="16"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="cancelBtnActn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9Ns-x3-csH"/>
                                                         </connections>
@@ -309,14 +316,21 @@
                                     <constraint firstAttribute="trailing" secondItem="QjZ-mA-tIt" secondAttribute="trailing" id="r10-5S-ySL"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notification" translatesAutoresizingMaskIntoConstraints="NO" id="5Ou-5M-ieZ">
+                                <rect key="frame" x="24" y="-205.66666666666663" width="345" height="1263.333333333333"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="7kh-Tp-alw" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="0Zu-mB-2OR"/>
+                            <constraint firstItem="5Ou-5M-ieZ" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="1tv-GF-COt"/>
+                            <constraint firstItem="5Ou-5M-ieZ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="6T3-za-H2l"/>
                             <constraint firstItem="rGY-5f-qgG" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="E0C-xz-2dH"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="7kh-Tp-alw" secondAttribute="bottom" id="FBb-bV-gtY"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="5Ou-5M-ieZ" secondAttribute="trailing" constant="24" id="ICu-f6-8LF"/>
                             <constraint firstItem="7kh-Tp-alw" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="64" id="M23-nX-BCs"/>
+                            <constraint firstItem="5Ou-5M-ieZ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="ZXD-aL-fIS"/>
                             <constraint firstAttribute="bottom" secondItem="rGY-5f-qgG" secondAttribute="bottom" id="bMi-89-lQq"/>
                             <constraint firstItem="rGY-5f-qgG" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="i3o-yC-58g"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="7kh-Tp-alw" secondAttribute="trailing" constant="24" id="kiT-wP-d5I"/>
@@ -328,6 +342,7 @@
                         <outlet property="exerciseNameLbl" destination="lE6-qR-jls" id="AJy-7F-i86"/>
                         <outlet property="imgView" destination="hJy-1L-8dJ" id="sKW-EN-UC3"/>
                         <outlet property="nameLbl" destination="zEs-Zv-F4a" id="bCZ-a8-ZD2"/>
+                        <outlet property="notificationNotFoundImgView" destination="5Ou-5M-ieZ" id="QBm-eh-Rkb"/>
                         <outlet property="notificationView" destination="rGY-5f-qgG" id="6J7-jg-Sll"/>
                         <outlet property="replyView" destination="psi-Ya-AWB" id="v9X-WD-GvY"/>
                         <outlet property="tableView" destination="7kh-Tp-alw" id="j5Z-o5-gzX"/>
@@ -341,9 +356,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="notification" width="918" height="1263"/>
         <image name="notificationTabImage" width="48" height="48"/>
-        <namedColor name="borderClr">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="primary">
+            <color red="0.12156862745098039" green="0.34901960784313724" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

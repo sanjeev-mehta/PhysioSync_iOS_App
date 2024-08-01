@@ -70,7 +70,7 @@ extension PatientExerciseTabVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         // Initial state for the animation
-        cell.setTemplateWithSubviews(isLoading, color: Colors.primaryClr, animate: true, viewBackgroundColor: Colors.darkGray)
+        cell.setTemplateWithSubviews(isLoading, color: Colors.darkGray, animate: true, viewBackgroundColor: .lightGray)
         cell.alpha = 0
         
         // Apply animation

@@ -323,7 +323,7 @@ extension UIViewController {
     func pushOrPresentViewController(_ viewController: UIViewController, _ isPushed: Bool) {
         if isPushed {
             guard let navigationController = self.navigationController else {
-                print("This view controller is not embedded in a navigation controller.")
+               // print("This view controller is not embedded in a navigation controller.")
                 return
             }
             navigationController.setNavigationBarHidden(true, animated: true)
@@ -399,14 +399,14 @@ extension UIImageView {
         self.startAnimating()
     }
     
-    func setImage(with urlString: String?, placeholder: UIImage? = nil, completion: ((UIImage?) -> Void)? = nil) {
+    func setImage(with urlString: String?, placeholder: UIImage? = UIImage(named: "image placeholder"), completion: ((UIImage?) -> Void)? = nil) {
         guard let urlString = urlString, let url = URL(string: urlString) else {
             self.image = placeholder
             completion?(nil)
             return
         }
         
-        self.sd_setImage(with: url, placeholderImage: placeholder, options: .highPriority, completed: { (image, error, cacheType, url) in
+        self.sd_setImage(with: url, placeholderImage: UIImage(named: "image placeholder")!, options: .highPriority, completed: { (image, error, cacheType, url) in
             if error != nil {
 //                print("Failed to load image: \(error?.localizedDescription ?? "Unknown error")")
             }
@@ -416,7 +416,7 @@ extension UIImageView {
 }
 
 extension UIView {
-    func addShadow(color: UIColor = Colors.primaryClr, opacity: Float = 0.5, offset: CGSize = CGSize(width: 1.0, height: 2.0), radius: CGFloat = 3.0) {
+    func addShadow(color: UIColor = Colors.primaryClr.withAlphaComponent(0.70), opacity: Float = 0.15, offset: CGSize = CGSize(width: 0.5, height: 3.0), radius: CGFloat = 6.0) {
         layer.shadowColor = color.cgColor
         layer.shadowOpacity = opacity
         layer.shadowOffset = offset
@@ -487,7 +487,7 @@ extension UIViewController {
                     completion(thumbNailImage) //9
                 }
             } catch {
-                print(error.localizedDescription) //10
+               // print(error.localizedDescription) //10
                 DispatchQueue.main.async {
                     completion(nil) //11
                 }
@@ -571,3 +571,35 @@ extension UIViewController {
     }
 }
 
+extension UINavigationController: UIGestureRecognizerDelegate {
+    
+    func setNavigationBarAttributes(title: String, backButtonImage: UIImage?, rightButtonImage: UIImage? = nil, rightButtonTarget: Any? = nil, rightButtonAction: Selector? = nil) {
+        // Set the title with custom font
+        let titleLabel = UILabel()
+        titleLabel.text = title
+        titleLabel.font = UIFont(name: "Outfit-Medium", size: 24.0)
+        titleLabel.sizeToFit()
+        self.navigationBar.topItem?.titleView = titleLabel
+        
+        // Set back button image
+        if let backImage = backButtonImage {
+            let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(backButtonTapped))
+            self.navigationBar.topItem?.leftBarButtonItem = backButton
+            
+        }
+        
+        // Set right button image and action if provided
+        if let rightImage = rightButtonImage, let action = rightButtonAction {
+            let rightButton = UIBarButtonItem(image: rightImage, style: .plain, target: rightButtonTarget, action: action)
+            self.navigationBar.topItem?.rightBarButtonItem = rightButton
+        }
+    }
+    
+    @objc func backButtonTapped() {
+        self.popViewController(animated: true)
+    }
+    
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+           return true
+       }
+}

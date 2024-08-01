@@ -14,7 +14,7 @@ struct Key {
 
 struct Color {
     struct Placeholder {
-        static let light = UIColor.blue
-        static let dark = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
+        static let light = UIColor.gray
+        static let dark = UIColor.lightGray
     }
 }
