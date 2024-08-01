@@ -43,7 +43,9 @@ class TherapistLoginViewModel {
                             } else {
                                 print("Failed to convert UIImage to Data")
                             }
-                            completion(true)
+                            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+                                completion(true)
+                            }
                         }
                     }
                 } else {
@@ -81,7 +83,7 @@ class TherapistLoginViewModel {
                     case 2:
                         av.removeFromSuperview()
                         print("this is an error")
-                        vc.displayAlert(title: "Alert!", msg: "Something went wrong", ok: "Ok")
+                        vc.displayAlert(title: "Alert!", msg: "Username or password is wrong", ok: "Ok")
                         break
                     default:
                         av.removeFromSuperview()

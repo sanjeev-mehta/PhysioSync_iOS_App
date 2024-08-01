@@ -1247,6 +1247,7 @@
                         </connections>
                     </tabBarItem>
                     <connections>
+                        <outlet property="shadowView" destination="11Y-Nj-crD" id="Otg-fR-9Tv"/>
                         <outletCollection property="lbls" destination="2SM-hN-oc6" collectionClass="NSMutableArray" id="0eM-j0-Aok"/>
                         <outletCollection property="lbls" destination="QpA-7e-gm2" collectionClass="NSMutableArray" id="JVv-4C-gRp"/>
                         <outletCollection property="lbls" destination="HFG-PE-E82" collectionClass="NSMutableArray" id="xg9-7h-nZH"/>

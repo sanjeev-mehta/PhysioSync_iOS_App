@@ -186,13 +186,15 @@ class AddNewExerciseVC: UIViewController {
             self.displayAlert(title: "Warning", msg: "Please select atleast 1 category", ok: "Ok")
         } else {
             if isVideoChange {
+                var av = UIView()
+                av = Loader.start(view: self.view)
                 awsHelper.uploadVideoFile(url: self.videoUrl!,fileName: videoFileNameLbl.text!) { progress in
                     print("Upload Progress: \(progress)%")
                 } completion: { success, videoUrl, err in
                     if success {
                         print("Upload successful, video URL: \(String(describing: videoUrl))")
                         DispatchQueue.main.async {
-                            self.uploadThumbnailImage(videoUrl: videoUrl ?? "")
+                            self.uploadThumbnailImage(videoUrl: videoUrl ?? "", loaderView: av)
                         }
                     } else {
                         print("Upload failed, error: \(String(describing: err?.localizedDescription))")
@@ -204,7 +206,7 @@ class AddNewExerciseVC: UIViewController {
         }
     }
     
-    func uploadThumbnailImage(videoUrl: String) {
+    func uploadThumbnailImage(videoUrl: String, loaderView: UIView) {
         self.getThumbnailImageFromVideoUrl(url: URL(string: videoUrl)!) { [weak self] img in
             guard let self = self, let thumbnailImage = img else {
                 print("Failed to generate thumbnail image")
@@ -220,6 +222,7 @@ class AddNewExerciseVC: UIViewController {
                     if success {
                         print("Image uploaded successfully. URL: \(url ?? "No URL")")
                         DispatchQueue.main.async {
+                            loaderView.removeFromSuperview()
                             self.callApi(url: videoUrl, imgUrl: url ?? "")
                         }
                     } else {

@@ -10,7 +10,8 @@ import Charts
 
 struct StepsChartView: View {
     @ObservedObject var healthKitManager = HealthKitManager()
-    
+    @State private var chartColor: Color = Color(red: 31/255, green: 89/255, blue: 218/255)
+
      var body: some View {
          VStack(alignment: .leading) {
              Text("Steps Count Over Time")
@@ -25,8 +26,7 @@ struct StepsChartView: View {
                         yStart: .value("Steps", 0),
                         yEnd: .value("Steps", dataPoint.steps)
                      )
-                     .clipShape(Capsule())
-                     .foregroundStyle(.linearGradient(colors: [.green, .green.opacity(0.1)], startPoint: .bottom, endPoint: .top))
+                     .foregroundStyle(chartColor.gradient)
                  }
                  .accessibilityLabel(dataPoint.weekday.formatted(date: .complete, time: .standard))
                  .accessibilityValue("\(dataPoint.steps) steps")
@@ -47,7 +47,7 @@ struct StepsChartView: View {
              .background(
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color(UIColor.systemBackground))
-                    .shadow(color: .blue.opacity(0.6), radius: 5, x: 0, y: 5)
+                    .shadow(color: .blue.opacity(0.3), radius: 5, x: 0, y: 5)
                     .padding(.horizontal, 10)
              )
              Spacer()

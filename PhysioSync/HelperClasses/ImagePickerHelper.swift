@@ -99,14 +99,12 @@ class ImagePickerHelper: NSObject, UIImagePickerControllerDelegate, UINavigation
             
             // Debugging: Print the video URL and check file existence
             let videoURL = urlAsset.url
-            print("Selected video URL: \(videoURL)")
+           // print("Selected video URL: \(videoURL)")
             
             let fileManager = FileManager.default
             if fileManager.fileExists(atPath: videoURL.path) {
-                print("File exists at path: \(videoURL.path)")
                 completion(videoURL)
             } else {
-                print("File does not exist at path: \(videoURL.path)")
                 completion(nil)
             }
         }

@@ -102,12 +102,14 @@ class CreateScheduleVC: UIViewController {
             for i in exerciseModel {
                 ids.append(i.id)
             }
-            let parm: [String: Any] = ["exercise_ids": ids, "patient_id": patientId, "start_date": fromDateLbl.text!, "end_date": toDateLbl.text!, "status": "assigned"]
+           
             if isEdit {
+                let parm: [String: Any] = ["exercise_ids": ids, "start_date": fromDateLbl.text!, "end_date": toDateLbl.text!]
                 vm.updateExercise(self, id: id ,with: parm) { _ in
                     self.dismissOrPopViewController()
                 }
             } else {
+                let parm: [String: Any] = ["exercise_ids": ids, "patient_id": patientId, "start_date": fromDateLbl.text!, "end_date": toDateLbl.text!]
                 vm.callAssignExercise(self, with: parm) { status in
                     self.dismissOrPopViewController()
                 }
@@ -188,17 +190,14 @@ extension CreateScheduleVC: UICollectionViewDelegate, UICollectionViewDataSource
 
 extension CreateScheduleVC: SelectedExerciseData {
     func selectedExerciseData(data: [SingleExerciseModel]) {
-        for i in data {
-            if exerciseModel.count == 0 {
-                self.exerciseModel.append(i)
-            } else {
-                for v in exerciseModel {
-                    if i.id != v.id {
-                        self.exerciseModel.append(i)
-                    }
-                }
-            }
-        }
-        self.collectionView.reloadData()
+        var existingIds = Set(exerciseModel.map { $0.id })
+           
+           for i in data {
+               if !existingIds.contains(i.id) {
+                   self.exerciseModel.append(i)
+                   existingIds.insert(i.id)
+               }
+           }
+           self.collectionView.reloadData()
     }
 }

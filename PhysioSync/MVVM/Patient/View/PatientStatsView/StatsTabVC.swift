@@ -11,6 +11,7 @@ import Combine
 class StatsTabVC: UIViewController {
 
     @IBOutlet var lbls: [UILabel]!
+    @IBOutlet var shadowView: UIView!
     
     private var healthKitManager = HealthKitManager()
     private var cancellables: Set<AnyCancellable> = []
@@ -18,6 +19,7 @@ class StatsTabVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBindings()
+        self.shadowView.addShadow()
     }
     
     private func setupBindings() {

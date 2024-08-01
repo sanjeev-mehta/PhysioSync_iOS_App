@@ -25,7 +25,7 @@ class TherapistLoginVC: UIViewController {
         super.viewDidLoad()
 
         emailTf.text = "sgurmeet392@gmail.com"//"gsingh391@mylangara.ca"
-        passwordTf.text = "123456"
+        passwordTf.text = "1234567"
         setUI()
     }
     
