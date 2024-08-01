@@ -35,7 +35,7 @@ class TherapistPatientProfileStep3ViewModel {
     
     // MARK: - Update Patient
     
-    func updatePatient(vc: UIViewController,parm: [String: Any], isHeader: Bool = true ,id: String,completion: @escaping(Bool) -> ()) {
+    func updatePatient(vc: UIViewController,parm: [String: Any], isHeader: Bool = false ,id: String,completion: @escaping(Bool) -> ()) {
         var url = ""
         if isHeader {
             url = API.Endpoints.updatePatients + "/\(id)"

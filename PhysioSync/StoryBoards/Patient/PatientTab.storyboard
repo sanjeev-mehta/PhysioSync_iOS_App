@@ -1932,14 +1932,6 @@
             <point key="canvasLocation" x="35.877862595419849" y="-225.35211267605635"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="cjA-4F-a0a">
-            <size key="intrinsicContentSize" width="-5" height="4"/>
-        </designable>
-        <designable name="npu-m0-MDU">
-            <size key="intrinsicContentSize" width="-5" height="4"/>
-        </designable>
-    </designables>
     <resources>
         <image name="Forward" width="24" height="24.333333969116211"/>
         <image name="Group 22" width="393" height="150"/>
