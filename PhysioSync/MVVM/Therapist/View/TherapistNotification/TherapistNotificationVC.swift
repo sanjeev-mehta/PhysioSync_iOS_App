@@ -46,12 +46,7 @@ class TherapistNotificationVC: UIViewController {
     
     private func setCustomHeader() {
         let backImage = UIImage(named: "backArrow")!.withRenderingMode(.alwaysOriginal)
-        let rightImage = UIImage(named: "editProfile")!.withRenderingMode(.alwaysOriginal)
-        self.navigationController?.setNavigationBarAttributes(title: "Patient Info", backButtonImage: backImage, rightButtonImage: rightImage, rightButtonTarget: self, rightButtonAction: #selector(rightButtonAction))
-    }
-    
-    @objc func rightButtonAction() {
-        print("Right button tapped")
+        self.navigationController?.setNavigationBarAttributes(title: "Patient Info", backButtonImage: backImage)
     }
     
     func setNotificationView() {

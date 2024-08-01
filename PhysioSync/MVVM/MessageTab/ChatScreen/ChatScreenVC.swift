@@ -56,7 +56,8 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             self.backBtn.isHidden = true
             self.backImgVW.isHidden = true
             chatVM.currentUser = currentUserId
-            timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+            timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
+                guard let self = self else { return }
                 PatientHomeVC.socketHandler.fetchPreviousMessage(self.currentUserId, self.recieverId)
             }
         } else {
@@ -65,7 +66,8 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             self.nameLbl.text = name
             self.profileImg.setImage(with: profileImgLink)
             self.isPatient = false
-            timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+            timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
+                guard let self = self else { return }
                 TherapistHomeVC.socketHandler.fetchPreviousMessage(self.currentUserId, self.recieverId)
             }
         }
@@ -75,11 +77,22 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         self.timer?.invalidate()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if self.chatVM.chatArr.count != 0 {
+            if self.isScrollFirstTime == 0 {
+                self.isScrollFirstTime = 1
+                self.tableView.scrollToRow(at: IndexPath(row: self.chatVM.chatArr.count - 1, section: 0), at: .bottom, animated: false)
+            }
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         chatVM.readMessage(isPatienSide: isPatient)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        self.isScrollFirstTime = 0
+        self.timer?.invalidate()
         self.videoPlayer?.pause()
     }
     
@@ -326,6 +339,12 @@ extension ChatScreenVC: SocketIOHandlerDelegate {
     
     func didReceiveMessage() {
         self.tableView.reloadData()
+        if self.chatVM.chatArr.count != 0 {
+            if self.isScrollFirstTime == 0 {
+                self.isScrollFirstTime = 1
+                self.tableView.scrollToRow(at: IndexPath(row: self.chatVM.chatArr.count - 1, section: 0), at: .bottom, animated: false)
+            }
+        }
         chatVM.readMessage(isPatienSide: isPatient)
     }
     

@@ -75,6 +75,7 @@ class PatientHomeViewModel {
                     print(err?.localizedDescription)
                 } else {
                     timer?.invalidate()
+                    timer = nil
                     print("Submitted Apple Watch Data")
                 }
             }

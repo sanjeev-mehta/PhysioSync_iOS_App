@@ -91,10 +91,6 @@ class TherapistHomeVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func setUI() {
-//        for i in shadowViews {
-//            i.layer.cornerRadius = 12
-//            i.addShadow()
-//        }
         patientVM.getPatient(vc: self) { _ in
             DispatchQueue.main.async {
                 self.patientListTableView.reloadData()
@@ -196,18 +192,33 @@ class TherapistHomeVC: UIViewController, UIGestureRecognizerDelegate {
         TherapistHomeVC.socketHandler.delegate = self
         timer?.invalidate()
         self.isLoading = false
-        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+
+        // Use a weak reference to self inside the timer block to avoid retain cycles
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            
             if UserDefaults.standard.getUsernameToken() != "" {
                 TherapistHomeVC.socketHandler.fetchAllPatient(id: UserDefaults.standard.getTherapistId())
                 self.messageTableView.reloadData()
                 var unreadCount = 0
-                for i in self.messageVM.model {
-                    unreadCount += i.unreadCount
+                for message in self.messageVM.model {
+                    unreadCount += message.unreadCount
                 }
                 self.messageCountLbl.text = "\(unreadCount)"
                 self.patientCountLbl.text = "\(self.patientVM.getCount())"
             }
         }
+    }
+
+    // Ensure timer is invalidated when the view controller is deinitialized
+    deinit {
+        timer?.invalidate()
+        TherapistHomeVC.socketHandler.disconnect()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        timer?.invalidate()
+        timer = nil
     }
     
     // MARK: - Buttons Actions

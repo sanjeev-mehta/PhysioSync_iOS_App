@@ -91,6 +91,11 @@ class PatientHomeVC: UIViewController, UNUserNotificationCenterDelegate, UIGestu
         }
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        timer?.invalidate()
+        timer = nil
+    }
+    
     func scheduleNotification() {
         if let timeString = UserDefaults.standard.value(forKey: "reminder_time") as? String {
             guard let dateComponents = parseTimeString(timeString) else {

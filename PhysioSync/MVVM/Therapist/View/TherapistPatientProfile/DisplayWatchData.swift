@@ -10,28 +10,44 @@ import Charts
 
 struct CaloriesChartView: View {
     let caloriesData: [Calories]
-        
+    @State private var chartColor: Color = Color(red: 31/255, green: 89/255, blue: 218/255)
+
     var body: some View {
         VStack(alignment: .leading) {
             Text("Calories Burned")
-                .font(.title)
+                .font(.custom("Outfit-Regular", size: 20))
                 .fontWeight(.bold)
                 .padding()
             
-            Chart(caloriesData, id: \.id) { dataPoint in
+            Chart(caloriesData.sorted { $0.formattedDate! < $1.formattedDate! }, id: \.id) { dataPoint in
                 Plot {
                     AreaMark(
-                        x: .value("Day", dataPoint.day),
+                        x: .value("Day", dataPoint.formattedDate!, unit: .day),
                         y: .value("Calories", dataPoint.values.reduce(0, +))
                     )
-                    .foregroundStyle(.linearGradient(colors: [.blue, .blue.opacity(0.1)], startPoint: .bottom, endPoint: .top))
+                    .foregroundStyle(chartColor.gradient)
+                    
+                    LineMark(
+                        x: .value("Day", dataPoint.formattedDate!, unit: .day),
+                        y: .value("Calories", dataPoint.values.reduce(0, +))
+                    )
+                    .foregroundStyle(.linearGradient(colors: [Color(red: 31/255, green: 89/255, blue: 218/255), Color(red: 31/255, green: 89/255, blue: 218/255).opacity(0.7)], startPoint: .bottom, endPoint: .top))
+                    .lineStyle(StrokeStyle(lineWidth: 3))
+                    
+                    PointMark(
+                        x: .value("Day", dataPoint.formattedDate!, unit: .day),
+                        y: .value("Calories", dataPoint.values.reduce(0, +))
+                    )
+                    .foregroundStyle(Color(red: 31/255, green: 89/255, blue: 218/255))
+                    .symbolSize(30)
+                    .accessibilityLabel("Calories Burned: \(Int(dataPoint.values.reduce(0, +)))")
                 }
             }
             .chartXAxis {
-                AxisMarks(values: .init(caloriesData.map(\.day))) { _ in
+                AxisMarks(values: .init(caloriesData.compactMap { $0.formattedDate })) { value in
                     AxisTick()
                     AxisGridLine()
-                    AxisValueLabel()
+                    AxisValueLabel(format: .dateTime.weekday(.abbreviated))
                 }
             }
             .chartYAxis(.automatic)
@@ -40,7 +56,7 @@ struct CaloriesChartView: View {
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color(UIColor.systemBackground))
-                    .shadow(color: .blue.opacity(0.6), radius: 5, x: 0, y: 5)
+                    .shadow(color: chartColor.opacity(0.3), radius: 5, x: 0, y: 5)
                     .padding(.horizontal, 10)
             )
         }
@@ -52,12 +68,12 @@ struct HeartRateChartView: View {
     let heartRateData: [HeartRate]
         
     @State private var barWidth = 15.0
-    @State private var chartColor: Color = .red
-    
+    @State private var chartColor: Color = Color(red: 31/255, green: 89/255, blue: 218/255)
+
     var body: some View {
         VStack(alignment: .leading) {
             Text("Heart Rate")
-                .font(.largeTitle)
+                .font(.custom("Outfit-Regular", size: 20))
                 .bold()
                 .padding([.top, .leading])
             chart
@@ -66,7 +82,7 @@ struct HeartRateChartView: View {
                 .background(
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color(UIColor.systemBackground))
-                        .shadow(color: .blue.opacity(0.6), radius: 5, x: 0, y: 5)
+                        .shadow(color: chartColor.opacity(0.3), radius: 5, x: 0, y: 5)
                         .padding(.horizontal, 10)
                 )
         }
@@ -96,7 +112,7 @@ struct HeartRateChartView: View {
                         Text("Min \n\(dataPoint.bpmMinimum)")
                             .font(.callout)
                             .fontWeight(.bold)
-                            .foregroundColor(.red)
+                            .foregroundColor(chartColor)
                     }
                 }
                 
@@ -112,7 +128,7 @@ struct HeartRateChartView: View {
                         Text("Max \n\(dataPoint.bpmMaximum)")
                             .font(.callout)
                             .fontWeight(.bold)
-                            .foregroundColor(.red)
+                            .foregroundColor(chartColor)
                     }
                 }
                 
@@ -137,7 +153,8 @@ struct HeartRateChartView: View {
 
 struct SleepChartView: View {
     @Binding var animatedData: [SleepData]
-       
+    @State private var chartColor: Color = Color(red: 31/255, green: 89/255, blue: 218/255)
+
        let categoryColors: [String: [Color]] = [
            "Awake": [Color.red, Color.orange],
            "REM": [Color.purple, Color.pink],
@@ -156,7 +173,7 @@ struct SleepChartView: View {
        var body: some View {
            VStack(alignment: .leading) {
                Text("Sleep Analysis")
-                   .font(.largeTitle)
+                   .font(.custom("Outfit-Regular", size: 20))
                    .bold()
                    .padding([.top, .leading])
                
@@ -200,7 +217,7 @@ struct SleepChartView: View {
                .background(
                    RoundedRectangle(cornerRadius: 10)
                        .fill(Color(UIColor.systemBackground))
-                       .shadow(color: .blue.opacity(0.6), radius: 5, x: 0, y: 5)
+                       .shadow(color: chartColor.opacity(0.6), radius: 5, x: 0, y: 5)
                )
            }
            .padding()
@@ -210,30 +227,30 @@ struct SleepChartView: View {
 
 struct StepCountChartView: View {
     let stepCountData: [StepCount]
+    @State private var chartColor: Color = Color(red: 31/255, green: 89/255, blue: 218/255)
 
     var body: some View {
         VStack(alignment: .leading) {
             Text("Step Count")
-                .font(.title)
+                .font(.custom("Outfit-Regular", size: 20))
                 .fontWeight(.bold)
                 .padding()
 
-            Chart(stepCountData, id: \.id) { dataPoint in
+            Chart(stepCountData.sorted { $0.formattedDate! < $1.formattedDate! }, id: \.id) { dataPoint in
                 Plot {
                     BarMark(
-                        x: .value("Day", dataPoint.day),
+                        x: .value("Day", dataPoint.formattedDate!, unit: .day),
                         yStart: .value("Steps", 0),
                         yEnd: .value("Steps", dataPoint.steps)
                     )
-                    .clipShape(Capsule())
-                    .foregroundStyle(.linearGradient(colors: [.green, .green.opacity(0.1)], startPoint: .bottom, endPoint: .top))
+                    .foregroundStyle(.linearGradient(colors: [chartColor, chartColor.opacity(0.5)], startPoint: .bottom, endPoint: .top))
                 }
             }
             .chartXAxis {
-                AxisMarks(values: .init(stepCountData.map(\.day))) { _ in
+                AxisMarks(values: .init(stepCountData.compactMap { $0.formattedDate })) { value in
                     AxisTick()
                     AxisGridLine()
-                    AxisValueLabel()
+                    AxisValueLabel(format: .dateTime.weekday(.abbreviated))
                 }
             }
             .chartYAxis(.automatic)
@@ -242,7 +259,7 @@ struct StepCountChartView: View {
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color(UIColor.systemBackground))
-                    .shadow(color: .blue.opacity(0.6), radius: 5, x: 0, y: 5)
+                    .shadow(color: chartColor.opacity(0.6), radius: 5, x: 0, y: 5)
                     .padding(.horizontal, 10)
             )
         }
@@ -252,19 +269,18 @@ struct StepCountChartView: View {
 struct TherapisContentView: View {
     let caloriesData: [Calories]
     let heartRateData: [HeartRate]
-    let sleepData: [SleepData] // Static sleep data
+    let sleepData: [SleepData]
     let stepCountData: [StepCount]
     
     var body: some View {
         NavigationView {
             ScrollView {
                     CaloriesChartView(caloriesData: caloriesData)
-                        .padding()
                     
                     HeartRateChartView(heartRateData: heartRateData)
                         .padding()
                     
-                    SleepChartView(animatedData: .constant(sleepData)) // Use static sleep data here
+                    SleepChartView(animatedData: .constant(sleepData))
                         .padding()
                     
                     StepCountChartView(stepCountData: stepCountData)
