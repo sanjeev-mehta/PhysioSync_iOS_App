@@ -29,7 +29,7 @@ class SplashVC: UIViewController {
         player = AVPlayer(url: url)
         playerViewController = AVPlayerViewController()
         playerViewController?.player = player
-        
+        playerViewController?.player?.isMuted = true
         // Remove playback controls
         playerViewController?.showsPlaybackControls = false
         

@@ -51,9 +51,7 @@ class TherapistPatientProfileVC: UIViewController {
         callApi()
         self.setHeader("Patient Profile", isRightBtn: false) {
             self.dismissOrPopViewController()
-        } rightButtonAction: {
-            
-        }
+        } rightButtonAction: {}
         self.scrollView.contentOffset.y = -40
     }
     
