@@ -86,10 +86,10 @@ class SingleExerciseVC: UIViewController, UIContextMenuInteractionDelegate {
     
     //MARK: - Buttons Action
     @IBAction func addExercseBtnActn(_ sender: UIButton) {
-        var data = [SingleExerciseModel2]()
+        var data = [SingleExerciseModel]()
         for i in self.vm.exerciseModel {
             if i.isSelected {
-                data.append(i)
+                data.append(SingleExerciseModel(videoTitle: i.videoTitle, categoryName: i.categoryName, categoryId: i.categoryId, description: i.description, id: i.id, videoUrl: i.videoUrl, therapistId: i.therapistId, version: i.version, isSelected: i.isSelected, videoThumbnail: i.video_thumbnail, isAssigned: i.isAssigned, isAwaitingReview: i.isAwaitingReview))
             }
         }
         delegate?.selectedExerciseData(data: data)
@@ -126,12 +126,9 @@ extension SingleExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource
         cell.imgVW.layer.cornerRadius = 12
         cell.imgVW.layer.masksToBounds = true
         cell.imgVW.contentMode = .scaleToFill
-        cell.imgVW.addShadow()
-        if indexPath.item != 0 {
-            let interaction = UIContextMenuInteraction(delegate: self)
-            cell.addInteraction(interaction)
-            cell.tag = indexPath.row
-        }
+        let interaction = UIContextMenuInteraction(delegate: self)
+        cell.addInteraction(interaction)
+        cell.tag = indexPath.item
         return cell
     }
     
@@ -150,8 +147,7 @@ extension SingleExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         // MARK: - Initial state for the animation
-        cell.setTemplateWithSubviews(isLoading, color: Colors.primaryClr, animate: true, viewBackgroundColor: Colors.darkGray)
-        cell.alpha = 0
+        cell.setTemplateWithSubviews(isLoading, color: Colors.darkGray, animate: true, viewBackgroundColor: .lightGray)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -203,9 +199,13 @@ extension SingleExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource
                 let row = cell.tag
                 index = IndexPath(row: row, section: 0)
             }
-            
+            interaction.view?.hapticFeedback(style: .rigid)
             guard let validIndexPath = index else {
                 print("Invalid index path")
+                return UIMenu()
+            }
+            
+            if validIndexPath.row == 0 {
                 return UIMenu()
             }
             
@@ -260,5 +260,5 @@ extension SingleExerciseVC: UICollectionViewDelegate, UICollectionViewDataSource
 }
 
 protocol SelectedExerciseData {
-    func selectedExerciseData(data: [SingleExerciseModel2])
+    func selectedExerciseData(data: [SingleExerciseModel])
 }

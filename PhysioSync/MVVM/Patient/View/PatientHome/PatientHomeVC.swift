@@ -8,7 +8,7 @@
 import UIKit
 import CHIPageControl
 
-class PatientHomeVC: UIViewController, UNUserNotificationCenterDelegate {
+class PatientHomeVC: UIViewController, UNUserNotificationCenterDelegate, UIGestureRecognizerDelegate {
     
     // MARK: -  IBOutlets
     @IBOutlet weak var sessionCollectionView: UICollectionView!
@@ -22,6 +22,7 @@ class PatientHomeVC: UIViewController, UNUserNotificationCenterDelegate {
     @IBOutlet weak var messageCountLbl: UILabel!
     @IBOutlet weak var therapistNameLbl: UILabel!
     @IBOutlet weak var todaysSessionLbl: UILabel!
+    @IBOutlet weak var notTaskImgView: UIImageView!
     
     // MARK: -  Variable
     var cellCount = 4
@@ -51,7 +52,13 @@ class PatientHomeVC: UIViewController, UNUserNotificationCenterDelegate {
             chatVM.currentUser = UserDefaults.standard.getPatientLoginId()
         }
         socketConnecting()
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
+    
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+           return true
+       }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -82,6 +89,11 @@ class PatientHomeVC: UIViewController, UNUserNotificationCenterDelegate {
                 }
             }
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        timer?.invalidate()
+        timer = nil
     }
     
     func scheduleNotification() {
@@ -193,15 +205,20 @@ class PatientHomeVC: UIViewController, UNUserNotificationCenterDelegate {
 extension PatientHomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if isLoading {
+            notTaskImgView.isHidden = true
             return 1
         } else {
             if collectionView == sessionCollectionView {
                 return vm.assignExerciseCount(.assigned)
             } else {
+                if vm.assignExerciseCount(.completed) == 0 {
+                    notTaskImgView.isHidden = false
+                } else {
+                    notTaskImgView.isHidden = true
+                }
                 return vm.assignExerciseCount(.completed)
             }
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -246,7 +263,7 @@ extension PatientHomeVC: UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        cell.setTemplateWithSubviews(isLoading, color: Colors.primaryClr, animate: true, viewBackgroundColor: Colors.primarySubtleClr)
+        cell.setTemplateWithSubviews(isLoading, color: Colors.darkGray, animate: true, viewBackgroundColor: .lightGray)
         cell.alpha = 0
         cell.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         

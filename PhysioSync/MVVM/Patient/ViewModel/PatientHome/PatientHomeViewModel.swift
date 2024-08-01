@@ -16,6 +16,7 @@ class PatientHomeViewModel {
     var completedExercise = [SingleExerciseModel]()
     private let healthKitManager = HealthKitManager()
     var timer: Timer?
+    var assignmentID = ""
     
     func getAssignExercise(_ vc: UIViewController, completion: @escaping(Bool) -> ()) {
         let userId = UserDefaults.standard.getPatientLoginId()
@@ -29,12 +30,18 @@ class PatientHomeViewModel {
                 self.exerciseAssign.removeAll()
                 self.completedExercise.removeAll()
                 if let model = self.model {
+                    if model.data?.exercise.count != 0 {
+                        self.assignmentID = model.data?.exercise[0].Id ?? ""
+                    }
+                    
                     if model.success ?? false {
-                        for i in model.data!.exercise[0].exerciseIds {
-                            if i.isAssigned == false {
-                                self.exerciseAssign.append(i)
-                            } else {
-                                self.completedExercise.append(i)
+                        if model.data?.exercise.count != 0 {
+                            for i in model.data!.exercise[0].exerciseIds {
+                                if i.status == "assigned" {
+                                    self.exerciseAssign.append(i)
+                                } else {
+                                    self.completedExercise.append(i)
+                                }
                             }
                         }
                         completion(true)
@@ -62,12 +69,13 @@ class PatientHomeViewModel {
                 "sleep": healthKitManager.formattedSleepData,
                 "stepCount": healthKitManager.formattedStepCountData
             ]
-            print(params)
+           // print(params)
             apiHelper.hitApiwithoutloader(parm: params, url: url) { [self] json, err in
                 if err != nil {
                     print(err?.localizedDescription)
                 } else {
                     timer?.invalidate()
+                    timer = nil
                     print("Submitted Apple Watch Data")
                 }
             }

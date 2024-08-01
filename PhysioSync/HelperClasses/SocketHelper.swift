@@ -36,7 +36,7 @@ class SocketIOHandler {
     
     private func addHandlers() {
         socket.on(clientEvent: .connect) { [weak self] data, ack in
-            print("Socket connected")
+           // print("Socket connected")
             guard let self = self else { return }
             // Example event emission
             if UserDefaults.standard.getUsernameToken() == "" {
@@ -61,7 +61,6 @@ class SocketIOHandler {
                let message = messageData["message"] as? String,
                let messageId = messageData["id"] as? String {
                 self?.messageID.append(messageId)
-                print("Received message from \(sender): \(message) \(messageId)")
             }
             let swifty = JSON(data)
             self?.delegate?.didReceiveMessage()

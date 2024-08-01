@@ -19,6 +19,7 @@ class TherapistHomeViewModel {
             if err != nil {
                 vc.displayAlert(title: "Alert!", msg: "something went wrong", ok: "Ok")
             } else {
+                print(json)
                 self.notificationModel = TherapistNotificationModel(json)
                 if let model = self.notificationModel {
                     if model.success {
@@ -35,7 +36,7 @@ class TherapistHomeViewModel {
     }
     
     func acknowledgeExercise(vc: UIViewController, id: String,parm: [String: Any], completion: @escaping (Bool) -> ()) {
-        let url = API.Endpoints.updateAssignExercise + "\(id)"
+        let url = API.baseURL + "update-completed-status/" + "\(id)"
         apiHelper.hitApi(view: vc, method: .put, parm: parm, url: url, isHeader: true, isLoader: true) { json, err in
             if err != nil {
                 vc.displayAlert(title: "Alert!", msg: "something went wrong", ok: "Ok")
@@ -51,17 +52,24 @@ class TherapistHomeViewModel {
     
     func setCollectionCell(_ cell: TherapistHomeCVC, _ index: Int, vc: UIViewController) {
         if let model = self.notificationModel {
-            let data = model.data[index]
-            cell.daysLbl.text = data.days
-            vc.getThumbnailImageFromVideoUrl(url: URL(string: data.patientVideoUrl)!) { image in
-                cell.imgView.image = image
+            let data = model.data[0].exerciseIds[index]
+            cell.daysLbl.text = "Today"
+            if let url = URL(string: data.patient_video_url) {
+                vc.getThumbnailImageFromVideoUrl(url: url) { image in
+                    cell.imgView.image = image
+                }
             }
-            cell.profileImgView.setImage(with: data.patientId.profilePhoto)
+            cell.profileImgView.setImage(with: model.data[0].patientId.profilePhoto)
         }
     }
     
     func getCount() -> Int {
-        return notificationModel?.data.count ?? 0
+        if notificationModel?.data.count != 0 {
+            return notificationModel?.data[0].exerciseIds.count ?? 0
+        } else {
+            return 0
+        }
+        
     }
     
 }

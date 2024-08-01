@@ -41,6 +41,7 @@ class ExerciseVC: UIViewController {
     var exercise = ""
     var id = ""
     var isFirstTime = false
+    let homeVM = PatientHomeViewModel.shareInstance
     
     enum ExerciseStage {
         case still, right, left, mid, up
@@ -59,7 +60,7 @@ class ExerciseVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        modelType = .neckRotation
         setUpVideoPreview()
         videoCapture.predictor.delegate = self
         videoCapture.delegate = self
@@ -101,31 +102,34 @@ class ExerciseVC: UIViewController {
     
     func uploadRecordedVideo(url: URL) {
         self.showVideoUploadView()
-        let timestamp = Int(Date().timeIntervalSince1970)
-        AWSHelper.shared.uploadVideoFile(url: url, fileName: "\(timestamp)") { progress in
-            print(progress)
-            let progres = progress / 100.0
-            self.progressBar.setProgress(progres, animated: true)
-            self.progessLbl.text = "SENDING VIDEO...(\(Int(progress))%"
-        } completion: { status, url, err in
-            if err != nil {
-                print(status, err)
-                DispatchQueue.main.async {
-                    self.displayAlert(title: "Alert!", msg: err?.localizedDescription, ok: "Ok")
-                }
-            } else {
-                print(url)
-                if let url = url {
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+            let timestamp = Int(Date().timeIntervalSince1970)
+            print("Uploaded Temp Url", url)
+            AWSHelper.shared.uploadVideoFile(url: url, fileName: "\(timestamp).mp4") { progress in
+                print(progress)
+                let progres = progress / 100.0
+                self.progressBar.setProgress(progres, animated: true)
+                self.progessLbl.text = "SENDING VIDEO...(\(Int(progress))%)"
+            } completion: { status, url, err in
+                if err != nil {
+                    print(status, err)
                     DispatchQueue.main.async {
-                        self.callApi(url: url, completion: { _ in
-                            DispatchQueue.main.async {
-                                self.playAnimation()
-                                Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
-                                    self.popController()
+                        self.displayAlert(title: "Alert!", msg: err?.localizedDescription, ok: "Ok")
+                    }
+                } else {
+                    print(url)
+                    if let url = url {
+                        DispatchQueue.main.async {
+                            self.callApi(url: url, completion: { _ in
+                                DispatchQueue.main.async {
+                                    self.playAnimation()
+                                    Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
+                                        self.popController()
+                                    }
+                                    
                                 }
-                                
-                            }
-                        })
+                            })
+                        }
                     }
                 }
             }
@@ -137,9 +141,10 @@ class ExerciseVC: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         let todayStr = formatter.string(from: today)
-        let parm = ["status": "completed", "patient_video_url": url, "patient_exercise_completion_date_time": todayStr]
+       // let parm = ["status": "completed", "patient_video_url": url, "patient_exercise_completion_date_time": todayStr]
+        let parm = ["exercise_ids": [id], "patient_video_url": url, "patient_exercise_completion_date_time": todayStr] as [String : Any]
         
-        vm.updateAssignExercise(self, id: id, parm: parm) { _ in
+        vm.updateAssignExercise(self, id: homeVM.assignmentID, parm: parm) { _ in
             completion(true)
         }
     }
@@ -204,6 +209,7 @@ class ExerciseVC: UIViewController {
         self.repLbl.text = "\(repCount)"
         self.timeTakenLbl.text =  timeLbl.text ?? ""
         self.videoUploadingView.isHidden = false
+        self.repsCompletedLbl.text = "\(repCount)"
         UIView.animate(withDuration: 0.5) {
             self.leftView.transform = CGAffineTransformIdentity
             self.rightView.transform = CGAffineTransformIdentity
@@ -281,7 +287,9 @@ extension ExerciseVC: PredictorDelegate {
     func predictor(_ predictor: Predictor, didLabelAction action: String, with confidence: Double) {
         guard confidence > 0.85 else { return }
         print("=====>>>>>",action, confidence)
-        leftRightRepCount(action: action)
+        if videoCapture.startPredicting {
+            leftRightRepCount(action: action)
+        }
     }
     
     func predictor(_ predictor: Predictor, didFindNewRecognizedPoints points: [CGPoint]) {

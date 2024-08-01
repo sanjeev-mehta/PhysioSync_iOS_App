@@ -17,7 +17,7 @@ class CreateScheduleVC: UIViewController {
     @IBOutlet weak var addMoreExerciseBtn: UIButton!
     
     //MARK: - Variables
-    var exerciseModel = [SingleExerciseModel2]()
+    var exerciseModel = [SingleExerciseModel]()
     var patientId = ""
     let vm = CreateScheduleViewModel.shareInstance
     var from: String?
@@ -33,9 +33,7 @@ class CreateScheduleVC: UIViewController {
 
         self.setHeader("Create Schedule", isRightBtn: false) {
             self.dismissOrPopViewController()
-        } rightButtonAction: {
-            
-        }
+        } rightButtonAction: { }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -104,12 +102,14 @@ class CreateScheduleVC: UIViewController {
             for i in exerciseModel {
                 ids.append(i.id)
             }
-            let parm: [String: Any] = ["exercise_ids": ids, "patient_id": patientId, "start_date": fromDateLbl.text!, "end_date": toDateLbl.text!, "status": "assigned"]
+           
             if isEdit {
+                let parm: [String: Any] = ["exercise_ids": ids, "start_date": fromDateLbl.text!, "end_date": toDateLbl.text!]
                 vm.updateExercise(self, id: id ,with: parm) { _ in
                     self.dismissOrPopViewController()
                 }
             } else {
+                let parm: [String: Any] = ["exercise_ids": ids, "patient_id": patientId, "start_date": fromDateLbl.text!, "end_date": toDateLbl.text!]
                 vm.callAssignExercise(self, with: parm) { status in
                     self.dismissOrPopViewController()
                 }
@@ -125,7 +125,11 @@ class CreateScheduleVC: UIViewController {
         if let vc = self.switchController(.exerciseCategoryVC, .therapistTab) as? ExerciseCategoryVC {
             vc.isCreateSchedule = true
             vc.delegate = self
-            vc.selectedData = exerciseModel
+            var arr = [SingleExerciseModel2]()
+            for i in self.exerciseModel {
+                arr.append(SingleExerciseModel2(videoTitle: i.videoTitle, categoryName: i.categoryName, categoryId: i.categoryId, description: i.description, id: i.id, videoUrl: i.videoUrl, therapistId: i.therapistId, version: i.version, videoThumbnail: i.video_thumbnail))
+            }
+            vc.selectedData = arr
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -185,18 +189,15 @@ extension CreateScheduleVC: UICollectionViewDelegate, UICollectionViewDataSource
 }
 
 extension CreateScheduleVC: SelectedExerciseData {
-    func selectedExerciseData(data: [SingleExerciseModel2]) {
-        for i in data {
-            if exerciseModel.count == 0 {
-                self.exerciseModel.append(i)
-            } else {
-                for v in exerciseModel {
-                    if i.id != v.id {
-                        self.exerciseModel.append(i)
-                    }
-                }
-            }
-        }
-        self.collectionView.reloadData()
+    func selectedExerciseData(data: [SingleExerciseModel]) {
+        var existingIds = Set(exerciseModel.map { $0.id })
+           
+           for i in data {
+               if !existingIds.contains(i.id) {
+                   self.exerciseModel.append(i)
+                   existingIds.insert(i.id)
+               }
+           }
+           self.collectionView.reloadData()
     }
 }

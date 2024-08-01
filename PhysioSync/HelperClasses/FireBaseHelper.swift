@@ -93,7 +93,7 @@ class FirebaseHelper {
         FirebaseHelper.shared.signIn(email: email, password: password) { result in
             switch result {
             case .success(let user):
-                print("User signed in: \(user.email ?? "No email")")
+//                print("User signed in: \(user.email ?? "No email")")
                 FirebaseHelper.shared.checkCurrentUser { result in
                     switch result {
                     case .success:

@@ -46,7 +46,7 @@ class TherapistOnboardingVC: UIViewController, CHIBasePageControlDelegate {
     // MARK: - Set Data
     func setData() {
         if isFromPatient {
-            let title1 = createAttributedString("Advanced Machine /nLearning Model", withColors: ["Machine Learning": Colors.primaryClr])
+            let title1 = createAttributedString("Advanced Machine \nLearning Model", withColors: ["Machine Learning": Colors.primaryClr])
             therapistData.append(TherapistOnboardingModel(title: title1, description: "Ensure each rep is counted and performed correctly in real-time with the advanced AI. ", img: "patientOnBoarding-1"))
             let title2 = createAttributedString("Daily \nExercise Routine", withColors: ["Videos": Colors.primaryClr])
             therapistData.append(TherapistOnboardingModel(title: title2, description: "Receive daily personalized exercises with tutorials from your physiotherapist", img: "patientOnBoarding-2"))

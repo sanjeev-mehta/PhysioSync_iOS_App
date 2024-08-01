@@ -86,7 +86,20 @@ class Calories {
     var day = ""
     var values = [Int]()
     var id = ""
-
+    
+    var formattedDate: Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.date(from: day)
+    }
+    
+    var dayOfWeek: String? {
+        guard let date = formattedDate else { return nil }
+        let calendar = Calendar.current
+        let dayOfWeek = calendar.component(.weekday, from: date)
+        return calendar.weekdaySymbols[dayOfWeek - 1]
+    }
+ 
     init(_ json: JSON) {
         day = json["day"].stringValue
         values = json["values"].arrayValue.map { $0.intValue }
@@ -100,12 +113,19 @@ class HeartRate {
     var bpmMinimum = 0
     var bpmMaximum = 0
     var id = ""
-
+    
     var formattedDate: Date? {
-           let dateFormatter = DateFormatter()
-           dateFormatter.dateFormat = "yyyy-MM-dd"
-           return dateFormatter.date(from: day)
-       }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.date(from: day)
+    }
+    
+    var dayOfWeek: String? {
+        guard let date = formattedDate else { return nil }
+        let calendar = Calendar.current
+        let dayOfWeek = calendar.component(.weekday, from: date)
+        return calendar.weekdaySymbols[dayOfWeek - 1]
+    }
     
     init(_ json: JSON) {
         day = json["day"].stringValue
@@ -123,7 +143,20 @@ class Sleep: Identifiable {
     var coreHours: Double = 0.00
     var deepHours: Double = 0.00
     var id = ""
-
+    
+    var formattedDate: Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.date(from: day)
+    }
+    
+    var dayOfWeek: String? {
+        guard let date = formattedDate else { return nil }
+        let calendar = Calendar.current
+        let dayOfWeek = calendar.component(.weekday, from: date)
+        return calendar.weekdaySymbols[dayOfWeek - 1]
+    }
+    
     init(_ json: JSON) {
         day = json["day"].stringValue
         awakeHours = json["awake_hours"].doubleValue
@@ -139,7 +172,20 @@ class StepCount {
     var day = ""
     var steps = 0
     var id = ""
-
+    
+    var formattedDate: Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.date(from: day)
+    }
+    
+    var dayOfWeek: String? {
+        guard let date = formattedDate else { return nil }
+        let calendar = Calendar.current
+        let dayOfWeek = calendar.component(.weekday, from: date)
+        return calendar.weekdaySymbols[dayOfWeek - 1]
+    }
+    
     init(_ json: JSON) {
         day = json["day"].stringValue
         steps = json["steps"].intValue

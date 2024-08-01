@@ -24,7 +24,7 @@ class TherapistNotificationModel {
 
 class TherapistNotificationData {
     
-    var exerciseIds = [String]()
+    var exerciseIds = [SingleExerciseModel2]()
     var therapistId = ""
     var status = ""
     var patientId: Patient
@@ -40,7 +40,7 @@ class TherapistNotificationData {
     var video_title = ""
     
     init(_ json: JSON) {
-        exerciseIds = json["exercise_ids"].arrayValue.map { $0.stringValue }
+        exerciseIds = json["exercise_ids"].arrayValue.map { SingleExerciseModel2($0) }
         therapistId = json["therapist_id"].stringValue
         status = json["status"].stringValue
         patientId = Patient(json["patient_id"])
@@ -59,8 +59,9 @@ class TherapistNotificationData {
     func getDays(_ CompletionDate: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        let date = dateFormatter.date(from: CompletionDate)!
         let currentDate = Date()
+        let date = dateFormatter.date(from: CompletionDate) ?? Date.now
+       
         let calendar = Calendar.current
         
         let components = calendar.dateComponents([.day], from: date, to: currentDate)

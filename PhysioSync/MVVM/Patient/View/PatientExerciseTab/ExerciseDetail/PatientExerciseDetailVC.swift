@@ -55,6 +55,10 @@ class PatientExerciseDetailVC: UIViewController {
         customVideoPlayer.configure(url: videoURL)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        customVideoPlayer.pause()
+    }
+    
     // MARK: -  Buttons Action
     
     @IBAction func startBtnActn(_ sender: UIButton) {

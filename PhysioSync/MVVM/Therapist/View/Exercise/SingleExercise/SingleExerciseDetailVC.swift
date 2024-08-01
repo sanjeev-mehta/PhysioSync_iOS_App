@@ -40,6 +40,10 @@ class SingleExerciseDetailVC: UIViewController {
         popOverMenu()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.customVideoPlayer.pause()
+    }
+    
     // MARK: - Methods
     
     func callGetDetailExercise() {

@@ -20,7 +20,7 @@ struct HeartRateRangeChart: View {
                 .background(
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color(UIColor.systemBackground))
-                        .shadow(color: chartColor.opacity(0.6), radius: 5, x: 0, y: 5) // Use chartColor for shadow
+                        .shadow(color: chartColor.opacity(0.3), radius: 5, x: 0, y: 5) // Use chartColor for shadow
                         .padding(.horizontal, 10)
                 )
         }

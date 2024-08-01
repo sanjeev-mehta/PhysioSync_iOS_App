@@ -10,7 +10,7 @@ import CHIPageControl
 import SocketIO
 import RAMAnimatedTabBarController
 
-class TherapistHomeVC: UIViewController {
+class TherapistHomeVC: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: -  IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -65,7 +65,13 @@ class TherapistHomeVC: UIViewController {
         setTableViews()
         setNotificationView()
         setupRefreshControl()
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
+    
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+           return true
+       }
     
     override func viewDidAppear(_ animated: Bool) {
         self.isLoading = true
@@ -85,10 +91,6 @@ class TherapistHomeVC: UIViewController {
     }
     
     func setUI() {
-//        for i in shadowViews {
-//            i.layer.cornerRadius = 12
-//            i.addShadow()
-//        }
         patientVM.getPatient(vc: self) { _ in
             DispatchQueue.main.async {
                 self.patientListTableView.reloadData()
@@ -190,18 +192,33 @@ class TherapistHomeVC: UIViewController {
         TherapistHomeVC.socketHandler.delegate = self
         timer?.invalidate()
         self.isLoading = false
-        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+
+        // Use a weak reference to self inside the timer block to avoid retain cycles
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            
             if UserDefaults.standard.getUsernameToken() != "" {
                 TherapistHomeVC.socketHandler.fetchAllPatient(id: UserDefaults.standard.getTherapistId())
                 self.messageTableView.reloadData()
                 var unreadCount = 0
-                for i in self.messageVM.model {
-                    unreadCount += i.unreadCount
+                for message in self.messageVM.model {
+                    unreadCount += message.unreadCount
                 }
                 self.messageCountLbl.text = "\(unreadCount)"
                 self.patientCountLbl.text = "\(self.patientVM.getCount())"
             }
         }
+    }
+
+    // Ensure timer is invalidated when the view controller is deinitialized
+    deinit {
+        timer?.invalidate()
+        TherapistHomeVC.socketHandler.disconnect()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        timer?.invalidate()
+        timer = nil
     }
     
     // MARK: - Buttons Actions
@@ -221,7 +238,7 @@ class TherapistHomeVC: UIViewController {
     @IBAction func acknowBtnActn(_ sender: UIButton) {
         let tag = sender.tag
         if let model = vm.notificationModel {
-            let parm: [String: Any] = ["is_awaiting_reviews": true]
+            let parm: [String: Any] = ["is_awaiting_reviews": false, "status": "reviewed", "exercise_ids": [model.data[0].exerciseIds[tag].id]]
             vm.acknowledgeExercise(vc: self, id: model.data[tag].Id, parm: parm) { status in
                 if status {
                     self.callApi()
@@ -233,7 +250,7 @@ class TherapistHomeVC: UIViewController {
     @IBAction func replyBtnActn(_ sender: UIButton) {
         let tag = sender.tag
         if let model = vm.notificationModel {
-            let parm: [String: Any] = ["is_awaiting_reviews": true]
+            let parm: [String: Any] = ["is_awaiting_reviews": false, "status": "reviewed", "exercise_ids": [model.data[0].exerciseIds[tag].id]]
             vm.acknowledgeExercise(vc: self, id: model.data[tag].Id, parm: parm) { status in
                 if status {
                     if let vc = self.switchController(.chatVC, .messageTab) as? ChatScreenVC {
@@ -301,7 +318,7 @@ extension TherapistHomeVC: UICollectionViewDelegate, UICollectionViewDataSource,
         let tag = sender.tag
         selectedIndex = tag
         if let model = vm.notificationModel {
-            self.setupVideoPlayer(url: model.data[tag].patientVideoUrl)
+            self.setupVideoPlayer(url: model.data[0].exerciseIds[tag].patient_video_url)
             self.nameLbl.text = model.data[tag].patientId.firstName + " " + model.data[tag].patientId.lastName
             self.timeLbl.text = model.data[tag].days
             self.exerciseNameLbl.text = model.data[tag].video_title
@@ -315,7 +332,7 @@ extension TherapistHomeVC: UICollectionViewDelegate, UICollectionViewDataSource,
         videoPlayer?.pause()
         selectedIndex = tag
         if let model = vm.notificationModel {
-            let parm: [String: Any] = ["is_awaiting_reviews": true]
+            let parm: [String: Any] = ["is_awaiting_reviews": false, "status": "reviewed", "exercise_ids": [model.data[0].exerciseIds[tag].id]]
             vm.acknowledgeExercise(vc: self, id: model.data[selectedIndex].Id, parm: parm) { status in
                 if status {
                     self.callApi()
@@ -341,7 +358,7 @@ extension TherapistHomeVC: UICollectionViewDelegate, UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        cell.setTemplateWithSubviews(isLoading, color: Colors.primaryClr, animate: true, viewBackgroundColor: Colors.darkGray)
+        cell.setTemplateWithSubviews(isLoading, color: Colors.darkGray, animate: true, viewBackgroundColor: .lightGray)
         cell.alpha = 0
         cell.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         
@@ -433,7 +450,7 @@ extension TherapistHomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.setTemplateWithSubviews(isLoading, color: Colors.primaryClr, animate: true, viewBackgroundColor: Colors.darkGray)
+        cell.setTemplateWithSubviews(isLoading, color: Colors.darkGray, animate: true, viewBackgroundColor: .lightGray)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

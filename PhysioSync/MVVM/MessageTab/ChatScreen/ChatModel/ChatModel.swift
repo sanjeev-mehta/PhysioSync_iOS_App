@@ -45,7 +45,6 @@ class ChatModel {
                 if let img = image {
                     self.thumbnailImg = image!
                 } else {
-                    print("IMGGGG ERROR")
                 }
             })
         }

@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "60C8929C-D884-4DDD-9391-04ACAAA037AC"
+            uuid = "EC2B0B40-E153-46BE-A7A8-F044E0099C66"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PhysioSync/MVVM/Therapist/ViewModel/TherapistLogin/TherapistLoginViewModel.swift"
+            filePath = "PhysioSync/MVVM/Patient/ViewModel/PatientHome/PatientHomeViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "callTherapistLoginApi(_:with:completion:)"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "getAssignExercise(_:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "955C8B9C-5533-4EA6-A8BB-95B653F015B2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhysioSync/MVVM/Patient/View/PatientExerciseTab/Exercise/ExerciseVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "callApi(url:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
