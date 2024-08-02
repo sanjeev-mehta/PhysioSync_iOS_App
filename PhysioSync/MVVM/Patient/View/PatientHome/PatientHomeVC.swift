@@ -23,6 +23,7 @@ class PatientHomeVC: UIViewController, UNUserNotificationCenterDelegate, UIGestu
     @IBOutlet weak var therapistNameLbl: UILabel!
     @IBOutlet weak var todaysSessionLbl: UILabel!
     @IBOutlet weak var notTaskImgView: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     // MARK: -  Variable
     var cellCount = 4
@@ -54,11 +55,12 @@ class PatientHomeVC: UIViewController, UNUserNotificationCenterDelegate, UIGestu
         socketConnecting()
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        setupRefreshControl()
     }
     
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-           return true
-       }
+        return true
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -94,6 +96,20 @@ class PatientHomeVC: UIViewController, UNUserNotificationCenterDelegate, UIGestu
     override func viewDidDisappear(_ animated: Bool) {
         timer?.invalidate()
         timer = nil
+    }
+    
+    func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        scrollView.refreshControl = refreshControl
+        scrollView.delegate = self
+    }
+    
+    @objc func refreshData(_ sender: UIRefreshControl) {
+        callApi()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            sender.endRefreshing()
+        }
     }
     
     func scheduleNotification() {
