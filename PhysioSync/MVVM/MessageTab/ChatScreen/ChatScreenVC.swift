@@ -41,6 +41,8 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         tableView.delegate = self
         tableView.dataSource = self
         chatVM.delegate = self
+        chatVM.chatArr.removeAll()
+        self.tableView.reloadData()
         self.imagePicker = ImagePickerHelper(viewController: self)
         self.videoPicker = ImagePickerHelper(viewController: self)
         self.closeMediaView()

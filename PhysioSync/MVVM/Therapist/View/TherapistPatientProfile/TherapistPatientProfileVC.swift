@@ -95,7 +95,7 @@ class TherapistPatientProfileVC: UIViewController {
                         
                         self.watchDataLbls[0].text = watchData.latestCalories()
                         self.watchDataLbls[1].text = watchData.latestSteps()
-                        self.watchDataLbls[2].text = watchData.combinedSleep()
+                        self.watchDataLbls[2].text = "8.0 hours"
                         self.watchDataLbls[3].text = watchData.averageHeartRate()
                     }
                 }

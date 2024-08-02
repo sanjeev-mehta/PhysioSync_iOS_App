@@ -10,6 +10,8 @@ import AVKit
 
 class SplashVC: UIViewController {
     
+    @IBOutlet weak var imgView: UIImageView!
+    
     var player: AVPlayer?
     var playerViewController: AVPlayerViewController?
     var currentScale: CGFloat = 3.9

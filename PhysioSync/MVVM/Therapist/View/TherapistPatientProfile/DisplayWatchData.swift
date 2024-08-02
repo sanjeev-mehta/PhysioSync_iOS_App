@@ -157,10 +157,10 @@ struct SleepChartView: View {
 //1F59DA 15203D #5C85DF #243155
     
     let categoryColors: [String: [Color]] = [
-        "Awake": [Color(hex: "1F59DA"), Color(hex: "15203D")],
-        "REM": [Color(hex: "5C85DF"), Color(hex: "243155")],
-        "Core": [Color(hex: "1F59DA"), Color(hex: "5C85DF")],
-        "Deep": [Color(hex: "15203D"), Color(hex: "243155")]
+        "Awake": [Color(hex: "1F59DA"), Color(hex: "1F59DA")],
+        "REM": [Color(hex: "3F71E0"), Color(hex: "3F71E0")],
+        "Core": [Color(hex: "5C85DF"), Color(hex: "5C85DF")],
+        "Deep": [Color(hex: "829EDD"), Color(hex: "829EDD")]
     ]
        
        // Static data for demonstration
@@ -218,7 +218,7 @@ struct SleepChartView: View {
                .background(
                    RoundedRectangle(cornerRadius: 10)
                        .fill(Color(UIColor.systemBackground))
-                       .shadow(color: chartColor.opacity(0.6), radius: 5, x: 0, y: 5)
+                       .shadow(color: chartColor.opacity(0.2), radius: 5, x: 0, y: 5)
                )
            }
            .padding()
@@ -283,7 +283,6 @@ struct TherapisContentView: View {
                     .padding()
                 
                 CaloriesChartView(caloriesData: caloriesData)
-                    .padding()
               
                 StepCountChartView(stepCountData: stepCountData)
                     .padding()
@@ -295,7 +294,7 @@ struct TherapisContentView: View {
 extension Color {
     init(hex: String) {
         let scanner = Scanner(string: hex)
-        scanner.scanLocation = 1 // skip '#' character
+        scanner.scanLocation = 1
         var rgb: UInt64 = 0
         scanner.scanHexInt64(&rgb)
         

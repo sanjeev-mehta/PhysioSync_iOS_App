@@ -396,7 +396,7 @@ extension UIImageView {
         }
         
         self.animationImages = images
-        self.animationDuration = Double(images.count) / 30.0
+        self.animationDuration = Double(images.count) / 20.0
         self.startAnimating()
     }
     

@@ -14,9 +14,9 @@ struct SleepGraphView: View {
     
     let categoryColors: [String: [Color]] = [
         "Awake": [Color(hex: "1F59DA"), Color(hex: "1F59DA")],
-        "REM": [Color(hex: "15203D"), Color(hex: "15203D")],
-        "Core": [Color(hex: "243155"), Color(hex: "243155")],
-        "Deep": [Color(hex: "5C85DF"), Color(hex: "5C85DF")]
+        "REM": [Color(hex: "3F71E0"), Color(hex: "3F71E0")],
+        "Core": [Color(hex: "5C85DF"), Color(hex: "5C85DF")],
+        "Deep": [Color(hex: "829EDD"), Color(hex: "829EDD")]
     ]
     
     var body: some View {
