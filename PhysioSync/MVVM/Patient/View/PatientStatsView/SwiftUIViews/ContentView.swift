@@ -22,34 +22,26 @@ struct ContentView: View {
     let items: [Item] = [Item(type: "Engineering", value: 100),Item(type: "Design", value: 35),Item(type: "Operation", value: 72),Item(type: "Management", value: 22), Item(type: "R&D", value: 72)]
     
     let sleepData: [SleepData] = [
-        SleepData(category: "Wake", hours: 1.5),
+        SleepData(category: "Awake", hours: 1.5),
         SleepData(category: "REM", hours: 2.0),
-        SleepData(category: "Light Sleep", hours: 3.0),
-        SleepData(category: "Deep Sleep", hours: 1.5)
-    ]
-    
-    let categoryColors: [String: [Color]] = [
-        "Wake": [Color.red, Color.orange],
-        "REM": [Color.purple, Color.pink],
-        "Light Sleep": [Color.yellow, Color.green],
-        "Deep Sleep": [Color.blue, Color.indigo]
+        SleepData(category: "Core", hours: 3.0),
+        SleepData(category: "Deep", hours: 1.5)
     ]
     
     var body: some View {
         NavigationStack {
             ScrollView {
-                SleepGraphView(animatedData: $healthKitManager.sleepData)
+                SleepGraphView(data: sleepData)
                     .onAppear {
                         startAnimation()
                     }
                 
                 Spacer()
-
+                
                 HeartRateRangeChart()
                 Spacer()
                 
                 CalorieChartView()
-                Spacer()
                 
                 StepsChartView()
             }

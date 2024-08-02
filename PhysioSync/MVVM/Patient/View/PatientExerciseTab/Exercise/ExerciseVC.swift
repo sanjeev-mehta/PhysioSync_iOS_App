@@ -240,6 +240,9 @@ class ExerciseVC: UIViewController {
     
     @IBAction func startBtnActn(_ sender: UIButton) {
         if sender.tag == 0 {
+            if videoCapture.videoUrl != "" {
+                self.videoCapture.deleteFile(at: videoUrl)
+            }
             repCount = 0
             sender.tag = 1
             self.timeLbl.text = "00:00"

@@ -53,6 +53,17 @@ class TherapistPatientVC: UIViewController, UIContextMenuInteractionDelegate {
         super.viewDidAppear(animated)
         self.isLoading = true
         callPatientApi()
+        NotificationCenter.default.addObserver(self, selector: #selector(handleProfileUpdate(_:)), name: .patientProfileUpdated, object: nil)
+    }
+    
+    @objc func handleProfileUpdate(_ notification: Notification) {
+        if let userInfo = notification.userInfo, let patientName = userInfo["patientName"] as? String, let isEdit = userInfo["isEdit"] as? Bool {
+            if isEdit {
+                self.showToast(msg: "\(patientName) updated successfully", img: "toastSuccess")
+            } else {
+                self.showToast(msg: "\(patientName) added successfully", img: "toastSuccess")
+            }
+        }
     }
     
     @objc func handleSwipeGesture(_ gesture: UISwipeGestureRecognizer) {

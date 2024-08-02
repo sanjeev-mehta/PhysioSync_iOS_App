@@ -9,6 +9,7 @@ import UIKit
 import SDWebImage
 import iOSDropDown
 import AVFoundation
+import ToastViewSwift
 
 extension UIView {
     
@@ -395,7 +396,7 @@ extension UIImageView {
         }
         
         self.animationImages = images
-        self.animationDuration = Double(images.count) / 30.0
+        self.animationDuration = Double(images.count) / 20.0
         self.startAnimating()
     }
     
@@ -602,4 +603,21 @@ extension UINavigationController: UIGestureRecognizerDelegate {
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
            return true
        }
+}
+
+extension UIViewController {
+    func showToast(msg: String, img: String) {
+        let attributes = [
+            NSAttributedString.Key.font: UIFont(name: "Outfit-Regular", size: 16)!,
+            NSAttributedString.Key.foregroundColor: UIColor.black
+        ]
+        let attributedString  = NSMutableAttributedString(string: msg , attributes: attributes)
+        let toast = Toast.default(image: UIImage(named: img)!, title: attributedString)
+        toast.show()
+    }
+}
+
+extension Notification.Name {
+    static let therapistProfileUpdated = Notification.Name("therapistProfileUpdated")
+    static let patientProfileUpdated = Notification.Name("patientProfileUpdated")
 }

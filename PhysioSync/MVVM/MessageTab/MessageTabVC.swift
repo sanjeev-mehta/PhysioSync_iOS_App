@@ -35,8 +35,8 @@ class MessageTabVC: UIViewController {
     }
 
     private func startTimer() {
-        stopTimer() // Ensure any existing timer is invalidated
-        updateTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
+        stopTimer()
+        updateTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             self?.showData()
         }
     }

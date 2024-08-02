@@ -28,11 +28,10 @@ class ChatViewModel {
                     self.messageID.append(i._id)
                 }
             }
-            
         }
-        if chatArr.count == arr.count || arr.count == 0 {
-            return
-        }
+//        if chatArr.count == arr.count || arr.count == 0 {
+//            return
+//        }
         chatArr = arr
         chatArr.reverse()
         delegate?.didReceiveMessages()
@@ -40,7 +39,7 @@ class ChatViewModel {
     
     func readMessage(isPatienSide: Bool) {
         if isPatienSide {
-            PatientHomeVC.socketHandler.markMessagesAsRead(messageIDs: messageID)
+            PatientHomeVC.socketHandler?.markMessagesAsRead(messageIDs: messageID)
         } else {
             TherapistHomeVC.socketHandler.markMessagesAsRead(messageIDs: messageID)
         }

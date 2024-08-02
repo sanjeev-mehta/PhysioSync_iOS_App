@@ -23,7 +23,8 @@ class CustomVideoPlayer: UIView, AVPlayerViewControllerDelegate {
         playerViewController?.allowsPictureInPicturePlayback = true
         playerViewController?.canStartPictureInPictureAutomaticallyFromInline = true
         playerViewController?.delegate = self
-
+        playerViewController?.showsPlaybackControls = true
+        
         guard let playerViewController = playerViewController else { return }
         playerViewController.view.frame = self.bounds
         playerViewController.view.layer.cornerRadius = 0

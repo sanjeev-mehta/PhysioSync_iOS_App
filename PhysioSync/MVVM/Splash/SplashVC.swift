@@ -10,6 +10,8 @@ import AVKit
 
 class SplashVC: UIViewController {
     
+    @IBOutlet weak var imgView: UIImageView!
+    
     var player: AVPlayer?
     var playerViewController: AVPlayerViewController?
     var currentScale: CGFloat = 3.9
@@ -29,7 +31,7 @@ class SplashVC: UIViewController {
         player = AVPlayer(url: url)
         playerViewController = AVPlayerViewController()
         playerViewController?.player = player
-        
+        playerViewController?.player?.isMuted = true
         // Remove playback controls
         playerViewController?.showsPlaybackControls = false
         

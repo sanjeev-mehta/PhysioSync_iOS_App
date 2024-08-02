@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import ToastViewSwift
 
 class TherapistProfileVC: UIViewController {
-
+    
     @IBOutlet weak var profileImgVW: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var emailLbl: UILabel!
@@ -17,9 +18,7 @@ class TherapistProfileVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
+                
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -27,10 +26,12 @@ class TherapistProfileVC: UIViewController {
             callGetPatientProfileApi()
         } else {
             callGetTherapistProfileApi()
-//            profileImgVW.setImage(with: UserDefaults.standard.getTherapistProfileImage())
-//            nameLbl.text = UserDefaults.standard.getTherapistName()
-//            emailLbl.text = UserDefaults.standard.getT
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(handleProfileUpdate), name: .therapistProfileUpdated, object: nil)
+    }
+    
+    @objc func handleProfileUpdate() {
+        self.showToast(msg: "Profile updated successfully", img: "toastSuccess")
     }
     
     func callGetPatientProfileApi() {
@@ -48,7 +49,7 @@ class TherapistProfileVC: UIViewController {
                         self.emailLbl.text = model.patientEmail
                     }
                 }
-
+                
             }
         }
     }
@@ -61,18 +62,18 @@ class TherapistProfileVC: UIViewController {
                 self.displayAlert(title: "Alert!", msg: "something went wrong", ok: "Ok")
             } else {
                 DispatchQueue.main.async {
-                   let data = json["data"]
+                    let data = json["data"]
                     self.profileImgVW.setImage(with: data["profile_photo"].stringValue)
                     self.nameLbl.text = data["therapist_name"].stringValue
                     self.emailLbl.text = data["email"].stringValue
                 }
-
+                
             }
         }
     }
     
     @IBAction func editProfileBtnActn(_ sender: UIButton) {
-         if UserDefaults.standard.getUsernameToken() == "" {
+        if UserDefaults.standard.getUsernameToken() == "" {
             if let vc = self.switchController(.therapistPatientStep1VC, .therapistPatientProfile) as? TherapistPatientStep1VC {
                 vc.isEdit = true
                 vc.model = patient
@@ -106,5 +107,6 @@ class TherapistProfileVC: UIViewController {
             navigationController.setViewControllers([navigationController.viewControllers.first!], animated: true)
         }
     }
-
+    
 }
+

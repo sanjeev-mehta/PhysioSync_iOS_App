@@ -154,20 +154,21 @@ struct HeartRateChartView: View {
 struct SleepChartView: View {
     @Binding var animatedData: [SleepData]
     @State private var chartColor: Color = Color(red: 31/255, green: 89/255, blue: 218/255)
-
-       let categoryColors: [String: [Color]] = [
-           "Awake": [Color.red, Color.orange],
-           "REM": [Color.purple, Color.pink],
-           "Core": [Color.yellow, Color.green],
-           "Deep": [Color.blue, Color.indigo]
-       ]
+//1F59DA 15203D #5C85DF #243155
+    
+    let categoryColors: [String: [Color]] = [
+        "Awake": [Color(hex: "1F59DA"), Color(hex: "1F59DA")],
+        "REM": [Color(hex: "3F71E0"), Color(hex: "3F71E0")],
+        "Core": [Color(hex: "5C85DF"), Color(hex: "5C85DF")],
+        "Deep": [Color(hex: "829EDD"), Color(hex: "829EDD")]
+    ]
        
        // Static data for demonstration
        let staticSleepData: [SleepData] = [
-           SleepData(category: "Awake", hours: 6.5),
-           SleepData(category: "REM", hours: 2.5),
-           SleepData(category: "Core", hours: 1.5),
-           SleepData(category: "Deep", hours: 3.0)
+           SleepData(category: "Awake", hours: 1.5),
+           SleepData(category: "REM", hours: 2.0),
+           SleepData(category: "Core", hours: 3.0),
+           SleepData(category: "Deep", hours: 1.5)
        ]
        
        var body: some View {
@@ -178,7 +179,7 @@ struct SleepChartView: View {
                    .padding([.top, .leading])
                
                Chart {
-                   ForEach(animatedData) { data in
+                   ForEach(staticSleepData) { data in
                        BarMark(
                            x: .value("Category", data.category),
                            y: .value("Hours", data.hours)
@@ -217,7 +218,7 @@ struct SleepChartView: View {
                .background(
                    RoundedRectangle(cornerRadius: 10)
                        .fill(Color(UIColor.systemBackground))
-                       .shadow(color: chartColor.opacity(0.6), radius: 5, x: 0, y: 5)
+                       .shadow(color: chartColor.opacity(0.2), radius: 5, x: 0, y: 5)
                )
            }
            .padding()
@@ -275,17 +276,32 @@ struct TherapisContentView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                    CaloriesChartView(caloriesData: caloriesData)
-                    
-                    HeartRateChartView(heartRateData: heartRateData)
-                        .padding()
-                    
-                    SleepChartView(animatedData: .constant(sleepData))
-                        .padding()
-                    
-                    StepCountChartView(stepCountData: stepCountData)
-                        .padding()
+                
+                SleepChartView(animatedData: .constant(sleepData))
+                
+                HeartRateChartView(heartRateData: heartRateData)
+                    .padding()
+                
+                CaloriesChartView(caloriesData: caloriesData)
+              
+                StepCountChartView(stepCountData: stepCountData)
+                    .padding()
             }
         }
+    }
+}
+
+extension Color {
+    init(hex: String) {
+        let scanner = Scanner(string: hex)
+        scanner.scanLocation = 1
+        var rgb: UInt64 = 0
+        scanner.scanHexInt64(&rgb)
+        
+        let red = Double((rgb >> 16) & 0xFF) / 255.0
+        let green = Double((rgb >> 8) & 0xFF) / 255.0
+        let blue = Double(rgb & 0xFF) / 255.0
+        
+        self.init(red: red, green: green, blue: blue)
     }
 }
