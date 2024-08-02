@@ -117,7 +117,7 @@ public class HealthKitManager: ObservableObject {
          let now = Date()
          
          // Define start date as 7 days ago
-         guard let startDate = calendar.date(byAdding: .day, value: -7, to: now) else {
+         guard let startDate = calendar.date(byAdding: .day, value: -6, to: now) else {
             // print("Error calculating start date.")
              return
          }
@@ -193,7 +193,7 @@ public class HealthKitManager: ObservableObject {
           let now = Date()
           
           // Define start date as 7 days ago
-          guard let startDate = calendar.date(byAdding: .day, value: -7, to: now) else {
+          guard let startDate = calendar.date(byAdding: .day, value: -6, to: now) else {
               print("Error calculating start date.")
               return
           }

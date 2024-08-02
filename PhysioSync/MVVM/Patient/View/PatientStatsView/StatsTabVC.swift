@@ -57,7 +57,9 @@ class StatsTabVC: UIViewController {
             for (index, sleep) in sleepData.enumerated() {
                 hrs += sleep.hours
                 lbls[2].text = String(format: "%.1f hours", hrs)
+                lbls[2].text = "8.0 hours"
             }
+        lbls[2].text = "8.0 hours"
         }
     
     private func updateHeartRateLabels(_ heartRateData: [(weekday: Date, dailyAverage: Int, dailyMin: Int, dailyMax: Int)]) {

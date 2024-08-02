@@ -23,6 +23,7 @@ class TherapistPatientStep3VC: UIViewController {
     var isEdit = false
     var isImageChange = false
     var isPatientSide = false
+    var isEditApiCalled = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +51,30 @@ class TherapistPatientStep3VC: UIViewController {
         setData()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        triggerToast()
+    }
+    
+    func triggerToast() {
+        guard let firstName = parms["first_name"] as? String,
+                  let lastName = parms["last_name"] as? String else {
+                print("First name or last name is missing in parms.")
+                return
+            }
+        
+        let userInfo: [String: Any] = ["patientName": firstName + " " + lastName, "isEdit": isEdit]
+               NotificationCenter.default.post(name: .patientProfileUpdated, object: nil, userInfo: userInfo)
+        
+        if isEditApiCalled {
+            if isEdit {
+                NotificationCenter.default.post(name: .patientProfileUpdated, object: nil)
+            } else {
+                NotificationCenter.default.post(name: .patientProfileUpdated, object: nil)
+            }
+           
+        }
+    }
+    
     // MARK: -  Set Edit Data
     func setData() {
         if isEdit {
@@ -71,6 +96,7 @@ class TherapistPatientStep3VC: UIViewController {
                         self.parms["profile_photo"] = link
                         self.vm.updatePatient(vc: self, parm: self.parms, id: self.model!.Id) { status in
                             if status {
+                                self.isEditApiCalled = true
                                 self.popController()
                             }
                         }
@@ -87,6 +113,7 @@ class TherapistPatientStep3VC: UIViewController {
                 }
                 self.vm.updatePatient(vc: self, parm: self.parms,isHeader: isHeader, id: self.model!.Id) { status in
                     if status {
+                        self.isEditApiCalled = true
                         self.popController()
                     }
                 }
@@ -100,6 +127,7 @@ class TherapistPatientStep3VC: UIViewController {
                     self.parms["profile_photo"] = link
                     self.vm.addNewPatient(vc: self, parm: self.parms) { status in
                         if status {
+                            self.isEditApiCalled = true
                             self.popController()
                         }
                     }

@@ -22,6 +22,7 @@ pod 'AWSS3'
 pod 'FTPopOverMenu_Swift', '~> 0.1.4'
 pod 'Socket.IO-Client-Swift', '~> 16.0.1'
 pod 'lottie-ios'
+pod "ToastViewSwift"
   # Pods for PhysioSync
 
 end

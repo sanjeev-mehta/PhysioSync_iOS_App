@@ -9,13 +9,14 @@ import SwiftUI
 import Charts
 
 struct SleepGraphView: View {
-    @Binding var animatedData: [SleepData]
+   // @Binding var animatedData: [SleepData]
+    let data: [SleepData]
     
     let categoryColors: [String: [Color]] = [
-        "Awake": [Color(red: 31/255, green: 89/255, blue: 218/255, opacity: 1)],
-        "REM": [Color(red: 31/255, green: 218/255, blue: 162/255, opacity: 1)],
-        "Core": [Color(red: 0, green: 0, blue: 0, opacity: 1)],
-        "Deep": [Color.blue, Color.indigo]
+        "Awake": [Color(hex: "1F59DA"), Color(hex: "1F59DA")],
+        "REM": [Color(hex: "3F71E0"), Color(hex: "3F71E0")],
+        "Core": [Color(hex: "5C85DF"), Color(hex: "5C85DF")],
+        "Deep": [Color(hex: "829EDD"), Color(hex: "829EDD")]
     ]
     
     var body: some View {
@@ -26,7 +27,7 @@ struct SleepGraphView: View {
                 .padding([.top, .leading])
             
             Chart {
-                ForEach(animatedData) { data in
+                ForEach(data) { data in
                     BarMark(
                         x: .value("Category", data.category),
                         y: .value("Hours", data.hours)
@@ -34,7 +35,7 @@ struct SleepGraphView: View {
                     .clipShape(CustomBarShape())
                     .foregroundStyle(
                         LinearGradient(
-                            gradient: Gradient(colors: categoryColors[data.category] ?? [.gray]),
+                            gradient: Gradient(colors: categoryColors[data.category]!),
                             startPoint: .bottom,
                             endPoint: .top
                         )

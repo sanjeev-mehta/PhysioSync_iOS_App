@@ -70,8 +70,8 @@ class TherapistHomeVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-           return true
-       }
+        return true
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         self.isLoading = true
@@ -116,17 +116,17 @@ class TherapistHomeVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func setupRefreshControl() {
-            refreshControl = UIRefreshControl()
-            refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
-            scrollView.refreshControl = refreshControl
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        scrollView.refreshControl = refreshControl
+    }
+    
+    @objc func refreshData(_ sender: UIRefreshControl) {
+        callApi()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            sender.endRefreshing()
         }
-        
-        @objc func refreshData(_ sender: UIRefreshControl) {
-            callApi()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                sender.endRefreshing()
-            }
-        }
+    }
     
     func callApi() {
         vm.getNotificationApi(vc: self) { status in
@@ -156,7 +156,7 @@ class TherapistHomeVC: UIViewController, UIGestureRecognizerDelegate {
         acknowledgeView.addTopCornerRadius(radius: 16)
         replyView.addBottomCornerRadius(radius: 16)
         cancelView.cornerRadius = 16
-
+        
     }
     
     func openNotifcationView() {
@@ -187,12 +187,16 @@ class TherapistHomeVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func socketConnecting() {
-        TherapistHomeVC.socketHandler = SocketIOHandler(url: API.SocketURL)
+        guard let socketURL = URL(string: API.SocketURL) else {
+            print("Invalid socket URL: \(API.SocketURL)")
+            return
+        }
+        TherapistHomeVC.socketHandler = SocketIOHandler(url: socketURL)
         TherapistHomeVC.socketHandler.connect()
         TherapistHomeVC.socketHandler.delegate = self
         timer?.invalidate()
         self.isLoading = false
-
+        
         // Use a weak reference to self inside the timer block to avoid retain cycles
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
             guard let self = self else { return }
@@ -209,8 +213,7 @@ class TherapistHomeVC: UIViewController, UIGestureRecognizerDelegate {
             }
         }
     }
-
-    // Ensure timer is invalidated when the view controller is deinitialized
+    
     deinit {
         timer?.invalidate()
         TherapistHomeVC.socketHandler.disconnect()
@@ -340,7 +343,7 @@ extension TherapistHomeVC: UICollectionViewDelegate, UICollectionViewDataSource,
             }
         }
     }
-
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -421,7 +424,7 @@ extension TherapistHomeVC: UITableViewDelegate, UITableViewDataSource {
             if !self.isLoading {
                 let data = messageVM.model[indexPath.row]
                 cell.profileImgView.setImage(with: data.patient?.profilePhoto)
-                cell.nameLbl.text = data.patient!.firstName + "" + data.patient!.lastName
+                cell.nameLbl.text = data.patient!.firstName + " " + data.patient!.lastName
                 cell.msgLbl.text = data.message
                 if data.unreadCount != 0 {
                     cell.badgeLbl.isHidden = false
@@ -489,7 +492,7 @@ extension TherapistHomeVC: UITableViewDelegate, UITableViewDataSource {
             self.pushOrPresentViewController(vc, true)
         }
     }
-
+    
     
 }
 

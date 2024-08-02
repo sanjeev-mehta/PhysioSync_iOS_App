@@ -298,12 +298,19 @@
 			<key>orderHint</key>
 			<integer>46</integer>
 		</dict>
-		<key>UIView-Shimmer.xcscheme</key>
+		<key>ToastViewSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>47</integer>
+		</dict>
+		<key>UIView-Shimmer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>48</integer>
 		</dict>
 		<key>iOSDropDown.xcscheme</key>
 		<dict>

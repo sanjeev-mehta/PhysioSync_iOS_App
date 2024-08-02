@@ -18,6 +18,7 @@ class TherapistProfileStep2VC: UIViewController {
     var isImageChange = false
     var parms = [String: Any]()
     var profileImg: UIImage?
+    var isEdit = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +29,12 @@ class TherapistProfileStep2VC: UIViewController {
         super.viewWillAppear(animated)
         self.setHeader("Edit Profile") {
             self.dismissOrPopViewController()
-        } rightButtonAction: {
-            // No Need
+        } rightButtonAction: {}
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if isEdit {
+            NotificationCenter.default.post(name: .therapistProfileUpdated, object: nil)
         }
     }
     
@@ -60,6 +65,7 @@ class TherapistProfileStep2VC: UIViewController {
                 DispatchQueue.main.async {
                     self.vm.updateTherapistApi(vc: self, parm: self.parms) { status in
                         if status {
+                            self.isEdit = true
                             self.popController()
                         }
                     }
@@ -69,6 +75,7 @@ class TherapistProfileStep2VC: UIViewController {
             self.parms["profile_photo"] = self.vm.model!.data!.profilePhoto
             vm.updateTherapistApi(vc: self, parm: self.parms) { status in
                 if status {
+                    self.isEdit = true
                     self.popController()
                 }
             }

@@ -7,32 +7,78 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EC2B0B40-E153-46BE-A7A8-F044E0099C66"
+            uuid = "8AE60496-536E-4FAF-9AC9-75905D4F1956"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PhysioSync/MVVM/Patient/ViewModel/PatientHome/PatientHomeViewModel.swift"
+            filePath = "PhysioSync/MVVM/Therapist/View/TherapistPatientProfile/TherapistPatientStep3VC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "getAssignExercise(_:completion:)"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "addPatient()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8AE60496-536E-4FAF-9AC9-75905D4F1956 - 9631ed8aa12d5578"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhysioSync.TherapistPatientStep3VC.addPatient() -&gt; ()"
+                  moduleName = "PhysioSync"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanjeevmehta/Documents/GitHub/PhysioSync_iOS_App/PhysioSync/MVVM/Therapist/View/TherapistPatientProfile/TherapistPatientStep3VC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114">
+               </Location>
+               <Location
+                  uuid = "8AE60496-536E-4FAF-9AC9-75905D4F1956 - 72cbd62f65cc9c39"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Bool) -&gt; () in PhysioSync.TherapistPatientStep3VC.addPatient() -&gt; ()"
+                  moduleName = "PhysioSync"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanjeevmehta/Documents/GitHub/PhysioSync_iOS_App/PhysioSync/MVVM/Therapist/View/TherapistPatientProfile/TherapistPatientStep3VC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E090F7DB-C859-4936-B2D3-891DCB6C9E4B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhysioSync/MVVM/Patient/View/PatientHome/PatientHomeVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "365"
+            endingLineNumber = "365"
+            landmarkName = "fetchMessage(unreadCount:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "955C8B9C-5533-4EA6-A8BB-95B653F015B2"
+            uuid = "2EC54A9D-4F26-41FC-92F4-2AD6C2E4A4BD"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PhysioSync/MVVM/Patient/View/PatientExerciseTab/Exercise/ExerciseVC.swift"
+            filePath = "PhysioSync/MVVM/Patient/View/PatientHome/PatientHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
-            landmarkName = "callApi(url:completion:)"
+            startingLineNumber = "369"
+            endingLineNumber = "369"
+            landmarkName = "fetchMessage(unreadCount:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

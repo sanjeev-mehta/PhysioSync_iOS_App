@@ -78,6 +78,7 @@
 		679512742C3DC45A00C01BDA /* neckRotation.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 679512732C3DC45900C01BDA /* neckRotation.mlmodel */; };
 		679512772C3E6A7500C01BDA /* ExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679512762C3E6A7500C01BDA /* ExerciseViewModel.swift */; };
 		679A3DF92C44643800DC1B4B /* AnimatedTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679A3DF82C44643800DC1B4B /* AnimatedTabBarController.swift */; };
+		679E48372C5CD68900CB7021 /* Logo_Animation.gif in Resources */ = {isa = PBXBuildFile; fileRef = 679E48362C5CD68900CB7021 /* Logo_Animation.gif */; };
 		67B161642C138E540028E3C3 /* PatientExerciseTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67B161632C138E540028E3C3 /* PatientExerciseTab.storyboard */; };
 		67B161672C138E7A0028E3C3 /* PatientExerciseTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B161662C138E7A0028E3C3 /* PatientExerciseTabVC.swift */; };
 		67B161692C13F1490028E3C3 /* PatientExerciseTabTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B161682C13F1490028E3C3 /* PatientExerciseTabTVC.swift */; };
@@ -231,6 +232,7 @@
 		679512732C3DC45900C01BDA /* neckRotation.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = neckRotation.mlmodel; sourceTree = "<group>"; };
 		679512762C3E6A7500C01BDA /* ExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewModel.swift; sourceTree = "<group>"; };
 		679A3DF82C44643800DC1B4B /* AnimatedTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTabBarController.swift; sourceTree = "<group>"; };
+		679E48362C5CD68900CB7021 /* Logo_Animation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Logo_Animation.gif; sourceTree = "<group>"; };
 		67B161632C138E540028E3C3 /* PatientExerciseTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PatientExerciseTab.storyboard; sourceTree = "<group>"; };
 		67B161662C138E7A0028E3C3 /* PatientExerciseTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientExerciseTabVC.swift; sourceTree = "<group>"; };
 		67B161682C13F1490028E3C3 /* PatientExerciseTabTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientExerciseTabTVC.swift; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 				6794C7BB2C2686DC00E3B4F3 /* PhysioSync.entitlements */,
 				671E3FA82C4F7642006C6D57 /* GoogleService-Info.plist */,
 				67467D982C412428008A427D /* confetti.json */,
+				679E48362C5CD68900CB7021 /* Logo_Animation.gif */,
 				677481BD2C3F2FBA00E3A23F /* V_Logo_Animation.mp4 */,
 				678F33EB2BFED68400824A23 /* AppDelegates */,
 				678F33F12BFED88D00824A23 /* HelperClasses */,
@@ -1182,6 +1185,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				679E48372C5CD68900CB7021 /* Logo_Animation.gif in Resources */,
 				676BEA632C0C404E00A193CF /* Outfit-Light.ttf in Resources */,
 				E8C0FADE2C0D5A2E008E1CA7 /* MessageTVC.xib in Resources */,
 				676BEA5E2C0C404E00A193CF /* Outfit-Bold.ttf in Resources */,

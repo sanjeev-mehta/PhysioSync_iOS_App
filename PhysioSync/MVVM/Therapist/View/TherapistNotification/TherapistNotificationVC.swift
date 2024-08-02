@@ -46,7 +46,7 @@ class TherapistNotificationVC: UIViewController {
     
     private func setCustomHeader() {
         let backImage = UIImage(named: "backArrow")!.withRenderingMode(.alwaysOriginal)
-        self.navigationController?.setNavigationBarAttributes(title: "Patient Info", backButtonImage: backImage)
+        self.navigationController?.setNavigationBarAttributes(title: "Notification", backButtonImage: backImage)
     }
     
     func setNotificationView() {
