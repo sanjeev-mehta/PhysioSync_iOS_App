@@ -187,7 +187,11 @@ class TherapistHomeVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func socketConnecting() {
-        TherapistHomeVC.socketHandler = SocketIOHandler(url: API.SocketURL)
+        guard let socketURL = URL(string: API.SocketURL) else {
+            print("Invalid socket URL: \(API.SocketURL)")
+            return
+        }
+        TherapistHomeVC.socketHandler = SocketIOHandler(url: socketURL)
         TherapistHomeVC.socketHandler.connect()
         TherapistHomeVC.socketHandler.delegate = self
         timer?.invalidate()

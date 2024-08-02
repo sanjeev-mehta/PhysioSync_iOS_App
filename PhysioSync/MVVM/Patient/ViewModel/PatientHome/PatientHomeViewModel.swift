@@ -17,6 +17,7 @@ class PatientHomeViewModel {
     private let healthKitManager = HealthKitManager()
     var timer: Timer?
     var assignmentID = ""
+    var isWatchDataSubmitted = false
     
     func getAssignExercise(_ vc: UIViewController, completion: @escaping(Bool) -> ()) {
         let userId = UserDefaults.standard.getPatientLoginId()
@@ -58,26 +59,28 @@ class PatientHomeViewModel {
     func submitWatchData() {
         let userId = UserDefaults.standard.getPatientLoginId()
         let url = API.Endpoints.watchdata + "/\(userId)"
-        timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { [self] _ in
-            if !HealthKitManager.ishealthkitPermissionPermitted {
-                return
-            }
+        if !HealthKitManager.ishealthkitPermissionPermitted {
+            isWatchDataSubmitted = false
+            submitWatchData()
+            return
+        }
+        
+        let params: [String: Any] = [
+            "calories": healthKitManager.formattedCalorieData,
+            "heartRate": healthKitManager.formattedHeartRateData,
+            "sleep": healthKitManager.formattedSleepData,
+            "stepCount": healthKitManager.formattedStepCountData
+        ]
+        
+        apiHelper.hitApiwithoutloader(parm: params, url: url) { [weak self] json, err in
+            guard let self = self else { return }
             
-            let params: [String: Any] = [
-                "calories": healthKitManager.formattedCalorieData,
-                "heartRate": healthKitManager.formattedHeartRateData,
-                "sleep": healthKitManager.formattedSleepData,
-                "stepCount": healthKitManager.formattedStepCountData
-            ]
-           // print(params)
-            apiHelper.hitApiwithoutloader(parm: params, url: url) { [self] json, err in
-                if err != nil {
-                    print(err?.localizedDescription)
-                } else {
-                    timer?.invalidate()
-                    timer = nil
-                    print("Submitted Apple Watch Data")
-                }
+            if err != nil {
+                print(err?.localizedDescription)
+                submitWatchData()
+            } else {
+                isWatchDataSubmitted = true
+                print("Submitted Apple Watch Data")
             }
         }
     }

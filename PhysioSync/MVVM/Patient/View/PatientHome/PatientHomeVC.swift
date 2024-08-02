@@ -29,7 +29,7 @@ class PatientHomeVC: UIViewController, UNUserNotificationCenterDelegate, UIGestu
     var cellCount = 4
     var sessionCurrentIndex = 0
     var completedCurrentIndex = 0
-    static var socketHandler: SocketIOHandler!
+    static var socketHandler: SocketIOHandler?
     let vm = PatientHomeViewModel.shareInstance
     let chatVM = ChatViewModel.shareInstance
     private var isLoading = true {
@@ -47,15 +47,12 @@ class PatientHomeVC: UIViewController, UNUserNotificationCenterDelegate, UIGestu
         super.viewDidLoad()
         
         setUI()
-        if UserDefaults.standard.getUsernameToken() != "" {
-            chatVM.currentUser = UserDefaults.standard.getTherapistId()
-        } else {
-            chatVM.currentUser = UserDefaults.standard.getPatientLoginId()
-        }
-        socketConnecting()
+        chatVM.currentUser = UserDefaults.standard.getPatientLoginId()
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         setupRefreshControl()
+        callApi()
+        hideMessageView()
     }
     
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -64,7 +61,6 @@ class PatientHomeVC: UIViewController, UNUserNotificationCenterDelegate, UIGestu
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        socketConnecting()
         let myString = "Welcome \(UserDefaults.standard.getPatientName()),"
         let attributedString = NSMutableAttributedString(string: myString)
         attributedString.setColor(forText: ["Welcome": Colors.borderClr, "\(UserDefaults.standard.getPatientName()),": Colors.primaryClr])
@@ -72,12 +68,17 @@ class PatientHomeVC: UIViewController, UNUserNotificationCenterDelegate, UIGestu
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.callApi()
+        socketConnecting()
         timer?.invalidate()
+        timer = nil
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
-            PatientHomeVC.socketHandler.fetchPreviousMessage(UserDefaults.standard.getPatientLoginId(), UserDefaults.standard.getTherapistId())
+            PatientHomeVC.socketHandler?.fetchPreviousMessage(UserDefaults.standard.getPatientLoginId(), UserDefaults.standard.getTherapistId())
         }
-        vm.submitWatchData()
+        
+        if !vm.isWatchDataSubmitted {
+            vm.submitWatchData()
+        }
+        
         let center = UNUserNotificationCenter.current()
         center.delegate = self
         center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
@@ -111,7 +112,7 @@ class PatientHomeVC: UIViewController, UNUserNotificationCenterDelegate, UIGestu
             sender.endRefreshing()
         }
     }
-    
+        
     func scheduleNotification() {
         if let timeString = UserDefaults.standard.value(forKey: "reminder_time") as? String {
             guard let dateComponents = parseTimeString(timeString) else {
@@ -201,13 +202,24 @@ class PatientHomeVC: UIViewController, UNUserNotificationCenterDelegate, UIGestu
         for i in messageViewConstraints {
             i.constant = 0
         }
+        messageViewConstraints[2].constant = 24
         self.messageView.isHidden = true
     }
     
     func socketConnecting() {
-        PatientHomeVC.socketHandler = SocketIOHandler(url: API.SocketURL)
-        PatientHomeVC.socketHandler.connect()
-        PatientHomeVC.socketHandler.delegate = self
+        guard let socketURL = URL(string: API.SocketURL) else {
+            print("Invalid socket URL: \(API.SocketURL)")
+            return
+        }
+        
+        PatientHomeVC.socketHandler = SocketIOHandler(url: socketURL)
+        
+        if let socketHandler = PatientHomeVC.socketHandler {
+            socketHandler.connect()
+            socketHandler.delegate = self
+        } else {
+            print("Failed to initialize SocketIOHandler")
+        }
     }
     
     @IBAction func messageBtnActn(_ sender: UIButton) {

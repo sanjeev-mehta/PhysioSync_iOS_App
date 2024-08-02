@@ -56,9 +56,9 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             self.backBtn.isHidden = true
             self.backImgVW.isHidden = true
             chatVM.currentUser = currentUserId
-            timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
+            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
                 guard let self = self else { return }
-                PatientHomeVC.socketHandler.fetchPreviousMessage(self.currentUserId, self.recieverId)
+                PatientHomeVC.socketHandler?.fetchPreviousMessage(self.currentUserId, self.recieverId)
             }
         } else {
             self.currentUserId = UserDefaults.standard.getTherapistId()
@@ -66,7 +66,7 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             self.nameLbl.text = name
             self.profileImg.setImage(with: profileImgLink)
             self.isPatient = false
-            timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
+            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
                 guard let self = self else { return }
                 TherapistHomeVC.socketHandler.fetchPreviousMessage(self.currentUserId, self.recieverId)
             }
@@ -124,7 +124,7 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         chatVM.chatArr.append(newMessage)
         tableView.reloadData()
         if isPatient {
-            PatientHomeVC.socketHandler.sendMessage(userId: currentUserId, receiverId: recieverId, message: messageTf.text!, isMedia: false)
+            PatientHomeVC.socketHandler?.sendMessage(userId: currentUserId, receiverId: recieverId, message: messageTf.text!, isMedia: false)
         } else {
             TherapistHomeVC.socketHandler.sendMessage(userId: currentUserId, receiverId: recieverId, message: messageTf.text!, isMedia: false)
         }
@@ -152,7 +152,7 @@ class ChatScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         } else {
             DispatchQueue.main.async { [self] in
                 if self.isPatient {
-                    PatientHomeVC.socketHandler.sendMediaMessage(userId: currentUserId, receiverId: recieverId, message: messageTf.text ?? "", isMedia: true, media_link: url, is_video: isVideo)
+                    PatientHomeVC.socketHandler?.sendMediaMessage(userId: currentUserId, receiverId: recieverId, message: messageTf.text ?? "", isMedia: true, media_link: url, is_video: isVideo)
                 } else {
                     TherapistHomeVC.socketHandler.sendMediaMessage(userId: currentUserId, receiverId: recieverId, message: messageTf.text ?? "", isMedia: true, media_link: url, is_video: isVideo)
                 }
